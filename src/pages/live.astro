@@ -20,138 +20,112 @@ const lastTrades = d.lastTrades || [];
 ---
 
 <BaseLayout title="ライブパフォーマンス | FusionGold M5" description="FusionGold M5 のリアルタイム取引状況。残高、ポジション、P&L。">
+
   <div class="container" style="padding-top:40px;padding-bottom:60px;">
+
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:24px;">
-      <h1 style="color:var(--gold);" data-i18n="live-title">ライブパフォーマンス</h1>
+      <h1 style="color:var(--gold);font-size:1.6rem;" data-i18n="live-title">ライブパフォーマンス</h1>
       <span style="font-size:0.8rem;color:var(--text-muted);" data-i18n="live-updated">最終更新:</span> {d.updated || '—'}
     </div>
 
-    <!-- Account Overview -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px;">
-      <div class="stat-card">
-        <div class="stat-label" data-i18n="live-balance">残高</div>
-        <div class="stat-value gold">${acct.balance?.toFixed(2) || '—'}</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label" data-i18n="live-equity">有効証拠金</div>
-        <div class="stat-value">${acct.equity?.toFixed(2) || '—'}</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label" data-i18n="live-daypnl">本日P&L</div>
-        <div class="stat-value" style="color:{acct.dayPnL >= 0 ? '#27ae60' : '#e74c3c'};">${(acct.dayPnL >= 0 ? '+' : '') + (acct.dayPnL?.toFixed(2) || '0.00')}</div>
-        <div class="stat-sub" style="color:{acct.dayPnL >= 0 ? '#27ae60' : '#e74c3c'};">{acct.dayPnLPercent >= 0 ? '+' : ''}{(acct.dayPnLPercent || 0).toFixed(2)}%</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label" data-i18n="live-positions">ポジション</div>
-        <div class="stat-value">{acct.positions || 0}/{acct.maxPositions || 4}</div>
-      </div>
+    <!-- Account Overview Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px;">
+      <div class="stat-card"><div class="stat-label" data-i18n="live-balance">残高</div><div class="stat-value gold">${acct.balance?.toFixed(2) || '—'}</div></div>
+      <div class="stat-card"><div class="stat-label" data-i18n="live-equity">有効証拠金</div><div class="stat-value">${acct.equity?.toFixed(2) || '—'}</div></div>
+      <div class="stat-card"><div class="stat-label" data-i18n="live-daypnl">本日P&L</div><div class="stat-value" style="color:{acct.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">${(acct.dayPnL >= 0 ? '+' : '') + (acct.dayPnL?.toFixed(2) || '0.00')}</div><div class="stat-sub" style="color:{acct.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">{acct.dayPnLPercent >= 0 ? '+' : ''}{(acct.dayPnLPercent || 0).toFixed(2)}%</div></div>
+      <div class="stat-card"><div class="stat-label" data-i18n="live-positions">ポジション</div><div class="stat-value">{acct.positions || 0}/{acct.maxPositions || 4}</div></div>
     </div>
 
     <!-- EA Status -->
-    <div style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);margin-bottom:24px;">
+    <div class="perf-table-wrap" style="margin-bottom:24px;">
       <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">⚡ <span data-i18n="live-status">EA ステータス</span></h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;">
-        <div><span class="tag-label" data-i18n="live-status" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">ステータス</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;color:{acct.status === 'RUNNING' ? '#27ae60' : '#e74c3c'};">{acct.status || '—'}</span></div>
-        <div><span class="tag-label" data-i18n="live-session" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">セッション</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{sess.status || '—'}</span></div>
-        <div><span class="tag-label" data-i18n="live-adx" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">ADX</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{mkt.adx?.toFixed(1) || '—'}</span></div>
-        <div><span class="tag-label" data-i18n="live-spread" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">スプレッド</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{mkt.spread || '—'}/{mkt.maxSpread || '—'}</span></div>
-        <div><span class="tag-label" data-i18n="live-h4" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">H4 Buy/Sell</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{sig.h4Buy}/{sig.h4Sell}</span></div>
-        <div><span class="tag-label" data-i18n="live-bs" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">Buy/Sell</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{sig.canBuy}/{sig.canSell}</span></div>
-        <div><span class="tag-label" data-i18n="live-bb" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">Bull/Bear</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{sig.bull}/{sig.bear}</span></div>
-        <div><span class="tag-label" data-i18n="live-cooldown" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;">クールダウン</span><span class="tag-value" style="font-size:0.95rem;font-weight:600;">{sess.cooldown || 0}s</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;">
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-status">ステータス</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;color:{acct.status === 'RUNNING' ? 'var(--accent-green)' : 'var(--accent-red)'};">{acct.status || '—'}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-session">セッション</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{sess.status || '—'}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-adx">ADX</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{mkt.adx?.toFixed(1) || '—'}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-spread">スプレッド</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{mkt.spread || '—'}/{mkt.maxSpread || '—'}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-h4">H4 Buy/Sell</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{sig.h4Buy}/{sig.h4Sell}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-bs">Buy/Sell</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{sig.canBuy}/{sig.canSell}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-bb">Bull/Bear</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{sig.bull}/{sig.bear}</span></div>
+        <div><span class="tag-label" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:2px;" data-i18n="live-cooldown">クールダウン</span><span class="tag-value" style="font-size:0.9rem;font-weight:600;">{sess.cooldown || 0}s</span></div>
       </div>
     </div>
 
     <!-- Risk Warnings -->
-    {risk.consecutiveLossPause && (
+    {risk.consecutiveLossPause &&
     <div style="background:rgba(231,76,60,.1);border:1px solid #e74c3c;border-radius:var(--radius);padding:16px;margin-bottom:24px;">
       <strong style="color:#e74c3c;">⚠️ <span data-i18n="live-warn-loss">連損フィルター作動中</span></strong>
-    </div>
-    )}
-    {risk.dailyLossLimit && (
+    </div>}
+    {risk.dailyLossLimit &&
     <div style="background:rgba(231,76,60,.1);border:1px solid #e74c3c;border-radius:var(--radius);padding:16px;margin-bottom:24px;">
       <strong style="color:#e74c3c;">⚠️ <span data-i18n="live-warn-dailyloss">日損リミット到達</span></strong>
-    </div>
-    )}
+    </div>}
 
     <!-- Daily P&L History -->
-    <div style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);margin-bottom:24px;">
+    <div class="perf-table-wrap" style="margin-bottom:24px;">
       <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">📈 <span data-i18n="live-history">日次P&L履歴</span></h2>
-      <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;">
-          <thead><tr style="border-bottom:1px solid var(--border);">
-            <th style="padding:8px 12px;text-align:left;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-date">日付</th>
-            <th style="padding:8px 12px;text-align:right;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-pnl">P&L</th>
-            <th style="padding:8px 12px;text-align:center;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-tradecount">取引数</th>
-            <th style="padding:8px 12px;text-align:center;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-winrate">勝率</th>
-          </tr></thead>
-          <tbody>
-            {history.map(h => (
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 12px;font-size:0.9rem;">{h.date}</td>
-              <td style="padding:8px 12px;text-align:right;font-weight:600;color:{h.pnl >= 0 ? '#27ae60' : '#e74c3c'};">{(h.pnl >= 0 ? '+' : '') + h.pnl.toFixed(2)}</td>
-              <td style="padding:8px 12px;text-align:center;">{h.trades}</td>
-              <td style="padding:8px 12px;text-align:center;">{h.winRate > 0 ? h.winRate + '%' : '—'}</td>
-            </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <table class="perf-table">
+        <thead><tr>
+          <th data-i18n="live-date" style="text-align:left;">日付</th>
+          <th data-i18n="live-pnl" style="text-align:right;">P&L</th>
+          <th data-i18n="live-tradecount" style="text-align:center;">取引数</th>
+          <th data-i18n="live-winrate" style="text-align:center;">勝率</th>
+        </tr></thead>
+        <tbody>
+          {history.map(h => (
+          <tr>
+            <td style="text-align:left;">{h.date}</td>
+            <td style="text-align:right;font-weight:600;color:{h.pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">{(h.pnl >= 0 ? '+' : '') + h.pnl.toFixed(2)}</td>
+            <td style="text-align:center;">{h.trades}</td>
+            <td style="text-align:center;">{h.winRate > 0 ? h.winRate + '%' : '—'}</td>
+          </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
 
     <!-- Recent Trades -->
-    <div style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);">
+    <div class="perf-table-wrap">
       <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">🎯 <span data-i18n="live-trades">最新取引</span></h2>
-      <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;">
-          <thead><tr style="border-bottom:1px solid var(--border);">
-            <th style="padding:8px 12px;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-time">時間</th>
-            <th style="padding:8px 12px;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-type">タイプ</th>
-            <th style="padding:8px 12px;text-align:right;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-lot">ロット</th>
-            <th style="padding:8px 12px;text-align:right;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-pnl">P&L</th>
-            <th style="padding:8px 12px;text-align:center;color:var(--text-muted);font-weight:400;font-size:0.85rem;" data-i18n="live-result">結果</th>
-          </tr></thead>
-          <tbody>
-            {lastTrades.map(t => (
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 12px;font-size:0.9rem;">{t.time}</td>
-              <td style="padding:8px 12px;color:var(--gold);font-weight:600;">{t.type}</td>
-              <td style="padding:8px 12px;text-align:right;">{t.lots.toFixed(2)}</td>
-              <td style="padding:8px 12px;text-align:right;font-weight:600;color:{t.pnl >= 0 ? '#27ae60' : '#e74c3c'};">{(t.pnl >= 0 ? '+' : '') + t.pnl.toFixed(2)}</td>
-              <td style="padding:8px 12px;text-align:center;">
-                <span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:0.8rem;font-weight:600;
-                  {t.result === 'WIN' ? 'background:rgba(39,174,96,.15);color:#27ae60;' : ''}
-                  {t.result === 'LOSS' ? 'background:rgba(231,76,60,.15);color:#e74c3c;' : ''}
-                  {t.result === 'OPEN' ? 'background:rgba(241,196,15,.15);color:#f1c40f;' : ''}
-                ">{t.result}</span>
-              </td>
-            </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <table class="perf-table">
+        <thead><tr>
+          <th data-i18n="live-time" style="text-align:left;">時間</th>
+          <th data-i18n="live-type" style="text-align:left;">タイプ</th>
+          <th data-i18n="live-lot" style="text-align:right;">ロット</th>
+          <th data-i18n="live-pnl" style="text-align:right;">P&L</th>
+          <th data-i18n="live-result" style="text-align:center;">結果</th>
+        </tr></thead>
+        <tbody>
+          {lastTrades.map(t => (
+          <tr>
+            <td style="text-align:left;">{t.time}</td>
+            <td style="text-align:left;color:var(--gold);font-weight:600;">{t.type}</td>
+            <td style="text-align:right;">{t.lots.toFixed(2)}</td>
+            <td style="text-align:right;font-weight:600;color:{t.pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">{(t.pnl >= 0 ? '+' : '') + t.pnl.toFixed(2)}</td>
+            <td style="text-align:center;">
+              <span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:0.8rem;font-weight:600;
+                {t.result === 'WIN' ? 'background:rgba(39,174,96,.15);color:var(--accent-green);' : ''}
+                {t.result === 'LOSS' ? 'background:rgba(231,76,60,.15);color:var(--accent-red);' : ''}
+                {t.result === 'OPEN' ? 'background:rgba(241,196,15,.15);color:#f1c40f;' : ''}
+              ">{t.result}</span>
+            </td>
+          </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 
   <style>
     .stat-card {
-      background:var(--bg-card);
-      border-radius:var(--radius);
-      padding:20px;
-      border:1px solid var(--border);
-      text-align:center;
+      background:var(--bg-card); border-radius:var(--radius); padding:20px;
+      border:1px solid var(--border); text-align:center;
     }
-    .stat-label {
-      font-size:0.8rem;
-      color:var(--text-muted);
-      margin-bottom:4px;
-    }
-    .stat-value {
-      font-size:1.4rem;
-      font-weight:700;
-      color:var(--text-heading);
-    }
+    .stat-label { font-size:0.8rem; color:var(--text-muted); margin-bottom:4px; }
+    .stat-value { font-size:1.3rem; font-weight:700; }
     .stat-value.gold { color:var(--gold); }
     .stat-sub { font-size:0.85rem; }
+    .tag-label { font-size:0.75rem; color:var(--text-muted); display:block; margin-bottom:2px; }
+    .tag-value { font-size:0.9rem; font-weight:600; }
   </style>
 </BaseLayout>

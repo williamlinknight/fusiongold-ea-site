@@ -2,35 +2,37 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。">
-  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:600px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;" data-i18n="contact-title">お問い合わせ</h1>
-    <p style="color:var(--text-muted);margin-bottom:32px;" data-i18n="contact-sub">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
+<BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。デモ口座、物々交換など。">
 
-    <form id="contact-form" style="display:grid;gap:16px;">
-      <div>
-        <label for="name" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="contact-name">お名前</label>
-        <input type="text" id="name" name="name" required style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;text-align:center;" data-i18n="contact-title">お問い合わせ</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;text-align:center;" data-i18n="contact-sub">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
+
+    <form id="contact-form" class="contact-form">
+      <div class="form-group">
+        <label for="name" data-i18n="contact-name">お名前</label>
+        <input type="text" id="name" name="name" required>
       </div>
-      <div>
-        <label for="email" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="contact-email">メールアドレス</label>
-        <input type="email" id="email" name="email" required style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+      <div class="form-group">
+        <label for="email" data-i18n="contact-email">メールアドレス</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
       </div>
-      <div>
-        <label for="type" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="contact-type">お問い合わせ種別</label>
-        <select id="type" name="type" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+      <div class="form-group">
+        <label for="type" data-i18n="contact-type">お問い合わせ種別</label>
+        <select id="type" name="type">
           <option value="barter" selected data-i18n="ct-type2">物々交換について</option>
           <option value="demo" data-i18n="ct-type3">デモ口座について</option>
           <option value="other" data-i18n="ct-type4">その他</option>
         </select>
       </div>
-      <div>
-        <label for="message" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="contact-msg">メッセージ</label>
-        <textarea id="message" name="message" required rows="5" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;resize:vertical;"></textarea>
+      <div class="form-group">
+        <label for="message" data-i18n="contact-msg">メッセージ</label>
+        <textarea id="message" name="message" required></textarea>
       </div>
-      <button type="submit" class="btn btn-gold" style="border:none;" data-i18n="contact-submit">送信する</button>
-      <p style="font-size:0.8rem;color:var(--text-muted);" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>
+      <button type="submit" class="btn btn-gold form-submit" data-i18n="contact-submit">送信する</button>
+      <p style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>
     </form>
+
     <script>
       document.getElementById('contact-form')?.addEventListener('submit', function(e) {
         e.preventDefault();
