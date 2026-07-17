@@ -2,39 +2,39 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="デイリー分析 | FusionGold M5" description="XAUUSD デイリーテクニカル分析。HMMレジーム、ブリンジャーバンド、MACD。">
+<BaseLayout title="デイリー分析 | FusionGold M5" description="XAUUSD デイリーテクニカル分析。">
   <div class="container" style="padding-top:40px;padding-bottom:60px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">XAUUSD デイリー分析</h1>
-    <p style="color:var(--text-muted);margin-bottom:32px;">最新テクニカル分析 + HMMレジーム — 毎営業日更新</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;" data-i18n="brief-title">XAUUSD デイリー分析</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;" data-i18n="brief-sub">最新テクニカル分析 + HMMレジーム — 毎営業日更新</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;">
       <div style="background:var(--bg-card);border-radius:var(--radius);padding:20px;text-align:center;border:1px solid var(--border);">
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">現在値</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="brief-price">現在値</div>
         <div style="font-size:1.6rem;color:var(--gold);font-weight:700;">$4,030</div>
         <div style="font-size:0.85rem;color:#e74c3c;">▼ -$0.05 (-0.05%)</div>
       </div>
       <div style="background:var(--bg-card);border-radius:var(--radius);padding:20px;text-align:center;border:1px solid var(--border);">
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">HMM</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="brief-hmm">HMM</div>
         <div style="font-size:1rem;color:var(--gold);">📉 トレンド下降</div>
         <div style="font-size:0.85rem;color:var(--text-muted);">確信度 0%</div>
       </div>
       <div style="background:var(--bg-card);border-radius:var(--radius);padding:20px;text-align:center;border:1px solid var(--border);">
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">シグナル</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="brief-signal">シグナル</div>
         <div style="font-size:1rem;color:#27ae60;">NEUTRAL</div>
         <div style="font-size:0.85rem;color:var(--text-muted);">Score: 0/3</div>
       </div>
       <div style="background:var(--bg-card);border-radius:var(--radius);padding:20px;text-align:center;border:1px solid var(--border);">
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">BB</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="brief-bb">BB</div>
         <div style="font-size:1rem;color:var(--gold);">0.94%</div>
         <div style="font-size:0.85rem;color:var(--text-muted);">収縮中</div>
       </div>
       <div style="background:var(--bg-card);border-radius:var(--radius);padding:20px;text-align:center;border:1px solid var(--border);">
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">MACD</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;" data-i18n="brief-macd">MACD</div>
         <div style="font-size:1rem;color:#e74c3c;">-3.3</div>
         <div style="font-size:0.85rem;color:var(--text-muted);">上昇中</div>
       </div>
     </div>
 
-    <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;padding:20px;">※ データは毎営業日19:00 BJTに自動更新されます</p>
+    <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;padding:20px;" data-i18n="brief-update">※ データは毎営業日19:00 BJTに自動更新されます</p>
   </div>
 </BaseLayout>
