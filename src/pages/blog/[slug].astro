@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <BaseLayout title={post.data.title + ' | FusionGold M5'} description={post.data.description}>
   <article style="padding:40px 0 60px;">
     <div class="container" style="max-width:720px;">
-      <a href={`${base}/blog`} style="color:var(--text-muted);font-size:0.85rem;" data-i18n="blog-back">← ブログ一覧</a>
+      <a href={`${base}/blog/`} style="color:var(--text-muted);font-size:0.85rem;" data-i18n="blog-back">← ブログ一覧</a>
       <h1 style="color:var(--gold);margin:16px 0 8px;font-size:1.5rem;">{post.data.title}</h1>
       <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:24px;">
         {new Date(post.data.pubDate).toLocaleDateString('ja-JP')}
