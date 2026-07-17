@@ -279,6 +279,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
       }, { threshold: 0.1 }).observe(el);
     });
+    // Fix nav links — add trailing slashes (GitHub Pages deploy quirk)
+    document.querySelectorAll('.nav a:not([href=\"/\"])').forEach(a => {
+      const h = a.getAttribute('href');
+      if (h && !h.endsWith('/') && !h.startsWith('http') && !h.startsWith('#')) a.setAttribute('href', h + '/');
+    });
   });
   </script>
 </body>
