@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FusionGold M5 — XAUUSD ゴールド専用EA | FusionGold M5</title><meta name="description" content="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。IC Markets MT5対応。"><meta property="og:title" content="FusionGold M5 — XAUUSD ゴールド専用EA"><meta property="og:description" content="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。IC Markets MT5対応。"><meta property="og:type" content="website"><meta property="og:locale" content="ja_JP"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><style>:root{--gold: #D4AF37;--gold-light: #F0D060;--bg: #0D0D0D;--bg-card: #1A1A1A;--bg-card-hover: #242424;--text: #E0E0E0;--text-muted: #888;--text-heading: #F0F0F0;--border: #333;--radius: 12px;--shadow-card: 0 4px 20px rgba(0,0,0,.3)}[data-astro-cid-37fxchfa]{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Hiragino Sans,Noto Sans JP,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}a[data-astro-cid-37fxchfa]{color:var(--gold);text-decoration:none;transition:opacity .2s}a[data-astro-cid-37fxchfa]:hover{opacity:.8}.container[data-astro-cid-37fxchfa]{max-width:960px;margin:0 auto;padding:0 20px}.nav[data-astro-cid-37fxchfa]{background:var(--bg-card);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:100}.nav[data-astro-cid-37fxchfa] a[data-astro-cid-37fxchfa]{font-size:.85rem}.nav[data-astro-cid-37fxchfa] .logo[data-astro-cid-37fxchfa]{font-weight:700;color:var(--gold);font-size:1rem}.nav[data-astro-cid-37fxchfa] .links[data-astro-cid-37fxchfa]{margin-left:auto;display:flex;gap:16px;align-items:center}.lang-toggle[data-astro-cid-37fxchfa]{display:flex;gap:2px;margin-left:12px}.lang-btn[data-astro-cid-37fxchfa]{padding:3px 8px;border-radius:4px;font-size:.75rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted)}.lang-btn[data-astro-cid-37fxchfa].active{background:var(--gold);color:#000;border-color:var(--gold)}.hero[data-astro-cid-37fxchfa]{padding:80px 0 60px;text-align:center;background:linear-gradient(180deg,#1A1400 0%,var(--bg) 100%)}.hero[data-astro-cid-37fxchfa] h1[data-astro-cid-37fxchfa]{font-size:2.5rem;color:var(--gold);margin-bottom:12px}.hero[data-astro-cid-37fxchfa] .subtitle[data-astro-cid-37fxchfa]{font-size:1.1rem;color:var(--text-muted);margin-bottom:24px}.btn[data-astro-cid-37fxchfa]{display:inline-block;padding:12px 32px;border-radius:8px;font-weight:600;font-size:.95rem;transition:all .2s;cursor:pointer}.btn-gold[data-astro-cid-37fxchfa]{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000}.btn-gold[data-astro-cid-37fxchfa]:hover{transform:translateY(-2px);box-shadow:0 6px 20px #d4af3766}.btn-outline[data-astro-cid-37fxchfa]{border:1px solid var(--gold);color:var(--gold);background:transparent}.btn-outline[data-astro-cid-37fxchfa]:hover{background:#d4af371a}.section[data-astro-cid-37fxchfa]{padding:60px 0}.section-title[data-astro-cid-37fxchfa]{font-size:1.6rem;color:var(--gold);text-align:center;margin-bottom:8px}.section-sub[data-astro-cid-37fxchfa]{text-align:center;color:var(--text-muted);margin-bottom:40px;font-size:.95rem}.footer[data-astro-cid-37fxchfa]{text-align:center;padding:30px 0;border-top:1px solid var(--border);color:var(--text-muted);font-size:.8rem}.fade-in[data-astro-cid-37fxchfa]{animation:fadeIn .6s ease-out both}@keyframes fadeIn{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@media(max-width:640px){.hero[data-astro-cid-37fxchfa] h1[data-astro-cid-37fxchfa]{font-size:1.8rem}.section-title[data-astro-cid-37fxchfa]{font-size:1.3rem}}
+</style></head> <body data-astro-cid-37fxchfa> <nav class="nav" data-astro-cid-37fxchfa> <a href="/" class="logo" data-astro-cid-37fxchfa>FusionGold M5</a> <div class="links" data-astro-cid-37fxchfa> <a href="/" data-i18n="nav-home" data-astro-cid-37fxchfa>ホーム</a> <a href="/live/" data-i18n="nav-live" data-astro-cid-37fxchfa>パフォーマンス</a> <a href="/blog/" data-i18n="nav-blog" data-astro-cid-37fxchfa>ブログ</a> <a href="/brief/" data-i18n="nav-brief" data-astro-cid-37fxchfa>デイリー分析</a> <a href="/contact/" data-i18n="nav-contact" data-astro-cid-37fxchfa>お問い合わせ</a> <div class="lang-toggle" role="radiogroup" aria-label="Language" data-astro-cid-37fxchfa> <button class="lang-btn active" data-lang="JP" role="radio" aria-checked="true" data-astro-cid-37fxchfa>JP</button> <button class="lang-btn" data-lang="EN" role="radio" aria-checked="false" data-astro-cid-37fxchfa>EN</button> </div> </div> </nav>  <section class="hero"> <div class="container"> <span style="display:inline-block;padding:4px 16px;border-radius:20px;background:rgba(212,175,55,.15);color:var(--gold);font-size:0.85rem;margin-bottom:16px;" data-i18n="hero-badge">ゴールド専用EA</span> <h1 data-i18n="hero-h1">FusionGold M5</h1> <p class="subtitle" data-i18n="hero-sub1">XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載</p> <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:24px;" data-i18n="hero-sub2">IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵</p> <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"> <a href="#features" class="btn btn-gold" data-i18n="hero-cta">特徴を見る</a> <a href="/brief/" class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a> </div> </div> </section> <section id="features" class="section"> <div class="container"> <h2 class="section-title" data-i18n="feat-title">FusionGold M5 の特徴</h2> <p class="section-sub" data-i18n="feat-sub">4バケットスコアリング、ADXゲート、H4ゾーンフィルター — 精度を追求した設計</p> <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;"> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">🎯</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f1-title">ADX + 4バケットスコアリング</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f1-desc">トレンド/モメンタム/ストラクチャー/流動性の4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。</p> </div> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">📊</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f2-title">H4ゾーンフィルター</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f2-desc">4時間足のEMA方向とH4ゾーンでフィルタリング。大きな流れに逆らわないトレード。</p> </div> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">🛡️</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f3-title">矛盾信号検出</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f3-desc">同一バーで買いと売りが同時発生した場合、両方ブロック。相反する注文を防止。</p> </div> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">⏰</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f4-title">3時間集中取引</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f4-desc">ロンドン/NYオーバーラップの高流動性帯に集中。1日3時間のみ取引。</p> </div> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">🔒</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f5-title">リスク管理内蔵</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f5-desc">日損5%リミット、連敗フィルター、Aggregate Risk制御。口座を保護。</p> </div> <div class="feature-card" style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);"> <span style="font-size:2rem;">💻</span> <h3 style="color:var(--gold);margin:8px 0;" data-i18n="f6-title">物々交換で入手</h3> <p style="font-size:0.9rem;color:var(--text-muted);" data-i18n="f6-desc">現金不要。日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p> </div> </div> </div> </section> <section class="section" style="background:var(--bg-card);"> <div class="container"> <h2 class="section-title" data-i18n="perf-title">パフォーマンス</h2> <p class="section-sub" data-i18n="perf-sub">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p> <div style="overflow-x:auto;"> <table style="width:100%;border-collapse:collapse;text-align:center;"> <thead> <tr style="border-bottom:1px solid var(--border);"> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-trades">総取引数</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-winrate">勝率</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-profit">純利益</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-pf">PF</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-dd">最大DD</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;" data-i18n="perf-hold">平均保有</th> </tr> </thead> <tbody> <tr> <td style="padding:12px;color:var(--gold);font-weight:600;">145</td> <td style="padding:12px;color:var(--gold);font-weight:600;">74.48%</td> <td style="padding:12px;color:var(--gold);font-weight:600;">+$912.56</td> <td style="padding:12px;color:var(--gold);font-weight:600;">1.54</td> <td style="padding:12px;color:var(--gold);font-weight:600;">8.61%</td> <td style="padding:12px;">7min 55s</td> </tr> </tbody> </table> </div> <div style="overflow-x:auto;margin-top:20px;"> <table style="width:100%;border-collapse:collapse;text-align:center;"> <thead> <tr style="border-bottom:1px solid var(--border);"> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;"></th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;">取引数</th> <th style="padding:12px;color:var(--text-muted);font-size:0.85rem;font-weight:400;">勝率</th> </tr> </thead> <tbody> <tr><td style="padding:12px;color:var(--gold);font-weight:600;">SELL</td><td style="padding:12px;">116</td><td style="padding:12px;color:var(--gold);font-weight:600;">79.31%</td></tr> <tr><td style="padding:12px;color:var(--gold);font-weight:600;">BUY</td><td style="padding:12px;">29</td><td style="padding:12px;color:var(--gold);font-weight:600;">55.17%</td></tr> </tbody> </table> </div> </div> </section> <section class="section"> <div class="container" style="text-align:center;"> <h2 class="section-title" data-i18n="price-title">ご利用方法</h2> <p class="section-sub" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p> <div style="max-width:400px;margin:0 auto;background:var(--bg-card);border-radius:var(--radius);padding:32px;border:2px solid var(--gold);"> <div style="font-size:1.3rem;color:var(--gold);font-weight:700;margin-bottom:8px;" data-i18n="p3-name">物々交換</div> <div style="font-size:2rem;color:var(--gold);margin-bottom:4px;" data-i18n="p3-price">相談</div> <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;" data-i18n="p3-period">現金不要</div> <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px;" data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p> <div style="margin-bottom:20px;"> <div style="padding:6px 0;" data-i18n="p3-f1">✓ EAファイル（.ex5）</div> <div style="padding:6px 0;" data-i18n="p3-f2">✓ 設定ガイド</div> <div style="padding:6px 0;" data-i18n="p3-f3">✓ メールサポート</div> </div> <a href="/contact/" class="btn btn-gold" data-i18n="p3-cta">交換の詳細を問い合わせる</a> </div> <p style="color:var(--text-muted);font-size:0.85rem;margin-top:24px;" data-i18n="barter-text">以下のような日本製品と交換可能です。</p> <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0;"> <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🎮 ゲーム機本体</span> <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🍶 日本酒/ウイスキー</span> <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">📷 カメラレンズ</span> <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🎎 限定フィギュア</span> <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">⌚ 国産時計</span> </div> </div> </section>  <footer class="footer" data-astro-cid-37fxchfa> <div class="container" data-astro-cid-37fxchfa> <p data-i18n="footer-text" data-astro-cid-37fxchfa>© 2026 FusionGold M5 · XAUUSD専用EA</p> </div> </footer> <script>
+  const LANG = {
+    current: 'JP',
+    data: {
+      // Nav
+      'nav-home': { JP: 'ホーム', EN: 'Home' },
+      'nav-live': { JP: 'パフォーマンス', EN: 'Live Performance' },
+      'nav-blog': { JP: 'ブログ', EN: 'Blog' },
+      'nav-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
+      'nav-contact': { JP: 'お問い合わせ', EN: 'Contact' },
+      'footer-text': { JP: '© 2026 FusionGold M5 · XAUUSD専用EA', EN: '© 2026 FusionGold M5 · XAUUSD EA' },
+      // Home
+      'hero-badge': { JP: 'ゴールド専用EA', EN: 'Gold-Specialized EA' },
+      'hero-h1': { JP: 'FusionGold M5', EN: 'FusionGold M5' },
+      'hero-sub1': { JP: 'XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載', EN: 'Automated trading EA for XAUUSD (Gold) M5 — ADX + H4 Zone + Contradiction Detection' },
+      'hero-sub2': { JP: 'IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵', EN: 'IC Markets MT5 · 3hr session · Built-in risk management' },
+      'hero-cta': { JP: '特徴を見る', EN: 'See Features' },
+      'hero-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
+      // Features
+      'feat-title': { JP: 'FusionGold M5 の特徴', EN: 'Features' },
+      'feat-sub': { JP: '4バケットスコアリング、ADXゲート、H4ゾーンフィルター', EN: '4-bucket scoring, ADX gates, H4 zone filter' },
+      'f1-title': { JP: 'ADX + 4バケットスコアリング', EN: 'ADX + 4-Bucket Scoring' },
+      'f1-desc': { JP: '4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。', EN: '4-axis signal evaluation. ADX gates auto-filter uncertain markets.' },
+      'f2-title': { JP: 'H4ゾーンフィルター', EN: 'H4 Zone Filter' },
+      'f2-desc': { JP: 'EMA方向とゾーンでフィルタリング。大きな流れに逆らわない。', EN: 'EMA direction + zone filter. Never fights the macro trend.' },
+      'f3-title': { JP: '矛盾信号検出', EN: 'Contradiction Detection' },
+      'f3-desc': { JP: '買いと売りが同時発生した場合、両方ブロック。', EN: 'Blocks both directions when buy & sell fire simultaneously.' },
+      'f4-title': { JP: '3時間集中取引', EN: '3-Hour Session' },
+      'f4-desc': { JP: 'ロンドン/NYオーバーラップの高流動性帯に集中。', EN: 'Focuses on the liquid London/NY overlap.' },
+      'f5-title': { JP: 'リスク管理内蔵', EN: 'Risk Management' },
+      'f5-desc': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御。', EN: '5% daily loss limit, consecutive loss filter, aggregate risk control.' },
+      'f6-title': { JP: '物々交換で入手', EN: 'Barter Trade' },
+      'f6-desc': { JP: '現金不要。日本製品とFusionGold M5を交換。', EN: 'No cash. Trade Japanese goods for FusionGold M5.' },
+      // Performance
+      'perf-title': { JP: 'パフォーマンス', EN: 'Performance' },
+      'perf-sub': { JP: '2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets', EN: 'Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets' },
+      'perf-trades': { JP: '総取引数', EN: 'Trades' },
+      'perf-winrate': { JP: '勝率', EN: 'Win Rate' },
+      'perf-profit': { JP: '純利益', EN: 'Net Profit' },
+      'perf-pf': { JP: 'PF', EN: 'PF' },
+      'perf-dd': { JP: '最大DD', EN: 'Max DD' },
+      'perf-hold': { JP: '平均保有', EN: 'Avg Hold' },
+      // Pricing
+      'price-title': { JP: 'ご利用方法', EN: 'How It Works' },
+      'price-sub': { JP: '現金不要。物々交換のみでご提供しています。', EN: 'No cash needed. Barter only.' },
+      'p3-name': { JP: '物々交換', EN: 'Barter' },
+      'p3-price': { JP: '相談', EN: 'Negotiable' },
+      'p3-period': { JP: '現金不要', EN: 'No cash' },
+      'p3-desc': { JP: '日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。', EN: 'Trade Japanese goods for EA. A uniquely valuable exchange.' },
+      'p3-f1': { JP: 'EAファイル（.ex5）', EN: 'EA file (.ex5)' },
+      'p3-f2': { JP: '設定ガイド', EN: 'Setup guide' },
+      'p3-f3': { JP: 'メールサポート', EN: 'Email support' },
+      'p3-cta': { JP: '交換の詳細を問い合わせる', EN: 'Inquire About Barter' },
+      'barter-text': { JP: '以下のような日本製品と交換可能です。まずはお問い合わせください。', EN: 'Exchange for Japanese products below. Contact us.' },
+      // Blog list
+      'blog-title': { JP: 'ブログ', EN: 'Blog' },
+      'blog-sub': { JP: 'XAUUSD分析、トレード戦略、EA最新情報', EN: 'XAUUSD analysis, trading strategies, EA updates' },
+      'blog-empty': { JP: 'まだ記事がありません', EN: 'No articles yet' },
+      'blog-empty2': { JP: '近日公開予定', EN: 'Coming soon' },
+      'blog-readmore': { JP: '続きを読む →', EN: 'Read more →' },
+      'blog-back': { JP: '← ブログ一覧', EN: '← Back to Blog' },
+      // Live page
+      'live-title': { JP: 'ライブパフォーマンス', EN: 'Live Performance' },
+      'live-updated': { JP: '最終更新:', EN: 'Last updated:' },
+      'live-balance': { JP: '残高', EN: 'Balance' },
+      'live-equity': { JP: '有効証拠金', EN: 'Equity' },
+      'live-daypnl': { JP: '本日P&L', EN: 'Today P&L' },
+      'live-positions': { JP: 'ポジション', EN: 'Positions' },
+      'live-status': { JP: 'EA ステータス', EN: 'EA Status' },
+      'live-session': { JP: 'セッション', EN: 'Session' },
+      'live-adx': { JP: 'ADX', EN: 'ADX' },
+      'live-spread': { JP: 'スプレッド', EN: 'Spread' },
+      'live-h4': { JP: 'H4 Buy/Sell', EN: 'H4 Buy/Sell' },
+      'live-bs': { JP: 'Buy/Sell', EN: 'Buy/Sell' },
+      'live-bb': { JP: 'Bull/Bear', EN: 'Bull/Bear' },
+      'live-cooldown': { JP: 'クールダウン', EN: 'Cooldown' },
+      'live-history': { JP: '日次P&L履歴', EN: 'Daily P&L History' },
+      'live-trades': { JP: '最新取引', EN: 'Recent Trades' },
+      'live-date': { JP: '日付', EN: 'Date' },
+      'live-pnl': { JP: 'P&L', EN: 'P&L' },
+      'live-tradecount': { JP: '取引数', EN: 'Trades' },
+      'live-winrate': { JP: '勝率', EN: 'Win Rate' },
+      'live-time': { JP: '時間', EN: 'Time' },
+      'live-type': { JP: 'タイプ', EN: 'Type' },
+      'live-lot': { JP: 'ロット', EN: 'Lots' },
+      'live-result': { JP: '結果', EN: 'Result' },
+      // Brief
+      'brief-title': { JP: 'XAUUSD デイリー分析', EN: 'XAUUSD Daily Analysis' },
+      'brief-sub': { JP: '最新テクニカル分析 + HMMレジーム — 毎営業日更新', EN: 'Latest technical analysis & HMM regime — Updated daily' },
+      'brief-price': { JP: '現在値', EN: 'Price' },
+      'brief-hmm': { JP: 'HMM', EN: 'HMM' },
+      'brief-signal': { JP: 'シグナル', EN: 'Signal' },
+      'brief-bb': { JP: 'BB', EN: 'BB' },
+      'brief-macd': { JP: 'MACD', EN: 'MACD' },
+      'brief-update': { JP: '※ データは毎営業日19:00 BJTに自動更新されます', EN: '* Data auto-updated weekdays at 19:00 BJT' },
+      // Contact
+      'contact-title': { JP: 'お問い合わせ', EN: 'Contact' },
+      'contact-sub': { JP: 'お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。', EN: 'Inquiries, demo requests, barter proposals welcome.' },
+      'contact-name': { JP: 'お名前', EN: 'Name' },
+      'contact-email': { JP: 'メールアドレス', EN: 'Email' },
+      'contact-type': { JP: 'お問い合わせ種別', EN: 'Inquiry Type' },
+      'ct-type2': { JP: '物々交換について', EN: 'Barter' },
+      'ct-type3': { JP: 'デモ口座について', EN: 'Demo Account' },
+      'ct-type4': { JP: 'その他', EN: 'Other' },
+      'contact-msg': { JP: 'メッセージ', EN: 'Message' },
+      'contact-submit': { JP: '送信する', EN: 'Send' },
+      'contact-note': { JP: '※お返事までに1-2営業日いただく場合がございます。', EN: '* Response within 1-2 business days.' },
+      // Live warnings
+      'live-warn-loss': { JP: '連損フィルター作動中', EN: 'Consecutive Loss Filter Active' },
+      'live-warn-dailyloss': { JP: '日損リミット到達', EN: 'Daily Loss Limit Reached' },
+      // 404
+      '404-text': { JP: 'お探しのページが見つかりませんでした。', EN: 'The page you are looking for was not found.' },
+      '404-home': { JP: 'ホームに戻る', EN: 'Back to Home' },
+    },
+    set(lang) {
+      this.current = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (this.data[key] && this.data[key][lang]) el.textContent = this.data[key][lang];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (this.data[key] && this.data[key][lang]) el.placeholder = this.data[key][lang];
+      });
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      document.documentElement.lang = lang === 'JP' ? 'ja' : 'en';
+      document.querySelectorAll('option[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (this.data[key] && this.data[key][lang]) el.textContent = this.data[key][lang];
+      });
+    }
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefer = (navigator.language || '').startsWith('ja');
+    LANG.set(prefer ? 'JP' : 'EN');
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.addEventListener('click', () => LANG.set(b.dataset.lang));
+    });
+    // Scroll animation
+    document.querySelectorAll('.fade-in').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  });
+  </script> </body> </html>
