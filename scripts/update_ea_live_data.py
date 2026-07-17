@@ -24,8 +24,10 @@ def ssh(cmd):
     """Run a command on the VPS via sshpass."""
     full = f"sshpass -p '{VPS_PASS}' ssh -o ConnectTimeout=10 {VPS_USER}@{VPS_HOST} "
     full += f'"powershell -Command \\"{cmd}\\""'
-    r = subprocess.run(full, shell=True, capture_output=True, text=True, timeout=15)
-    return r.stdout, r.stderr, r.returncode
+    r = subprocess.run(full, shell=True, capture_output=True, timeout=15)
+    stdout = r.stdout.decode("utf-8", errors="replace")
+    stderr = r.stderr.decode("utf-8", errors="replace")
+    return stdout, stderr, r.returncode
 
 def parse_heartbeat(line):
     """Extract balance, equity, dayPnL, positions from HEARTBEAT line."""
