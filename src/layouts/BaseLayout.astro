@@ -14,105 +14,182 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | FusionGold M5</title>
   <meta name="description" content={description} />
+  <meta name="keywords" content="XAUUSD EA, ゴールド自動売買, MT5 EA, 金EA, FusionGold M5, 物々交換" />
+  <link rel="canonical" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://williamlinknight.github.io/fusiongold-ea-site/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="FusionGold M5" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FusionGold M5",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Windows/Mac (MT5)",
+    "description": "ゴールド（XAUUSD）専用のMT5自動売買EA。ADX+H4ゾーン+矛盾検出エンジン搭載。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "description": "物々交換のみ。現金不要。"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold: #D4AF37;
       --gold-light: #F0D060;
-      --bg: #0D0D0D;
-      --bg-card: #1A1A1A;
-      --bg-card-hover: #242424;
-      --text: #E0E0E0;
-      --text-muted: #888;
-      --text-heading: #F0F0F0;
-      --border: #333;
+      --gold-dark: #B8962A;
+      --bg: #0D0D1A;
+      --bg-card: #16162A;
+      --bg-card-hover: #1E1E38;
+      --text: #E8E6E3;
+      --text-muted: #8A8A9A;
+      --border: #2A2A44;
+      --accent-green: #34D399;
+      --accent-red: #F87171;
       --radius: 12px;
-      --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
+      --max-w: 1024px;
+      --transition: 0.3s ease;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
-    a:hover { opacity: .8; }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    a { color: var(--gold); text-decoration: none; transition: var(--transition); }
+    a:hover { opacity: .85; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
     .nav {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       gap: 20px;
       position: sticky; top:0; z-index:100;
     }
     .nav a { font-size: 0.85rem; }
-    .nav .logo { font-weight: 700; color: var(--gold); font-size: 1rem; }
-    .nav .links { margin-left: auto; display: flex; gap: 16px; align-items:center; }
+    .nav .logo { font-weight: 700; color: var(--gold); font-size: 1.05rem; }
+    .nav .links { margin-left: auto; display: flex; gap: 16px; align-items: center; }
     .lang-toggle { display:flex; gap:2px; margin-left:12px; }
     .lang-btn {
-      padding:3px 8px; border-radius:4px; font-size:0.75rem; font-weight:600;
+      padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;
       cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted);
+      transition: var(--transition);
     }
-    .lang-btn.active { background:var(--gold); color:#000; border-color:var(--gold); }
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
-      background: linear-gradient(180deg, #1A1400 0%, var(--bg) 100%);
-    }
-    .hero h1 { font-size: 2.5rem; color: var(--gold); margin-bottom: 12px; }
-    .hero .subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px; }
+    .lang-btn.active { background:var(--gold); color:#0D0D1A; border-color:var(--gold); }
+    .lang-btn:hover:not(.active) { color: var(--gold); }
     .btn {
-      display: inline-block;
-      padding: 12px 32px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all .2s;
-      cursor: pointer;
+      display: inline-block; padding: 12px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; cursor: pointer; border: none;
+      transition: var(--transition);
     }
     .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: #000;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #0D0D1A;
     }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,.4); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.3); }
     .btn-outline {
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      background: transparent;
+      background: transparent; border: 2px solid var(--gold); color: var(--gold);
     }
-    .btn-outline:hover { background: rgba(212,175,55,.1); }
-    .section { padding: 60px 0; }
+    .btn-outline:hover { background: var(--gold); color: #0D0D1A; }
+    .section { padding: 80px 0; }
     .section-title {
-      font-size: 1.6rem;
-      color: var(--gold);
+      font-size: 1.8rem; font-weight: 700; color: var(--gold);
+      text-align: center; margin-bottom: 8px;
+    }
+    .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 48px; font-size: 0.95rem; }
+    .hero {
+      padding: 100px 0 80px;
       text-align: center;
-      margin-bottom: 8px;
+      position: relative;
+      overflow: hidden;
     }
-    .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 0.95rem; }
-    .footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.8rem;
+    .hero::before {
+      content: '';
+      position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(212,175,55,0.06), transparent 70%);
+      animation: float 20s ease-in-out infinite;
     }
-    .fade-in { animation: fadeIn .6s ease-out both; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 1.8rem; }
-      .section-title { font-size: 1.3rem; }
+    @keyframes float { 0%,100% { transform:translate(0,0); } 50% { transform:translate(-20px,-20px); } }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 3rem; font-weight: 800; color: var(--gold); margin-bottom: 12px; }
+    .hero .subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 8px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero .subtitle2 { font-size: 0.95rem; color: var(--text-muted); opacity: .7; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .demo-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); text-decoration: none; margin-top: 28px; font-size: 0.9rem; }
+    .demo-link:hover { text-decoration: underline; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; transition: var(--transition);
     }
+    .feature-card:hover { background: var(--bg-card-hover); border-color: var(--gold-dark); transform: translateY(-4px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .feature-card h3 { font-size: 1.1rem; color: var(--gold); margin-bottom: 8px; }
+    .feature-card p { color: var(--text-muted); font-size: 0.9rem; }
+    .perf-table-wrap { overflow-x: auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+    .perf-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .perf-table th, .perf-table td { padding: 10px 16px; text-align: center; border-bottom: 1px solid var(--border); }
+    .perf-table th { color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .perf-table td { color: var(--text-muted); }
+    .perf-table .highlight { color: var(--accent-green); font-weight: 600; }
+    .footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .brief-cards { display: flex; flex-wrap: wrap; gap: 16px; padding: 8px 0; }
+    .brief-card { flex: 1; min-width: 140px; text-align: center; padding: 12px; background: var(--bg); border-radius: 8px; }
+    .brief-card .label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+    .brief-card .value { font-size: 1.3rem; font-weight: 800; }
+    .brief-card .sub { font-size: 0.75rem; color: var(--text-muted); }
+    .brief-card .green { color: var(--accent-green); }
+    .brief-card .red { color: var(--accent-red); }
+    .brief-card .big { font-size: 1.8rem; color: var(--gold); }
+    .contact-form { max-width: 560px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-size: 0.95rem; font-family: inherit;
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-submit { width: 100%; }
+    .top-bar {
+      background: var(--bg-card); border-bottom: 1px solid var(--border);
+      padding: 8px 0; text-align: center; font-size: 0.8rem;
+    }
+    .cta-section { text-align: center; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 0; }
   </style>
 </head>
 <body>
+
+  <div class="top-bar">
+    <a href="/" style="color:var(--text-muted);text-decoration:none;">FusionGold M5</a>
+  </div>
+
   <nav class="nav">
     <a href="/" class="logo">FusionGold M5</a>
     <div class="links">
@@ -127,127 +204,65 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
     </div>
   </nav>
-  <div style="background:#ff4444;color:#fff;text-align:center;padding:4px;font-size:12px;">BUILD: v4-trailingSlash-always</div>
+
   <slot />
+
   <footer class="footer">
     <div class="container">
       <p data-i18n="footer-text">© 2026 FusionGold M5 · XAUUSD専用EA</p>
     </div>
   </footer>
 
-  <script is:inline>
+  <script>
   const LANG = {
     current: 'JP',
     data: {
-      // Nav
       'nav-home': { JP: 'ホーム', EN: 'Home' },
       'nav-live': { JP: 'パフォーマンス', EN: 'Live Performance' },
       'nav-blog': { JP: 'ブログ', EN: 'Blog' },
       'nav-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
       'nav-contact': { JP: 'お問い合わせ', EN: 'Contact' },
       'footer-text': { JP: '© 2026 FusionGold M5 · XAUUSD専用EA', EN: '© 2026 FusionGold M5 · XAUUSD EA' },
-      // Home
       'hero-badge': { JP: 'ゴールド専用EA', EN: 'Gold-Specialized EA' },
       'hero-h1': { JP: 'FusionGold M5', EN: 'FusionGold M5' },
       'hero-sub1': { JP: 'XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載', EN: 'Automated trading EA for XAUUSD (Gold) M5 — ADX + H4 Zone + Contradiction Detection' },
-      'hero-sub2': { JP: 'IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵', EN: 'IC Markets MT5 · 3hr session · Built-in risk management' },
+      'hero-sub2': { JP: 'IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵', EN: 'IC Markets (MT5) · 3hr session · Built-in risk management' },
       'hero-cta': { JP: '特徴を見る', EN: 'See Features' },
       'hero-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
-      // Features
+      'hero-demo': { JP: '→ ライブパフォーマンスを見る', EN: '→ View Live Performance' },
       'feat-title': { JP: 'FusionGold M5 の特徴', EN: 'Features' },
-      'feat-sub': { JP: '4バケットスコアリング、ADXゲート、H4ゾーンフィルター', EN: '4-bucket scoring, ADX gates, H4 zone filter' },
+      'feat-sub': { JP: '4バケットスコアリング、ADXゲート、H4ゾーンフィルター — 精度を追求した設計', EN: '4-bucket scoring, ADX gates, H4 zone filter — precision-driven design' },
       'f1-title': { JP: 'ADX + 4バケットスコアリング', EN: 'ADX + 4-Bucket Scoring' },
-      'f1-desc': { JP: '4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。', EN: '4-axis signal evaluation. ADX gates auto-filter uncertain markets.' },
+      'f1-desc': { JP: 'トレンド/モメンタム/ストラクチャー/流動性の4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。', EN: '4-axis signal evaluation. ADX gates auto-filter uncertain markets.' },
       'f2-title': { JP: 'H4ゾーンフィルター', EN: 'H4 Zone Filter' },
-      'f2-desc': { JP: 'EMA方向とゾーンでフィルタリング。大きな流れに逆らわない。', EN: 'EMA direction + zone filter. Never fights the macro trend.' },
+      'f2-desc': { JP: '4時間足のEMA方向とH4ゾーンでフィルタリング。大きな流れに逆らわないトレード。', EN: 'EMA direction + zone filter. Never fights the macro trend.' },
       'f3-title': { JP: '矛盾信号検出', EN: 'Contradiction Detection' },
-      'f3-desc': { JP: '買いと売りが同時発生した場合、両方ブロック。', EN: 'Blocks both directions when buy & sell fire simultaneously.' },
+      'f3-desc': { JP: '同一バーで買いと売りが同時発生した場合、両方ブロック。相反する注文を防止。', EN: 'Blocks both directions when buy & sell fire simultaneously.' },
       'f4-title': { JP: '3時間集中取引', EN: '3-Hour Session' },
-      'f4-desc': { JP: 'ロンドン/NYオーバーラップの高流動性帯に集中。', EN: 'Focuses on the liquid London/NY overlap.' },
+      'f4-desc': { JP: 'ロンドン/NYオーバーラップの高流動性帯に集中。1日3時間のみ取引。', EN: 'Focuses on the liquid London/NY overlap. Only 3 hours per day.' },
       'f5-title': { JP: 'リスク管理内蔵', EN: 'Risk Management' },
-      'f5-desc': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御。', EN: '5% daily loss limit, consecutive loss filter, aggregate risk control.' },
-      'f6-title': { JP: '物々交換で入手', EN: 'Barter Trade' },
-      'f6-desc': { JP: '現金不要。日本製品とFusionGold M5を交換。', EN: 'No cash. Trade Japanese goods for FusionGold M5.' },
-      // Performance
-      'perf-title': { JP: 'パフォーマンス', EN: 'Performance' },
-      'perf-sub': { JP: '2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets', EN: 'Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets' },
+      'f5-desc': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御。口座を保護。', EN: '5% daily loss limit, consecutive loss filter, aggregate risk control.' },
+      'f6-title': { JP: 'MT5対応（IC Markets）', EN: 'MT5 Compatible (IC Markets)' },
+      'f6-desc': { JP: 'MT5で動作。IC Markets Raw Spread口座推奨。', EN: 'Runs on MT5. IC Markets Raw Spread recommended.' },
+      'perf-title': { JP: 'バックテスト実績', EN: 'Backtest Performance' },
+      'perf-sub': { JP: '2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread', EN: 'Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets Raw Spread' },
       'perf-trades': { JP: '総取引数', EN: 'Trades' },
       'perf-winrate': { JP: '勝率', EN: 'Win Rate' },
       'perf-profit': { JP: '純利益', EN: 'Net Profit' },
       'perf-pf': { JP: 'PF', EN: 'PF' },
       'perf-dd': { JP: '最大DD', EN: 'Max DD' },
       'perf-hold': { JP: '平均保有', EN: 'Avg Hold' },
-      // Pricing
       'price-title': { JP: 'ご利用方法', EN: 'How It Works' },
       'price-sub': { JP: '現金不要。物々交換のみでご提供しています。', EN: 'No cash needed. Barter only.' },
-      'p3-name': { JP: '物々交換', EN: 'Barter' },
+      'p3-name': { JP: '物々交換', EN: 'Barter Trade' },
       'p3-price': { JP: '相談', EN: 'Negotiable' },
       'p3-period': { JP: '現金不要', EN: 'No cash' },
-      'p3-desc': { JP: '日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。', EN: 'Trade Japanese goods for EA. A uniquely valuable exchange.' },
+      'p3-desc': { JP: '日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。', EN: 'Trade Japanese products for FusionGold M5. A deal of mutual value.' },
       'p3-f1': { JP: 'EAファイル（.ex5）', EN: 'EA file (.ex5)' },
       'p3-f2': { JP: '設定ガイド', EN: 'Setup guide' },
       'p3-f3': { JP: 'メールサポート', EN: 'Email support' },
       'p3-cta': { JP: '交換の詳細を問い合わせる', EN: 'Inquire About Barter' },
-      'barter-text': { JP: '以下のような日本製品と交換可能です。まずはお問い合わせください。', EN: 'Exchange for Japanese products below. Contact us.' },
-      // Blog list
-      'blog-title': { JP: 'ブログ', EN: 'Blog' },
-      'blog-sub': { JP: 'XAUUSD分析、トレード戦略、EA最新情報', EN: 'XAUUSD analysis, trading strategies, EA updates' },
-      'blog-empty': { JP: 'まだ記事がありません', EN: 'No articles yet' },
-      'blog-empty2': { JP: '近日公開予定', EN: 'Coming soon' },
-      'blog-readmore': { JP: '続きを読む →', EN: 'Read more →' },
-      'blog-back': { JP: '← ブログ一覧', EN: '← Back to Blog' },
-      // Live page
-      'live-title': { JP: 'ライブパフォーマンス', EN: 'Live Performance' },
-      'live-updated': { JP: '最終更新:', EN: 'Last updated:' },
-      'live-balance': { JP: '残高', EN: 'Balance' },
-      'live-equity': { JP: '有効証拠金', EN: 'Equity' },
-      'live-daypnl': { JP: '本日P&L', EN: 'Today P&L' },
-      'live-positions': { JP: 'ポジション', EN: 'Positions' },
-      'live-status': { JP: 'EA ステータス', EN: 'EA Status' },
-      'live-session': { JP: 'セッション', EN: 'Session' },
-      'live-adx': { JP: 'ADX', EN: 'ADX' },
-      'live-spread': { JP: 'スプレッド', EN: 'Spread' },
-      'live-h4': { JP: 'H4 Buy/Sell', EN: 'H4 Buy/Sell' },
-      'live-bs': { JP: 'Buy/Sell', EN: 'Buy/Sell' },
-      'live-bb': { JP: 'Bull/Bear', EN: 'Bull/Bear' },
-      'live-cooldown': { JP: 'クールダウン', EN: 'Cooldown' },
-      'live-history': { JP: '日次P&L履歴', EN: 'Daily P&L History' },
-      'live-trades': { JP: '最新取引', EN: 'Recent Trades' },
-      'live-date': { JP: '日付', EN: 'Date' },
-      'live-pnl': { JP: 'P&L', EN: 'P&L' },
-      'live-tradecount': { JP: '取引数', EN: 'Trades' },
-      'live-winrate': { JP: '勝率', EN: 'Win Rate' },
-      'live-time': { JP: '時間', EN: 'Time' },
-      'live-type': { JP: 'タイプ', EN: 'Type' },
-      'live-lot': { JP: 'ロット', EN: 'Lots' },
-      'live-result': { JP: '結果', EN: 'Result' },
-      // Brief
-      'brief-title': { JP: 'XAUUSD デイリー分析', EN: 'XAUUSD Daily Analysis' },
-      'brief-sub': { JP: '最新テクニカル分析 + HMMレジーム — 毎営業日更新', EN: 'Latest technical analysis & HMM regime — Updated daily' },
-      'brief-price': { JP: '現在値', EN: 'Price' },
-      'brief-hmm': { JP: 'HMM', EN: 'HMM' },
-      'brief-signal': { JP: 'シグナル', EN: 'Signal' },
-      'brief-bb': { JP: 'BB', EN: 'BB' },
-      'brief-macd': { JP: 'MACD', EN: 'MACD' },
-      'brief-update': { JP: '※ データは毎営業日19:00 BJTに自動更新されます', EN: '* Data auto-updated weekdays at 19:00 BJT' },
-      // Contact
-      'contact-title': { JP: 'お問い合わせ', EN: 'Contact' },
-      'contact-sub': { JP: 'お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。', EN: 'Inquiries, demo requests, barter proposals welcome.' },
-      'contact-name': { JP: 'お名前', EN: 'Name' },
-      'contact-email': { JP: 'メールアドレス', EN: 'Email' },
-      'contact-type': { JP: 'お問い合わせ種別', EN: 'Inquiry Type' },
-      'ct-type2': { JP: '物々交換について', EN: 'Barter' },
-      'ct-type3': { JP: 'デモ口座について', EN: 'Demo Account' },
-      'ct-type4': { JP: 'その他', EN: 'Other' },
-      'contact-msg': { JP: 'メッセージ', EN: 'Message' },
-      'contact-submit': { JP: '送信する', EN: 'Send' },
-      'contact-note': { JP: '※お返事までに1-2営業日いただく場合がございます。', EN: '* Response within 1-2 business days.' },
-      // Live warnings
-      'live-warn-loss': { JP: '連損フィルター作動中', EN: 'Consecutive Loss Filter Active' },
-      'live-warn-dailyloss': { JP: '日損リミット到達', EN: 'Daily Loss Limit Reached' },
-      // 404
-      '404-text': { JP: 'お探しのページが見つかりませんでした。', EN: 'The page you are looking for was not found.' },
-      '404-home': { JP: 'ホームに戻る', EN: 'Back to Home' },
+      'barter-text': { JP: '以下のような日本製品と交換可能です。', EN: 'Exchangeable for Japanese products like:' },
     },
     set(lang) {
       this.current = lang;
@@ -261,10 +276,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       });
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
       document.documentElement.lang = lang === 'JP' ? 'ja' : 'en';
-      document.querySelectorAll('option[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (this.data[key] && this.data[key][lang]) el.textContent = this.data[key][lang];
-      });
     }
   };
   document.addEventListener('DOMContentLoaded', () => {
@@ -278,11 +289,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
       }, { threshold: 0.1 }).observe(el);
-    });
-    // Fix nav links — add trailing slashes (GitHub Pages deploy quirk)
-    document.querySelectorAll('.nav a:not([href=\"/\"])').forEach(a => {
-      const h = a.getAttribute('href');
-      if (h && !h.endsWith('/') && !h.startsWith('http') && !h.startsWith('#')) a.setAttribute('href', h + '/');
     });
   });
   </script>
