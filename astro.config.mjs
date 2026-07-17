@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [sitemap()],
   server: { host: '127.0.0.1', port: 3000 },
   trailingSlash: 'never',
+  outDir: 'docs',
   build: {
     format: 'directory',
   },
