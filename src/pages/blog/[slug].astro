@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.(md|mdx)$/, '') },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+const postContent = post.rendered?.html ?? post.body;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title={post.data.title + ' | FusionGold M5'} description={post.data.description}>
+  <article style="padding:40px 0 60px;">
+    <div class="container" style="max-width:720px;">
+      <a href={`${base}/blog`} style="color:var(--text-muted);font-size:0.85rem;">← ブログ一覧</a>
+      <h1 style="color:var(--gold);margin:16px 0 8px;font-size:1.5rem;">{post.data.title}</h1>
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:24px;">
+        {new Date(post.data.pubDate).toLocaleDateString('ja-JP')}
+        {post.data.author && <span> · {post.data.author}</span>}
+        {post.data.tags && post.data.tags.map(t => <span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(212,175,55,.1);color:var(--gold);font-size:0.75rem;margin-left:8px;">{t}</span>)}
+      </div>
+      <div class="post-content" set:html={postContent} />
+    </div>
+  </article>
+  <style>
+    .post-content { line-height: 1.9; font-size: 0.95rem; }
+    .post-content h2 { color: var(--gold); font-size: 1.2rem; margin: 28px 0 12px; }
+    .post-content h3 { font-size: 1.05rem; margin: 20px 0 8px; }
+    .post-content p { margin-bottom: 16px; }
+    .post-content code { background: var(--bg-card); padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
+    .post-content img { max-width: 100%; border-radius: var(--radius); }
+    .post-content blockquote { border-left: 3px solid var(--gold); padding-left: 16px; color: var(--text-muted); margin: 16px 0; }
+  </style>
+</BaseLayout>

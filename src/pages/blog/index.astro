@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="ブログ | FusionGold M5" description="FusionGold M5 ブログ — XAUUSD分析、EAトレード戦略、金市解説。">
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">ブログ</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">XAUUSD分析、トレード戦略、EA最新情報</p>
+
+    {posts.length === 0 && (
+      <div style="text-align:center;padding:80px 0;color:var(--text-muted);">
+        <p style="font-size:1.2rem;margin-bottom:8px;">まだ記事がありません</p>
+        <p>近日公開予定</p>
+      </div>
+    )}
+
+    <div style="display:grid;gap:20px;">
+      {posts.map((post) => (
+        <article style="background:var(--bg-card);border-radius:var(--radius);padding:24px;border:1px solid var(--border);">
+          <a href={`${base}/blog/${post.id}`} style="text-decoration:none;">
+            <h2 style="color:var(--text-heading);font-size:1.1rem;margin-bottom:8px;">{post.data.title}</h2>
+          </a>
+          <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;">
+            {post.data.pubDate.toLocaleDateString('ja-JP')}
+            {post.data.tags && post.data.tags.map(t => <span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(212,175,55,.1);color:var(--gold);font-size:0.75rem;margin-left:8px;">{t}</span>)}
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-muted);">{post.data.description}</p>
+          <a href={`${base}/blog/${post.id}`} style="display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-weight:500;font-size:0.9rem;margin-top:12px;">続きを読む →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

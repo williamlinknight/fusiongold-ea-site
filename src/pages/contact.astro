@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。物々交換、デモ口座、その他。">
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:600px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">お問い合わせ</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
+
+    <form id="contact-form" style="display:grid;gap:16px;">
+      <div>
+        <label for="name" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">お名前</label>
+        <input type="text" id="name" name="name" required style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+      </div>
+      <div>
+        <label for="email" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">メールアドレス</label>
+        <input type="email" id="email" name="email" required style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+      </div>
+      <div>
+        <label for="type" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">お問い合わせ種別</label>
+        <select id="type" name="type" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;">
+          <option value="barter" selected>物々交換について</option>
+          <option value="demo">デモ口座について</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">メッセージ</label>
+        <textarea id="message" name="message" required rows="5" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.9rem;resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="border:none;">送信する</button>
+      <p style="font-size:0.8rem;color:var(--text-muted);">※お返事までに1-2営業日いただく場合がございます。</p>
+    </form>
+    <script>
+      document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('お問い合わせいただきありがとうございます。近日中にご連絡いたします。');
+      });
+    </script>
+  </div>
+</BaseLayout>
