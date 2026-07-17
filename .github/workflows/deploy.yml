@@ -9,7 +9,7 @@ permissions:
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true  # force fresh deploy
 jobs:
   build:
     runs-on: ubuntu-latest
