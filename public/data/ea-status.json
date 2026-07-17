@@ -1,0 +1,50 @@
+{
+  "updated": "2026-07-17 16:31 BJT",
+  "account": {
+    "balance": 4807.92,
+    "equity": 4807.92,
+    "dayPnL": 0.00,
+    "dayPnLPercent": 0.00,
+    "positions": 0,
+    "maxPositions": 4,
+    "status": "RUNNING"
+  },
+  "session": {
+    "status": "BLOCKED",
+    "cooldown": 1125
+  },
+  "market": {
+    "adx": 22.30,
+    "adxHard": 20,
+    "spread": 19,
+    "maxSpread": 50
+  },
+  "signal": {
+    "bull": 0,
+    "bear": 0,
+    "h4Buy": "N",
+    "h4Sell": "N",
+    "canBuy": "N",
+    "canSell": "N",
+    "need": 2
+  },
+  "risk": {
+    "aggRisk": 0.00,
+    "maxRisk": 192.32,
+    "dailyLossLimit": false,
+    "consecutiveLossPause": false
+  },
+  "tradeHistory": [
+    { "date": "2026-07-16", "pnl": 153.33, "trades": 6, "winRate": 66.67 },
+    { "date": "2026-07-15", "pnl": 0.00, "trades": 0, "winRate": 0 },
+    { "date": "2026-07-14", "pnl": 0.00, "trades": 0, "winRate": 0 }
+  ],
+  "lastTrades": [
+    { "time": "23:15", "type": "SELL", "lots": 0.06, "pnl": 19.56, "result": "WIN" },
+    { "time": "22:45", "type": "SELL", "lots": 0.05, "pnl": 23.76, "result": "WIN" },
+    { "time": "21:35", "type": "SELL", "lots": 0.05, "pnl": 40.49, "result": "WIN" },
+    { "time": "21:05", "type": "SELL", "lots": 0.05, "pnl": 72.49, "result": "WIN" },
+    { "time": "20:50", "type": "SELL", "lots": 0.05, "pnl": 0.00, "result": "OPEN" },
+    { "time": "19:40", "type": "SELL", "lots": 0.18, "pnl": -98.67, "result": "LOSS" }
+  ]
+}
