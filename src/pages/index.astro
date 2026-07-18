@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
 ---
 
 <BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。回測勝率74.48%。物々交換でご利用いただけます。">
 
-  <!-- ═══ Hero ═══ -->
   <section class="hero">
     <div class="hero-content container">
       <span style="display:inline-block;padding:4px 16px;border-radius:20px;background:rgba(212,175,55,.12);color:var(--gold);font-size:0.85rem;font-weight:600;margin-bottom:20px;letter-spacing:0.5px;" data-i18n="hero-badge">ゴールド専用EA</span>
@@ -13,13 +13,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="subtitle2" data-i18n="hero-sub2">IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵</p>
       <div class="hero-actions">
         <a href="#features" class="btn btn-gold" data-i18n="hero-cta">特徴を見る</a>
-        <a href="/brief/" class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a>
+        <a href={siteBase + '/brief/'} class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a>
       </div>
-      <a href="/live/" class="demo-link" data-i18n="hero-demo">→ ライブパフォーマンスを見る</a>
+      <a href={siteBase + '/live/'} class="demo-link" data-i18n="hero-demo">→ ライブパフォーマンスを見る</a>
     </div>
   </section>
 
-  <!-- ═══ Features ═══ -->
   <section id="features" class="section">
     <div class="container">
       <h2 class="section-title fade-in" data-i18n="feat-title">FusionGold M5 の特徴</h2>
@@ -35,7 +34,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ═══ Performance ═══ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container">
       <h2 class="section-title fade-in" data-i18n="perf-title">バックテスト実績</h2>
@@ -43,20 +41,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="perf-table-wrap fade-in">
         <table class="perf-table">
           <thead><tr>
-            <th data-i18n="perf-trades">総取引数</th>
-            <th data-i18n="perf-winrate">勝率</th>
-            <th data-i18n="perf-profit">純利益</th>
-            <th data-i18n="perf-pf">PF</th>
-            <th data-i18n="perf-dd">最大DD</th>
-            <th data-i18n="perf-hold">平均保有</th>
+            <th data-i18n="perf-trades">総取引数</th><th data-i18n="perf-winrate">勝率</th>
+            <th data-i18n="perf-profit">純利益</th><th data-i18n="perf-pf">PF</th>
+            <th data-i18n="perf-dd">最大DD</th><th data-i18n="perf-hold">平均保有</th>
           </tr></thead>
           <tbody><tr>
-            <td class="highlight">145</td>
-            <td class="highlight">74.48%</td>
-            <td class="highlight">+$912.56</td>
-            <td class="highlight">1.54</td>
-            <td class="highlight">8.61%</td>
-            <td>7min 55s</td>
+            <td class="highlight">145</td><td class="highlight">74.48%</td>
+            <td class="highlight">+$912.56</td><td class="highlight">1.54</td>
+            <td class="highlight">8.61%</td><td>7min 55s</td>
           </tr></tbody>
         </table>
       </div>
@@ -72,7 +64,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ═══ Pricing / Barter ═══ -->
   <section class="section">
     <div class="container" style="text-align:center;">
       <h2 class="section-title fade-in" data-i18n="price-title">ご利用方法</h2>
@@ -97,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🎎 限定フィギュア</span>
           <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">⌚ 国産時計</span>
         </div>
-        <a href="/contact/" class="btn btn-gold" style="margin-top:8px;" data-i18n="p3-cta">交換の詳細を問い合わせる</a>
+        <a href={siteBase + '/contact/'} class="btn btn-gold" style="margin-top:8px;" data-i18n="p3-cta">交換の詳細を問い合わせる</a>
       </div>
     </div>
   </section>
