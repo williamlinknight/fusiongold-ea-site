@@ -106,7 +106,11 @@ const siteBase = '/fusiongold-ea-site';
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       color: #0D0D1A;
     }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.3); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(212,175,55,.3); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .author-card { display: flex; gap: 24px; align-items: flex-start; background: var(--bg); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); }
+    .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: #111; flex-shrink: 0; }
+    @media (max-width: 560px) { .author-card { flex-direction: column; align-items: center; text-align: center; } }
     .btn-outline {
       background: transparent; border: 2px solid var(--gold); color: var(--gold);
     }
@@ -319,6 +323,13 @@ const siteBase = '/fusiongold-ea-site';
       'contact-msg': { JP: 'メッセージ', EN: 'Message' },
       'contact-submit': { JP: '送信する', EN: 'Send' },
       'contact-note': { JP: '※お返事までに1-2営業日いただく場合がございます。', EN: '※ We typically respond within 1-2 business days.' },
+      // Author section
+      'author-title': { JP: '制作者について', EN: 'About the Author' },
+      'author-sub': { JP: '数学と金融理論に基づくEA開発', EN: 'EA development grounded in math & finance theory' },
+      'author-name': { JP: 'William — EA開発者・英語教育者', EN: 'William — EA Developer & English Educator' },
+      'author-p1': { JP: 'Jim Simons（ルネサンス・テクノロジーズ創業者）の数学的アプローチに深く影響を受け、パターン認識と統計的モデルに基づく定量取引戦略を研究。Simonsの「美しい数学が市場を解き明かす」という哲学が、FusionGold M5の設計思想の根幹を成しています。', EN: 'Deeply influenced by Jim Simons (founder of Renaissance Technologies), studying quantitative trading strategies based on pattern recognition and statistical models. Simons\' philosophy — "beautiful mathematics can unlock the market" — forms the core design philosophy of FusionGold M5.' },
+      'author-p2': { JP: 'さらに、MIT（マサチューセッツ工科大学）のオンライン講座「Financial Mathematics」および「Mathematics for Machine Learning」を修了。確率過程、時系列分析、機械学習の知識を活かし、ADX+4バケットスコアリングエンジンをゼロから構築しました。', EN: 'Also completed MIT online courses in "Financial Mathematics" and "Mathematics for Machine Learning." Applied knowledge of stochastic processes, time-series analysis, and machine learning to build the ADX + 4-bucket scoring engine from scratch.' },
+      'author-p3': { JP: 'Xiamen（廈門）を拠点に、英語教育と定量取引の両軸で活動。英語ライティング指導の経験から得た「シンプルで再現性のあるルール」へのこだわりが、EAの設計哲学にも反映されています。', EN: 'Based in Xiamen, working at the intersection of English education and quantitative trading. The commitment to "simple, reproducible rules" — honed through years of teaching English writing — is reflected in the EA\'s design philosophy.' },
     },
     set(lang) {
       this.current = lang;
