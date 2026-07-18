@@ -1,101 +1,51 @@
 {
-  "updated": "2026-07-17 19:31 BJT",
+  "updated": "2026-07-18 19:30 BJT",
   "account": {
-    "balance": 4807.92,
-    "equity": 4807.92,
-    "dayPnL": null,
-    "dayPnLPercent": 0.0,
-    "positions": null,
+    "balance": 4797.07,
+    "equity": 4797.07,
+    "dayPnL": -10.85,
+    "dayPnLPercent": -0.23,
+    "positions": 0,
     "maxPositions": 4,
-    "status": null
+    "status": "RUNNING"
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 1125
+    "cooldown": 241
   },
   "market": {
-    "adx": 22.3,
+    "adx": 25.1,
     "adxHard": 20,
-    "spread": 19,
+    "spread": 50,
     "maxSpread": 50
   },
   "signal": {
     "bull": 0,
     "bear": 0,
     "h4Buy": "N",
-    "h4Sell": "N",
+    "h4Sell": "Y",
     "canBuy": "N",
     "canSell": "N",
     "need": 2
   },
   "risk": {
     "aggRisk": 0.0,
-    "maxRisk": 192.32,
+    "maxRisk": 191.88,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
-  "tradeHistory": [
-    {
-      "date": "2026-07-16",
-      "pnl": 153.33,
-      "trades": 6,
-      "winRate": 66.67
-    },
-    {
-      "date": "2026-07-15",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-14",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    }
-  ],
   "lastTrades": [
-    {
-      "time": "23:15",
-      "type": "SELL",
-      "lots": 0.06,
-      "pnl": 19.56,
-      "result": "WIN"
-    },
-    {
-      "time": "22:45",
-      "type": "SELL",
-      "lots": 0.05,
-      "pnl": 23.76,
-      "result": "WIN"
-    },
-    {
-      "time": "21:35",
-      "type": "SELL",
-      "lots": 0.05,
-      "pnl": 40.49,
-      "result": "WIN"
-    },
-    {
-      "time": "21:05",
-      "type": "SELL",
-      "lots": 0.05,
-      "pnl": 72.49,
-      "result": "WIN"
-    },
-    {
-      "time": "20:50",
-      "type": "SELL",
-      "lots": 0.05,
-      "pnl": 0.0,
-      "result": "OPEN"
-    },
-    {
-      "time": "19:40",
-      "type": "SELL",
-      "lots": 0.18,
-      "pnl": -98.67,
-      "result": "LOSS"
-    }
+    {"time": "23:05", "type": "SELL", "lots": 0.04, "pnl": -84.64, "result": "LOSS"},
+    {"time": "22:10", "type": "SELL", "lots": 0.04, "pnl": -43.60, "result": "LOSS"},
+    {"time": "21:01", "type": "SELL", "lots": 0.10, "pnl": 15.90, "result": "WIN"},
+    {"time": "20:50", "type": "SELL", "lots": 0.10, "pnl": 30.10, "result": "WIN"},
+    {"time": "20:42", "type": "SELL", "lots": 0.11, "pnl": 21.89, "result": "WIN"},
+    {"time": "20:41", "type": "SELL", "lots": 0.10, "pnl": 49.50, "result": "WIN"}
+  ],
+  "tradeHistory": [
+    {"date": "2026-07-17", "pnl": -10.85, "trades": 6, "winRate": 66.67},
+    {"date": "2026-07-16", "pnl": 153.33, "trades": 6, "winRate": 66.67},
+    {"date": "2026-07-15", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-14", "pnl": 0.0, "trades": 0, "winRate": 0}
   ]
 }
