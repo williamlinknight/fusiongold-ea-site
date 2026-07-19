@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+---
+
+<BaseLayout title="戦略ホワイトペーパー | FusionGold M5" description="FusionGold M5 の戦略詳細。ADX+4バケットスコアリング、H4ゾーンフィルター、矛盾検出エンジンの技術解説。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">戦略ホワイトペーパー</h1>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">FusionGold M5 の中核戦略を詳細に解説します。</p>
+
+    <!-- ═══ Section 1 ═══ -->
+    <div class="wp-section">
+      <div class="wp-toc">
+        <h2 style="color:var(--gold);font-size:1rem;margin-bottom:12px;">目次</h2>
+        <ol style="color:var(--text-muted);font-size:0.85rem;line-height:2;">
+          <li><a href="#overview" style="color:var(--gold);">全体設計思想</a></li>
+          <li><a href="#adx" style="color:var(--gold);">ADXゲート — 相場の質を評価</a></li>
+          <li><a href="#bucket" style="color:var(--gold);">4バケットスコアリングエンジン</a></li>
+          <li><a href="#h4" style="color:var(--gold);">H4ゾーンフィルター</a></li>
+          <li><a href="#contradiction" style="color:var(--gold);">矛盾信号検出エンジン</a></li>
+          <li><a href="#risk" style="color:var(--gold);">リスク管理システム</a></li>
+          <li><a href="#execution" style="color:var(--gold);">執行ロジック</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ═══ Section 2 ═══ -->
+    <div class="wp-section" id="overview">
+      <h2>1. 全体設計思想</h2>
+      <p>FusionGold M5 は、Jim Simons（ルネサンス・テクノロジーズ創業者）の「美しい数学が市場を解き明かす」という哲学に触発されています。私たちは市場のパターンを確率論的に捉え、裁量ではなく統計的優位性（エッジ）に基づいて取引を行います。</p>
+      <p>本戦略の核心は「<strong>複数の独立した視点から市場を評価し、それらが一致したときのみ取引する</strong>」という点にあります。単一の指標に依存するのではなく、トレンド・モメンタム・ストラクチャー・流動性の4軸でシグナルを総合的に判断します。</p>
+    </div>
+
+    <!-- ═══ Section 3 ═══ -->
+    <div class="wp-section" id="adx">
+      <h2>2. ADXゲート — 相場の質を評価</h2>
+      <p>ADX（Average Directional Index）はトレンドの強さを測定する指標で、FusionGold M5 では「取引してよい相場かどうか」を判断するゲートとして機能します。</p>
+      <div class="wp-card">
+        <div class="wp-card-title">ADX閾値と動作</div>
+        <table class="wp-table">
+          <thead><tr><th>ADX値</th><th>相場状態</th><th>EAの動作</th></tr></thead>
+          <tbody>
+            <tr><td>25以上</td><td>強いトレンド</td><td class="green">取引許可（高確信度）</td></tr>
+            <tr><td>20〜25</td><td>弱いトレンド</td><td class="yellow">取引許可（低確信度、サイズ縮小）</td></tr>
+            <tr><td>20未満</td><td>レンジ・不安定</td><td class="red">取引禁止</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ADXゲートの目的は、不確実な相場での取引を自動的に排除することです。レンジ相場や方向感のない市場で無理にエントリーすると、スプレッドコストが利益を上回るためです。</p>
+    </div>
+
+    <!-- ═══ Section 4 ═══ -->
+    <div class="wp-section" id="bucket">
+      <h2>3. 4バケットスコアリングエンジン</h2>
+      <p>FusionGold M5 の心臓部は、4つの独立した視点から市場を評価するスコアリングエンジンです。各バケットは0〜100のスコアを出力し、その合計で売買シグナルの強度を判断します。</p>
+
+      <div class="bucket-grid">
+        <div class="bucket-card">
+          <div class="bucket-icon">📈</div>
+          <h3>トレンドバケット</h3>
+          <p class="bucket-desc">価格と移動平均線（EMA）の関係、ADXの方向性成分（DI+ / DI-）を評価します。トレンドフォロー戦略の基盤。</p>
+          <div class="bucket-metrics">
+            <span>EMA方向</span>
+            <span>DI+/DI-クロス</span>
+            <span>パーフェクトオーダー</span>
+          </div>
+        </div>
+        <div class="bucket-card">
+          <div class="bucket-icon">⚡</div>
+          <h3>モメンタムバケット</h3>
+          <p class="bucket-desc">MACD、RSI、価格変化率（ROC）を用いて、短期的な勢いを測定。トレンドの加速・減速を検出。</p>
+          <div class="bucket-metrics">
+            <span>MACDヒストグラム</span>
+            <span>RSI水準</span>
+            <span>モメンタム発散</span>
+          </div>
+        </div>
+        <div class="bucket-card">
+          <div class="bucket-icon">🏗️</div>
+          <h3>ストラクチャーバケット</h3>
+          <p class="bucket-desc">高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。相場の骨格を理解。</p>
+          <div class="bucket-metrics">
+            <span>スイング構造</span>
+            <span>BBポジション</span>
+            <span>価格帯分析</span>
+          </div>
+        </div>
+        <div class="bucket-card">
+          <div class="bucket-icon">💧</div>
+          <h3>流動性バケット</h3>
+          <p class="bucket-desc">取引量（ボリューム）、スプレッド幅、セッション時間帯を評価。約定品質とコストを考慮。</p>
+          <div class="bucket-metrics">
+            <span>出来高分析</span>
+            <span>スプレッド状態</span>
+            <span>セッション品質</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>シグナル判定ロジック：</strong>4バケットのスコアを合計し、以下の閾値で判断します。</p>
+      <div class="wp-card">
+        <table class="wp-table">
+          <thead><tr><th>合計スコア</th><th>判定</th><th>アクション</th></tr></thead>
+          <tbody>
+            <tr><td>280以上</td><td class="green">強いシグナル</td><td>通常ロットでエントリー</td></tr>
+            <tr><td>240〜279</td><td class="yellow">弱いシグナル</td><td>半ロットでエントリー</td></tr>
+            <tr><td>240未満</td><td>シグナルなし</td><td>エントリーなし</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ Section 5 ═══ -->
+    <div class="wp-section" id="h4">
+      <h2>4. H4ゾーンフィルター</h2>
+      <p>H4（4時間足）のEMA方向と価格ゾーンを用いた高次フィルターです。このフィルターの目的は、<strong>「大きな流れに逆らわない」</strong>という基本原則を徹底することです。</p>
+      <p>H4のEMAが上昇トレンドを示している場合、M5では買いシグナルのみを許可し、売りシグナルはブロックします。逆も同様です。これにより、逆行トレードによる損失を防止します。</p>
+      <div class="wp-card">
+        <div class="wp-card-title">H4ゾーンフィルターの動作</div>
+        <table class="wp-table">
+          <thead><tr><th>H4トレンド</th><th>M5買い</th><th>M5売り</th></tr></thead>
+          <tbody>
+            <tr><td>上昇（EMA順行）</td><td class="green">許可</td><td class="red">ブロック</td></tr>
+            <tr><td>下降（EMA逆行）</td><td class="red">ブロック</td><td class="green">許可</td></tr>
+            <tr><td>中立（レンジ）</td><td class="yellow">両方可（制限付き）</td><td class="yellow">両方可（制限付き）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ Section 6 ═══ -->
+    <div class="wp-section" id="contradiction">
+      <h2>5. 矛盾信号検出エンジン</h2>
+      <p>同一バー（M5）において買いシグナルと売りシグナルが両方発生した場合、両方のエントリーをブロックします。これは、市場が方向感を欠いている証拠であり、無理に取引するべきではないという判断です。</p>
+      <p>このエンジンにより、スキャルピングEAにありがちな「買ってすぐ売る」という矛盾した動作を防止します。</p>
+    </div>
+
+    <!-- ═══ Section 7 ═══ -->
+    <div class="wp-section" id="risk">
+      <h2>6. リスク管理システム</h2>
+      <p>FusionGold M5 には、口座を保護するための多層リスク管理システムが組み込まれています。</p>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <div class="risk-icon">🛑</div>
+          <h3>日損5%リミット</h3>
+          <p>1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止します。</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-icon">📉</div>
+          <h3>連敗フィルター</h3>
+          <p>連続して損失が発生した場合、エントリーを一時停止。市場環境の変化を待ちます。</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-icon">⚖️</div>
+          <h3>Aggregate Risk</h3>
+          <p>全ポジションのリスク総量を監視し、設定された上限を超えないように制御します。</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-icon">⏱️</div>
+          <h3>クールダウン</h3>
+          <p>取引後、一定時間は新規エントリーを行いません。連続取引によるオーバートレードを防止。</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-icon">📏</div>
+          <h3>固定ストップロス</h3>
+          <p>全エントリーに固定のストップロスを設定。予期せぬ逆行に対して口座を保護します。</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-icon">📊</div>
+          <h3>ポジションサイジング</h3>
+          <p>シグナル強度と口座残高に基づいて、動的にロットサイズを調整します。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Section 8 ═══ -->
+    <div class="wp-section" id="execution">
+      <h2>7. 執行ロジック</h2>
+      <p>FusionGold M5 はロンドン/NYオーバーラップ帯（日本時間21:00〜24:00）を中心に取引を行います。この時間帯は世界で最も流動性が高く、スプレッドが狭く、約定品質が優れています。</p>
+      <p>取引執行は以下のフローで行われます：</p>
+      <div class="flow-chart">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-text">H4ゾーンフィルター判定<br/><span>トレンド方向の確認</span></div>
+          <div class="flow-arrow">→</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-text">ADXゲート<br/><span>取引可能な相場か</span></div>
+          <div class="flow-arrow">→</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-text">4バケットスコアリング<br/><span>スコア240以上か</span></div>
+          <div class="flow-arrow">→</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-text">矛盾検出<br/><span>確認。問題なければ執行</span></div>
+          <div class="flow-arrow green">✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+      <p style="color:var(--text-muted);margin-bottom:16px;">実際の動作をデモ口座で確認してみませんか？</p>
+      <a href={siteBase + '/demo/'} class="btn btn-gold">デモを試す</a>
+    </div>
+  </div>
+
+  <style>
+    .wp-section { margin-bottom: 40px; }
+    .wp-section h2 { color: var(--gold); font-size: 1.15rem; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .wp-section p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
+    .wp-toc { background: var(--bg-card); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); margin-bottom: 24px; }
+    .wp-toc ol { margin-left: 16px; }
+    .wp-card { background: var(--bg); border-radius: 8px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .wp-card-title { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+    .wp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .wp-table th, .wp-table td { padding: 8px 12px; text-align: center; border-bottom: 1px solid var(--border); }
+    .wp-table th { color: var(--gold); font-weight: 600; font-size: 0.8rem; }
+    .wp-table td { color: var(--text-muted); }
+    .green { color: var(--accent-green) !important; font-weight: 600; }
+    .yellow { color: #f1c40f !important; font-weight: 600; }
+    .red { color: var(--accent-red) !important; }
+    .bucket-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+    .bucket-card { background: var(--bg-card); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); }
+    .bucket-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .bucket-card h3 { font-size: 0.95rem; color: var(--gold); margin-bottom: 8px; }
+    .bucket-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+    .bucket-metrics { display: flex; flex-wrap: wrap; gap: 4px; }
+    .bucket-metrics span { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; background: rgba(212,175,55,0.1); color: var(--gold); }
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+    .risk-card { background: var(--bg-card); border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
+    .risk-icon { font-size: 1.3rem; margin-bottom: 6px; }
+    .risk-card h3 { font-size: 0.85rem; color: var(--gold); margin-bottom: 6px; }
+    .risk-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0; }
+    .flow-chart { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; background: var(--bg-card); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); }
+    .flow-step { display: flex; align-items: center; gap: 8px; }
+    .flow-num { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: #0D0D1A; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .flow-text { font-size: 0.8rem; color: var(--text); line-height: 1.3; }
+    .flow-text span { font-size: 0.7rem; color: var(--text-muted); }
+    .flow-arrow { font-size: 1.2rem; color: var(--gold); font-weight: 700; }
+    .flow-arrow.green { color: var(--accent-green); }
+  </style>
+
+</BaseLayout>

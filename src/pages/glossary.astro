@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+const terms = [
+  { term: 'ADX', reading: 'Average Directional Index', desc: 'トレンドの強さを0〜100で示す指標。25以上でトレンド相場、20以下はレンジ相場と判断。FusionGold M5では取引許可のゲートとして機能。' },
+  { term: 'HMM', reading: 'Hidden Markov Model', desc: '隠れマルコフモデル。市場の状態（上昇トレンド・下降トレンド・レンジ）を確率的に推定する統計モデル。日次分析で相場のレジームを判定。' },
+  { term: 'BB', reading: 'Bollinger Bands', desc: 'ボリンジャーバンド。移動平均線を中心に標準偏差の幅でバンドを描く。バンドの拡大・収縮でボラティリティを判断。' },
+  { term: 'MACD', reading: 'Moving Average Convergence Divergence', desc: '移動平均収束拡散法。短期と長期の移動平均線の差を用いてトレンドの方向と勢いを測る。ゴールデンクロス・デッドクロスが売買サイン。' },
+  { term: 'EMA', reading: 'Exponential Moving Average', desc: '指数平滑移動平均線。直近の価格に重みを置いた移動平均。H4ゾーンフィルターでトレンド方向の判定に使用。' },
+  { term: 'RSI', reading: 'Relative Strength Index', desc: '相対力指数。0〜100の範囲で価格の買われ過ぎ・売られ過ぎを判定。70以上で買われ過ぎ、30以下で売られ過ぎ。' },
+  { term: 'DI+ / DI-', reading: 'Directional Indicators', desc: 'ADXの構成要素。DI+は上昇方向の強さ、DI-は下降方向の強さを示す。DI+がDI-を上回れば上昇トレンド。' },
+  { term: '4バケットスコアリング', reading: '4-Bucket Scoring', desc: 'FusionGold M5の中核エンジン。トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を評価し、各軸0〜100点の合計点で売買を判断。' },
+  { term: 'H4ゾーンフィルター', reading: 'H4 Zone Filter', desc: '4時間足のトレンド方向でM5の取引方向を制限するフィルター。大きな流れに逆らう取引を防止。' },
+  { term: '矛盾信号検出', reading: 'Contradiction Detection', desc: '同一バーで買いと売りのシグナルが同時に発生した場合、両方をブロックするエンジン。方向感のない相場での無駄な取引を防止。' },
+  { term: 'スリッページ', reading: 'Slippage', desc: '注文した価格と実際に約定した価格の差。市場が急変動した際に発生。FX取引の主要なリスクの一つ。' },
+  { term: 'スプレッド', reading: 'Spread', desc: '買値（Ask）と売値（Bid）の差。実質的な取引コスト。ゴールド（XAUUSD）のスプレッドは時間帯によって変動。' },
+  { term: 'ロット', reading: 'Lot', desc: '取引単位。1ロットはXAUUSDの場合100オンス。0.01ロット（1マイクロロット）が最小取引単位。' },
+  { term: 'レバレッジ', reading: 'Leverage', desc: '証拠金に対する取引倍率。IC Marketsでは最大500倍。レバレッジが高いほど少ない資金で大きな取引が可能だが、リスクも比例して増大。' },
+  { term: 'ストップロス', reading: 'Stop Loss / SL', desc: '損失を限定するために設定する逆指値注文。設定した価格に達した場合、自動的にポジションを決済。' },
+  { term: 'テイクプロフィット', reading: 'Take Profit / TP', desc: '利益を確定するために設定する指値注文。設定した価格に達した場合、自動的にポジションを決済。' },
+  { term: 'スワップ', reading: 'Swap / Overnight Fee', desc: 'ポジションを翌日に持ち越した際に発生する金利調整額。通貨ペアの金利差によりプラスにもマイナスにもなる。' },
+  { term: 'VPS', reading: 'Virtual Private Server', desc: '仮想専用サーバー。24時間稼働のサーバー上でMT5とEAを動作させることで、パソコンを切っている間も取引を継続できる。' },
+  { term: 'バックテスト', reading: 'Backtest', desc: '過去の市場データを使ってEAの戦略を検証すること。MT5に内蔵されたバックテスト機能で実行。ただし、過去の結果は将来を保証しない。' },
+  { term: 'フォワードテスト', reading: 'Forward Test', desc: 'デモ口座や実口座でEAを実際に動作させて検証すること。バックテストよりも現実的な結果が得られる。' }
+];
+---
+
+<BaseLayout title="用語集 | FusionGold M5" description="FX取引・自動売買EAに関する用語解説。ADX、HMM、MACDなど初心者向けにわかりやすく解説。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">用語集</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">FX取引・自動売買EAに関する専門用語をわかりやすく解説します。</p>
+
+    <div class="glossary-nav">
+      {terms.map((item, i) => (
+        <a href={`#term-${i}`} class="glossary-tag">{item.term}</a>
+      ))}
+    </div>
+
+    <div class="glossary-list">
+      {terms.map((item, i) => (
+        <div class="glossary-item" id={`term-${i}`}>
+          <div class="glossary-term">
+            <h2>{item.term}</h2>
+            <span class="glossary-reading">{item.reading}</span>
+          </div>
+          <p>{item.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div style="margin-top:32px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+      <p style="color:var(--text-muted);margin-bottom:8px;">もっと詳しく知りたい方は</p>
+      <a href={siteBase + '/strategy/'} style="color:var(--gold);">戦略ホワイトペーパーを見る →</a>
+    </div>
+  </div>
+
+  <style>
+    .glossary-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+    .glossary-tag {
+      font-size: 0.75rem; padding: 4px 12px; border-radius: 14px;
+      background: rgba(212,175,55,0.1); color: var(--gold);
+      border: 1px solid var(--border); transition: var(--transition);
+      text-decoration: none;
+    }
+    .glossary-tag:hover { background: var(--gold); color: #0D0D1A; }
+    .glossary-list { display: flex; flex-direction: column; gap: 0; }
+    .glossary-item {
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      scroll-margin-top: 60px;
+    }
+    .glossary-term { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+    .glossary-term h2 { font-size: 0.95rem; color: var(--gold); font-weight: 600; }
+    .glossary-reading { font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
+    .glossary-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0; }
+  </style>
+
+</BaseLayout>
