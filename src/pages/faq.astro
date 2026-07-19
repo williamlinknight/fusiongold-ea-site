@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+const faqs = [
+  {
+    q: 'FusionGold M5 とは何ですか？',
+    a: 'XAUUSD（ゴールド）のM5足専用に開発された自動売買EA（エキスパートアドバイザー）です。ADX（トレンド強度）＋4バケットスコアリングエンジン＋H4ゾーンフィルターを搭載し、IC MarketsのMT5環境で動作します。'
+  },
+  {
+    q: '対応ブローカーはどこですか？',
+    a: '主にIC Markets（Raw Spread口座）での使用を推奨しています。MT5に対応している他のブローカーでも動作する可能性がありますが、スプレッド条件や約定品質がパフォーマンスに影響するため、IC Markets以外での使用は自己責任となります。'
+  },
+  {
+    q: 'システム要件を教えてください。',
+    a: 'Windows/MacのMT5が動作する環境が必要です。24時間稼働させる場合はVPS（仮想専用サーバー）を推奨します。VPSの推奨スペック：CPU 1コア以上、RAM 1GB以上、Windows Server 2016以降。'
+  },
+  {
+    q: 'デモ口座で試せますか？',
+    a: 'はい、可能です。IC Marketsのデモ口座をお持ちであれば、そちらでテストいただけます。デモ口座の開設方法やセットアップについてはお問い合わせフォームよりご連絡ください。'
+  },
+  {
+    q: '物々交換（バーター）とは具体的にどのような仕組みですか？',
+    a: '現金での販売は行っておらず、代わりに日本製品との交換で提供しています。ゲーム機本体、日本酒・ウイスキー、カメラレンズ、限定フィギュア、国産時計など、価値のある日本製品とFusionGold M5を交換します。交換条件は個別にご相談ください。'
+  },
+  {
+    q: 'インストールに必要なファイルは何ですか？',
+    a: 'EAファイル（.ex5）と設定ガイド（PDF）をお送りします。セットアップガイドのページに詳しい手順を掲載していますので、そちらをご参照ください。'
+  },
+  {
+    q: 'どのようなリスク管理機能がありますか？',
+    a: '以下のリスク管理機能を内蔵しています：日損5%リミット（Daily Loss Limit）、連敗フィルター（Consecutive Loss Filter）、Aggregate Risk制御、クールダウン機能。これらが口座を過度な損失から保護します。'
+  },
+  {
+    q: '稼働時間はどのくらいですか？',
+    a: 'ロンドン/NYオーバーラップ帯を中心に、1日約3時間のみ取引を行います。高流動性の時間帯に集中することで、スプレッドコストを抑え、約定品質を高めています。'
+  },
+  {
+    q: 'バックテストの勝率74.48%は将来も期待できますか？',
+    a: '過去のバックテスト結果は将来の成果を保証するものではありません。相場環境は常に変化しており、過去に有効だった戦略が将来も有効であるとは限りません。詳細についてはリスク免責事項をご確認ください。'
+  },
+  {
+    q: 'サポートはありますか？',
+    a: 'メールベースのサポートを提供しています。セットアップ時のご質問、動作に関するお問い合わせについては、お問い合わせフォームよりご連絡ください。返信までに1-2営業日いただく場合がございます。'
+  }
+];
+---
+
+<BaseLayout title="よくある質問 | FusionGold M5" description="FusionGold M5 に関するよくある質問。対応ブローカー、セットアップ、物々交換、リスク管理について。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">よくある質問</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">FusionGold M5 に関するよくあるご質問とその回答をまとめました。</p>
+
+    <div class="faq-list">
+      {faqs.map((item, i) => (
+        <details class="faq-item" style={i < faqs.length - 1 ? 'border-bottom:1px solid var(--border);' : ''}>
+          <summary class="faq-question">
+            <span class="faq-number">{String(i + 1).padStart(2, '0')}</span>
+            <span>{item.q}</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div style="margin-top:40px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+      <p style="color:var(--text-muted);margin-bottom:16px;">お探しの質問が見つかりませんか？</p>
+      <a href={siteBase + '/contact/'} class="btn btn-gold">お問い合わせ</a>
+    </div>
+  </div>
+
+  <style>
+    .faq-list { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+    .faq-item { padding: 0; }
+    .faq-question {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 20px; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; color: var(--text);
+      list-style: none; transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--bg-card-hover); }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-number {
+      font-size: 0.75rem; color: var(--gold); font-weight: 700;
+      min-width: 24px;
+    }
+    .faq-icon {
+      margin-left: auto; font-size: 1.2rem; color: var(--gold);
+      transition: transform 0.3s ease; font-weight: 300;
+    }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 16px 56px; font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-answer p { margin-bottom: 0; }
+  </style>
+
+</BaseLayout>

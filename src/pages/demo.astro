@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+---
+
+<BaseLayout title="デモ口座のお申し込み | FusionGold M5" description="FusionGold M5 のデモ口座をお申し込みいただけます。実際の資金を使わずに14日間無料でテスト可能。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:640px;">
+
+    <div style="text-align:center;margin-bottom:32px;">
+      <h1 style="color:var(--gold);margin-bottom:8px;">デモ口座のお申し込み</h1>
+      <p style="color:var(--text-muted);margin-bottom:4px;">実際の資金を使わずに、FusionGold M5 をテストいただけます。</p>
+      <p style="color:var(--text-muted);font-size:0.85rem;">期間: 14日間 · デモ口座はIC Marketsのものをご利用いただきます</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:32px;">
+      <div class="perk-card">
+        <div class="perk-icon">🆓</div>
+        <div class="perk-title">無料</div>
+        <div class="perk-desc">デモ口座は完全無料。リスクなしでテストできます。</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">⚡</div>
+        <div class="perk-title">リアル環境</div>
+        <div class="perk-desc">実際の取引環境と同じ条件でEAを体験。</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📋</div>
+        <div class="perk-title">サポート付き</div>
+        <div class="perk-desc">セットアップサポート、運用のアドバイス付き。</div>
+      </div>
+    </div>
+
+    <div class="demo-form-card">
+      <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:20px;">デモ口座リクエスト</h2>
+
+      <form id="demo-form" class="contact-form" style="padding:0;background:transparent;border:none;">
+
+        <div class="form-group">
+          <label for="name">お名前 <span style="color:var(--accent-red);">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">メールアドレス <span style="color:var(--accent-red);">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="broker">お使いのブローカー</label>
+          <select id="broker" name="broker">
+            <option value="icmarkets" selected>IC Markets</option>
+            <option value="other">その他（コメント欄に記載）</option>
+            <option value="none">まだ口座を開設していない</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="experience">取引経験</label>
+          <select id="experience" name="experience">
+            <option value="beginner" selected>初心者（1年未満）</option>
+            <option value="intermediate">中級者（1〜3年）</option>
+            <option value="advanced">上級者（3年以上）</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">メッセージ（任意）</label>
+          <textarea id="message" name="message" placeholder="デモで確認したいこと、質問があればご記入ください。" style="min-height:80px;"></textarea>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px;">
+          <input type="checkbox" id="disclaimer_agree" name="disclaimer_agree" required style="margin-top:4px;width:auto;flex-shrink:0;">
+          <label for="disclaimer_agree" style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">
+            <a href={siteBase + '/disclaimer/'} style="color:var(--gold);" target="_blank">免責事項</a>に同意し、外国為替証拠金取引のリスクを理解した上で申し込みます。
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-gold form-submit">デモ口座をリクエストする</button>
+        <p style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">※お申し込み後、1-2営業日以内にセットアップガイドをお送りします。</p>
+      </form>
+    </div>
+
+    <div style="margin-top:32px;padding:20px;border-radius:var(--radius);background:rgba(212,175,55,0.06);border:1px dashed var(--gold-dark);text-align:center;">
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">すでにFusionGold M5についてご質問がありますか？</p>
+      <a href={siteBase + '/faq/'} style="color:var(--gold);">よくある質問を見る →</a>
+    </div>
+
+    <script>
+      document.getElementById('demo-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('デモ口座のお申し込みを受け付けました。1-2営業日以内にセットアップガイドをお送りします。');
+      });
+    </script>
+  </div>
+
+  <style>
+    .perk-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; text-align: center;
+      transition: var(--transition);
+    }
+    .perk-card:hover { border-color: var(--gold-dark); }
+    .perk-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .perk-title { font-size: 0.9rem; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+    .perk-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .demo-form-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+  </style>
+
+</BaseLayout>

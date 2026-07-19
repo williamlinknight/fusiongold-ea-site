@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+const steps = [
+  {
+    title: 'Step 1: EAファイルをダウンロード',
+    desc: '物々交換が成立後、EAファイル（.ex5）と設定ガイド（PDF）をお送りします。ファイルはメールにてお届けします。',
+    tip: 'メールが届かない場合は迷惑メールフォルダをご確認ください。'
+  },
+  {
+    title: 'Step 2: MT5にEAをインストール',
+    desc: 'MT5プラットフォームを開き、メニューから「ファイル」→「データフォルダを開く」を選択します。表示されたフォルダ内の「MQL5」→「Experts」フォルダに、受け取った.ex5ファイルをコピーします。',
+    tip: 'MT5を再起動すると、ナビゲーターウィンドウの「エキスパートアドバイザー」にFusionGold M5が表示されます。'
+  },
+  {
+    title: 'Step 3: EAをチャートに適用',
+    desc: 'XAUUSDのM5チャートを開き、ナビゲーターからFusionGold M5をチャートにドラッグ＆ドロップします。表示される設定画面で「OK」をクリック。ただし、その前に以下の設定を確認してください。',
+    tip: '「エキスパートアドバイザーの自動売買を許可」にチェックが入っていることを確認してください。'
+  },
+  {
+    title: 'Step 4: 入力パラメータを設定',
+    desc: 'EAのプロパティ画面で以下の主要パラメータを設定します：ロットサイズ（推奨: 0.01から開始）、リスク設定（デフォルト値を推奨）、各種フィルター設定。詳細は設定ガイドをご参照ください。',
+    tip: '最初はデフォルト設定のまま運用し、十分に動作を確認してから調整することをお勧めします。'
+  },
+  {
+    title: 'Step 5: 自動売買を有効化',
+    desc: 'チャート上部の「エキスパートアドバイザー」ボタン（スマイルアイコン）をクリックし、自動売買を有効にします。ボタンが緑色になれば、EAが稼働を開始します。',
+    tip: 'EAが正しく動作しているかどうかは、チャート右上のスマイルマークで確認できます。'
+  },
+  {
+    title: 'Step 6: VPSでの運用（推奨）',
+    desc: '24時間安定稼働させるにはVPSの使用を強く推奨します。主要なVPSプロバイダー（例：Forex VPS、AWS Lightsailなど）でWindows Serverを選択し、そのVPSにMT5とEAをインストールしてください。',
+    tip: 'VPSの選択基準：IC Marketsへのレイテンシが低いリージョンを選びましょう（ロンドンまたはニューヨーク推奨）。'
+  }
+];
+---
+
+<BaseLayout title="セットアップガイド | FusionGold M5" description="FusionGold M5 のインストールと設定手順を詳しく解説。MT5への導入からVPS運用まで。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">セットアップガイド</h1>
+    <p style="color:var(--text-muted);margin-bottom:8px;">FusionGold M5 のインストールから運用開始までの手順を解説します。</p>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">所要時間: 約15〜30分</p>
+
+    <div class="setup-steps">
+      {steps.map((step, i) => (
+        <div class="step-card">
+          <div class="step-number">{String(i + 1).padStart(2, '0')}</div>
+          <div class="step-body">
+            <h2>{step.title}</h2>
+            <p>{step.desc}</p>
+            <div class="step-tip">
+              <span class="tip-label">💡 ヒント</span>
+              <span>{step.tip}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="requirements-section">
+      <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">🔧 必要環境</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+        <div class="req-item">
+          <div class="req-label">ブローカー</div>
+          <div class="req-value">IC Markets（Raw Spread口座）</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">プラットフォーム</div>
+          <div class="req-value">MetaTrader 5（MT5）</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">取引ペア</div>
+          <div class="req-value">XAUUSD（ゴールド）</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">タイムフレーム</div>
+          <div class="req-value">M5</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">推奨VPS</div>
+          <div class="req-value">Windows Server, 1GB RAM以上</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">最低証拠金</div>
+          <div class="req-value">$500（0.01ロット推奨）</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+      <p style="color:var(--text-muted);margin-bottom:8px;">セットアップでお困りですか？</p>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">デモ口座でのテストサポートも承ります。</p>
+      <a href={siteBase + '/contact/'} class="btn btn-gold">お問い合わせ</a>
+    </div>
+  </div>
+
+  <style>
+    .setup-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .step-card {
+      display: flex; gap: 16px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      transition: var(--transition);
+    }
+    .step-card:hover { border-color: var(--gold-dark); }
+    .step-number {
+      font-size: 1.8rem; font-weight: 800; color: var(--gold);
+      min-width: 48px; line-height: 1;
+    }
+    .step-body { flex: 1; }
+    .step-body h2 { color: var(--gold); font-size: 1rem; margin-bottom: 8px; }
+    .step-body p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+    .step-tip {
+      background: rgba(212,175,55,0.08); border-left: 3px solid var(--gold);
+      padding: 8px 12px; border-radius: 4px; font-size: 0.8rem; color: var(--text-muted);
+      display: flex; gap: 6px; align-items: flex-start;
+    }
+    .tip-label { font-weight: 600; color: var(--gold); white-space: nowrap; }
+    .requirements-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      margin-bottom: 16px;
+    }
+    .req-item {
+      padding: 12px; background: var(--bg); border-radius: 8px;
+      text-align: center;
+    }
+    .req-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+    .req-value { font-size: 0.85rem; color: var(--text); font-weight: 600; }
+  </style>
+
+</BaseLayout>
