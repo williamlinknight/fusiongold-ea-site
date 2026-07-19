@@ -91,6 +91,32 @@ const siteBase = '/fusiongold-ea-site';
     }
     .lang-btn.active { background:var(--gold); color:#0D0D1A; border-color:var(--gold); }
     .lang-btn:hover:not(.active) { color: var(--gold); }
+    .demo-nav-btn {
+      display:inline-block; padding:4px 12px; border-radius:6px;
+      font-size:0.8rem; font-weight:700; text-decoration:none;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#0D0D1A;
+      transition:var(--transition);
+    }
+    .demo-nav-btn:hover { opacity:.85; transform:translateY(-1px); box-shadow:0 2px 12px rgba(212,175,55,.3); }
+    .dropdown { position:relative; display:inline-flex; }
+    .dropdown-trigger {
+      font-size:0.85rem; cursor:pointer; color:var(--text-muted);
+      transition:var(--transition); padding:0 4px;
+    }
+    .dropdown-trigger:hover, .dropdown:hover .dropdown-trigger { color:var(--gold); }
+    .dropdown .arrow { font-size:0.65rem; margin-left:2px; }
+    .dropdown-content {
+      display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:8px; min-width:150px; padding:6px 0;
+      z-index:100; box-shadow:0 8px 24px rgba(0,0,0,.4);
+    }
+    .dropdown-content a {
+      display:block; padding:8px 16px; font-size:0.8rem;
+      color:var(--text-muted); white-space:nowrap; text-decoration:none;
+    }
+    .dropdown-content a:hover { background:var(--bg-card-hover); color:var(--gold); }
+    .dropdown:hover .dropdown-content { display:block; }
     .btn {
       display: inline-block; padding: 12px 32px; border-radius: 8px;
       font-weight: 600; font-size: 0.95rem; cursor: pointer; border: none;
@@ -193,14 +219,28 @@ const siteBase = '/fusiongold-ea-site';
     <a href={siteBase + '/'} class="logo">FusionGold M5</a>
     <div class="links">
       <a href={siteBase + '/'} data-i18n="nav-home">ホーム</a>
-      <a href={siteBase + '/live/'} data-i18n="nav-live">パフォーマンス</a>
-      <a href={siteBase + '/setup/'} data-i18n="nav-setup">セットアップ</a>
-      <a href={siteBase + '/strategy/'} data-i18n="nav-strategy">戦略</a>
-      <a href={siteBase + '/glossary/'} data-i18n="nav-glossary">用語集</a>
-      <a href={siteBase + '/faq/'} data-i18n="nav-faq">FAQ</a>
-      <a href={siteBase + '/blog/'} data-i18n="nav-blog">ブログ</a>
+
+      <div class="dropdown">
+        <span class="dropdown-trigger" data-i18n="nav-product">製品 <span class="arrow">▾</span></span>
+        <div class="dropdown-content">
+          <a href={siteBase + '/live/'} data-i18n="nav-live">パフォーマンス</a>
+          <a href={siteBase + '/setup/'} data-i18n="nav-setup">セットアップ</a>
+          <a href={siteBase + '/strategy/'} data-i18n="nav-strategy">戦略</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <span class="dropdown-trigger" data-i18n="nav-learn">学ぶ <span class="arrow">▾</span></span>
+        <div class="dropdown-content">
+          <a href={siteBase + '/glossary/'} data-i18n="nav-glossary">用語集</a>
+          <a href={siteBase + '/faq/'} data-i18n="nav-faq">FAQ</a>
+          <a href={siteBase + '/blog/'} data-i18n="nav-blog">ブログ</a>
+        </div>
+      </div>
+
       <a href={siteBase + '/brief/'} data-i18n="nav-brief">デイリー分析</a>
       <a href={siteBase + '/contact/'} data-i18n="nav-contact">お問い合わせ</a>
+      <a href={siteBase + '/demo/'} class="demo-nav-btn">デモ</a>
       <div class="lang-toggle" role="radiogroup" aria-label="Language">
         <button class="lang-btn active" data-lang="JP" role="radio" aria-checked="true">JP</button>
         <button class="lang-btn" data-lang="EN" role="radio" aria-checked="false">EN</button>
@@ -225,6 +265,8 @@ const siteBase = '/fusiongold-ea-site';
     current: 'JP',
     data: {
       'nav-home': { JP: 'ホーム', EN: 'Home' },
+      'nav-product': { JP: '製品', EN: 'Product' },
+      'nav-learn': { JP: '学ぶ', EN: 'Learn' },
       'nav-live': { JP: 'パフォーマンス', EN: 'Live Performance' },
       'nav-setup': { JP: 'セットアップ', EN: 'Setup Guide' },
       'nav-strategy': { JP: '戦略', EN: 'Strategy' },
