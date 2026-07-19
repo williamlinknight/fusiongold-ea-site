@@ -207,8 +207,12 @@ const siteBase = '/fusiongold-ea-site';
   <slot />
 
   <footer class="footer">
-    <div class="container">
+    <div class="container" style="display:flex;flex-direction:column;gap:8px;">
       <p data-i18n="footer-text">© 2026 FusionGold M5 · XAUUSD専用EA</p>
+      <div style="display:flex;gap:16px;justify-content:center;font-size:0.8rem;">
+        <a href={siteBase + '/disclaimer/'} style="color:var(--text-muted);text-decoration:underline;">免責事項</a>
+        <a href={siteBase + '/privacy/'} style="color:var(--text-muted);text-decoration:underline;">プライバシーポリシー</a>
+      </div>
     </div>
   </footer>
 

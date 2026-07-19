@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
 ---
 
 <BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。デモ口座、物々交換など。">
@@ -28,6 +29,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="form-group">
         <label for="message" data-i18n="contact-msg">メッセージ</label>
         <textarea id="message" name="message" required></textarea>
+      </div>
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px;">
+        <input type="checkbox" id="disclaimer_agree" name="disclaimer_agree" required style="margin-top:4px;width:auto;flex-shrink:0;">
+        <label for="disclaimer_agree" style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">
+          <a href={siteBase + '/disclaimer/'} style="color:var(--gold);" target="_blank">免責事項</a>に同意し、外国為替証拠金取引のリスクを理解した上でお問い合わせします。
+        </label>
       </div>
       <button type="submit" class="btn btn-gold form-submit" data-i18n="contact-submit">送信する</button>
       <p style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>

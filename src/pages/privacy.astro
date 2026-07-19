@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+---
+
+<BaseLayout title="プライバシーポリシー | FusionGold M5" description="FusionGold M5 のプライバシーポリシー。お客様の個人情報の取り扱いについて。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">プライバシーポリシー</h1>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">最終更新日: 2026年7月19日</p>
+
+    <div class="legal-content">
+
+      <h2>1. 個人情報の収集について</h2>
+      <p>当サイト（FusionGold M5）は、お問い合わせフォームを通じて以下の個人情報を収集することがあります：</p>
+      <ul>
+        <li>お名前</li>
+        <li>メールアドレス</li>
+        <li>お問い合わせの種類およびメッセージ内容</li>
+      </ul>
+      <p>これらの情報は、お客様からのお問い合わせに対応する目的のみに使用されます。</p>
+
+      <h2>2. 個人情報の利用目的</h2>
+      <p>収集した個人情報は、以下の目的で利用いたします：</p>
+      <ul>
+        <li>お問い合わせへの返信および対応</li>
+        <li>デモ口座に関するご案内</li>
+        <li>物々交換（バーター取引）に関するご連絡</li>
+        <li>本EAに関する重要な情報のご連絡</li>
+      </ul>
+
+      <h2>3. 個人情報の第三者提供</h2>
+      <p>当サイトは、以下のいずれかに該当する場合を除き、お客様の個人情報を第三者に提供することはありません：</p>
+      <ul>
+        <li>お客様の同意がある場合</li>
+        <li>法令に基づく場合</li>
+        <li>人の生命、身体または財産の保護のために必要な場合</li>
+      </ul>
+
+      <h2>4. 個人情報の管理</h2>
+      <p>当サイトは、お客様の個人情報を適切に管理し、不正アクセス、紛失、漏洩、改ざん等を防止するために必要なセキュリティ対策を講じます。</p>
+
+      <h2>5. アクセス解析ツール</h2>
+      <p>当サイトでは、Google Search Consoleを利用してサイトのパフォーマンス分析を行っています。Google Search Consoleは個人を特定する情報を収集することはありません。詳細については<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">Google プライバシーポリシー</a>をご覧ください。</p>
+
+      <h2>6. お客様の権利</h2>
+      <p>お客様は、当サイトが保有するご自身の個人情報について、開示、訂正、削除、または利用停止を請求する権利を有します。ご請求については、下記のお問い合わせ先までご連絡ください。</p>
+
+      <h2>7. お問い合わせ先</h2>
+      <p>プライバシーポリシーに関するお問い合わせは、<a href={siteBase + '/contact/'} style="color:var(--gold);">お問い合わせフォーム</a>よりご連絡ください。</p>
+
+      <h2>8. 改定について</h2>
+      <p>当サイトは、必要に応じて本プライバシーポリシーを改定することがあります。改定後は、本ページにて最新情報を公開いたします。</p>
+
+    </div>
+  </div>
+
+  <style>
+    .legal-content { line-height: 1.9; font-size: 0.95rem; }
+    .legal-content h2 {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-content p { margin-bottom: 16px; color: var(--text-muted); }
+    .legal-content ul { margin: 0 0 16px 20px; }
+    .legal-content li { margin-bottom: 8px; color: var(--text-muted); }
+  </style>
+
+</BaseLayout>
