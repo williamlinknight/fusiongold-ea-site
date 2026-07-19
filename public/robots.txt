@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://williamlinknight.github.io/fusiongold-ea-site/sitemap-index.xml

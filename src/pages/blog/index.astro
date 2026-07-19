@@ -6,6 +6,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="ブログ | FusionGold M5" description="FusionGold M5 ブログ — XAUUSD分析、EAトレード戦略。">
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://williamlinknight.github.io/fusiongold-ea-site/"},
+      {"@type": "ListItem", "position": 2, "name": "ブログ"}
+    ]
+  }
+  </script>
+
   <div class="container" style="padding-top:40px;padding-bottom:60px;">
     <h1 style="color:var(--gold);margin-bottom:8px;" data-i18n="blog-title">ブログ</h1>
     <p style="color:var(--text-muted);margin-bottom:32px;" data-i18n="blog-sub">XAUUSD分析、トレード戦略、EA最新情報</p>
