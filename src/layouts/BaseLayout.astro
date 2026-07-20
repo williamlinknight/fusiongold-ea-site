@@ -9,7 +9,7 @@ const siteBase = '/fusiongold-ea-site';
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="jp-mode">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,6 +92,9 @@ const siteBase = '/fusiongold-ea-site';
     }
     .lang-btn.active { background:var(--gold); color:#0D0D1A; border-color:var(--gold); }
     .lang-btn:hover:not(.active) { color: var(--gold); }
+    /* Language content block visibility */
+    html.jp-mode .lang-en { display: none !important; }
+    html.en-mode .lang-jp { display: none !important; }
     .demo-nav-btn {
       display:inline-block; padding:4px 12px; border-radius:6px;
       font-size:0.8rem; font-weight:700; text-decoration:none;
@@ -399,8 +402,8 @@ const siteBase = '/fusiongold-ea-site';
       'faq-a4': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。', EN: '5% daily loss limit, loss filter, aggregate risk control, cooldown, and more.' },
       'faq-link': { JP: 'すべてのFAQを見る →', EN: 'View all FAQs →' },
       // CTA section
-      'cta-title': { JP: 'まずはデモ口座でお試しください', EN: 'Try it risk-free with a demo account' },
-      'cta-sub': { JP: '14日間無料。セットアップサポート付き。', EN: '14 days free. Setup support included.' },
+      'cta-title': { JP: 'まずはデモ口座でお試しください', EN: '提供demo网站观摩交易' },
+      'cta-sub': { JP: '14日間無料。セットアップサポート付き。', EN: '' },
       'cta-demo': { JP: 'デモを申し込む', EN: 'Request Demo' },
       'cta-faq': { JP: 'FAQを見る', EN: 'View FAQ' },
       // Author section - additional
@@ -493,6 +496,13 @@ const siteBase = '/fusiongold-ea-site';
       'contact-msg': { JP: 'メッセージ', EN: 'Message' },
       'contact-submit': { JP: '送信する', EN: 'Send' },
       'contact-note': { JP: '※お返事までに1-2営業日いただく場合がございます。', EN: '※ We typically respond within 1-2 business days.' },
+      // Blog section
+      'blog-title': { JP: 'ブログ', EN: 'Blog' },
+      'blog-sub': { JP: 'XAUUSD分析、トレード戦略、EA最新情報', EN: 'XAUUSD Analysis, Trading Strategies & EA Updates' },
+      'blog-empty': { JP: 'まだ記事がありません', EN: 'No articles yet' },
+      'blog-empty2': { JP: '近日公開予定', EN: 'Coming soon' },
+      'blog-readmore': { JP: '続きを読む →', EN: 'Read more →' },
+      'blog-back': { JP: '← ブログ一覧', EN: '← Back to Blog' },
       // Author section
       'author-title': { JP: '制作者について', EN: 'About the Author' },
       'author-sub': { JP: '数学と金融理論に基づくEA開発', EN: 'EA development grounded in math & finance theory' },
@@ -513,6 +523,15 @@ const siteBase = '/fusiongold-ea-site';
       });
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
       document.documentElement.lang = lang === 'JP' ? 'ja' : 'en';
+      document.documentElement.classList.remove('jp-mode', 'en-mode');
+      document.documentElement.classList.add(lang === 'JP' ? 'jp-mode' : 'en-mode');
+    }
+    // Locale-aware dates
+      const locale = lang === 'JP' ? 'ja-JP' : 'en-US';
+      document.querySelectorAll('[data-date]').forEach(el => {
+        const d = new Date(el.dataset.date);
+        if (!isNaN(d)) el.textContent = d.toLocaleDateString(locale);
+      });
     }
   };
   document.addEventListener('DOMContentLoaded', () => {
