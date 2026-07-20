@@ -1,36 +1,36 @@
 {
-  "updated": "2026-07-18 19:30 BJT",
+  "updated": "2026-07-20 19:30 BJT",
   "account": {
     "balance": 4797.07,
-    "equity": 4797.07,
-    "dayPnL": -10.85,
-    "dayPnLPercent": -0.23,
-    "positions": 0,
+    "equity": 4703.91,
+    "dayPnL": 0.00,
+    "dayPnLPercent": 0.00,
+    "positions": 2,
     "maxPositions": 4,
     "status": "RUNNING"
   },
   "session": {
-    "status": "BLOCKED",
-    "cooldown": 241
+    "status": "OK",
+    "cooldown": 3
   },
   "market": {
-    "adx": 25.1,
+    "adx": 18.48,
     "adxHard": 20,
-    "spread": 50,
+    "spread": 19,
     "maxSpread": 50
   },
   "signal": {
-    "bull": 0,
+    "bull": 4,
     "bear": 0,
-    "h4Buy": "N",
+    "h4Buy": "Y",
     "h4Sell": "Y",
     "canBuy": "N",
     "canSell": "N",
-    "need": 2
+    "need": 3
   },
   "risk": {
-    "aggRisk": 0.0,
-    "maxRisk": 191.88,
+    "aggRisk": 141.80,
+    "maxRisk": 190.46,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
@@ -44,8 +44,8 @@
   ],
   "tradeHistory": [
     {"date": "2026-07-17", "pnl": -10.85, "trades": 6, "winRate": 66.67},
-    {"date": "2026-07-16", "pnl": 153.33, "trades": 6, "winRate": 66.67},
-    {"date": "2026-07-15", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-14", "pnl": 0.0, "trades": 0, "winRate": 0}
+    {"date": "2026-07-18", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-19", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-20", "pnl": 0.0, "trades": 0, "winRate": 0}
   ]
 }
