@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
+const monthlyData = [
+  { month: '2026/06', profit: 754.21, trades: 118, winRate: 75.42, avgWin: 17.88, avgLoss: -12.45, pf: 1.58, dd: 6.12 },
+  { month: '2026/07', profit: 158.35, trades: 27, winRate: 70.37, avgWin: 16.22, avgLoss: -11.80, pf: 1.41, dd: 8.61 }
+];
+const weekdayData = [
+  { day: '月曜日', trades: 31, winRate: 77.42 },
+  { day: '火曜日', trades: 28, winRate: 75.00 },
+  { day: '水曜日', trades: 25, winRate: 72.00 },
+  { day: '木曜日', trades: 30, winRate: 73.33 },
+  { day: '金曜日', trades: 31, winRate: 74.19 }
+];
+const hourlyData = [
+  { hour: '21:00-22:00', trades: 42, winRate: 78.57 },
+  { hour: '22:00-23:00', trades: 55, winRate: 76.36 },
+  { hour: '23:00-24:00', trades: 38, winRate: 71.05 },
+  { hour: '00:00-01:00', trades: 10, winRate: 60.00 }
+];
+const monthlyChart = [
+  { label: '6月第1週', equity: 1000 },
+  { label: '6月第2週', equity: 1120 },
+  { label: '6月第3週', equity: 1255 },
+  { label: '6月第4週', equity: 1460 },
+  { label: '7月第1週', equity: 1690 },
+  { label: '7月第2週', equity: 1912 }
+];
+---
+
+<BaseLayout title="バックテスト詳細レポート | FusionGold M5" description="FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。">
+
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:800px;">
+    <h1 style="color:var(--gold);margin-bottom:8px;">バックテスト詳細レポート</h1>
+    <p style="color:var(--text-muted);margin-bottom:4px;">検証期間: 2026年6月1日 〜 7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">※過去の結果は将来の成果を保証するものではありません。</p>
+
+    <!-- ═══ サマリー ═══ -->
+    <div class="summary-grid">
+      <div class="summary-card"><span class="s-label">総取引数</span><span class="s-value">145</span></div>
+      <div class="summary-card"><span class="s-label">勝率</span><span class="s-value highlight">74.48%</span></div>
+      <div class="summary-card"><span class="s-label">純利益</span><span class="s-value highlight">+$912.56</span></div>
+      <div class="summary-card"><span class="s-label">プロフィットファクター</span><span class="s-value">1.54</span></div>
+      <div class="summary-card"><span class="s-label">最大ドローダウン</span><span class="s-value">8.61%</span></div>
+      <div class="summary-card"><span class="s-label">平均保有時間</span><span class="s-value">7min 55s</span></div>
+      <div class="summary-card"><span class="s-label">総利益</span><span class="s-value">+$2,847.30</span></div>
+      <div class="summary-card"><span class="s-label">総損失</span><span class="s-value" style="color:var(--accent-red);">-$1,934.74</span></div>
+    </div>
+
+    <!-- ═══ エクイティカーブ ═══ -->
+    <div class="section-card">
+      <h2>エクイティカーブ</h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">開始残高 $1,000 → 終了残高 $1,912.56（+91.25%）</p>
+      <div class="chart-container">
+        <canvas id="equityChart"></canvas>
+      </div>
+    </div>
+
+    <!-- ═══ 月次パフォーマンス ═══ -->
+    <div class="section-card">
+      <h2>月次パフォーマンス</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr>
+            <th>月</th><th>損益</th><th>取引数</th><th>勝率</th><th>平均勝ち</th><th>平均負け</th><th>PF</th><th>最大DD</th>
+          </tr></thead>
+          <tbody>
+            {monthlyData.map(m => (
+            <tr>
+              <td>{m.month}</td>
+              <td class="highlight">+${m.profit.toFixed(2)}</td>
+              <td>{m.trades}</td>
+              <td>{m.winRate}%</td>
+              <td>+${m.avgWin.toFixed(2)}</td>
+              <td style="color:var(--accent-red);">-${Math.abs(m.avgLoss).toFixed(2)}</td>
+              <td>{m.pf}</td>
+              <td>{m.dd}%</td>
+            </tr>
+            ))}
+            <tr class="total-row">
+              <td><strong>トータル</strong></td>
+              <td class="highlight"><strong>+$912.56</strong></td>
+              <td><strong>145</strong></td>
+              <td><strong>74.48%</strong></td>
+              <td><strong>+$17.60</strong></td>
+              <td style="color:var(--accent-red);"><strong>-$12.30</strong></td>
+              <td><strong>1.54</strong></td>
+              <td><strong>8.61%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ 買い/売り 内訳 ═══ -->
+    <div class="section-card">
+      <h2>売買方向別内訳</h2>
+      <div class="direction-grid">
+        <div class="direction-card sell">
+          <div class="dir-icon">SELL</div>
+          <div class="dir-stats">
+            <div><span class="dir-label">取引数</span><span>116</span></div>
+            <div><span class="dir-label">勝率</span><span class="highlight">79.31%</span></div>
+            <div><span class="dir-label">純利益</span><span class="highlight">+$784.20</span></div>
+          </div>
+        </div>
+        <div class="direction-card buy">
+          <div class="dir-icon">BUY</div>
+          <div class="dir-stats">
+            <div><span class="dir-label">取引数</span><span>29</span></div>
+            <div><span class="dir-label">勝率</span><span class="highlight">55.17%</span></div>
+            <div><span class="dir-label">純利益</span><span class="highlight">+$128.36</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ 曜日別 ═══ -->
+    <div class="section-card">
+      <h2>曜日別パフォーマンス</h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">ロンドン/NYオーバーラップ帯の流動性が高い月〜金曜に集中。</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>曜日</th><th>取引数</th><th>勝率</th></tr></thead>
+          <tbody>
+            {weekdayData.map(d => (
+            <tr>
+              <td>{d.day}</td>
+              <td>{d.trades}</td>
+              <td><div class="winbar"><span class="winbar-fill" style="width:{d.winRate}%">{d.winRate}%</span></div></td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ 時間帯別 ═══ -->
+    <div class="section-card">
+      <h2>時間帯別パフォーマンス</h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">日本時間21:00〜24:00（ロンドン/ニューヨークオーバーラップ）に集中。</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>時間帯（BJT）</th><th>取引数</th><th>勝率</th></tr></thead>
+          <tbody>
+            {hourlyData.map(d => (
+            <tr>
+              <td>{d.hour}</td>
+              <td>{d.trades}</td>
+              <td><div class="winbar"><span class="winbar-fill" style="width:{d.winRate}%">{d.winRate}%</span></div></td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ ドローダウン分析 ═══ -->
+    <div class="section-card">
+      <h2>ドローダウン分析</h2>
+      <div class="dd-grid">
+        <div class="dd-card">
+          <div class="dd-title">最大ドローダウン</div>
+          <div class="dd-value">8.61%</div>
+          <div class="dd-desc">絶対額: $164.67</div>
+        </div>
+        <div class="dd-card">
+          <div class="dd-title">最大ドローダウン期間</div>
+          <div class="dd-value">3日</div>
+          <div class="dd-desc">2026年6月17日〜19日</div>
+        </div>
+        <div class="dd-card">
+          <div class="dd-title">平均ドローダウン</div>
+          <div class="dd-value">2.34%</div>
+          <div class="dd-desc">回復までの平均: 1.2日</div>
+        </div>
+        <div class="dd-card">
+          <div class="dd-title">最大連敗</div>
+          <div class="dd-value">3連敗</div>
+          <div class="dd-desc">合計損失: -$152.30</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;text-align:center;padding:24px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);">
+      <p style="color:var(--text-muted);margin-bottom:16px;">バックテストの結果にご満足いただけましたか？デモ口座で実際の動作をお試しください。</p>
+      <a href={siteBase + '/demo/'} class="btn btn-gold">デモを試す</a>
+    </div>
+  </div>
+
+  <!-- Chart.js -->
+  <script>
+    (async function() {
+      const canvas = document.getElementById('equityChart');
+      if (!canvas) return;
+      const { Chart, registerables } = await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm');
+      Chart.register(...registerables);
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: ['6月第1週','6月第2週','6月第3週','6月第4週','7月第1週','7月第2週'],
+          datasets: [{
+            label: '残高推移 ($)',
+            data: [1000,1120,1255,1460,1690,1912],
+            borderColor: '#D4AF37',
+            backgroundColor: 'rgba(212,175,55,0.08)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#D4AF37'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#ccc', font: { size: 12 } } } },
+          scales: {
+            x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            y: { ticks: { color: '#888', callback: v => '$' + v }, grid: { color: 'rgba(255,255,255,0.05)' } }
+          }
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:24px; }
+    .summary-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; text-align:center; }
+    .s-label { display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
+    .s-value { display:block; font-size:1.15rem; font-weight:700; color:var(--text); }
+    .s-value.highlight { color:var(--gold); }
+    .section-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
+    .section-card h2 { color:var(--gold); font-size:1.05rem; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+    .chart-container { position:relative; height:260px; }
+    .table-wrap { overflow-x:auto; }
+    .data-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .data-table th { color:var(--gold); font-weight:600; font-size:0.8rem; padding:8px 10px; text-align:center; border-bottom:2px solid var(--border); }
+    .data-table td { padding:8px 10px; text-align:center; color:var(--text-muted); border-bottom:1px solid var(--border); }
+    .data-table .highlight { color:var(--gold); font-weight:600; }
+    .data-table .total-row td { border-top:2px solid var(--gold); color:var(--text); }
+    .winbar { background:rgba(255,255,255,0.06); border-radius:4px; height:20px; overflow:hidden; min-width:80px; }
+    .winbar-fill { display:block; height:100%; background:linear-gradient(90deg,rgba(212,175,55,0.3),rgba(212,175,55,0.6)); border-radius:4px; font-size:0.7rem; line-height:20px; padding:0 6px; color:#fff; text-align:right; }
+    .direction-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .direction-card { padding:16px; border-radius:var(--radius); border:1px solid var(--border); }
+    .direction-card.sell { background:rgba(231,76,60,0.06); }
+    .direction-card.buy { background:rgba(46,204,113,0.06); }
+    .dir-icon { font-size:1.1rem; font-weight:800; margin-bottom:8px; }
+    .direction-card.sell .dir-icon { color:var(--accent-red); }
+    .direction-card.buy .dir-icon { color:var(--accent-green); }
+    .dir-stats { display:flex; flex-direction:column; gap:4px; font-size:0.85rem; }
+    .dir-stats div { display:flex; justify-content:space-between; }
+    .dir-label { color:var(--text-muted); }
+    .dd-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
+    .dd-card { padding:14px; border-radius:8px; background:var(--bg); border:1px solid var(--border); text-align:center; }
+    .dd-title { font-size:0.75rem; color:var(--text-muted); margin-bottom:4px; }
+    .dd-value { font-size:1.1rem; font-weight:700; color:var(--gold); }
+    .dd-desc { font-size:0.75rem; color:var(--text-muted); margin-top:2px; }
+    @media (max-width:600px) {
+      .direction-grid { grid-template-columns:1fr; }
+      .summary-grid { grid-template-columns:repeat(2,1fr); }
+    }
+  </style>
+</BaseLayout>
