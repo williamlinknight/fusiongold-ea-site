@@ -288,8 +288,8 @@ const siteBase = '/fusiongold-ea-site';
     <div class="container" style="display:flex;flex-direction:column;gap:8px;">
       <p data-i18n="footer-text">© 2026 FusionGold M5 · XAUUSD専用EA</p>
       <div style="display:flex;gap:16px;justify-content:center;font-size:0.8rem;">
-        <a href={siteBase + '/disclaimer/'} style="color:var(--text-muted);text-decoration:underline;">免責事項</a>
-        <a href={siteBase + '/privacy/'} style="color:var(--text-muted);text-decoration:underline;">プライバシーポリシー</a>
+        <a href={siteBase + '/disclaimer/'} style="color:var(--text-muted);text-decoration:underline;" data-i18n="footer-disclaimer">免責事項</a>
+        <a href={siteBase + '/privacy/'} style="color:var(--text-muted);text-decoration:underline;" data-i18n="footer-privacy">プライバシーポリシー</a>
       </div>
     </div>
   </footer>
@@ -311,6 +311,8 @@ const siteBase = '/fusiongold-ea-site';
       'nav-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
       'nav-contact': { JP: 'お問い合わせ', EN: 'Contact' },
       'footer-text': { JP: '© 2026 FusionGold M5 · XAUUSD専用EA', EN: '© 2026 FusionGold M5 · XAUUSD EA' },
+      'footer-disclaimer': { JP: '免責事項', EN: 'Disclaimer' },
+      'footer-privacy': { JP: 'プライバシーポリシー', EN: 'Privacy Policy' },
       'hero-badge': { JP: 'ゴールド専用EA', EN: 'Gold-Specialized EA' },
       'hero-h1': { JP: 'FusionGold M5', EN: 'FusionGold M5' },
       'hero-sub1': { JP: 'XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載', EN: 'Automated trading EA for XAUUSD (Gold) M5 — ADX + H4 Zone + Contradiction Detection' },
@@ -357,6 +359,7 @@ const siteBase = '/fusiongold-ea-site';
       'fw-balance': { JP: '口座残高', EN: 'Balance' },
       'fw-daypnl': { JP: '本日P&L', EN: 'Day P&L' },
       'fw-period': { JP: '運用期間', EN: 'Running Days' },
+      'fw-period-unit': { JP: '日', EN: ' days' },
       'fw-totalpnl': { JP: '累計損益', EN: 'Cumulative P&L' },
       'fw-link': { JP: 'ライブパフォーマンスを見る →', EN: 'View live performance →' },
       // Setup section
