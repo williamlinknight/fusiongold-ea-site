@@ -118,6 +118,34 @@ const siteBase = '/fusiongold-ea-site';
     }
     .dropdown-content a:hover { background:var(--bg-card-hover); color:var(--gold); }
     .dropdown:hover .dropdown-content { display:block; }
+
+    /* Hamburger */
+    .hamburger {
+      display:none; flex-direction:column; gap:4px;
+      background:none; border:none; cursor:pointer;
+      padding:4px; z-index:101;
+    }
+    .hamburger span {
+      display:block; width:22px; height:2px;
+      background:var(--text); border-radius:2px;
+      transition:var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
+
+    /* Mobile nav */
+    @media (max-width:820px) {
+      .links { display:none; }
+      .links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--bg-card); border-bottom:1px solid var(--border); padding:12px; z-index:100; box-shadow:0 8px 24px rgba(0,0,0,.3); }
+      .links.open > a, .links.open .dropdown-trigger { padding:10px 0; width:100%; }
+      .links.open .dropdown { flex-direction:column; width:100%; }
+      .links.open .dropdown-content { position:static; transform:none; box-shadow:none; border:none; background:var(--bg); margin:4px 0 4px 16px; border-radius:6px; display:none; }
+      .links.open .dropdown.open .dropdown-content { display:block; }
+      .links.open .lang-toggle { padding-top:8px; }
+      .hamburger { display:flex; }
+      .top-bar { display:none; }
+    }
     .btn {
       display: inline-block; padding: 12px 32px; border-radius: 8px;
       font-weight: 600; font-size: 0.95rem; cursor: pointer; border: none;
@@ -218,7 +246,10 @@ const siteBase = '/fusiongold-ea-site';
 
   <nav class="nav">
     <a href={siteBase + '/'} class="logo">FusionGold M5</a>
-    <div class="links">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="links" id="navLinks">
       <a href={siteBase + '/'} data-i18n="nav-home">ホーム</a>
 
       <div class="dropdown">
@@ -408,6 +439,28 @@ const siteBase = '/fusiongold-ea-site';
       new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
       }, { threshold: 0.1 }).observe(el);
+    });
+    // Mobile nav: hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks?.classList.toggle('open');
+    });
+    // Mobile nav: dropdown click toggle
+    document.querySelectorAll('.dropdown-trigger').forEach(t => {
+      t.addEventListener('click', function(e) {
+        if (window.innerWidth > 820) return;
+        e.preventDefault();
+        this.closest('.dropdown').classList.toggle('open');
+      });
+    });
+    // Close mobile nav on link click
+    navLinks?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger?.classList.remove('open');
+        navLinks?.classList.remove('open');
+      });
     });
   });
   </script>

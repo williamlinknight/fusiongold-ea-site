@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const siteBase = '/fusiongold-ea-site';
 ---
 
 <BaseLayout title="404 — Page Not Found | FusionGold M5" description="Page not found">
   <div class="container" style="padding:100px 0;text-align:center;">
     <h1 style="font-size:4rem;color:var(--gold);margin-bottom:8px;">404</h1>
     <p style="font-size:1.1rem;color:var(--text-muted);margin-bottom:24px;" data-i18n="404-text">お探しのページが見つかりませんでした。</p>
-    <a href="/" class="btn btn-gold" data-i18n="404-home">ホームに戻る</a>
+    <a href={siteBase + '/'} class="btn btn-gold" data-i18n="404-home">ホームに戻る</a>
   </div>
   <script is:inline>
   if (typeof LANG !== 'undefined') {
