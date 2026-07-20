@@ -11,7 +11,7 @@ for (const p of enPosts) enMap[p.id] = p;
 
 const allPosts = jpPosts
   .map(p => ({
-    slug: p.id,
+    slug: p.id.replace(/\.(md|mdx)$/, ''),
     jp: p,
     en: enMap[p.id] || null,
   }))
