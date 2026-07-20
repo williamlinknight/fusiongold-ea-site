@@ -48,25 +48,25 @@ const faqs = [
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-val">74.48%</span>
-          <span class="hero-stat-label">勝率（バックテスト）</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-winrate">勝率（バックテスト）</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">+$912</span>
-          <span class="hero-stat-label">純利益（1ヶ月）</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-profit">純利益（1ヶ月）</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">1.54</span>
-          <span class="hero-stat-label">プロフィットファクター</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-pf">プロフィットファクター</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">8.61%</span>
-          <span class="hero-stat-label">最大DD</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-dd">最大DD</span>
         </div>
       </div>
 
       <div class="hero-actions">
         <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="hero-demo-cta">デモを試す</a>
-        <a href={siteBase + '/backtest/'} class="btn btn-outline">バックテスト詳細</a>
+        <a href={siteBase + '/backtest/'} class="btn btn-outline" data-i18n="hero-bt-link">バックテスト詳細</a>
         <a href={siteBase + '/brief/'} class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a>
       </div>
     </div>
@@ -75,11 +75,11 @@ const faqs = [
   <!-- ═══════════════ 戦略概要 ═══════════════ -->
   <section class="section" id="strategy">
     <div class="container">
-      <h2 class="section-title fade-in">戦略の中核 — 4バケットスコアリング</h2>
-      <p class="section-sub fade-in">トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を総合評価</p>
+      <h2 class="section-title fade-in" data-i18n="strat-title">戦略の中核 — 4バケットスコアリング</h2>
+      <p class="section-sub fade-in" data-i18n="strat-sub">トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を総合評価</p>
 
       <div class="strategy-flow fade-in">
-        <div class="sf-step"><div class="sf-num">①</div><div class="sf-text">H4ゾーン<br/><span>大きな流れを読む</span></div></div>
+        <div class="sf-step"><div class="sf-num">①</div><div class="sf-text" data-i18n="strat-s1">H4ゾーン<br/><span data-i18n="strat-s1-sub">大きな流れを読む</span></div></div>
         <div class="sf-arrow">→</div>
         <div class="sf-step"><div class="sf-num">②</div><div class="sf-text">ADXゲート<br/><span>相場の質を判定</span></div></div>
         <div class="sf-arrow">→</div>
