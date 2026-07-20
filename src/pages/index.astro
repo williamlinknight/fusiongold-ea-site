@@ -1,14 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 const siteBase = '/fusiongold-ea-site';
+
+// Load live data for the forward test section
+let liveData = null;
+try {
+  const dp = path.resolve(process.cwd(), 'public/data/ea-status.json');
+  liveData = JSON.parse(fs.readFileSync(dp, 'utf-8'));
+} catch {}
+const ld = liveData?.account || { balance: 4797, dayPnL: 0, dayPnLPercent: 0 };
+const th = liveData?.tradeHistory || [];
+const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
+
+const faqs = [
+  { q: 'FusionGold M5 はどのように動きますか？', a: 'ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約3時間だけ取引を行います。' },
+  { q: 'デモ口座で試せますか？', a: 'はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。' },
+  { q: '物々交換はどのように行いますか？', a: 'ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。' },
+  { q: 'リスク管理はどのようになっていますか？', a: '日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。' }
+];
 ---
 
 <BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。回測勝率74.48%。物々交換でご利用いただけます。">
 
+  <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero">
     <div class="hero-content container">
 
-      <!-- JSON-LD: SoftwareApplication -->
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -17,116 +36,391 @@ const siteBase = '/fusiongold-ea-site';
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Windows/Mac (MT5)",
         "description": "ゴールド（XAUUSD）専用のMT5自動売買EA。ADX+H4ゾーン+矛盾検出エンジン搭載。",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "JPY",
-          "description": "物々交換のみ。現金不要。"
-        }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "物々交換のみ。現金不要。" }
       }
       </script>
-      <span style="display:inline-block;padding:4px 16px;border-radius:20px;background:rgba(212,175,55,.12);color:var(--gold);font-size:0.85rem;font-weight:600;margin-bottom:20px;letter-spacing:0.5px;" data-i18n="hero-badge">ゴールド専用EA</span>
+
+      <span class="hero-badge" data-i18n="hero-badge">ゴールド専用EA</span>
       <h1 data-i18n="hero-h1">FusionGold M5</h1>
       <p class="subtitle" data-i18n="hero-sub1">XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載</p>
       <p class="subtitle2" data-i18n="hero-sub2">IC Markets MT5対応 · 1日3時間集中取引 · リスク管理内蔵</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val">74.48%</span>
+          <span class="hero-stat-label">勝率（バックテスト）</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">+$912</span>
+          <span class="hero-stat-label">純利益（1ヶ月）</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">1.54</span>
+          <span class="hero-stat-label">プロフィットファクター</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">8.61%</span>
+          <span class="hero-stat-label">最大DD</span>
+        </div>
+      </div>
+
       <div class="hero-actions">
         <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="hero-demo-cta">デモを試す</a>
-        <a href="#features" class="btn btn-outline" data-i18n="hero-cta">特徴を見る</a>
+        <a href={siteBase + '/backtest/'} class="btn btn-outline">バックテスト詳細</a>
         <a href={siteBase + '/brief/'} class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a>
       </div>
-      <a href={siteBase + '/live/'} class="demo-link" data-i18n="hero-demo">→ ライブパフォーマンスを見る</a>
     </div>
   </section>
 
-  <section id="features" class="section">
+  <!-- ═══════════════ 戦略概要 ═══════════════ -->
+  <section class="section" id="strategy">
     <div class="container">
-      <h2 class="section-title fade-in" data-i18n="feat-title">FusionGold M5 の特徴</h2>
-      <p class="section-sub fade-in" data-i18n="feat-sub">4バケットスコアリング、ADXゲート、H4ゾーンフィルター — 精度を追求した設計</p>
-      <div class="features-grid">
-        <div class="feature-card fade-in"><span class="feature-icon">🎯</span><h3 data-i18n="f1-title">ADX + 4バケットスコアリング</h3><p data-i18n="f1-desc">トレンド/モメンタム/ストラクチャー/流動性の4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。</p></div>
-        <div class="feature-card fade-in"><span class="feature-icon">📊</span><h3 data-i18n="f2-title">H4ゾーンフィルター</h3><p data-i18n="f2-desc">4時間足のEMA方向とH4ゾーンでフィルタリング。大きな流れに逆らわないトレード。</p></div>
-        <div class="feature-card fade-in"><span class="feature-icon">🛡️</span><h3 data-i18n="f3-title">矛盾信号検出</h3><p data-i18n="f3-desc">同一バーで買いと売りが同時発生した場合、両方ブロック。相反する注文を防止。</p></div>
-        <div class="feature-card fade-in"><span class="feature-icon">⏰</span><h3 data-i18n="f4-title">3時間集中取引</h3><p data-i18n="f4-desc">ロンドン/NYオーバーラップの高流動性帯に集中。1日3時間のみ取引。</p></div>
-        <div class="feature-card fade-in"><span class="feature-icon">🔒</span><h3 data-i18n="f5-title">リスク管理内蔵</h3><p data-i18n="f5-desc">日損5%リミット、連敗フィルター、Aggregate Risk制御。口座を保護。</p></div>
-        <div class="feature-card fade-in"><span class="feature-icon">💻</span><h3 data-i18n="f6-title">MT5対応（IC Markets）</h3><p data-i18n="f6-desc">MT5で動作。IC Markets Raw Spread口座推奨。</p></div>
+      <h2 class="section-title fade-in">戦略の中核 — 4バケットスコアリング</h2>
+      <p class="section-sub fade-in">トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を総合評価</p>
+
+      <div class="strategy-flow fade-in">
+        <div class="sf-step"><div class="sf-num">①</div><div class="sf-text">H4ゾーン<br/><span>大きな流れを読む</span></div></div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-step"><div class="sf-num">②</div><div class="sf-text">ADXゲート<br/><span>相場の質を判定</span></div></div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-step"><div class="sf-num">③</div><div class="sf-text">4バケット<br/><span>スコア240以上で通過</span></div></div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-step"><div class="sf-num">④</div><div class="sf-text">矛盾検出<br/><span>最終確認</span></div></div>
+        <div class="sf-arrow green">✓</div>
+        <div class="sf-step"><div class="sf-num">⑤</div><div class="sf-text">エントリー<br/><span>3時間集中取引</span></div></div>
+      </div>
+
+      <div class="bucket-grid fade-in">
+        <div class="bucket-card">
+          <div class="bc-icon">📈</div>
+          <h3>トレンドバケット</h3>
+          <p>価格とEMAの関係、ADXの方向性成分（DI+/DI-）を評価。トレンドフォロー戦略の基盤。</p>
+        </div>
+        <div class="bucket-card">
+          <div class="bc-icon">⚡</div>
+          <h3>モメンタムバケット</h3>
+          <p>MACD、RSI、価格変化率（ROC）を用いて短期的な勢いを測定。トレンドの加速・減速を検出。</p>
+        </div>
+        <div class="bucket-card">
+          <div class="bc-icon">🏗️</div>
+          <h3>ストラクチャーバケット</h3>
+          <p>高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。</p>
+        </div>
+        <div class="bucket-card">
+          <div class="bc-icon">💧</div>
+          <h3>流動性バケット</h3>
+          <p>取引量、スプレッド幅、セッション時間帯を評価。約定品質と取引コストを考慮。</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href={siteBase + '/strategy/'} class="text-link">戦略の詳細を見る →</a>
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════ バックテスト結果 ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container">
-      <h2 class="section-title fade-in" data-i18n="perf-title">バックテスト実績</h2>
-      <p class="section-sub fade-in" data-i18n="perf-sub">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
-      <div class="perf-table-wrap fade-in">
-        <table class="perf-table">
-          <thead><tr>
-            <th data-i18n="perf-trades">総取引数</th><th data-i18n="perf-winrate">勝率</th>
-            <th data-i18n="perf-profit">純利益</th><th data-i18n="perf-pf">PF</th>
-            <th data-i18n="perf-dd">最大DD</th><th data-i18n="perf-hold">平均保有</th>
-          </tr></thead>
-          <tbody><tr>
-            <td class="highlight">145</td><td class="highlight">74.48%</td>
-            <td class="highlight">+$912.56</td><td class="highlight">1.54</td>
-            <td class="highlight">8.61%</td><td>7min 55s</td>
-          </tr></tbody>
-        </table>
+      <h2 class="section-title fade-in">バックテスト実績</h2>
+      <p class="section-sub fade-in">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
+
+      <div class="bt-summary fade-in">
+        <div class="bt-item"><span class="bt-num">145</span><span class="bt-lbl">総取引数</span></div>
+        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">74.48%</span><span class="bt-lbl">勝率</span></div>
+        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">+$912.56</span><span class="bt-lbl">純利益</span></div>
+        <div class="bt-item"><span class="bt-num">1.54</span><span class="bt-lbl">PF</span></div>
+        <div class="bt-item"><span class="bt-num">8.61%</span><span class="bt-lbl">最大DD</span></div>
+        <div class="bt-item"><span class="bt-num">SELL 79%</span><span class="bt-lbl">売り勝率</span></div>
       </div>
-      <div class="perf-table-wrap fade-in">
-        <table class="perf-table">
-          <thead><tr><th></th><th data-i18n="perf-trades">取引数</th><th data-i18n="perf-winrate">勝率</th></tr></thead>
-          <tbody>
-            <tr><td style="color:var(--gold);font-weight:600;">SELL</td><td>116</td><td class="highlight">79.31%</td></tr>
-            <tr><td style="color:var(--gold);font-weight:600;">BUY</td><td>29</td><td class="highlight">55.17%</td></tr>
-          </tbody>
-        </table>
+
+      <div class="bt-chart-wrap fade-in">
+        <canvas id="btEquityChart"></canvas>
+      </div>
+
+      <div style="text-align:center;margin-top:16px;">
+        <a href={siteBase + '/backtest/'} class="btn btn-gold">詳細レポートを見る</a>
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════ フォワードテスト ═══════════════ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">フォワードテスト（リアル口座）</h2>
+      <p class="section-sub fade-in">IC Markets Raw Spread · リアル口座で稼働中</p>
+
+      <div class="fw-summary fade-in">
+        <div class="fw-card">
+          <div class="fw-label">口座残高</div>
+          <div class="fw-val">${ld.balance.toFixed(2)}</div>
+        </div>
+        <div class="fw-card">
+          <div class="fw-label">本日P&L</div>
+          <div class="fw-val" style="color:{ld.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
+            {ld.dayPnL >= 0 ? '+' : ''}{ld.dayPnL.toFixed(2)}
+          </div>
+        </div>
+        <div class="fw-card">
+          <div class="fw-label">運用期間</div>
+          <div class="fw-val">{th.length}日</div>
+        </div>
+        <div class="fw-card">
+          <div class="fw-label">累計損益</div>
+          <div class="fw-val" style="color:{totalPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
+            {totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <a href={siteBase + '/live/'} class="text-link">ライブパフォーマンスを見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ セットアップ ═══════════════ -->
+  <section class="section" style="background:var(--bg-card);">
+    <div class="container">
+      <h2 class="section-title fade-in">セットアップの流れ</h2>
+      <p class="section-sub fade-in">15〜30分で運用開始</p>
+
+      <div class="setup-mini fade-in">
+        <div class="setup-step">
+          <div class="ss-num">1</div>
+          <div class="ss-body">
+            <h3>EAファイルを受け取る</h3>
+            <p>物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="ss-num">2</div>
+          <div class="ss-body">
+            <h3>MT5にインストール</h3>
+            <p>データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="ss-num">3</div>
+          <div class="ss-body">
+            <h3>自動売買を開始</h3>
+            <p>EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href={siteBase + '/setup/'} class="text-link">詳細なセットアップガイド →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ リスク管理 ═══════════════ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">多層リスク管理</h2>
+      <p class="section-sub fade-in">口座を保護する6つの仕組み</p>
+      <div class="risk-grid fade-in">
+        <div class="risk-card"><div class="rc-icon">🛑</div><h3>日損5%リミット</h3><p>1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止</p></div>
+        <div class="risk-card"><div class="rc-icon">📉</div><h3>連敗フィルター</h3><p>連続損失発生時、市場環境の変化を待ってエントリーを休止</p></div>
+        <div class="risk-card"><div class="rc-icon">⚖️</div><h3>Aggregate Risk</h3><p>全ポジションのリスク総量を監視・制御</p></div>
+        <div class="risk-card"><div class="rc-icon">⏱️</div><h3>クールダウン</h3><p>取引後一定時間は新規エントリーなし。連続取引を防止</p></div>
+        <div class="risk-card"><div class="rc-icon">📏</div><h3>固定ストップロス</h3><p>全エントリーに固定SL設定。予期せぬ逆行から口座を保護</p></div>
+        <div class="risk-card"><div class="rc-icon">📊</div><h3>ポジションサイジング</h3><p>シグナル強度と口座残高に基づき動的にロット調整</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="section" style="background:var(--bg-card);">
+    <div class="container" style="max-width:640px;">
+      <h2 class="section-title fade-in">よくある質問</h2>
+      {faqs.map((item, i) => (
+      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
+        <summary class="faq-q">
+          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">{String(i+1).padStart(2,'0')}</span>
+          <span>{item.q}</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a"><p>{item.a}</p></div>
+      </details>
+      ))}
+      <div style="text-align:center;margin-top:20px;">
+        <a href={siteBase + '/faq/'} class="text-link">すべてのFAQを見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 物々交換 ═══════════════ -->
   <section class="section">
     <div class="container" style="text-align:center;">
-      <h2 class="section-title fade-in" data-i18n="price-title">ご利用方法</h2>
-      <p class="section-sub fade-in" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
-      <div class="fade-in" style="max-width:400px;margin:0 auto;background:var(--bg-card);border-radius:var(--radius);padding:32px;border:2px solid var(--gold);position:relative;">
-        <div style="font-size:1.3rem;color:var(--gold);font-weight:700;margin-bottom:8px;" data-i18n="p3-name">物々交換</div>
-        <div style="font-size:2.5rem;color:var(--gold);font-weight:800;margin-bottom:4px;" data-i18n="p3-price">相談</div>
-        <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;" data-i18n="p3-period">現金不要</div>
-        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px;" data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
-        <div style="margin-bottom:20px;">
-          <div style="padding:6px 0;font-size:0.85rem;border-bottom:1px solid var(--border);" data-i18n="p3-f1">✓ EAファイル（.ex5）</div>
-          <div style="padding:6px 0;font-size:0.85rem;border-bottom:1px solid var(--border);" data-i18n="p3-f2">✓ 設定ガイド</div>
-          <div style="padding:6px 0;font-size:0.85rem;border-bottom:1px solid var(--border);" data-i18n="p3-f3">✓ メールサポート</div>
+      <h2 class="section-title fade-in">ご利用方法</h2>
+      <p class="section-sub fade-in">現金不要。物々交換のみでご提供しています。</p>
+
+      <div class="barter-card fade-in">
+        <div class="barter-price">物々交換</div>
+        <div class="barter-sub">現金不要</div>
+        <p>日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
+        <div class="barter-includes">
+          <div>✓ EAファイル（.ex5）</div>
+          <div>✓ 設定ガイド</div>
+          <div>✓ メールサポート</div>
         </div>
       </div>
-      <div class="fade-in" style="margin-top:32px;padding:20px;border-radius:var(--radius);background:rgba(212,175,55,0.08);border:1px dashed var(--gold);text-align:center;">
-        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:8px;" data-i18n="barter-text">以下のような日本製品と交換可能です。</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0;">
-          <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🎮 ゲーム機本体</span>
-          <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🍶 日本酒/ウイスキー</span>
-          <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">📷 カメラレンズ</span>
-          <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">🎎 限定フィギュア</span>
-          <span style="background:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--gold);border:1px solid var(--border);">⌚ 国産時計</span>
+
+      <div class="barter-examples fade-in">
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;">以下のような日本製品と交換可能です。</p>
+        <div class="barter-tags">
+          <span>🎮 ゲーム機本体</span>
+          <span>🍶 日本酒/ウイスキー</span>
+          <span>📷 カメラレンズ</span>
+          <span>🎎 限定フィギュア</span>
+          <span>⌚ 国産時計</span>
         </div>
-        <a href={siteBase + '/contact/'} class="btn btn-gold" style="margin-top:8px;" data-i18n="p3-cta">交換の詳細を問い合わせる</a>
+      </div>
+
+      <div class="barter-cta fade-in">
+        <a href={siteBase + '/contact/'} class="btn btn-gold">交換の詳細を問い合わせる</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ Author ═══ -->
+  <!-- ═══════════════ 制作者 ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
-    <div class="container" style="max-width:700px;">
-      <h2 class="section-title fade-in" data-i18n="author-title">制作者について</h2>
-      <p class="section-sub fade-in" data-i18n="author-sub">数学と金融理論に基づくEA開発</p>
-      <div class="fade-in author-card">
+    <div class="container" style="max-width:600px;">
+      <h2 class="section-title fade-in">制作者について</h2>
+      <div class="author-card fade-in">
         <div class="author-avatar">W</div>
         <div>
-          <h3 style="color:var(--gold);font-size:1.1rem;margin-bottom:8px;" data-i18n="author-name">William — EA開発者・英語教育者</h3>
-          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:12px;" data-i18n="author-p1">Jim Simons（ルネサンス・テクノロジーズ創業者）の数学的アプローチに深く影響を受け...</p>
-          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:12px;" data-i18n="author-p2">さらに、MIT（マサチューセッツ工科大学）のオンライン講座...</p>
-          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;" data-i18n="author-p3">Xiamen（廈門）を拠点に、英語教育と定量取引の両軸で活動...</p>
+          <h3 style="color:var(--gold);font-size:1rem;margin-bottom:8px;">William — EA開発者・英語教育者</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Jim Simonsの数学的アプローチに影響を受けたEA開発。MITオンライン講座で統計的学習を学び、XAUUSD専用の統計的優位性（エッジ）に基づくEAを開発。廈門を拠点に、英語教育と定量取引の両軸で活動。</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════ ファイナルCTA ═══════════════ -->
+  <section class="section" style="padding-bottom:80px;">
+    <div class="container" style="text-align:center;">
+      <h2 style="color:var(--gold);font-size:1.3rem;margin-bottom:12px;">まずはデモ口座でお試しください</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">14日間無料。セットアップサポート付き。</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href={siteBase + '/demo/'} class="btn btn-gold">デモを申し込む</a>
+        <a href={siteBase + '/faq/'} class="btn btn-outline">FAQを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chart.js for backtest equity curve -->
+  <script>
+    (async function() {
+      const canvas = document.getElementById('btEquityChart');
+      if (!canvas) return;
+      const { Chart, registerables } = await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm');
+      Chart.register(...registerables);
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: ['6月第1週','6月第2週','6月第3週','6月第4週','7月第1週','7月第2週'],
+          datasets: [{
+            label: '残高 ($)',
+            data: [1000,1120,1255,1460,1690,1912],
+            borderColor: '#D4AF37',
+            backgroundColor: 'rgba(212,175,55,0.06)',
+            fill: true, tension: 0.3,
+            pointRadius: 3, pointBackgroundColor: '#D4AF37'
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+            y: { ticks: { color: '#888', callback: v => '$'+v }, grid: { color: 'rgba(255,255,255,0.04)' } }
+          }
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #1a1a2e, #16213e); padding:60px 0 50px; text-align:center; overflow:hidden; position:relative; }
+    .hero-badge { display:inline-block; padding:4px 16px; border-radius:20px; background:rgba(212,175,55,.12); color:var(--gold); font-size:0.85rem; font-weight:600; margin-bottom:20px; letter-spacing:0.5px; }
+    .hero h1 { font-size:2.8rem; margin:0 0 12px; background:linear-gradient(135deg,var(--gold),#f0d060); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .subtitle { font-size:1.05rem; color:rgba(255,255,255,.7); margin-bottom:6px; }
+    .subtitle2 { font-size:0.85rem; color:rgba(255,255,255,.5); margin-bottom:24px; }
+    .hero-stats { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:28px; }
+    .hero-stat { text-align:center; }
+    .hero-stat-val { display:block; font-size:1.5rem; font-weight:800; color:var(--gold); }
+    .hero-stat-label { display:block; font-size:0.7rem; color:rgba(255,255,255,.5); }
+    .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    /* Strategy */
+    .strategy-flow { display:flex; flex-wrap:wrap; gap:6px; align-items:center; justify-content:center; margin-bottom:28px; padding:16px; background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--border); }
+    .sf-step { display:flex; align-items:center; gap:6px; }
+    .sf-num { width:24px; height:24px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; font-size:0.7rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .sf-text { font-size:0.8rem; color:var(--text); line-height:1.2; }
+    .sf-text span { font-size:0.65rem; color:var(--text-muted); }
+    .sf-arrow { font-size:1rem; color:var(--gold); font-weight:700; }
+    .sf-arrow.green { color:var(--accent-green); }
+    .bucket-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
+    .bucket-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+    .bc-icon { font-size:1.4rem; margin-bottom:6px; }
+    .bucket-card h3 { font-size:0.9rem; color:var(--gold); margin-bottom:6px; }
+    .bucket-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.6; margin:0; }
+    /* Backtest */
+    .bt-summary { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+    .bt-item { text-align:center; padding:10px 16px; background:var(--bg); border-radius:8px; border:1px solid var(--border); min-width:80px; }
+    .bt-num { display:block; font-size:1.2rem; font-weight:700; color:var(--text); }
+    .bt-lbl { display:block; font-size:0.65rem; color:var(--text-muted); margin-top:2px; }
+    .bt-chart-wrap { position:relative; height:220px; max-width:600px; margin:0 auto; }
+    /* Forward test */
+    .fw-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; }
+    .fw-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
+    .fw-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
+    .fw-val { font-size:1.1rem; font-weight:700; color:var(--text); }
+    /* Setup */
+    .setup-mini { display:flex; flex-direction:column; gap:12px; max-width:520px; margin:0 auto; }
+    .setup-step { display:flex; gap:14px; align-items:flex-start; }
+    .ss-num { width:32px; height:32px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.85rem; }
+    .ss-body h3 { font-size:0.9rem; color:var(--gold); margin-bottom:4px; }
+    .ss-body p { font-size:0.8rem; color:var(--text-muted); line-height:1.5; margin:0; }
+    /* Risk */
+    .risk-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+    .risk-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
+    .rc-icon { font-size:1.3rem; margin-bottom:4px; }
+    .risk-card h3 { font-size:0.8rem; color:var(--gold); margin-bottom:4px; }
+    .risk-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
+    /* FAQ */
+    .faq-item { padding:12px 0; }
+    .faq-q { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem; font-weight:600; color:var(--text); list-style:none; }
+    .faq-q::-webkit-details-marker { display:none; }
+    .faq-icon { margin-left:auto; font-size:1.1rem; color:var(--gold); font-weight:300; transition:transform .3s; }
+    details[open] .faq-icon { transform:rotate(45deg); }
+    .faq-a { padding:8px 0 4px 32px; font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+    .faq-a p { margin:0; }
+    /* Barter */
+    .barter-card { max-width:360px; margin:0 auto 20px; background:var(--bg-card); border-radius:var(--radius); padding:28px; border:2px solid var(--gold); }
+    .barter-price { font-size:1.3rem; color:var(--gold); font-weight:700; margin-bottom:4px; }
+    .barter-sub { font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; }
+    .barter-card p { font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; }
+    .barter-includes div { padding:6px 0; font-size:0.83rem; border-bottom:1px solid var(--border); }
+    .barter-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:20px; }
+    .barter-tags span { padding:6px 16px; border-radius:20px; font-size:0.83rem; color:var(--gold); border:1px solid var(--border); background:var(--bg); }
+    .text-link { color:var(--gold); font-size:0.85rem; text-decoration:underline; }
+    .btn { display:inline-block; padding:12px 28px; border-radius:8px; font-weight:600; font-size:0.9rem; cursor:pointer; border:none; text-decoration:none; transition:var(--transition); }
+    .btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#0D0D1A; }
+    .btn-gold:hover { opacity:.9; transform:translateY(-2px); }
+    .btn-outline { background:transparent; color:var(--text-muted); border:1px solid var(--border); }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+    .section { padding:50px 0; }
+    .section-title { color:var(--gold); font-size:1.3rem; margin-bottom:8px; text-align:center; }
+    .section-sub { color:var(--text-muted); font-size:0.9rem; margin-bottom:28px; text-align:center; }
+    .fade-in { opacity:0; animation:fadeIn .6s ease forwards; }
+    @keyframes fadeIn { to { opacity:1; } }
+    .author-card { display:flex; gap:16px; align-items:center; }
+    .author-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#111; font-weight:800; font-size:1.5rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    @media (max-width:600px) {
+      .hero h1 { font-size:2rem; }
+      .hero-stats { gap:12px; }
+      .bucket-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
 </BaseLayout>
