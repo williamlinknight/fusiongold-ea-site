@@ -13,13 +13,6 @@ try {
 const ld = liveData?.account || { balance: 4797, dayPnL: 0, dayPnLPercent: 0 };
 const th = liveData?.tradeHistory || [];
 const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
-
-const faqs = [
-  { q: 'FusionGold M5 はどのように動きますか？', a: 'ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約3時間だけ取引を行います。' },
-  { q: 'デモ口座で試せますか？', a: 'はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。' },
-  { q: '物々交換はどのように行いますか？', a: 'ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。' },
-  { q: 'リスク管理はどのようになっていますか？', a: '日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。' }
-];
 ---
 
 <BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。回測勝率74.48%。物々交換でご利用いただけます。">
@@ -78,42 +71,42 @@ const faqs = [
       <h2 class="section-title fade-in" data-i18n="strat-title">戦略の中核 — 4バケットスコアリング</h2>
       <p class="section-sub fade-in" data-i18n="strat-sub">トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を総合評価</p>
 
-      <div class="strategy-flow fade-in">
+      <div class="strategy-flow fade-in" data-i18n-cluster="strategy-flow">
         <div class="sf-step"><div class="sf-num">①</div><div class="sf-text" data-i18n="strat-s1">H4ゾーン<br/><span data-i18n="strat-s1-sub">大きな流れを読む</span></div></div>
         <div class="sf-arrow">→</div>
-        <div class="sf-step"><div class="sf-num">②</div><div class="sf-text">ADXゲート<br/><span>相場の質を判定</span></div></div>
+        <div class="sf-step"><div class="sf-num">②</div><div class="sf-text" data-i18n="strat-s2">ADXゲート<br/><span data-i18n="strat-s2-sub">相場の質を判定</span></div></div>
         <div class="sf-arrow">→</div>
-        <div class="sf-step"><div class="sf-num">③</div><div class="sf-text">4バケット<br/><span>スコア240以上で通過</span></div></div>
+        <div class="sf-step"><div class="sf-num">③</div><div class="sf-text" data-i18n="strat-s3">4バケット<br/><span data-i18n="strat-s3-sub">スコア240以上で通過</span></div></div>
         <div class="sf-arrow">→</div>
-        <div class="sf-step"><div class="sf-num">④</div><div class="sf-text">矛盾検出<br/><span>最終確認</span></div></div>
+        <div class="sf-step"><div class="sf-num">④</div><div class="sf-text" data-i18n="strat-s4">矛盾検出<br/><span data-i18n="strat-s4-sub">最終確認</span></div></div>
         <div class="sf-arrow green">✓</div>
-        <div class="sf-step"><div class="sf-num">⑤</div><div class="sf-text">エントリー<br/><span>3時間集中取引</span></div></div>
+        <div class="sf-step"><div class="sf-num">⑤</div><div class="sf-text" data-i18n="strat-s5">エントリー<br/><span data-i18n="strat-s5-sub">3時間集中取引</span></div></div>
       </div>
 
       <div class="bucket-grid fade-in">
         <div class="bucket-card">
           <div class="bc-icon">📈</div>
-          <h3>トレンドバケット</h3>
-          <p>価格とEMAの関係、ADXの方向性成分（DI+/DI-）を評価。トレンドフォロー戦略の基盤。</p>
+          <h3 data-i18n="strat-b1-title">トレンドバケット</h3>
+          <p data-i18n="strat-b1-desc">価格とEMAの関係、ADXの方向性成分（DI+/DI-）を評価。トレンドフォロー戦略の基盤。</p>
         </div>
         <div class="bucket-card">
           <div class="bc-icon">⚡</div>
-          <h3>モメンタムバケット</h3>
-          <p>MACD、RSI、価格変化率（ROC）を用いて短期的な勢いを測定。トレンドの加速・減速を検出。</p>
+          <h3 data-i18n="strat-b2-title">モメンタムバケット</h3>
+          <p data-i18n="strat-b2-desc">MACD、RSI、価格変化率（ROC）を用いて短期的な勢いを測定。トレンドの加速・減速を検出。</p>
         </div>
         <div class="bucket-card">
           <div class="bc-icon">🏗️</div>
-          <h3>ストラクチャーバケット</h3>
-          <p>高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。</p>
+          <h3 data-i18n="strat-b3-title">ストラクチャーバケット</h3>
+          <p data-i18n="strat-b3-desc">高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。</p>
         </div>
         <div class="bucket-card">
           <div class="bc-icon">💧</div>
-          <h3>流動性バケット</h3>
-          <p>取引量、スプレッド幅、セッション時間帯を評価。約定品質と取引コストを考慮。</p>
+          <h3 data-i18n="strat-b4-title">流動性バケット</h3>
+          <p data-i18n="strat-b4-desc">取引量、スプレッド幅、セッション時間帯を評価。約定品質と取引コストを考慮。</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:12px;">
-        <a href={siteBase + '/strategy/'} class="text-link">戦略の詳細を見る →</a>
+        <a href={siteBase + '/strategy/'} class="text-link" data-i18n="strat-link">戦略の詳細を見る →</a>
       </div>
     </div>
   </section>
@@ -121,16 +114,16 @@ const faqs = [
   <!-- ═══════════════ バックテスト結果 ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container">
-      <h2 class="section-title fade-in">バックテスト実績</h2>
-      <p class="section-sub fade-in">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
+      <h2 class="section-title fade-in" data-i18n="bt-section-title">バックテスト実績</h2>
+      <p class="section-sub fade-in" data-i18n="bt-section-sub">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
 
       <div class="bt-summary fade-in">
-        <div class="bt-item"><span class="bt-num">145</span><span class="bt-lbl">総取引数</span></div>
-        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">74.48%</span><span class="bt-lbl">勝率</span></div>
-        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">+$912.56</span><span class="bt-lbl">純利益</span></div>
-        <div class="bt-item"><span class="bt-num">1.54</span><span class="bt-lbl">PF</span></div>
-        <div class="bt-item"><span class="bt-num">8.61%</span><span class="bt-lbl">最大DD</span></div>
-        <div class="bt-item"><span class="bt-num">SELL 79%</span><span class="bt-lbl">売り勝率</span></div>
+        <div class="bt-item"><span class="bt-num">145</span><span class="bt-lbl" data-i18n="perf-trades">総取引数</span></div>
+        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">74.48%</span><span class="bt-lbl" data-i18n="perf-winrate">勝率</span></div>
+        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">+$912.56</span><span class="bt-lbl" data-i18n="perf-profit">純利益</span></div>
+        <div class="bt-item"><span class="bt-num">1.54</span><span class="bt-lbl" data-i18n="perf-pf">PF</span></div>
+        <div class="bt-item"><span class="bt-num">8.61%</span><span class="bt-lbl" data-i18n="perf-dd">最大DD</span></div>
+        <div class="bt-item"><span class="bt-num">SELL 79%</span><span class="bt-lbl" data-i18n="bt-lbl-winrate-sell">売り勝率</span></div>
       </div>
 
       <div class="bt-chart-wrap fade-in">
@@ -138,7 +131,7 @@ const faqs = [
       </div>
 
       <div style="text-align:center;margin-top:16px;">
-        <a href={siteBase + '/backtest/'} class="btn btn-gold">詳細レポートを見る</a>
+        <a href={siteBase + '/backtest/'} class="btn btn-gold" data-i18n="bt-detail-link">詳細レポートを見る</a>
       </div>
     </div>
   </section>
@@ -146,33 +139,33 @@ const faqs = [
   <!-- ═══════════════ フォワードテスト ═══════════════ -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title fade-in">フォワードテスト（リアル口座）</h2>
-      <p class="section-sub fade-in">IC Markets Raw Spread · リアル口座で稼働中</p>
+      <h2 class="section-title fade-in" data-i18n="fw-title">フォワードテスト（リアル口座）</h2>
+      <p class="section-sub fade-in" data-i18n="fw-sub">IC Markets Raw Spread · リアル口座で稼働中</p>
 
       <div class="fw-summary fade-in">
         <div class="fw-card">
-          <div class="fw-label">口座残高</div>
+          <div class="fw-label" data-i18n="fw-balance">口座残高</div>
           <div class="fw-val">${ld.balance.toFixed(2)}</div>
         </div>
         <div class="fw-card">
-          <div class="fw-label">本日P&L</div>
+          <div class="fw-label" data-i18n="fw-daypnl">本日P&L</div>
           <div class="fw-val" style="color:{ld.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
             {ld.dayPnL >= 0 ? '+' : ''}{ld.dayPnL.toFixed(2)}
           </div>
         </div>
         <div class="fw-card">
-          <div class="fw-label">運用期間</div>
+          <div class="fw-label" data-i18n="fw-period">運用期間</div>
           <div class="fw-val">{th.length}日</div>
         </div>
         <div class="fw-card">
-          <div class="fw-label">累計損益</div>
+          <div class="fw-label" data-i18n="fw-totalpnl">累計損益</div>
           <div class="fw-val" style="color:{totalPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
             {totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}
           </div>
         </div>
       </div>
       <div style="text-align:center;margin-top:16px;">
-        <a href={siteBase + '/live/'} class="text-link">ライブパフォーマンスを見る →</a>
+        <a href={siteBase + '/live/'} class="text-link" data-i18n="fw-link">ライブパフォーマンスを見る →</a>
       </div>
     </div>
   </section>
@@ -180,34 +173,34 @@ const faqs = [
   <!-- ═══════════════ セットアップ ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container">
-      <h2 class="section-title fade-in">セットアップの流れ</h2>
-      <p class="section-sub fade-in">15〜30分で運用開始</p>
+      <h2 class="section-title fade-in" data-i18n="setup-section-title">セットアップの流れ</h2>
+      <p class="section-sub fade-in" data-i18n="setup-section-sub">15〜30分で運用開始</p>
 
       <div class="setup-mini fade-in">
         <div class="setup-step">
           <div class="ss-num">1</div>
           <div class="ss-body">
-            <h3>EAファイルを受け取る</h3>
-            <p>物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p>
+            <h3 data-i18n="setup-s1-title">EAファイルを受け取る</h3>
+            <p data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p>
           </div>
         </div>
         <div class="setup-step">
           <div class="ss-num">2</div>
           <div class="ss-body">
-            <h3>MT5にインストール</h3>
-            <p>データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p>
+            <h3 data-i18n="setup-s2-title">MT5にインストール</h3>
+            <p data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p>
           </div>
         </div>
         <div class="setup-step">
           <div class="ss-num">3</div>
           <div class="ss-body">
-            <h3>自動売買を開始</h3>
-            <p>EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p>
+            <h3 data-i18n="setup-s3-title">自動売買を開始</h3>
+            <p data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p>
           </div>
         </div>
       </div>
       <div style="text-align:center;margin-top:12px;">
-        <a href={siteBase + '/setup/'} class="text-link">詳細なセットアップガイド →</a>
+        <a href={siteBase + '/setup/'} class="text-link" data-i18n="setup-link">詳細なセットアップガイド →</a>
       </div>
     </div>
   </section>
@@ -215,15 +208,15 @@ const faqs = [
   <!-- ═══════════════ リスク管理 ═══════════════ -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title fade-in">多層リスク管理</h2>
-      <p class="section-sub fade-in">口座を保護する6つの仕組み</p>
+      <h2 class="section-title fade-in" data-i18n="risk-title">多層リスク管理</h2>
+      <p class="section-sub fade-in" data-i18n="risk-sub">口座を保護する6つの仕組み</p>
       <div class="risk-grid fade-in">
-        <div class="risk-card"><div class="rc-icon">🛑</div><h3>日損5%リミット</h3><p>1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止</p></div>
-        <div class="risk-card"><div class="rc-icon">📉</div><h3>連敗フィルター</h3><p>連続損失発生時、市場環境の変化を待ってエントリーを休止</p></div>
-        <div class="risk-card"><div class="rc-icon">⚖️</div><h3>Aggregate Risk</h3><p>全ポジションのリスク総量を監視・制御</p></div>
-        <div class="risk-card"><div class="rc-icon">⏱️</div><h3>クールダウン</h3><p>取引後一定時間は新規エントリーなし。連続取引を防止</p></div>
-        <div class="risk-card"><div class="rc-icon">📏</div><h3>固定ストップロス</h3><p>全エントリーに固定SL設定。予期せぬ逆行から口座を保護</p></div>
-        <div class="risk-card"><div class="rc-icon">📊</div><h3>ポジションサイジング</h3><p>シグナル強度と口座残高に基づき動的にロット調整</p></div>
+        <div class="risk-card"><div class="rc-icon">🛑</div><h3 data-i18n="risk-r1-title">日損5%リミット</h3><p data-i18n="risk-r1-desc">1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止</p></div>
+        <div class="risk-card"><div class="rc-icon">📉</div><h3 data-i18n="risk-r2-title">連敗フィルター</h3><p data-i18n="risk-r2-desc">連続損失発生時、市場環境の変化を待ってエントリーを休止</p></div>
+        <div class="risk-card"><div class="rc-icon">⚖️</div><h3 data-i18n="risk-r3-title">Aggregate Risk</h3><p data-i18n="risk-r3-desc">全ポジションのリスク総量を監視・制御</p></div>
+        <div class="risk-card"><div class="rc-icon">⏱️</div><h3 data-i18n="risk-r4-title">クールダウン</h3><p data-i18n="risk-r4-desc">取引後一定時間は新規エントリーなし。連続取引を防止</p></div>
+        <div class="risk-card"><div class="rc-icon">📏</div><h3 data-i18n="risk-r5-title">固定ストップロス</h3><p data-i18n="risk-r5-desc">全エントリーに固定SL設定。予期せぬ逆行から口座を保護</p></div>
+        <div class="risk-card"><div class="rc-icon">📊</div><h3 data-i18n="risk-r6-title">ポジションサイジング</h3><p data-i18n="risk-r6-desc">シグナル強度と口座残高に基づき動的にロット調整</p></div>
       </div>
     </div>
   </section>
@@ -231,19 +224,41 @@ const faqs = [
   <!-- ═══════════════ FAQ ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container" style="max-width:640px;">
-      <h2 class="section-title fade-in">よくある質問</h2>
-      {faqs.map((item, i) => (
+      <h2 class="section-title fade-in" data-i18n="faq-section-title">よくある質問</h2>
       <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
         <summary class="faq-q">
-          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">{String(i+1).padStart(2,'0')}</span>
-          <span>{item.q}</span>
+          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">01</span>
+          <span data-i18n="faq-q1">FusionGold M5 はどのように動きますか？</span>
           <span class="faq-icon">+</span>
         </summary>
-        <div class="faq-a"><p>{item.a}</p></div>
+        <div class="faq-a"><p data-i18n="faq-a1">ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約3時間だけ取引を行います。</p></div>
       </details>
-      ))}
+      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
+        <summary class="faq-q">
+          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">02</span>
+          <span data-i18n="faq-q2">デモ口座で試せますか？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a"><p data-i18n="faq-a2">はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。</p></div>
+      </details>
+      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
+        <summary class="faq-q">
+          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">03</span>
+          <span data-i18n="faq-q3">物々交換はどのように行いますか？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a"><p data-i18n="faq-a3">ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。</p></div>
+      </details>
+      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
+        <summary class="faq-q">
+          <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">04</span>
+          <span data-i18n="faq-q4">リスク管理はどのようになっていますか？</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-a"><p data-i18n="faq-a4">日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。</p></div>
+      </details>
       <div style="text-align:center;margin-top:20px;">
-        <a href={siteBase + '/faq/'} class="text-link">すべてのFAQを見る →</a>
+        <a href={siteBase + '/faq/'} class="text-link" data-i18n="faq-link">すべてのFAQを見る →</a>
       </div>
     </div>
   </section>
@@ -251,22 +266,22 @@ const faqs = [
   <!-- ═══════════════ 物々交換 ═══════════════ -->
   <section class="section">
     <div class="container" style="text-align:center;">
-      <h2 class="section-title fade-in">ご利用方法</h2>
-      <p class="section-sub fade-in">現金不要。物々交換のみでご提供しています。</p>
+      <h2 class="section-title fade-in" data-i18n="price-title">ご利用方法</h2>
+      <p class="section-sub fade-in" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
 
       <div class="barter-card fade-in">
-        <div class="barter-price">物々交換</div>
-        <div class="barter-sub">現金不要</div>
-        <p>日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
+        <div class="barter-price" data-i18n="p3-name">物々交換</div>
+        <div class="barter-sub" data-i18n="p3-period">現金不要</div>
+        <p data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
         <div class="barter-includes">
-          <div>✓ EAファイル（.ex5）</div>
-          <div>✓ 設定ガイド</div>
-          <div>✓ メールサポート</div>
+          <div data-i18n="p3-f1">✓ EAファイル（.ex5）</div>
+          <div data-i18n="p3-f2">✓ 設定ガイド</div>
+          <div data-i18n="p3-f3">✓ メールサポート</div>
         </div>
       </div>
 
       <div class="barter-examples fade-in">
-        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;">以下のような日本製品と交換可能です。</p>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;" data-i18n="barter-text">以下のような日本製品と交換可能です。</p>
         <div class="barter-tags">
           <span>🎮 ゲーム機本体</span>
           <span>🍶 日本酒/ウイスキー</span>
@@ -277,7 +292,7 @@ const faqs = [
       </div>
 
       <div class="barter-cta fade-in">
-        <a href={siteBase + '/contact/'} class="btn btn-gold">交換の詳細を問い合わせる</a>
+        <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="p3-cta">交換の詳細を問い合わせる</a>
       </div>
     </div>
   </section>
@@ -285,12 +300,12 @@ const faqs = [
   <!-- ═══════════════ 制作者 ═══════════════ -->
   <section class="section" style="background:var(--bg-card);">
     <div class="container" style="max-width:600px;">
-      <h2 class="section-title fade-in">制作者について</h2>
+      <h2 class="section-title fade-in" data-i18n="author-title">制作者について</h2>
       <div class="author-card fade-in">
         <div class="author-avatar">W</div>
         <div>
-          <h3 style="color:var(--gold);font-size:1rem;margin-bottom:8px;">William — EA開発者・英語教育者</h3>
-          <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Jim Simonsの数学的アプローチに影響を受けたEA開発。MITオンライン講座で統計的学習を学び、XAUUSD専用の統計的優位性（エッジ）に基づくEAを開発。廈門を拠点に、英語教育と定量取引の両軸で活動。</p>
+          <h3 style="color:var(--gold);font-size:1rem;margin-bottom:8px;" data-i18n="author-name">William — EA開発者・英語教育者</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;" data-i18n="author-p4">Jim Simonsの数学的アプローチに影響を受けたEA開発。MITオンライン講座で統計的学習を学び、XAUUSD専用の統計的優位性（エッジ）に基づくEAを開発。廈門を拠点に、英語教育と定量取引の両軸で活動。</p>
         </div>
       </div>
     </div>
@@ -299,11 +314,11 @@ const faqs = [
   <!-- ═══════════════ ファイナルCTA ═══════════════ -->
   <section class="section" style="padding-bottom:80px;">
     <div class="container" style="text-align:center;">
-      <h2 style="color:var(--gold);font-size:1.3rem;margin-bottom:12px;">まずはデモ口座でお試しください</h2>
-      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">14日間無料。セットアップサポート付き。</p>
+      <h2 style="color:var(--gold);font-size:1.3rem;margin-bottom:12px;" data-i18n="cta-title">まずはデモ口座でお試しください</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;" data-i18n="cta-sub">14日間無料。セットアップサポート付き。</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href={siteBase + '/demo/'} class="btn btn-gold">デモを申し込む</a>
-        <a href={siteBase + '/faq/'} class="btn btn-outline">FAQを見る</a>
+        <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="cta-demo">デモを申し込む</a>
+        <a href={siteBase + '/faq/'} class="btn btn-outline" data-i18n="cta-faq">FAQを見る</a>
       </div>
     </div>
   </section>
@@ -341,7 +356,6 @@ const faqs = [
   </script>
 
   <style>
-    /* Hero */
     .hero { background: linear-gradient(135deg, #1a1a2e, #16213e); padding:60px 0 50px; text-align:center; overflow:hidden; position:relative; }
     .hero-badge { display:inline-block; padding:4px 16px; border-radius:20px; background:rgba(212,175,55,.12); color:var(--gold); font-size:0.85rem; font-weight:600; margin-bottom:20px; letter-spacing:0.5px; }
     .hero h1 { font-size:2.8rem; margin:0 0 12px; background:linear-gradient(135deg,var(--gold),#f0d060); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -352,7 +366,6 @@ const faqs = [
     .hero-stat-val { display:block; font-size:1.5rem; font-weight:800; color:var(--gold); }
     .hero-stat-label { display:block; font-size:0.7rem; color:rgba(255,255,255,.5); }
     .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    /* Strategy */
     .strategy-flow { display:flex; flex-wrap:wrap; gap:6px; align-items:center; justify-content:center; margin-bottom:28px; padding:16px; background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--border); }
     .sf-step { display:flex; align-items:center; gap:6px; }
     .sf-num { width:24px; height:24px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; font-size:0.7rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -365,30 +378,25 @@ const faqs = [
     .bc-icon { font-size:1.4rem; margin-bottom:6px; }
     .bucket-card h3 { font-size:0.9rem; color:var(--gold); margin-bottom:6px; }
     .bucket-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.6; margin:0; }
-    /* Backtest */
     .bt-summary { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
     .bt-item { text-align:center; padding:10px 16px; background:var(--bg); border-radius:8px; border:1px solid var(--border); min-width:80px; }
     .bt-num { display:block; font-size:1.2rem; font-weight:700; color:var(--text); }
     .bt-lbl { display:block; font-size:0.65rem; color:var(--text-muted); margin-top:2px; }
     .bt-chart-wrap { position:relative; height:220px; max-width:600px; margin:0 auto; }
-    /* Forward test */
     .fw-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; }
     .fw-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
     .fw-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
     .fw-val { font-size:1.1rem; font-weight:700; color:var(--text); }
-    /* Setup */
     .setup-mini { display:flex; flex-direction:column; gap:12px; max-width:520px; margin:0 auto; }
     .setup-step { display:flex; gap:14px; align-items:flex-start; }
     .ss-num { width:32px; height:32px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.85rem; }
     .ss-body h3 { font-size:0.9rem; color:var(--gold); margin-bottom:4px; }
     .ss-body p { font-size:0.8rem; color:var(--text-muted); line-height:1.5; margin:0; }
-    /* Risk */
     .risk-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
     .risk-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
     .rc-icon { font-size:1.3rem; margin-bottom:4px; }
     .risk-card h3 { font-size:0.8rem; color:var(--gold); margin-bottom:4px; }
     .risk-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
-    /* FAQ */
     .faq-item { padding:12px 0; }
     .faq-q { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem; font-weight:600; color:var(--text); list-style:none; }
     .faq-q::-webkit-details-marker { display:none; }
@@ -396,7 +404,6 @@ const faqs = [
     details[open] .faq-icon { transform:rotate(45deg); }
     .faq-a { padding:8px 0 4px 32px; font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
     .faq-a p { margin:0; }
-    /* Barter */
     .barter-card { max-width:360px; margin:0 auto 20px; background:var(--bg-card); border-radius:var(--radius); padding:28px; border:2px solid var(--gold); }
     .barter-price { font-size:1.3rem; color:var(--gold); font-weight:700; margin-bottom:4px; }
     .barter-sub { font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; }
