@@ -1,10 +1,10 @@
 {
-  "updated": "2026-07-21 19:32 BJT",
+  "updated": "2026-07-22 07:21 BJT",
   "note": "Local Python FIFO (UTF-16 LE)",
   "account": {
     "balance": 5075.28,
     "equity": 5075.28,
-    "dayPnL": 96.03,
+    "dayPnL": 0.0,
     "dayPnLPercent": 0.0,
     "positions": 0,
     "maxPositions": 4,
@@ -37,12 +37,6 @@
   },
   "lastTrades": [],
   "tradeHistory": [
-    {
-      "date": "2026-06-22",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
     {
       "date": "2026-06-23",
       "pnl": 0.0,
@@ -182,11 +176,13 @@
       "winRate": 0
     },
     {
+      "date": "2026-07-16",
       "trades": 20,
       "pnl": -153.33,
       "winRate": 30.0
     },
     {
+      "date": "2026-07-17",
       "trades": 6,
       "pnl": 10.85,
       "winRate": 33.33
@@ -204,6 +200,7 @@
       "winRate": 0
     },
     {
+      "date": "2026-07-20",
       "trades": 19,
       "pnl": 241.39,
       "winRate": 63.16
@@ -213,6 +210,12 @@
       "pnl": 96.03,
       "trades": 10,
       "winRate": 70.0
+    },
+    {
+      "date": "2026-07-22",
+      "pnl": 0.0,
+      "trades": 0,
+      "winRate": 0
     }
   ]
 }

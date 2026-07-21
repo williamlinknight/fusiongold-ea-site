@@ -129,7 +129,9 @@ def main():
     for i in range(30):
         d = (NOW - datetime.timedelta(days=29-i)).strftime('%Y-%m-%d')
         if d in history:
-            output.append(history[d])
+            entry = dict(history[d])
+            entry['date'] = d
+            output.append(entry)
         else:
             output.append({'date': d, 'pnl': 0.0, 'trades': 0, 'winRate': 0})
     
