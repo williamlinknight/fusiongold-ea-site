@@ -5,46 +5,65 @@ const siteBase = '/fusiongold-ea-site';
 
 <BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。デモ口座、物々交換など。">
 
-  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:640px;">
     <h1 style="color:var(--gold);margin-bottom:8px;text-align:center;" data-i18n="contact-title">お問い合わせ</h1>
-    <p style="color:var(--text-muted);margin-bottom:32px;text-align:center;" data-i18n="contact-sub">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
+    <p style="color:var(--text-muted);margin-bottom:12px;text-align:center;" data-i18n="contact-sub">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
 
-    <form id="contact-form" class="contact-form">
-      <div class="form-group">
-        <label for="name" data-i18n="contact-name">お名前</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email" data-i18n="contact-email">メールアドレス</label>
-        <input type="email" id="email" name="email" required placeholder="your@email.com">
-      </div>
-      <div class="form-group">
-        <label for="type" data-i18n="contact-type">お問い合わせ種別</label>
-        <select id="type" name="type">
-          <option value="barter" selected data-i18n="ct-type2">物々交換について</option>
-          <option value="demo" data-i18n="ct-type3">デモ口座について</option>
-          <option value="other" data-i18n="ct-type4">その他</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message" data-i18n="contact-msg">メッセージ</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      <div class="form-group" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px;">
-        <input type="checkbox" id="disclaimer_agree" name="disclaimer_agree" required style="margin-top:4px;width:auto;flex-shrink:0;">
-        <label for="disclaimer_agree" style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">
-          <a href={siteBase + '/disclaimer/'} style="color:var(--gold);" target="_blank">免責事項</a>に同意し、外国為替証拠金取引のリスクを理解した上でお問い合わせします。
-        </label>
-      </div>
-      <button type="submit" class="btn btn-gold form-submit" data-i18n="contact-submit">送信する</button>
-      <p style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>
-    </form>
+    <div class="email-card">
+      <div class="email-icon">📧</div>
+      <a href="mailto:william.classic@gmail.com" class="email-addr">william.classic@gmail.com</a>
+      <p class="email-note" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>
+    </div>
 
-    <script>
-      document.getElementById('contact-form')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('お問い合わせいただきありがとうございます。近日中にご連絡いたします。');
-      });
-    </script>
+    <div class="alt-links">
+      <p style="color:var(--text-muted);font-size:0.85rem;">
+        <span data-i18n="contact-alt">こちらからもお問い合わせいただけます</span>：
+      </p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
+        <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="cta-demo">デモを申し込む</a>
+        <a href={siteBase + '/faq/'} class="btn btn-outline" data-i18n="cta-faq">FAQを見る</a>
+      </div>
+    </div>
   </div>
+
+  <style>
+    .email-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .email-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .email-addr {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 1px dashed var(--gold-dark);
+      background: rgba(212,175,55,0.06);
+      transition: var(--transition);
+      word-break: break-all;
+    }
+    .email-addr:hover {
+      background: rgba(212,175,55,0.12);
+      border-color: var(--gold);
+    }
+    .email-note {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .alt-links {
+      text-align: center;
+      padding: 20px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+  </style>
 </BaseLayout>

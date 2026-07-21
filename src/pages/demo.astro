@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const siteBase = '/fusiongold-ea-site';
 ---
 
-<BaseLayout title="デモ口座のお申し込み | FusionGold M5" description="FusionGold M5 のデモ口座をお申し込みいただけます。実際の資金を使わずに14日間無料でテスト可能。">
+<BaseLayout title="デモ口座のお申し込み | FusionGold M5" description="FusionGold M5 のデモ口座をお申し込みいただけます。メールにてご連絡ください。">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:640px;">
 
@@ -31,67 +31,21 @@ const siteBase = '/fusiongold-ea-site';
       </div>
     </div>
 
-    <div class="demo-form-card">
-      <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:20px;">デモ口座リクエスト</h2>
-
-      <form id="demo-form" class="contact-form" style="padding:0;background:transparent;border:none;">
-
-        <div class="form-group">
-          <label for="name">お名前 <span style="color:var(--accent-red);">*</span></label>
-          <input type="text" id="name" name="name" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">メールアドレス <span style="color:var(--accent-red);">*</span></label>
-          <input type="email" id="email" name="email" required placeholder="your@email.com">
-        </div>
-
-        <div class="form-group">
-          <label for="broker">お使いのブローカー</label>
-          <select id="broker" name="broker">
-            <option value="icmarkets" selected>IC Markets</option>
-            <option value="other">その他（コメント欄に記載）</option>
-            <option value="none">まだ口座を開設していない</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="experience">取引経験</label>
-          <select id="experience" name="experience">
-            <option value="beginner" selected>初心者（1年未満）</option>
-            <option value="intermediate">中級者（1〜3年）</option>
-            <option value="advanced">上級者（3年以上）</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message">メッセージ（任意）</label>
-          <textarea id="message" name="message" placeholder="デモで確認したいこと、質問があればご記入ください。" style="min-height:80px;"></textarea>
-        </div>
-
-        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px;">
-          <input type="checkbox" id="disclaimer_agree" name="disclaimer_agree" required style="margin-top:4px;width:auto;flex-shrink:0;">
-          <label for="disclaimer_agree" style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">
-            <a href={siteBase + '/disclaimer/'} style="color:var(--gold);" target="_blank">免責事項</a>に同意し、外国為替証拠金取引のリスクを理解した上で申し込みます。
-          </label>
-        </div>
-
-        <button type="submit" class="btn btn-gold form-submit">デモ口座をリクエストする</button>
-        <p style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">※お申し込み後、1-2営業日以内にセットアップガイドをお送りします。</p>
-      </form>
+    <div class="demo-form-card" style="text-align:center;">
+      <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:20px;">メールでお申し込み</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
+        下記のメールアドレスに、お名前とデモ口座希望の旨をお送りください。<br>
+        1-2営業日以内にセットアップガイドをお送りします。
+      </p>
+      <a href="mailto:william.classic@gmail.com?subject=デモ口座リクエスト&body=お名前：%0Aメールアドレス：%0Aお使いのブローカー：" class="email-btn">
+        📧 william.classic@gmail.com
+      </a>
     </div>
 
     <div style="margin-top:32px;padding:20px;border-radius:var(--radius);background:rgba(212,175,55,0.06);border:1px dashed var(--gold-dark);text-align:center;">
       <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">すでにFusionGold M5についてご質問がありますか？</p>
       <a href={siteBase + '/faq/'} style="color:var(--gold);">よくある質問を見る →</a>
     </div>
-
-    <script>
-      document.getElementById('demo-form')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('デモ口座のお申し込みを受け付けました。1-2営業日以内にセットアップガイドをお送りします。');
-      });
-    </script>
   </div>
 
   <style>
@@ -108,6 +62,21 @@ const siteBase = '/fusiongold-ea-site';
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 28px;
     }
+    .email-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(212,175,55,0.06);
+      border: 1px dashed var(--gold-dark);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .email-btn:hover {
+      background: rgba(212,175,55,0.12);
+      border-color: var(--gold);
+    }
   </style>
-
 </BaseLayout>
