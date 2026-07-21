@@ -9,13 +9,14 @@ const siteBase = '/fusiongold-ea-site';
 const { account, session, lastTrades, tradeHistory } = data;
 
 // Compute equity curve data (server-side) — chronological order (oldest left)
-let cum = data.startBalance || 5075.28;
+const totalPnl = tradeHistory.reduce((s, d) => s + d.pnl, 0);
+const startFrom = account.balance - totalPnl;
+let cum = startFrom;
 const equityPoints = [];
 for (const d of tradeHistory) {
   cum += d.pnl;
   equityPoints.push({ label: d.date.slice(5), value: cum });
 }
-const totalPnl = tradeHistory.reduce((s, d) => s + d.pnl, 0);
 const tradingDays = tradeHistory.filter(d => d.trades > 0);
 const wrDays = tradingDays.length > 0
   ? (tradingDays.filter(d => d.pnl > 0).length / tradingDays.length * 100).toFixed(1)
