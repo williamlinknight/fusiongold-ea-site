@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-21 09:40 BJT",
-  "note": "PnL from VPS MT5 deal matching",
+  "updated": "2026-07-21 10:28 BJT",
+  "note": "PnL calculated from MT5 logs (UTF-16 LE, local Python FIFO matching)",
   "account": {
     "balance": 4797.07,
     "equity": 4797.07,
@@ -37,101 +37,27 @@
   },
   "lastTrades": [],
   "tradeHistory": [
-    {
-      "date": "2026-07-06",
-      "pnl": 39.36,
-      "trades": 2,
-      "winRate": 100.0
-    },
-    {
-      "date": "2026-07-07",
-      "pnl": -1525.31,
-      "trades": 84,
-      "winRate": 30.85
-    },
-    {
-      "date": "2026-07-08",
-      "pnl": -511.36,
-      "trades": 28,
-      "winRate": 44.44
-    },
-    {
-      "date": "2026-07-09",
-      "pnl": 284.64,
-      "trades": 64,
-      "winRate": 71.43
-    },
-    {
-      "date": "2026-07-10",
-      "pnl": 0.0,
-      "trades": 20,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-11",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-12",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-13",
-      "pnl": 0.0,
-      "trades": 40,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-14",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-15",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-16",
-      "pnl": 0.0,
-      "trades": 36,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-17",
-      "pnl": -10.85,
-      "trades": 12,
-      "winRate": 66.67
-    },
-    {
-      "date": "2026-07-18",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-19",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-20",
-      "pnl": -102.41,
-      "trades": 24,
-      "winRate": 37.5
-    },
-    {
-      "date": "2026-07-21",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    }
+    {"date": "2026-06-30", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-01", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-02", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-03", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-04", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-05", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-06", "pnl": -39.36, "trades": 1, "winRate": 0.0},
+    {"date": "2026-07-07", "pnl": 107.79, "trades": 48, "winRate": 60.42},
+    {"date": "2026-07-08", "pnl": -371.96, "trades": 14, "winRate": 35.71},
+    {"date": "2026-07-09", "pnl": -1122.56, "trades": 41, "winRate": 53.66},
+    {"date": "2026-07-10", "pnl": 3.23, "trades": 19, "winRate": 36.84},
+    {"date": "2026-07-11", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-12", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-13", "pnl": -562.82, "trades": 25, "winRate": 8.0},
+    {"date": "2026-07-14", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-15", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-16", "pnl": -153.33, "trades": 20, "winRate": 30.0},
+    {"date": "2026-07-17", "pnl": 10.85, "trades": 6, "winRate": 33.33},
+    {"date": "2026-07-18", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-19", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-20", "pnl": 241.39, "trades": 19, "winRate": 63.16},
+    {"date": "2026-07-21", "pnl": 0.0, "trades": 0, "winRate": 0}
   ]
 }
