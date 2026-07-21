@@ -28,7 +28,7 @@ def scp_from_vps(local_path):
 
 def run_vps_script():
     """Try to run the PowerShell PnL script on VPS"""
-    ps_cmd = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\Administrator\\Desktop\\export-ea-status-v4.ps1"'
+    ps_cmd = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\Administrator\\Desktop\\export-ea-status-v5.ps1"'
     return ssh_output(ps_cmd, timeout=30)
 
 def get_vps_json():
