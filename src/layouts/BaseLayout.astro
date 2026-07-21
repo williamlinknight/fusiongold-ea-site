@@ -189,7 +189,8 @@ const siteBase = '/fusiongold-ea-site';
     @media (max-width:820px) {
       .nav { padding:10px 16px; }
       .logo { font-size:0.95rem; }
-      .hamburger { display:flex; padding:8px; margin:-8px; }
+      .hamburger { display:flex; padding:10px; margin:-10px; gap:5px; }
+      .hamburger span { width:24px; height:3px; }
       .links { display:none; }
       .links.open {
         display:flex; flex-direction:column;
@@ -201,6 +202,15 @@ const siteBase = '/fusiongold-ea-site';
         box-shadow:0 16px 40px rgba(0,0,0,.5);
         gap:0;
         animation: slideDown .25s ease-out;
+        max-height:80vh; overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+      }
+      /* Mobile nav backdrop */
+      .links.open::before {
+        content:''; position:fixed;
+        top:0; left:0; right:0; bottom:0;
+        background:rgba(0,0,0,.45);
+        z-index:-1;
       }
       @keyframes slideDown {
         from { opacity:0; transform:translateY(-8px); }
@@ -367,7 +377,7 @@ const siteBase = '/fusiongold-ea-site';
       <a href={siteBase + '/blog/'} data-i18n="nav-blog">ブログ</a>
 
       <a href={siteBase + '/contact/'} data-i18n="nav-contact">お問い合わせ</a>
-      <a href={siteBase + '/demo/'} class="demo-nav-btn">デモ</a>
+      <a href={siteBase + '/live/'} class="demo-nav-btn">Live</a>
       <div class="lang-toggle" role="radiogroup" aria-label="Language">
         <button class="lang-btn active" data-lang="JP" role="radio" aria-checked="true">JP</button>
         <button class="lang-btn" data-lang="EN" role="radio" aria-checked="false">EN</button>
@@ -701,18 +711,6 @@ const siteBase = '/fusiongold-ea-site';
         document.body.style.overflow = '';
       }
     });
-    // Close mobile nav on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      if (window.innerWidth > 820) return;
-      const currentScroll = window.pageYOffset;
-      if (Math.abs(currentScroll - lastScroll) > 40) {
-        hamburger?.classList.remove('open');
-        navLinks?.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      lastScroll = currentScroll;
-    }, { passive: true });
   });
   </script>
 </body>
