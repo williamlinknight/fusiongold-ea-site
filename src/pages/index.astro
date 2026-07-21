@@ -13,6 +13,26 @@ try {
 const ld = liveData?.account || { balance: 4797, dayPnL: 0, dayPnLPercent: 0 };
 const th = liveData?.tradeHistory || [];
 const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
+
+// Compute live stats from forward test data
+const liveTrades = th.reduce((s, d) => s + d.trades, 0);
+const liveWinDays = th.filter(d => d.pnl > 0).length;
+const liveLossDays = th.filter(d => d.pnl < 0).length;
+const liveWinDaysTotal = liveWinDays + liveLossDays;
+const liveDayWr = liveWinDaysTotal > 0 ? (liveWinDays / liveWinDaysTotal * 100).toFixed(1) : '0';
+const livePosSum = th.filter(d => d.pnl > 0).reduce((s, d) => s + d.pnl, 0);
+const liveNegSum = Math.abs(th.filter(d => d.pnl < 0).reduce((s, d) => s + d.pnl, 0));
+const livePf = liveNegSum > 0 ? (livePosSum / liveNegSum).toFixed(2) : '-';
+// Max DD from equity curve
+let eqCum = (ld.balance || 4797) - totalPnl;
+let peak = eqCum;
+let maxDd = 0;
+for (const d of th) {
+  eqCum += d.pnl;
+  if (eqCum > peak) peak = eqCum;
+  const dd = peak > 0 ? (peak - eqCum) / peak * 100 : 0;
+  if (dd > maxDd) maxDd = dd;
+}
 ---
 
 <BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。回測勝率74.48%。物々交換でご利用いただけます。">
@@ -40,20 +60,20 @@ const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
 
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-val">74.48%</span>
-          <span class="hero-stat-label" data-i18n="hero-stat-winrate">勝率（バックテスト）</span>
+          <span class="hero-stat-val">{liveDayWr}%</span>
+          <span class="hero-stat-label">勝率（フォワード）</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">+$912</span>
-          <span class="hero-stat-label" data-i18n="hero-stat-profit">純利益（1ヶ月）</span>
+          <span class="hero-stat-val">{totalPnl >= 0 ? '+' : ''}${Math.round(totalPnl).toLocaleString()}</span>
+          <span class="hero-stat-label">純利益</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">1.54</span>
-          <span class="hero-stat-label" data-i18n="hero-stat-pf">プロフィットファクター</span>
+          <span class="hero-stat-val">{livePf}</span>
+          <span class="hero-stat-label">プロフィットファクター</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">8.61%</span>
-          <span class="hero-stat-label" data-i18n="hero-stat-dd">最大DD</span>
+          <span class="hero-stat-val">{maxDd.toFixed(2)}%</span>
+          <span class="hero-stat-label">最大DD</span>
         </div>
       </div>
 
