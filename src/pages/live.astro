@@ -136,8 +136,19 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
     window.__riskActive = {JSON.stringify(risk.dailyLossLimit)};
   </script>
   <script>
-    (async function() {
-      // Patch LANG.set to also update dynamic values
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Wait for LANG to be defined by BaseLayout
+      function waitForLang() {
+        return new Promise(resolve => {
+          if (window.LANG) return resolve();
+          const check = setInterval(() => {
+            if (window.LANG) { clearInterval(check); resolve(); }
+          }, 10);
+        });
+      }
+      await waitForLang();
+
+      // Patch LANG.set to handle live page dynamic text
       const origSet = LANG.set;
       LANG.set = function(lang) {
         origSet(lang);
@@ -149,11 +160,7 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
         // Risk status text
         const rs = document.getElementById('risk-status');
         if (rs) {
-          if (window.__riskActive) {
-            rs.textContent = lang === 'JP' ? '発動中' : 'Active';
-          } else {
-            rs.textContent = lang === 'JP' ? '正常' : 'Normal';
-          }
+          rs.textContent = window.__riskActive ? (lang === 'JP' ? '発動中' : 'Active') : (lang === 'JP' ? '正常' : 'Normal');
         }
         // Chart label
         const chart = document.querySelector('canvas#equityChart');
@@ -163,6 +170,7 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
         }
       };
 
+      // Render chart
       const canvas = document.getElementById('equityChart');
       if (!canvas) return;
       const { Chart, registerables } = await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm');
