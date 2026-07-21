@@ -9,103 +9,103 @@ const siteBase = '/fusiongold-ea-site';
 const { account, session, market, signal, risk, lastTrades, tradeHistory } = data;
 ---
 
-<BaseLayout title="ライブパフォーマンス | FusionGold M5" description="FusionGold M5 のリアルタイムパフォーマンス。口座残高、エクイティ、取引履歴。">
+<BaseLayout title="Live Performance | FusionGold M5" description="FusionGold M5 real-time performance — balance, equity, trade history.">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:800px;">
-    <h1 style="color:var(--gold);margin-bottom:4px;">ライブパフォーマンス</h1>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">最終更新: {data.updated} · IC Markets Raw Spread · リアル口座</p>
+    <h1 style="color:var(--gold);margin-bottom:4px;" data-i18n="live-title">ライブパフォーマンス</h1>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;"><span data-i18n="live-updated">最終更新</span>: {data.updated} · IC Markets Raw Spread · <span data-i18n="live-liveaccount">リアル口座</span></p>
 
-    <!-- ═══ アカウントサマリー ═══ -->
+    <!-- ═══ Account Summary ═══ -->
     <div class="summary-grid">
       <div class="sm-card">
-        <div class="sm-label">口座残高</div>
+        <div class="sm-label" data-i18n="live-balance">口座残高</div>
         <div class="sm-value">${account.balance.toFixed(2)}</div>
       </div>
       <div class="sm-card">
-        <div class="sm-label">エクイティ</div>
+        <div class="sm-label" data-i18n="live-equity">有効証拠金</div>
         <div class="sm-value">${account.equity.toFixed(2)}</div>
       </div>
       <div class="sm-card">
-        <div class="sm-label">本日P&L</div>
+        <div class="sm-label" data-i18n="live-daypnl">本日P&L</div>
         <div class="sm-value" style="color:{account.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
           {account.dayPnL >= 0 ? '+' : ''}{account.dayPnL.toFixed(2)} ({account.dayPnLPercent}%)
         </div>
       </div>
       <div class="sm-card">
-        <div class="sm-label">ポジション数</div>
+        <div class="sm-label" data-i18n="live-positions">ポジション</div>
         <div class="sm-value">{account.positions} / {account.maxPositions}</div>
       </div>
       <div class="sm-card">
-        <div class="sm-label">セッション状態</div>
+        <div class="sm-label" data-i18n="live-status">ステータス</div>
         <div class="sm-value">
           <span class={`status-badge ${session.status === 'RUNNING' ? 'green' : 'amber'}`}>{session.status}</span>
         </div>
       </div>
       <div class="sm-card">
-        <div class="sm-label">クールダウン</div>
-        <div class="sm-value">{session.cooldown > 0 ? session.cooldown + 's' : 'なし'}</div>
+        <div class="sm-label" data-i18n="live-cooldown">クールダウン</div>
+        <div class="sm-value" id="cooldown-value">{session.cooldown > 0 ? session.cooldown + 's' : ''}</div>
       </div>
     </div>
 
-    <!-- ═══ エクイティカーブ ═══ -->
+    <!-- ═══ Equity Curve ═══ -->
     <div class="section-card">
-      <h2>📈 エクイティカーブ（フォワードテスト）</h2>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">直近の日次損益を累積表示。開始からのパフォーマンス推移。</p>
+      <h2 data-i18n="live-equity-title">📈 エクイティカーブ（フォワードテスト）</h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;" data-i18n="live-equity-sub">直近の日次損益を累積表示。開始からのパフォーマンス推移。</p>
       <div class="chart-container">
         <canvas id="equityChart"></canvas>
       </div>
       <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
-        <div class="stat-chip"><span class="chip-label">期間</span><span>{tradeHistory.length}日</span></div>
-        <div class="stat-chip"><span class="chip-label">総損益</span><span style="color:var(--accent-green);">{(() => { const t = tradeHistory.reduce((s, d) => s + d.pnl, 0); return (t >= 0 ? '+' : '') + '$' + t.toFixed(2); })()}</span></div>
-        <div class="stat-chip"><span class="chip-label">取引日勝率</span><span>{(() => { const a = tradeHistory.filter(d => d.trades > 0); const w = a.filter(d => d.pnl > 0).length; return a.length > 0 ? (w / a.length * 100).toFixed(1) + '%' : '0%'; })()}</span></div>
+        <div class="stat-chip"><span class="chip-label" data-i18n="live-period">期間</span><span>{tradeHistory.length}<span data-i18n="live-period-unit">日</span></span></div>
+        <div class="stat-chip"><span class="chip-label" data-i18n="live-totalpnl">総損益</span><span style="color:var(--accent-green);">{(() => { const t = tradeHistory.reduce((s, d) => s + d.pnl, 0); return (t >= 0 ? '+' : '') + '$' + t.toFixed(2); })()}</span></div>
+        <div class="stat-chip"><span class="chip-label" data-i18n="live-wr-days">取引日勝率</span><span>{(() => { const a = tradeHistory.filter(d => d.trades > 0); const w = a.filter(d => d.pnl > 0).length; return a.length > 0 ? (w / a.length * 100).toFixed(1) + '%' : '0%'; })()}</span></div>
       </div>
     </div>
 
-    <!-- ═══ シグナル状態 ═══ -->
+    <!-- ═══ Signal Status ═══ -->
     <div class="section-card">
-      <h2>🎯 現在のシグナル状態</h2>
+      <h2 data-i18n="live-signal-title">🎯 現在のシグナル状態</h2>
       <div class="signal-grid">
         <div class="sig-item">
           <span class="sig-label">ADX</span>
           <span class="sig-val">{market.adx}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">H4買い許可</span>
+          <span class="sig-label" data-i18n="live-h4buy">H4買い許可</span>
           <span class="sig-val sig-bool {signal.h4Buy === 'Y' ? 'on' : 'off'}">{signal.h4Buy}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">H4売り許可</span>
+          <span class="sig-label" data-i18n="live-h4sell">H4売り許可</span>
           <span class="sig-val sig-bool {signal.h4Sell === 'Y' ? 'on' : 'off'}">{signal.h4Sell}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">買いシグナル</span>
+          <span class="sig-label" data-i18n="live-canbuy">買いシグナル</span>
           <span class="sig-val sig-bool {signal.canBuy === 'Y' ? 'on' : 'off'}">{signal.canBuy}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">売りシグナル</span>
+          <span class="sig-label" data-i18n="live-cansell">売りシグナル</span>
           <span class="sig-val sig-bool {signal.canSell === 'Y' ? 'on' : 'off'}">{signal.canSell}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">必要スコア</span>
+          <span class="sig-label" data-i18n="live-needscore">必要スコア</span>
           <span class="sig-val">{signal.need}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">スプレッド</span>
+          <span class="sig-label" data-i18n="live-spread">スプレッド</span>
           <span class="sig-val">{market.spread}</span>
         </div>
         <div class="sig-item">
-          <span class="sig-label">リスク制限</span>
-          <span class="sig-val sig-bool {risk.dailyLossLimit ? 'on' : 'off'}">{risk.dailyLossLimit ? '発動中' : '正常'}</span>
+          <span class="sig-label" data-i18n="live-risklimit">リスク制限</span>
+          <span class="sig-val sig-bool {risk.dailyLossLimit ? 'on' : 'off'}" id="risk-status">{risk.dailyLossLimit ? '発動中' : '正常'}</span>
         </div>
       </div>
     </div>
 
-    <!-- ═══ 直近トレード ═══ -->
+    <!-- ═══ Recent Trades ═══ -->
     <div class="section-card">
-      <h2>⚡ 直近取引</h2>
+      <h2 data-i18n="live-recent-title">⚡ 直近取引</h2>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>時間</th><th>方向</th><th>ロット</th><th>P&L</th></tr></thead>
+          <thead><tr><th data-i18n="live-time">時間</th><th data-i18n="live-dir">方向</th><th data-i18n="live-lot">ロット</th><th>P&amp;L</th></tr></thead>
           <tbody>
             {lastTrades.map(t => (
             <tr>
@@ -123,8 +123,8 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
     </div>
 
     <div style="margin-top:24px;text-align:center;padding:20px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:12px;font-size:0.85rem;">バックテスト詳細はこちら</p>
-      <a href={siteBase + '/backtest/'} class="btn btn-gold">バックテストレポートを見る</a>
+      <p style="color:var(--text-muted);margin-bottom:12px;font-size:0.85rem;" data-i18n="live-view-bt">バックテスト詳細はこちら</p>
+      <a href={siteBase + '/backtest/'} class="btn btn-gold" data-i18n="live-bt-btn">バックテストレポートを見る</a>
     </div>
   </div>
 
@@ -132,9 +132,37 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
   <script is:inline>
     window.__tradeHistory = JSON.parse(decodeURIComponent('{encodeURIComponent(JSON.stringify(tradeHistory))}'));
     window.__startBalance = {data.startBalance || 5075.28};
+    window.__cooldown = {session.cooldown};
+    window.__riskActive = {JSON.stringify(risk.dailyLossLimit)};
   </script>
   <script>
     (async function() {
+      // Patch LANG.set to also update dynamic values
+      const origSet = LANG.set;
+      LANG.set = function(lang) {
+        origSet(lang);
+        // Cooldown text
+        const cd = document.getElementById('cooldown-value');
+        if (cd) {
+          cd.textContent = window.__cooldown > 0 ? window.__cooldown + 's' : (lang === 'JP' ? 'なし' : 'None');
+        }
+        // Risk status text
+        const rs = document.getElementById('risk-status');
+        if (rs) {
+          if (window.__riskActive) {
+            rs.textContent = lang === 'JP' ? '発動中' : 'Active';
+          } else {
+            rs.textContent = lang === 'JP' ? '正常' : 'Normal';
+          }
+        }
+        // Chart label
+        const chart = document.querySelector('canvas#equityChart');
+        if (chart && chart.__chart) {
+          chart.__chart.data.datasets[0].label = lang === 'JP' ? 'エクイティ ($)' : 'Equity ($)';
+          chart.__chart.update();
+        }
+      };
+
       const canvas = document.getElementById('equityChart');
       if (!canvas) return;
       const { Chart, registerables } = await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm');
@@ -144,7 +172,6 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
       let cum = window.__startBalance || 5075.28;
       const labels = [];
       const equityData = [];
-      // Reverse to show chronological order
       const reversed = [...history].reverse();
       for (const d of reversed) {
         cum += d.pnl;
@@ -152,12 +179,15 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
         equityData.push(cum);
       }
 
-      new Chart(canvas, {
+      const lang = (navigator.language || '').startsWith('ja') ? 'JP' : 'EN';
+      const chartLabel = lang === 'JP' ? 'エクイティ ($)' : 'Equity ($)';
+
+      const ch = new Chart(canvas, {
         type: 'line',
         data: {
           labels,
           datasets: [{
-            label: 'エクイティ ($)',
+            label: chartLabel,
             data: equityData,
             borderColor: '#D4AF37',
             backgroundColor: 'rgba(212,175,55,0.08)',
@@ -177,6 +207,7 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
           }
         }
       });
+      canvas.__chart = ch;
     })();
   </script>
 
