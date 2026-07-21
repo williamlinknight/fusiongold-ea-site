@@ -6,7 +6,7 @@ const dataPath = path.resolve(process.cwd(), 'public/data/ea-status.json');
 const raw = fs.readFileSync(dataPath, 'utf-8');
 const data = JSON.parse(raw);
 const siteBase = '/fusiongold-ea-site';
-const { account, session, market, signal, risk, lastTrades, tradeHistory } = data;
+const { account, session, lastTrades, tradeHistory } = data;
 
 // Compute equity curve data (server-side)
 const reversed = [...tradeHistory].reverse();
@@ -125,45 +125,6 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       </div>
     </div>
 
-    <!-- ═══ Signal Status ═══ -->
-    <div class="section-card">
-      <h2 data-i18n="live-signal-title">🎯 現在のシグナル状態</h2>
-      <div class="signal-grid">
-        <div class="sig-item">
-          <span class="sig-label">ADX</span>
-          <span class="sig-val">{market.adx}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-h4buy">H4買い許可</span>
-          <span class="sig-val sig-bool {signal.h4Buy === 'Y' ? 'on' : 'off'}">{signal.h4Buy}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-h4sell">H4売り許可</span>
-          <span class="sig-val sig-bool {signal.h4Sell === 'Y' ? 'on' : 'off'}">{signal.h4Sell}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-canbuy">買いシグナル</span>
-          <span class="sig-val sig-bool {signal.canBuy === 'Y' ? 'on' : 'off'}">{signal.canBuy}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-cansell">売りシグナル</span>
-          <span class="sig-val sig-bool {signal.canSell === 'Y' ? 'on' : 'off'}">{signal.canSell}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-needscore">必要スコア</span>
-          <span class="sig-val">{signal.need}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-spread">スプレッド</span>
-          <span class="sig-val">{market.spread}</span>
-        </div>
-        <div class="sig-item">
-          <span class="sig-label" data-i18n="live-risklimit">リスク制限</span>
-          <span class="sig-val sig-bool {risk.dailyLossLimit ? 'on' : 'off'}" id="risk-status">{risk.dailyLossLimit ? '発動中' : '正常'}</span>
-        </div>
-      </div>
-    </div>
-
     <!-- ═══ Recent Trades ═══ -->
     <div class="section-card">
       <h2 data-i18n="live-recent-title">⚡ 直近取引</h2>
@@ -192,10 +153,9 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     </div>
   </div>
 
-  <!-- i18n dynamic text handler (minimal, no Chart.js) -->
+  <!-- i18n dynamic text handler -->
   <script is:inline>
     window.__cooldown = {session.cooldown};
-    window.__riskActive = {JSON.stringify(risk.dailyLossLimit)};
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -213,8 +173,6 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
           origSet(lang);
           const cd = document.getElementById('cooldown-value');
           if (cd) cd.textContent = window.__cooldown > 0 ? window.__cooldown + 's' : (lang === 'JP' ? 'なし' : 'None');
-          const rs = document.getElementById('risk-status');
-          if (rs) rs.textContent = window.__riskActive ? (lang === 'JP' ? '発動中' : 'Active') : (lang === 'JP' ? '正常' : 'Normal');
         };
       });
     });
