@@ -15,8 +15,12 @@ const siteBase = '/fusiongold-ea-site';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | FusionGold M5</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="XAUUSD EA, ゴールド自動売買, MT5 EA, 金EA, FusionGold M5, 物々交換" />
+  <meta name="keywords" content="XAUUSD EA, ゴールド自動売買, MT5 EA, 金EA, FusionGold M5, 物々交換, XAUUSDトレード, エキスパートアドバイザー" />
   <link rel="canonical" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <!-- hreflang for JP/EN bilingual -->
+  <link rel="alternate" hreflang="ja" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <link rel="alternate" hreflang="en" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <link rel="alternate" hreflang="x-default" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -24,20 +28,64 @@ const siteBase = '/fusiongold-ea-site';
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="FusionGold M5" />
+  <meta property="og:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg" />
   <meta name="google-site-verification" content="FGKyrzvPC8r6Bdi7XpcgyVYiXFVDdTatDMa5SmlIBoY" />
-  <!-- JSON-LD: WebSite (global) -->
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FusionGold M5",
+    "url": "https://williamlinknight.github.io/fusiongold-ea-site",
+    "description": "XAUUSD（ゴールド）M5専用自動売買EA",
+    "foundingDate": "2026"
+  }
+  </script>
+  <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "FusionGold M5",
     "url": "https://williamlinknight.github.io/fusiongold-ea-site",
-    "alternateName": "XAUUSD ゴールドEA",
-    "description": "XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。"
+    "alternateName": ["XAUUSD ゴールドEA", "FusionGold M5 EA"],
+    "inLanguage": ["ja", "en"],
+    "description": "XAUUSD（ゴールド）専用のMT5自動売買EA。ADX+4バケット+H4ゾーン+矛盾検出エンジン搭載。IC Markets対応。"
+  }
+  </script>
+  <!-- JSON-LD: SoftwareApplication (EA product) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FusionGold M5",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Windows/Mac (MT5)",
+    "description": "XAUUSD（ゴールド）M5専用のMT5自動売買EA。トレンド・モメンタム・ストラクチャー・流動性の4軸スコアリングでエントリーを判断。リスク管理機能内蔵。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "description": "物々交換（現金不要）。日本製品と交換可能。"
+    },
+    "browserRequirements": "MetaTrader 5"
+  }
+  </script>
+  <!-- JSON-LD: BreadcrumbList (default) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FusionGold M5", "item": "https://williamlinknight.github.io/fusiongold-ea-site/"}
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -35,7 +35,7 @@ for (const d of th) {
 }
 ---
 
-<BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。回測勝率74.48%。物々交換でご利用いただけます。">
+<BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。フォワードテスト中。IC Markets Raw Spread対応。物々交換で提供。">
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero">
@@ -219,6 +219,47 @@ for (const d of th) {
   <section class="section" style="background:var(--bg-card);">
     <div class="container" style="max-width:640px;">
       <h2 class="section-title fade-in" data-i18n="faq-section-title">よくある質問</h2>
+      <!-- JSON-LD: FAQPage -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "FusionGold M5 はどのように動きますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "デモ口座で試せますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。IC Marketsのデモ口座で無料テスト可能。またはリアルタイムの取引口座をMT5で閲覧することもできます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "物々交換はどのように行いますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "リスク管理はどのようになっていますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。"
+            }
+          }
+        ]
+      }
+      </script>
       <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
         <summary class="faq-q">
           <span style="font-size:0.85rem;color:var(--gold);font-weight:700;min-width:24px;">01</span>
