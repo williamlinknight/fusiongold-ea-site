@@ -8,11 +8,10 @@ const data = JSON.parse(raw);
 const siteBase = '/fusiongold-ea-site';
 const { account, session, lastTrades, tradeHistory } = data;
 
-// Compute equity curve data (server-side)
-const reversed = [...tradeHistory].reverse();
+// Compute equity curve data (server-side) — chronological order (oldest left)
 let cum = data.startBalance || 5075.28;
 const equityPoints = [];
-for (const d of reversed) {
+for (const d of tradeHistory) {
   cum += d.pnl;
   equityPoints.push({ label: d.date.slice(5), value: cum });
 }
