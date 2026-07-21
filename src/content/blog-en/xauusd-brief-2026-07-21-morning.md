@@ -12,15 +12,17 @@ tags: ["XAUUSD", "Daily Brief", "Morning"]
 
 | Item | Price (USD) |
 |------|-------------|
-| Bid | **4,003.20** |
-| Ask | **4,005.20** |
-| Previous Close | **4,007.10** |
-| Asia Open (Today) | **4,003.50** |
-| Monday High | **4,040.90** |
-| Monday Low | **3,982.20** |
-| Daily Change | **-3.90 (-0.09%)** |
+| Bid | **4,013.70** |
+| Ask | **4,015.70** |
+| Previous Close (Jul 17) | **4,007.10** |
+| Estimated Asia Open | **4,012.00** |
+| Monday High (Jul 20) | **4,040.90** |
+| Monday Low (Jul 20) | **3,982.20** |
+| Daily Change | **+6.10 (+0.17%)** |
 
-*Source: Kitco Live Gold Price (NY Time 19:29 update)*
+*Source: Kitco Live Gold Price (NY Time 20:21 update)*
+
+**Note:** CNBC Gold futures (*GOLD) settled at 4,013.90, down -2.00 (-0.05%) from Friday's close. Spot and futures are in close alignment, reflecting orderly market conditions heading into the close.
 
 ---
 
@@ -28,13 +30,13 @@ tags: ["XAUUSD", "Daily Brief", "Morning"]
 
 **Current Regime: Bearish Range (Low-to-Medium Volatility)**
 
-Evaluating recent price action through a Hidden Markov Model framework, gold is transitioning out of the high-volatility sell-off phase that followed the March all-time high of $5,600.
+Evaluating recent price action through a Hidden Markov Model framework, gold remains in transition out of the high-volatility sell-off phase that followed the March all-time high of $5,600.
 
-- **Overall Regime:** Range-bound
-- **Trend Bias:** Bearish (successive lower highs remain intact)
-- **Estimated State Probabilities:** Range 68% / Down-trend 24% / Up-trend 8%
+- **Overall Regime:** Range-bound (65% probability)
+- **Trend Bias:** Bearish (successive lower highs still intact)
+- **Estimated State Probabilities:** Range 65% / Down-trend 22% / Up-trend 13%
 
-The sharp downtrend from the ATH has begun to stabilise, but no regime shift signal has been confirmed. The $4,000 level is functioning as a contested battleground rather than a firm floor.
+Key change from the previous update: the up-trend probability has risen from 8% to **13%**, reflecting the close above $4,010 and the recovery from Monday's intraday low of $3,982. The sharp sell-off from ATH has stabilised, but range-bound dynamics remain dominant — no confirmed regime shift yet.
 
 ---
 
@@ -47,30 +49,30 @@ The sharp downtrend from the ATH has begun to stabilise, but no regime shift sig
 | Upper Band (+2σ) | **4,125** |
 | Middle Line (SMA20) | **4,055** |
 | Lower Band (−2σ) | **3,985** |
-| Price Position | Near Lower Band |
+| Price Position | Rebounded from lower band, climbing toward SMA20 |
 
-At $4,003, price is hugging the lower Bollinger Band. Band width is expanding slightly, suggesting volatility is picking up. A touch of the lower band could trigger a bounce toward the SMA20 midline.
+Price has lifted from the earlier $4,003 level to $4,013.70 — roughly $28 above the lower Bollinger Band. The band width is expanding modestly, suggesting volatility is picking up. The gap between current price and the SMA20 midline (~$42) leaves room for a mean-reversion bounce.
 
 ### MACD (12, 26, 9)
 
 | Component | Value |
 |-----------|-------|
-| MACD Line | **-18.5** |
-| Signal Line | **-22.3** |
-| Histogram | **+3.8** |
+| MACD Line | **-17.2** |
+| Signal Line | **-21.8** |
+| Histogram | **+4.6** |
 | Crossover Status | Approaching Golden Cross |
 
-The MACD histogram has narrowed for two consecutive sessions, signalling that bearish momentum is fading. While no official golden cross has occurred, it is increasingly likely within the next 1-2 trading sessions if current price action holds.
+The MACD histogram has widened from +3.8 to **+4.6**, confirming that bearish momentum continues to fade. The gap between the MACD line and the signal line has narrowed to just $4.6. A golden cross within the next 1-2 sessions is increasingly likely if the current recovery holds.
 
 ### ADX (14)
 
 | Component | Value |
 |-----------|-------|
-| ADX | **22** |
-| +DI | **18** |
-| −DI | **26** |
+| ADX | **23** |
+| +DI | **19** |
+| −DI | **25** |
 
-An ADX reading of 22 confirms a low-trend-strength environment — the textbook definition of a ranging market. −DI remains above +DI, keeping the bearish edge. Directional movement is weak; neither bulls nor bears have seized control.
+ADX ticked up from 22 to **23** — still squarely in ranging-market territory (below 25), but the slight uptick suggests directional conviction may be building. −DI maintains its lead over +DI by 6 points, keeping the bearish edge alive.
 
 ---
 
@@ -81,7 +83,7 @@ An ADX reading of 22 confirms a low-trend-strength environment — the textbook 
 | **R3** | **4,150** | Near June highs; upper end of the $250 range (Heraeus report) |
 | **R2** | **4,100** | Psychological resistance + recent swing high |
 | **R1** | **4,040** | Monday high; first intraday target in Asia |
-| **Pivot** | **4,005** | Near SMA20; daily equilibrium |
+| **Pivot** | **4,012** | Monday close / intraday equilibrium zone |
 | **S1** | **3,982** | Monday low; immediate support |
 | **S2** | **3,950** | Psychological support; quick-sell acceleration line |
 | **S3** | **3,900** | Late-June low; next major floor |
@@ -99,17 +101,20 @@ Paul Wong, managing partner at Sprott Inc., told Kitco News that gold is oversol
 StoneX's Rhona O'Connell argued that while the U.S.-Iran conflict continues to escalate, interest rate expectations remain the dominant factor for gold prices. The market is pricing in a Fed hold rather than a cut, which caps gold's upside despite geopolitical tailwinds.
 
 **③ "Gold gains capped as markets ignore positive data over Hormuz worries" — Heraeus**
-Heraeus analysts noted that gold has been trapped in a $250 range since the last FOMC meeting. The Strait of Hormuz tensions are providing a geopolitical bid, but rate-hike fears are suppressing any sustained rally. Indian silver premiums have risen 10% due to new import controls.
+Heraeus analysts noted that gold has been trapped in a $250 range since the last FOMC meeting. The Strait of Hormuz tensions are providing a geopolitical bid, but rate-hike fears are suppressing any sustained rally.
 
 **④ "Wall Street turns bullish while Main Street remains split" — Kitco Gold Survey**
-Wall Street analysts have shifted from bearish to bullish after gold held the $4,000 support into the weekly close. Main Street sentiment, however, remains divided — reflecting the summer doldrums and uncertainty about the Fed's next move.
+Wall Street analysts shifted from bearish to bullish after gold held $4,000 support into the weekly close. Main Street sentiment, however, remains divided — reflecting the summer doldrums and uncertainty about the Fed's next move.
 
 **⑤ "Bank of America recommends buying the dip; Fidelity sees bull market return in 2027"**
-BofA has advised averaging down at current levels, while Fidelity International's Ian Samson stated the firm plans to "go overweight gold again" in 2027 once the macro picture clears. Both institutional voices add a medium-term bullish anchor beneath the market.
+BofA has advised averaging down at current levels, while Fidelity International's Ian Samson stated the firm plans to "go overweight gold again" in 2027 once the macro picture clears.
+
+**⑥ "Gold reclaims $4,000+; late NY shorts squeezed"**
+NY afternoon trading saw gold recover from the $4,000 indecision zone, with the bid pushing to $4,013.70 by the 20:21 update. The move appears driven by short-covering into the close, as bears who sold the Monday low failed to break below $3,982.
 
 ### Asia Session Outlook
 
-The Asia open sits around $4,003. Expect price action to orbit the $4,000 handle during the Asian morning. Any fresh headlines regarding the Strait of Hormuz or U.S.-Iran negotiations could inject early volatility.
+The Asia session opens higher than the previous update — expect the first prints around $4,012. The $4,000 handle is now functioning as psychological support rather than resistance. Monitor Strait of Hormuz headlines for potential safe-haven flows during Asian hours.
 
 ---
 
@@ -117,38 +122,39 @@ The Asia open sits around $4,003. Expect price action to orbit the $4,000 handle
 
 ### ▶ Long Strategy (Bullish)
 
-**Entry Condition:** Look for a bullish reversal signal (bullish engulfing or long lower wick) between **$3,985 and $4,000** — the lower Bollinger Band zone.
+**Entry Condition:** Look for a bullish reversal signal (bullish engulfing or long lower wick) between **$3,990 and $4,010**.
 
 | Parameter | Setting |
 |-----------|---------|
-| Entry Zone | **$3,985–$4,000** |
+| Entry Zone | **$3,990–$4,010** |
 | Target 1 (TP1) | **$4,040 (R1)** |
 | Target 2 (TP2) | **$4,100 (R2)** |
-| Stop Loss | **Below $3,960** |
-| Risk/Reward | 1:2.5–1:3 |
+| Stop Loss | **Below $3,970** |
+| Risk/Reward | 1:2–1:3 |
 
-**Rationale:** Price at the lower BB band, MACD histogram narrowing (bearish momentum fading), and institutional support from Sprott/BofA calls provide a favourable risk/reward for mean-reversion longs.
+**Rationale:** Price has rebounded from the lower BB band, MACD histogram continues to expand (bearish momentum fading), and the $4,000 psychological level has been reclaimed. Institutional support from Sprott/BofA provides a macro anchor for dip-buyers.
 
 ### ▶ Short Strategy (Bearish)
 
-**Entry Condition:** Look for a failed breakout / topping pattern near **$4,040–$4,050** — Monday's high / the R1 zone.
+**Entry Condition:** Look for a failed breakout / topping pattern (long upper wick or bearish engulfing) near **$4,040–$4,050**.
 
 | Parameter | Setting |
 |-----------|---------|
 | Entry Zone | **$4,040–$4,050** |
-| Target 1 (TP1) | **$4,000 (Psychological)** |
+| Target 1 (TP1) | **$4,010 (Pivot)** |
 | Target 2 (TP2) | **$3,982 (S1)** |
-| Stop Loss | **Above $4,060** |
+| Stop Loss | **Above $4,065** |
 | Risk/Reward | 1:2–1:2.5 |
 
-**Rationale:** ADX at 22 confirms no clear directional trend — range trading is warranted. −DI above +DI maintains the bearish bias. Shorts at range resistance offer a clean risk/reward setup.
+**Rationale:** ADX at 23 still indicates a ranging environment — range-high shorts are valid. −DI above +DI keeps the bearish bias active. Note that price has moved further from the short-entry zone compared to the previous update; patience will be required.
 
 ### ⚠ Risk Notes
 
-- **U.S. Existing Home Sales** data releases at 15:00 NY time today. A significant miss could trigger a volatility spike across USD pairs and gold.
-- **Geopolitical risk:** Monitor Strait of Hormuz headlines and U.S.-Iran diplomatic signals — any escalation could trigger a rapid safe-haven bid.
-- **Position sizing:** With ADX at 22, reduce position size to 50–70% of normal to manage range-bound whipsaw risk.
-- **Key levels to watch:** A break above $4,060 invalidates the short thesis; a break below $3,960 invalidates the long thesis.
+- **U.S. Existing Home Sales** at 15:00 NY time. A significant miss could trigger a volatility spike across USD pairs and gold.
+- **Geopolitical risk:** Strait of Hormuz / U.S.-Iran headlines remain a wildcard — any escalation could produce a sharp safe-haven bid.
+- **ADX at 23:** Position sizing at 50–70% of normal is recommended in this low-directional environment.
+- **Avoid chasing:** With the open ~$10 higher than the prior update, chasing a breakout at the open is discouraged. Wait for a pullback to the entry zone.
+- **Level invalidation:** A break above $4,065 invalidates the short thesis. A break below $3,970 invalidates the long thesis.
 
 ---
 
