@@ -61,19 +61,19 @@ for (const d of th) {
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-val">{liveDayWr}%</span>
-          <span class="hero-stat-label">勝率（フォワード）</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-winrate">勝率（フォワード）</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">{totalPnl >= 0 ? '+' : ''}${Math.round(totalPnl).toLocaleString()}</span>
-          <span class="hero-stat-label">純利益</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-profit">純利益</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">{livePf}</span>
-          <span class="hero-stat-label">プロフィットファクター</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-pf">プロフィットファクター</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val">{maxDd.toFixed(2)}%</span>
-          <span class="hero-stat-label">最大DD</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-dd">最大DD</span>
         </div>
       </div>
 
