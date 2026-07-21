@@ -56,8 +56,8 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
       </div>
       <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
         <div class="stat-chip"><span class="chip-label">期間</span><span>{tradeHistory.length}日</span></div>
-        <div class="stat-chip"><span class="chip-label">総損益</span><span style="color:var(--accent-green);">+$142.48</span></div>
-        <div class="stat-chip"><span class="chip-label">取引日勝率</span><span>66.67%</span></div>
+        <div class="stat-chip"><span class="chip-label">総損益</span><span style="color:var(--accent-green);">{(() => { const t = tradeHistory.reduce((s, d) => s + d.pnl, 0); return (t >= 0 ? '+' : '') + '$' + t.toFixed(2); })()}</span></div>
+        <div class="stat-chip"><span class="chip-label">取引日勝率</span><span>{(() => { const a = tradeHistory.filter(d => d.trades > 0); const w = a.filter(d => d.pnl > 0).length; return a.length > 0 ? (w / a.length * 100).toFixed(1) + '%' : '0%'; })()}</span></div>
       </div>
     </div>
 
@@ -131,6 +131,7 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
   <!-- Chart.js -->
   <script is:inline>
     window.__tradeHistory = JSON.parse(decodeURIComponent('{encodeURIComponent(JSON.stringify(tradeHistory))}'));
+    window.__startBalance = {data.startBalance || 5075.28};
   </script>
   <script>
     (async function() {
@@ -140,7 +141,7 @@ const { account, session, market, signal, risk, lastTrades, tradeHistory } = dat
       Chart.register(...registerables);
 
       const history = window.__tradeHistory;
-      let cum = 4797.07;
+      let cum = window.__startBalance || 5075.28;
       const labels = [];
       const equityData = [];
       // Reverse to show chronological order

@@ -1,11 +1,12 @@
 {
-  "updated": "2026-07-21 10:28 BJT",
-  "note": "PnL calculated from MT5 logs (UTF-16 LE, local Python FIFO matching)",
+  "updated": "2026-07-21 22:33 BJT",
+  "note": "Real P&L from MT5 Account History (HistoryDealsGet) — FusionGold EA only from Jul 13",
+  "startBalance": 3233.47,
   "account": {
-    "balance": 4797.07,
-    "equity": 4797.07,
-    "dayPnL": 0.0,
-    "dayPnLPercent": 0.0,
+    "balance": 5075.28,
+    "equity": 5075.28,
+    "dayPnL": 96.03,
+    "dayPnLPercent": 1.9,
     "positions": 0,
     "maxPositions": 4,
     "status": "WAITING"
@@ -37,27 +38,14 @@
   },
   "lastTrades": [],
   "tradeHistory": [
-    {"date": "2026-06-30", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-01", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-02", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-03", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-04", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-05", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-06", "pnl": -39.36, "trades": 1, "winRate": 0.0},
-    {"date": "2026-07-07", "pnl": 107.79, "trades": 48, "winRate": 60.42},
-    {"date": "2026-07-08", "pnl": -371.96, "trades": 14, "winRate": 35.71},
-    {"date": "2026-07-09", "pnl": -1122.56, "trades": 41, "winRate": 53.66},
-    {"date": "2026-07-10", "pnl": 3.23, "trades": 19, "winRate": 36.84},
-    {"date": "2026-07-11", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-12", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-13", "pnl": -562.82, "trades": 25, "winRate": 8.0},
-    {"date": "2026-07-14", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-13", "pnl": 111.46, "trades": 9, "winRate": 88.9},
+    {"date": "2026-07-14", "pnl": 451.36, "trades": 11, "winRate": 100.0},
     {"date": "2026-07-15", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-16", "pnl": -153.33, "trades": 20, "winRate": 30.0},
-    {"date": "2026-07-17", "pnl": 10.85, "trades": 6, "winRate": 33.33},
-    {"date": "2026-07-18", "pnl": 0.0, "trades": 0, "winRate": 0},
+    {"date": "2026-07-16", "pnl": -71.37, "trades": 7, "winRate": 57.1},
+    {"date": "2026-07-17", "pnl": 326.19, "trades": 14, "winRate": 92.9},
+    {"date": "2026-07-18", "pnl": -112.34, "trades": 3, "winRate": 33.3},
     {"date": "2026-07-19", "pnl": 0.0, "trades": 0, "winRate": 0},
-    {"date": "2026-07-20", "pnl": 241.39, "trades": 19, "winRate": 63.16},
-    {"date": "2026-07-21", "pnl": 0.0, "trades": 0, "winRate": 0}
+    {"date": "2026-07-20", "pnl": 182.18, "trades": 4, "winRate": 75.0},
+    {"date": "2026-07-21", "pnl": 96.03, "trades": 10, "winRate": 70.0}
   ]
 }
