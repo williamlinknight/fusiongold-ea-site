@@ -1,83 +1,149 @@
 #!/usr/bin/env python3
 """
-Generate ea-status.json with PnL.
-- Tries to fetch from VPS (SSH + PowerShell)
-- Falls back to local calculation from known trade counts
+EA Live data updater.
+1. SCP log files from VPS
+2. Calculate PnL via FIFO matching (local Python, proper UTF-16 LE)
+3. Merge with historical data
+4. Save to public/data/ea-status.json
 """
-import json, os, subprocess, sys, datetime, tempfile, re
+import json, os, subprocess, sys, re, datetime, tempfile, glob
 
 NOW = datetime.datetime.now()
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = os.path.join(BASE, "public", "data", "ea-status.json")
+SCRIPT_DIR = os.path.join(BASE, "scripts")
+TMP_DIR = "/tmp/ea-logs"
 
-VPS_HOST = "Administrator@43.162.99.220"
+VPS = "Administrator@43.162.99.220"
+VPS_LOGS = "C:/Users/Administrator/AppData/Roaming/MetaQuotes/Terminal/010E047102812FC0C18890992854220E/logs"
 
-def ssh_output(cmd, timeout=20):
-    full = f'sshpass -p "Kingfisher@12" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 {VPS_HOST} "{cmd}"'
+def scp_log(date_str):
+    """Download one log file from VPS"""
+    os.makedirs(TMP_DIR, exist_ok=True)
+    local = os.path.join(TMP_DIR, f"{date_str}.log")
+    if os.path.exists(local):
+        return local  # already downloaded
+    cmd = f'sshpass -p "Kingfisher@12" scp -v -o StrictHostKeyChecking=no "{VPS}:{VPS_LOGS}/{date_str}.log" {local}'
     try:
-        r = subprocess.run(full, shell=True, capture_output=True, text=True, timeout=timeout)
-        return r.stdout
-    except: return ""
-
-def scp_from_vps(local_path):
-    cmd = f'sshpass -p "Kingfisher@12" scp -o StrictHostKeyChecking=no "{VPS_HOST}:C:/Users/Administrator/Desktop/ea-status.json" {local_path}'
-    try:
-        r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
-        return r.returncode == 0
-    except: return False
-
-def run_vps_script():
-    """Try to run the PowerShell PnL script on VPS"""
-    ps_cmd = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\Administrator\\Desktop\\export-ea-status-v5.ps1"'
-    return ssh_output(ps_cmd, timeout=30)
-
-def get_vps_json():
-    """Download JSON from VPS"""
-    tmp = tempfile.mktemp(suffix=".json")
-    if scp_from_vps(tmp) and os.path.getsize(tmp) > 100:
-        with open(tmp) as f:
-            try:
-                return json.load(f)
-            except: pass
+        subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
+        if os.path.exists(local) and os.path.getsize(local) > 50:
+            return local
+    except: pass
     return None
 
-def generate_local():
-    """Generate data locally with estimated PnL"""
-    # Known trade counts from VPS log parsing (confirmed earlier)
-    # PnL is estimated based on typical win rate (~65%) and avg profit per trade
-    trade_data = [
-        {"date": "2026-07-06", "pnl": 39.36, "trades": 2, "winRate": 100.0},
-        {"date": "2026-07-07", "pnl": -1525.31, "trades": 84, "winRate": 30.85},
-        {"date": "2026-07-08", "pnl": -511.36, "trades": 28, "winRate": 44.44},
-        {"date": "2026-07-09", "pnl": 284.64, "trades": 64, "winRate": 71.43},
-        {"date": "2026-07-10", "pnl": 0.0, "trades": 20, "winRate": 0},
-        {"date": "2026-07-11", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-12", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-13", "pnl": 0.0, "trades": 40, "winRate": 0},
-        {"date": "2026-07-14", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-15", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-16", "pnl": 0.0, "trades": 36, "winRate": 0},
-        {"date": "2026-07-17", "pnl": -10.85, "trades": 12, "winRate": 66.67},
-        {"date": "2026-07-18", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-19", "pnl": 0.0, "trades": 0, "winRate": 0},
-        {"date": "2026-07-20", "pnl": 0.0, "trades": 28, "winRate": 0},
-        {"date": "2026-07-21", "pnl": 0.0, "trades": 0, "winRate": 0},
-    ]
+def calc_pnl(log_path):
+    """FIFO PnL calculation from UTF-16 LE log file"""
+    with open(log_path, 'rb') as f:
+        raw = f.read()
+    try:
+        text = raw.decode('utf-16-le')
+    except:
+        text = raw.decode('utf-8', errors='replace')
     
-    total_pnl = sum(t["pnl"] for t in trade_data)
-    today_pnl = 0.0
-    today_key = NOW.strftime("%Y-%m-%d")
-    for t in trade_data:
-        if t["date"] == today_key:
-            today_pnl = t["pnl"]
-            break
+    deals = []
+    for line in text.split('\n'):
+        m = re.search(r'deal #\d+ (\w+) ([\d.]+) XAUUSD at ([\d.]+) done', line)
+        if m:
+            deals.append({'dir': m.group(1), 'lots': float(m.group(2)), 'price': float(m.group(3))})
     
+    if not deals:
+        return None
+    
+    buy_q, sell_q = [], []
+    total_pnl, wins, losses = 0.0, 0, 0
+    
+    for d in deals:
+        rem = d['lots']
+        if d['dir'] == 'buy':
+            while rem > 0 and sell_q:
+                s = sell_q[0]
+                match = min(rem, s['lots'])
+                pnl = (d['price'] - s['price']) * match * 100
+                total_pnl += pnl
+                wins += 1 if pnl >= 0 else 0
+                losses += 1 if pnl < 0 else 0
+                rem -= match
+                if match >= s['lots']: sell_q.pop(0)
+                else: sell_q[0]['lots'] -= match
+            if rem > 0: buy_q.append({'lots': rem, 'price': d['price']})
+        else:
+            while rem > 0 and buy_q:
+                b = buy_q[0]
+                match = min(rem, b['lots'])
+                pnl = (d['price'] - b['price']) * match * 100
+                total_pnl += pnl
+                wins += 1 if pnl >= 0 else 0
+                losses += 1 if pnl < 0 else 0
+                rem -= match
+                if match >= b['lots']: buy_q.pop(0)
+                else: buy_q[0]['lots'] -= match
+            if rem > 0: sell_q.append({'lots': rem, 'price': d['price']})
+    
+    tt = wins + losses
+    wr = round(wins / tt * 100, 2) if tt > 0 else 0
+    return {'trades': tt, 'pnl': round(total_pnl, 2), 'winRate': wr}
+
+def load_existing():
+    """Load existing data to preserve history"""
+    if os.path.exists(DATA_FILE):
+        try:
+            with open(DATA_FILE) as f:
+                return json.load(f)
+        except: pass
+    return None
+
+def save_data(data):
+    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
+    with open(DATA_FILE, 'w') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+def main():
+    # Step 1: Load existing data
+    existing = load_existing()
+    if existing:
+        history = {h['date']: h for h in existing.get('tradeHistory', [])}
+        balance = existing.get('account', {}).get('balance', 4797.07)
+    else:
+        history = {}
+        balance = 4797.07
+    
+    # Step 2: Download recent logs (last 5 trading days) and calculate PnL
+    dates_to_check = []
+    for i in range(7):
+        d = NOW - datetime.timedelta(days=i)
+        dates_to_check.append(d.strftime('%Y%m%d'))
+    
+    new_data = False
+    for d in dates_to_check:
+        log_path = scp_log(d)
+        if log_path:
+            result = calc_pnl(log_path)
+            date_key = f'{d[:4]}-{d[4:6]}-{d[6:8]}'
+            if result and result['trades'] > 0:
+                history[date_key] = result
+                new_data = True
+                print(f"{date_key}: {result['trades']} trades, PnL=${result['pnl']}, WR={result['winRate']}%")
+    
+    # Step 3: Build 30-day history
+    output = []
+    for i in range(30):
+        d = (NOW - datetime.timedelta(days=29-i)).strftime('%Y-%m-%d')
+        if d in history:
+            output.append(history[d])
+        else:
+            output.append({'date': d, 'pnl': 0.0, 'trades': 0, 'winRate': 0})
+    
+    # Step 4: Determine today's PnL
+    today_key = NOW.strftime('%Y-%m-%d')
+    day_pnl = history.get(today_key, {}).get('pnl', 0.0) if today_key in history else 0.0
+    
+    # Step 5: Build and save
     data = {
         "updated": NOW.strftime("%Y-%m-%d %H:%M BJT"),
-        "note": "PnL from VPS MT5 deal matching",
+        "note": "Local Python FIFO (UTF-16 LE)",
         "account": {
-            "balance": 4797.07, "equity": 4797.07,
-            "dayPnL": today_pnl, "dayPnLPercent": 0.0,
+            "balance": balance, "equity": balance,
+            "dayPnL": day_pnl, "dayPnLPercent": 0.0,
             "positions": 0, "maxPositions": 4, "status": "WAITING"
         },
         "session": {"status": "WAITING", "cooldown": 0},
@@ -87,51 +153,19 @@ def generate_local():
         "risk": {"aggRisk": 0, "maxRisk": 190.46,
                  "dailyLossLimit": False, "consecutiveLossPause": False},
         "lastTrades": [],
-        "tradeHistory": trade_data
+        "tradeHistory": output
     }
     
-    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
-    with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    save_data(data)
     
-    return data, total_pnl
-
-def main():
-    # First try: run VPS script and download result
-    print("Trying VPS data fetch...")
-    run_vps_script()
-    vps_data = get_vps_json()
+    total_pnl = sum(h.get('pnl', 0) for h in output)
     
-    if vps_data and "tradeHistory" in vps_data:
-        # Check if PnL values are calculated (not all zeros)
-        recent = [t for t in vps_data["tradeHistory"] if t.get("pnl", 0) != 0]
-        if recent:
-            print(f"Using VPS data ({len(recent)} days with non-zero PnL)")
-            with open(DATA_FILE, "w") as f:
-                json.dump(vps_data, f, indent=2, ensure_ascii=False)
-            data = vps_data
-        else:
-            print("VPS data has no PnL, using local")
-            data, _ = generate_local()
-    else:
-        print("VPS unavailable, using local data")
-        data, _ = generate_local()
-    
-    total_pnl = sum(t.get("pnl", 0) for t in data.get("tradeHistory", []))
-    today_pnl = data.get("account", {}).get("dayPnL", 0)
-    balance = data.get("account", {}).get("balance", 4797.07)
-    
-    print(f"UPDATE_OK")
+    print(f"\nUPDATE_OK")
     print(f"Balance: ${balance}")
-    print(f"Day PnL: ${today_pnl}")
-    print(f"Total PnL (history): ${total_pnl:.2f}")
+    print(f"Day PnL: ${day_pnl}")
+    print(f"Total PnL (30d): ${total_pnl:.2f}")
+    print(f"Trading days: {sum(1 for h in output if h['trades'] > 0)}")
     
-    recent_trades = [(h["date"], h["trades"], h["pnl"]) 
-                     for h in data.get("tradeHistory", [])[-10:]
-                     if h["trades"] > 0]
-    print(f"Recent trade days: {recent_trades}")
-    print(f"Status: {data.get('account', {}).get('status', 'N/A')}")
-    
-    return 0 if vps_data else 1
+    return 0
 
 sys.exit(main())
