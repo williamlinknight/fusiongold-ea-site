@@ -59,7 +59,7 @@ const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
 
       <div class="hero-actions">
         <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="hero-demo-cta">デモを試す</a>
-        <a href={siteBase + '/backtest/'} class="btn btn-outline" data-i18n="hero-bt-link">バックテスト詳細</a>
+        <a href={siteBase + '/live/'} class="btn btn-outline">Live Performance</a>
         <a href={siteBase + '/brief/'} class="btn btn-outline" data-i18n="hero-brief">デイリー分析</a>
       </div>
     </div>
@@ -107,31 +107,6 @@ const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
       </div>
       <div style="text-align:center;margin-top:12px;">
         <a href={siteBase + '/strategy/'} class="text-link" data-i18n="strat-link">戦略の詳細を見る →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ バックテスト結果 ═══════════════ -->
-  <section class="section" style="background:var(--bg-card);">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="bt-section-title">バックテスト実績</h2>
-      <p class="section-sub fade-in" data-i18n="bt-section-sub">2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
-
-      <div class="bt-summary fade-in">
-        <div class="bt-item"><span class="bt-num">145</span><span class="bt-lbl" data-i18n="perf-trades">総取引数</span></div>
-        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">74.48%</span><span class="bt-lbl" data-i18n="perf-winrate">勝率</span></div>
-        <div class="bt-item"><span class="bt-num" style="color:var(--gold);">+$912.56</span><span class="bt-lbl" data-i18n="perf-profit">純利益</span></div>
-        <div class="bt-item"><span class="bt-num">1.54</span><span class="bt-lbl" data-i18n="perf-pf">PF</span></div>
-        <div class="bt-item"><span class="bt-num">8.61%</span><span class="bt-lbl" data-i18n="perf-dd">最大DD</span></div>
-        <div class="bt-item"><span class="bt-num">SELL 79%</span><span class="bt-lbl" data-i18n="bt-lbl-winrate-sell">売り勝率</span></div>
-      </div>
-
-      <div class="bt-chart-wrap fade-in">
-        <canvas id="btEquityChart"></canvas>
-      </div>
-
-      <div style="text-align:center;margin-top:16px;">
-        <a href={siteBase + '/backtest/'} class="btn btn-gold" data-i18n="bt-detail-link">詳細レポートを見る</a>
       </div>
     </div>
   </section>
@@ -322,38 +297,6 @@ const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
       </div>
     </div>
   </section>
-
-  <!-- Chart.js for backtest equity curve -->
-  <script>
-    (async function() {
-      const canvas = document.getElementById('btEquityChart');
-      if (!canvas) return;
-      const { Chart, registerables } = await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm');
-      Chart.register(...registerables);
-      new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels: ['6月第1週','6月第2週','6月第3週','6月第4週','7月第1週','7月第2週'],
-          datasets: [{
-            label: '残高 ($)',
-            data: [1000,1120,1255,1460,1690,1912],
-            borderColor: '#D4AF37',
-            backgroundColor: 'rgba(212,175,55,0.06)',
-            fill: true, tension: 0.3,
-            pointRadius: 3, pointBackgroundColor: '#D4AF37'
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.04)' } },
-            y: { ticks: { color: '#888', callback: v => '$'+v }, grid: { color: 'rgba(255,255,255,0.04)' } }
-          }
-        }
-      });
-    })();
-  </script>
 
   <style>
     .hero { background: linear-gradient(135deg, #1a1a2e, #16213e); padding:60px 0 50px; text-align:center; overflow:hidden; position:relative; }
