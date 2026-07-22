@@ -255,20 +255,20 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="setup-section-title">セットアップの流れ</h2>
       <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="setup-section-sub">15〜30分で運用開始</p>
 
-      <div style="display:flex;gap:20px;justify-content:center;margin:0 auto 18px;">
-        <div style="display:flex;gap:10px;align-items:center;flex:1 1 0;max-width:260px;min-height:auto;">
-          <span style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">1</span>
-          <div style="text-align:left;"><h3 style="font-size:0.78rem;color:var(--gold);margin:0;" data-i18n="setup-s1-title">EAファイルを受け取る</h3><p style="font-size:0.68rem;color:rgba(255,255,255,.5);margin:0;line-height:1.4;" data-i18n="setup-s1-desc">物々交換成立後、EAファイルと設定ガイドをメールでお届け。</p></div>
+      <div style="display:flex;flex-direction:column;gap:4px;max-width:520px;margin:0 auto 18px;text-align:left;">
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:10px 0;">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">1</span>
+          <div><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s1-title">EAファイルを受け取る</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p></div>
         </div>
-        <span style="width:1px;background:rgba(255,255,255,.1);align-self:stretch;"></span>
-        <div style="display:flex;gap:10px;align-items:center;flex:1 1 0;max-width:260px;min-height:auto;">
-          <span style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">2</span>
-          <div style="text-align:left;"><h3 style="font-size:0.78rem;color:var(--gold);margin:0;" data-i18n="setup-s2-title">MT5にインストール</h3><p style="font-size:0.68rem;color:rgba(255,255,255,.5);margin:0;line-height:1.4;" data-i18n="setup-s2-desc">.ex5ファイルをコピーし、XAUUSD M5チャートにD&D。</p></div>
+        <div style="border-bottom:1px solid rgba(255,255,255,.06);"></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:10px 0;">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">2</span>
+          <div><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s2-title">MT5にインストール</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p></div>
         </div>
-        <span style="width:1px;background:rgba(255,255,255,.1);align-self:stretch;"></span>
-        <div style="display:flex;gap:10px;align-items:center;flex:1 1 0;max-width:260px;min-height:auto;">
-          <span style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">3</span>
-          <div style="text-align:left;"><h3 style="font-size:0.78rem;color:var(--gold);margin:0;" data-i18n="setup-s3-title">自動売買を開始</h3><p style="font-size:0.68rem;color:rgba(255,255,255,.5);margin:0;line-height:1.4;" data-i18n="setup-s3-desc">パラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
+        <div style="border-bottom:1px solid rgba(255,255,255,.06);"></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:10px 0;">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">3</span>
+          <div><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s3-title">自動売買を開始</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
         </div>
       </div>
       <div style="text-align:center;margin-bottom:28px;">
