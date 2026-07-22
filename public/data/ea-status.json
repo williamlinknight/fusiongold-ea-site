@@ -1,11 +1,12 @@
 {
   "updated": "2026-07-22 07:21 BJT",
-  "note": "Local Python FIFO (UTF-16 LE)",
+  "note": "データは2026年7月13日（フォワードテスト開始日）からのみ集計",
   "account": {
     "balance": 5075.28,
     "equity": 5075.28,
     "dayPnL": 0.0,
     "dayPnLPercent": 0.0,
+    "cumulativePnL": 645.42,
     "positions": 0,
     "maxPositions": 4,
     "status": "WAITING"
@@ -38,184 +39,74 @@
   "lastTrades": [],
   "tradeHistory": [
     {
-      "date": "2026-06-23",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-24",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-25",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-26",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-27",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-28",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-29",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-06-30",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-01",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-02",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-03",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-04",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-05",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-06",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-07",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-08",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-09",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-10",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-11",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
-      "date": "2026-07-12",
-      "pnl": 0.0,
-      "trades": 0,
-      "winRate": 0
-    },
-    {
       "date": "2026-07-13",
       "pnl": 111.46,
       "trades": 9,
-      "winRate": 88.9
+      "winRate": 88.9,
+      "cumulative": 111.46
     },
     {
       "date": "2026-07-14",
       "pnl": 451.36,
       "trades": 11,
-      "winRate": 100.0
+      "winRate": 100.0,
+      "cumulative": 562.82
     },
     {
       "date": "2026-07-15",
       "pnl": 0.0,
       "trades": 0,
-      "winRate": 0
+      "winRate": 0,
+      "cumulative": 562.82
     },
     {
       "date": "2026-07-16",
-      "trades": 20,
       "pnl": -153.33,
-      "winRate": 30.0
+      "trades": 20,
+      "winRate": 30.0,
+      "cumulative": 409.49
     },
     {
       "date": "2026-07-17",
-      "trades": 6,
       "pnl": 10.85,
-      "winRate": 33.33
+      "trades": 6,
+      "winRate": 33.33,
+      "cumulative": 420.34
     },
     {
       "date": "2026-07-18",
       "pnl": -112.34,
       "trades": 3,
-      "winRate": 33.3
+      "winRate": 33.3,
+      "cumulative": 308.00
     },
     {
       "date": "2026-07-19",
       "pnl": 0.0,
       "trades": 0,
-      "winRate": 0
+      "winRate": 0,
+      "cumulative": 308.00
     },
     {
       "date": "2026-07-20",
-      "trades": 19,
       "pnl": 241.39,
-      "winRate": 63.16
+      "trades": 19,
+      "winRate": 63.16,
+      "cumulative": 549.39
     },
     {
       "date": "2026-07-21",
       "pnl": 96.03,
       "trades": 10,
-      "winRate": 70.0
+      "winRate": 70.0,
+      "cumulative": 645.42
     },
     {
       "date": "2026-07-22",
       "pnl": 0.0,
       "trades": 0,
-      "winRate": 0
+      "winRate": 0,
+      "cumulative": 645.42
     }
   ]
 }
