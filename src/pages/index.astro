@@ -250,48 +250,39 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     </div>
   </section>
 
-  <!-- ═══════════════ 仕組みと信頼性（Setup + Risk 統合） ═══════════════ -->
-  <section class="section alt-bg" id="how-it-works">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="setup-section-title">セットアップの流れ</h2>
-      <p class="section-sub fade-in" data-i18n="setup-section-sub">15〜30分で運用開始</p>
+  <!-- ═══════════════ How It Works（HERO 同款） ═══════════════ -->
+  <section class="hero" id="how-it-works" style="padding:50px 0 54px;">
+    <div class="hero-content container" style="max-width:700px;">
+      <div class="hero-badge" style="margin-bottom:4px;" data-i18n="setup-section-title">セットアップの流れ</div>
+      <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin-bottom:24px;" data-i18n="setup-section-sub">15〜30分で運用開始</p>
 
-      <div class="setup-mini fade-in">
-        <div class="setup-step">
-          <div class="ss-num">1</div>
-          <div class="ss-body">
-            <h3 data-i18n="setup-s1-title">EAファイルを受け取る</h3>
-            <p data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p>
-          </div>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:520px;margin:0 auto 20px;text-align:left;">
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;backdrop-filter:blur(4px);">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.8rem;">1</span>
+          <div><h3 style="font-size:0.85rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s1-title">EAファイルを受け取る</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p></div>
         </div>
-        <div class="setup-step">
-          <div class="ss-num">2</div>
-          <div class="ss-body">
-            <h3 data-i18n="setup-s2-title">MT5にインストール</h3>
-            <p data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p>
-          </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;backdrop-filter:blur(4px);">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.8rem;">2</span>
+          <div><h3 style="font-size:0.85rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s2-title">MT5にインストール</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p></div>
         </div>
-        <div class="setup-step">
-          <div class="ss-num">3</div>
-          <div class="ss-body">
-            <h3 data-i18n="setup-s3-title">自動売買を開始</h3>
-            <p data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p>
-          </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;backdrop-filter:blur(4px);">
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.8rem;">3</span>
+          <div><h3 style="font-size:0.85rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s3-title">自動売買を開始</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
         </div>
       </div>
-      <div style="text-align:center;margin:8px 0 24px;">
-        <a href={siteBase + '/setup/'} class="text-link" data-i18n="setup-link">詳細なセットアップガイド →</a>
+      <div style="text-align:center;margin-bottom:28px;">
+        <a href={siteBase + '/setup/'} class="text-link" data-i18n="setup-link" style="color:var(--gold);font-size:0.82rem;">詳細なセットアップガイド →</a>
       </div>
 
-      <h2 class="section-title fade-in" data-i18n="risk-title" style="margin-top:8px;">多層リスク管理</h2>
-      <p class="section-sub fade-in" data-i18n="risk-sub">口座を保護する6つの仕組み</p>
-      <div class="risk-mini fade-in">
-        <div class="risk-tag">🛑 <span data-i18n="risk-r1-title">日損5%リミット</span></div>
-        <div class="risk-tag">📉 <span data-i18n="risk-r2-title">連敗フィルター</span></div>
-        <div class="risk-tag">⚖️ <span data-i18n="risk-r3-title">Aggregate Risk</span></div>
-        <div class="risk-tag">⏱️ <span data-i18n="risk-r4-title">クールダウン</span></div>
-        <div class="risk-tag">📏 <span data-i18n="risk-r5-title">固定ストップロス</span></div>
-        <div class="risk-tag">📊 <span data-i18n="risk-r6-title">ポジションサイジング</span></div>
+      <div class="hero-badge" data-i18n="risk-title">多層リスク管理</div>
+      <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin-bottom:20px;" data-i18n="risk-sub">口座を保護する6つの仕組み</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">🛑 <span data-i18n="risk-r1-title">日損5%リミット</span></span>
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">📉 <span data-i18n="risk-r2-title">連敗フィルター</span></span>
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">⚖️ <span data-i18n="risk-r3-title">Aggregate Risk</span></span>
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">⏱️ <span data-i18n="risk-r4-title">クールダウン</span></span>
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">📏 <span data-i18n="risk-r5-title">固定ストップロス</span></span>
+        <span style="padding:6px 14px;border-radius:20px;font-size:0.78rem;color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">📊 <span data-i18n="risk-r6-title">ポジションサイジング</span></span>
       </div>
     </div>
   </section>
@@ -407,20 +398,7 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     .fw-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
     .fw-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
     .fw-val { font-size:1.1rem; font-weight:700; color:var(--text); }
-    .setup-mini { display:flex; flex-direction:column; gap:12px; max-width:520px; margin:0 auto; }
-    .setup-step { display:flex; gap:14px; align-items:flex-start; }
-    .ss-num { width:32px; height:32px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.85rem; }
-    .ss-body h3 { font-size:0.9rem; color:var(--gold); margin-bottom:4px; }
-    .ss-body p { font-size:0.8rem; color:var(--text-muted); line-height:1.5; margin:0; }
-    .risk-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
-    .risk-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
-    .rc-icon { font-size:1.3rem; margin-bottom:4px; }
-    .risk-card h3 { font-size:0.8rem; color:var(--gold); margin-bottom:4px; }
-    .risk-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
-    .risk-mini { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:4px; }
-    .risk-tag { padding:5px 12px; border-radius:16px; font-size:0.75rem; color:var(--text); background:var(--bg); border:1px solid var(--border); }
-    .risk-tag span { color:var(--text-muted); }
-    .alt-bg { background:var(--bg-card); }
+    .fg-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; text-align:center; }
     .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; max-width:820px; margin:0 auto; align-items:start; }
     .fg-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; text-align:center; }
     .fg-card.barter-em { border:2px solid var(--gold); }
@@ -428,10 +406,6 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     .fg-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0 0 10px; }
     .fg-includes div { padding:4px 0; font-size:0.75rem; border-bottom:1px solid var(--border); color:var(--text-muted); }
     .author-avatar-sm { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#111; font-weight:800; font-size:1.1rem; display:flex; align-items:center; justify-content:center; margin:0 auto; }
-    .risk-mini { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:4px; }
-    .risk-tag { padding:5px 12px; border-radius:16px; font-size:0.75rem; color:var(--text); background:var(--bg); border:1px solid var(--border); }
-    .risk-tag span { color:var(--text-muted); }
-    .alt-bg { background:var(--bg-card); }
     .barter-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
     .barter-tags span { padding:4px 12px; border-radius:16px; font-size:0.72rem; color:var(--gold); border:1px solid var(--border); background:var(--bg); }
     .text-link { color:var(--gold); font-size:0.82rem; text-decoration:underline; }
