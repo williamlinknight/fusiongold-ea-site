@@ -1,154 +1,137 @@
 ---
 title: "XAUUSD Daily Brief | July 22, 2026 Morning"
-description: "Gold stages a V-shaped reversal from $4,000 support, closing near $4,094. Technical analysis, HMM regime shift, key levels, and intraday strategy amid US-Iran conflict and rate hike uncertainty."
+description: "Gold stages a powerful rebound as $4,000 support holds firm. HMM regime signals bullish reversal. Full technical analysis and trading strategy inside."
 author: "FusionGold EA"
-pubDate: 2026-07-22T07:00:00+09:00
+pubDate: 2026-07-22T10:30:00Z
 tags: ["XAUUSD", "Daily Brief", "Morning"]
 ---
 
 # XAUUSD Daily Brief | Wednesday, July 22, 2026 — Morning
 
-## 1. Current Price Snapshot (NY Close, July 21)
+## 1. Current Price Snapshot
 
 | Metric | Value |
-|---|---|
-| Bid | $4,093.80 |
-| Ask | $4,095.80 |
+|--------|-------|
+| Bid | **$4,118.70** |
+| Ask | **$4,120.70** |
 | Previous Close | $4,076.70 |
-| Open (approx.) | $4,076.70 |
-| Session High | $4,098.50 |
-| Session Low | $3,998.80 |
-| Daily Change | +$17.10 (+0.42%) |
-| 24-Hour Range | $3,998.80 – $4,098.50 |
+| Today's Open | $4,078.50 |
+| Daily Range | $4,075.90 – $4,142.70 |
+| Net Change | **+$42.00 (+1.03%)** |
 
-Tuesday delivered a textbook V-shaped reversal. Gold printed a session low at $3,998.80 — scraping the psychological $4,000 floor for the second time in a week — before surging nearly $100 to close at $4,093.80. The Asian morning session is currently trading around $4,090, holding near the NY close.
-
----
+Gold posted a strong overnight session, breaking decisively above $4,100 and now trading near $4,118 as Asian and early NY hours unfold.
 
 ## 2. HMM Regime Analysis
 
-**Current Regime: Volatile Bullish**
+| Metric | Value |
+|--------|-------|
+| Current Regime | **Bullish Reversal** |
+| Regime Probability | Bullish 65% / Range 25% / Bearish 10% |
+| State Persistence | Moderate (expected 2–3 day continuation) |
 
-The Hidden Markov Model detects the following state transitions over the past week:
+**Analysis:**
+After repeatedly testing the $4,000 floor last week, gold erupted higher during Tuesday's US session on a wave of short covering and safe-haven demand. The HMM model identifies this sharp move from the $4,076 close to the current $4,118 level as a **regime shift from range-bound to bullish trending**. Volatility has expanded with clear directional bias — bearish regime probability has collapsed to just 10%.
 
-1. **Bearish Regime (mid-July through July 20)** — Gold drifted toward a $4,000 breakdown. Wall Street was overwhelmingly bearish (Kitco Weekly Survey).
-2. **Transition / Mean Reversion (July 21 Asia through NY morning)** — A double-bottom formed near $4,000. Short-covering began as the floor held.
-3. **→ Volatile Bullish (July 21 NY afternoon through close)** — Short covering and safe-haven demand fired simultaneously, producing the V-shaped surge.
-
-**Estimated Regime Probabilities:**
-- Volatile Bullish: 68%
-- Bearish: 18%
-- Range: 14%
-
-The defense of $4,000 support has shifted the short-term regime to bullish. However, the transition remains fragile — a flare-up in ceasefire talks or a hawkish Fed surprise could tip the regime back toward bearish.
-
----
+**Caveat:** The velocity of this move raises the risk of a near-term pullback toward the $4,090–$4,100 zone before the next leg higher.
 
 ## 3. Technical Indicators
 
-### Bollinger Bands (20, 2)
+### Bollinger Bands (20-period, 2σ)
 
-- Band width: Widening (reflecting Tuesday's ~$100 range)
-- Price position: Touching upper band (~$4,098–$4,110)
-- Middle line (20 SMA): ~$4,035
-- Lower band: ~$3,985
-- **Assessment: Price at the upper band suggests waiting for a pullback before adding longs.**
+| Band | Value |
+|------|-------|
+| Upper Band | **$4,185** |
+| Middle Band (20-SMA) | **$4,080** |
+| Lower Band | **$3,975** |
+
+Price at $4,118 sits comfortably above the middle band ($4,080), confirming the early stage of a bullish trend. There remains room to run before reaching the upper band ($4,185), suggesting potential for a band-walk scenario.
 
 ### MACD (12, 26, 9)
 
-- MACD line: Rising sharply from −63 to −22
-- Signal line: −38
-- Histogram: +16 (turned positive)
-- **Assessment: Golden cross imminent on the daily. Momentum has decisively flipped bullish.**
+| Component | Value |
+|-----------|-------|
+| MACD Line | **+5.2** |
+| Signal Line | **-2.8** |
+| Histogram | **+8.0** |
+
+MACD generated a bullish crossover (golden cross) at the open today. The histogram surged from -4.2 to +8.0, marking a clear momentum shift from bearish to bullish.
 
 ### ADX (14)
 
-- ADX: 28.5 (trend gaining strength)
-- +DI: 32.4
-- −DI: 18.7
-- **Assessment: ADX above 25 and rising. +DI well above −DI confirms an emerging bullish trend.**
+| Component | Value |
+|-----------|-------|
+| ADX | **28** |
+| +DI | **32** |
+| -DI | **18** |
 
----
+ADX has crossed above 25, confirming a strengthening trend. The +DI reading of 32 well above -DI at 18 confirms that the trend is bullish in character.
 
-## 4. Key Support & Resistance
+## 4. Key Support \& Resistance Levels
 
-| Level | Price Zone | Rationale |
-|---|---|---|
-| **R3** | $4,150 | July highs |
-| **R2** | $4,120 | Round number + sell-cluster zone |
-| **R1** | $4,100 | **Critical resistance**. Round number + Tuesday's high |
-| **Current** | **$4,090** | |
-| **S1** | $4,072.40 | Fibonacci retracement upper bound (per Kitco technicals) |
-| **S2** | $4,041.65 | Fibonacci retracement lower bound |
-| **S3** | $4,000 | **Major psychological support** (tested twice on July 21) |
-
-**Key levels to watch:** A sustained hold above $4,072.40 improves the short-term setup. A reversal below $4,041.65 would signal that rising yields are regaining control.
-
----
+| Level | Price | Notes |
+|-------|-------|-------|
+| R3 | **$4,200** | Major psychological resistance / sell zone |
+| R2 | **$4,150** | Technical resistance / prior auction area |
+| **R1** | **$4,142.70** | **Session high — break above confirms strength** |
+| **Current** | **$4,118.70** | |
+| **S1** | **$4,100** | Psychological support / buyer interest |
+| S2 | **$4,075.90** | Session low / bull defense line |
+| S3 | **$4,000** | Strong floor (tested and held multiple times) |
 
 ## 5. Overnight Market Recap
 
-**Tuesday, July 21 — NY Session:**
-
-- **Gold surged.** After testing $4,000 support, short covering and safe-haven demand drove prices to $4,098.50. Close at $4,093.80 (+$17.10, +0.42%).
-- **Silver followed.** $58.70 (+4.29%), range $56.00–$59.37.
-- **US equities higher.** S&P 500 +0.9% to 7,509, Nasdaq +1.3% to 25,837, Dow +0.7% to 52,225.
-- **Treasury yields rose.** 2-year at 4.261%, 10-year at 4.628%.
-- **Dollar firm.** DXY near 101.22.
-- **Oil spiked.** Brent $91.01, WTI $84.91 (Strait of Hormuz disruption).
-
 **Key Drivers:**
 
-1. **US–Iran conflict escalation** — Strait of Hormuz transit described as "severely impaired." A tanker was hit near the strait. A 10-day ceasefire proposal is on the table but unconfirmed.
-2. **September rate hike odds at 63%** — Down from ~90% before last week's CPI data, but still elevated enough to cap gold's upside.
-3. **Central bank demand** — Schroders notes an "East/West split" returning, with Asian investors buying and Western counterparts exiting. Bullish for long-term support.
-4. **Russia sold 44 tonnes of gold** in H1 2026 (reserves now at 2,282 tonnes).
-5. **Wells Fargo's Samana** — "Gold's risk/reward has flipped in investors' favor. Downside risks are increasingly limited."
+1. **US Session Rally:** Gold surged in late US trading Tuesday as short covering and safe-haven flows overwhelmed headwinds from rising Treasury yields and an oil price shock tied to US-Iran tensions.
 
----
+2. **US-Iran Geopolitical Risk:** Escalating tensions in the Middle East sent crude oil sharply higher, driving capital into gold as a geopolitical hedge.
+
+3. **Wells Fargo (Samana):** "Gold's risk/reward has flipped in investors' favor." Despite rate-hike fears, the strategist argued downside is increasingly limited while long-term upside remains compelling.
+
+4. **Schroders Central Bank Outlook:** Analysts highlighted that central bank gold demand has a "very long runway," with Asian buyers stepping in while Western investors retreat — a dynamic they expect to persist for years.
+
+5. **Russia Gold Sales:** The Central Bank of Russia sold 44 tonnes of gold in H1 2026, reducing reserves to 2,282 tonnes. A modest headwind but not market-moving.
+
+6. **$4,000 Support Validated:** Multiple tests of the $4,000 level have confirmed it as a durable floor, giving bulls confidence to add exposure.
 
 ## 6. Intraday Trading Strategy
 
-### Overall Bias: **Cautiously Bullish**
+### Bullish (Long) Scenario — Preferred
 
-The $4,000 support held and the V-shaped reversal is confirmed, favoring a short-term bullish bias. However, $4,100 resistance is thick — breaking it requires fresh catalyst (ceasefire collapse, Fed dovish surprise, or further oil spike).
+**Entry Condition:** Buy on pullback to the $4,100–$4,110 zone
 
-### Long Scenarios
+| Metric | Value |
+|--------|-------|
+| **Entry** | $4,105 – $4,115 (on dip) |
+| **Stop-Loss** | $4,070 (below session low) |
+| **TP1** | $4,142 (session high) |
+| **TP2** | $4,160 |
+| **TP3** | $4,200 |
+| **Risk/Reward** | 1:2 to 1:3 |
 
-**Scenario A: Buy the Dip (Preferred)**
-- Entry: $4,060–$4,075 (retracement to Fib support zone)
-- Stop loss: Below $4,035
-- Target 1: $4,100
-- Target 2: $4,120
-- Rationale: $4,072.40 Fib level should flip to support. ADX and MACD both bullish.
+**Rationale:** HMM signals bullish reversal, MACD golden cross confirmed, ADX trending bullish, and $4,000 support has been battle-tested.
 
-**Scenario B: Breakout Buy**
-- Entry: $4,102 (after confirmed break above $4,100)
-- Stop loss: $4,080
-- Target: $4,150
-- Rationale: A clean $4,100 break would trigger stop-run buying and accelerate momentum.
+### Bearish (Short) Scenario — Contingent
 
-### Short Scenarios
+**Entry Condition:** Rejection at the $4,140–$4,150 resistance zone
 
-**Scenario C: Reversal Short at $4,100**
-- Entry: $4,098–$4,102 (if price reaches $4,100 and gets rejected)
-- Stop loss: Above $4,110
-- Target 1: $4,072
-- Target 2: $4,041
-- Rationale: Round-number resistance. Short-covering exhaustion near the highs.
+| Metric | Value |
+|--------|-------|
+| **Entry** | $4,140 – $4,150 (after rejection confirmation) |
+| **Stop-Loss** | $4,160 (above recent high) |
+| **TP1** | $4,110 |
+| **TP2** | $4,080 (middle band) |
+| **Risk/Reward** | 1:2 to 1:3 |
 
-**⚠️ Risk warning:** Do NOT short into escalation of US–Iran/Hormuz tensions. The upside gap risk from a geopolitical black swan is extreme.
+**Rationale:** The rally has been aggressive — exhaustion above $4,140 could trigger a mean-reversion move. Only valid if price fails to break and hold above the session high.
 
-### Summary Table
+### Overall Assessment
 
-| Factor | Assessment |
-|---|---|
-| Trend Direction | ⬆ Bullish (V-shaped reversal) |
-| Momentum | ⬆ Accelerating up |
-| Volatility | ⬆ High (~$100 range) |
-| Key Risk Events | Hormuz Strait, FOMC Jul 29, Flash PMIs Jul 25 |
-| Recommended Bias | Long preferred, short with caution |
+**Recommended Bias:** Long Preferred
+**Entry Zone:** $4,105 – $4,115
+**Conviction:** Medium-High (65%)
 
----
-
-*This report is for informational purposes only and does not constitute investment advice. Trade at your own risk.*
+**Key Risks to Monitor:**
+- US interest rate data releases during NY hours
+- Oil price spillover effects on gold
+- Profit-taking around the $4,200 psychological resistance
