@@ -255,16 +255,18 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="setup-section-title">セットアップの流れ</h2>
       <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="setup-section-sub">15〜30分で運用開始</p>
 
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:0 auto 18px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1;min-width:140px;max-width:180px;">
+      <div style="display:flex;gap:24px;justify-content:center;margin:0 auto 18px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1 1 0;max-width:200px;">
           <span style="width:32px;height:32px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">1</span>
           <div><h3 style="font-size:0.8rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s1-title">EAファイル<br/>を受け取る</h3><p style="font-size:0.72rem;color:rgba(255,255,255,.5);margin:0;line-height:1.5;" data-i18n="setup-s1-desc">物々交換成立後、EAファイルと設定ガイドをメールでお届け。</p></div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1;min-width:140px;max-width:180px;">
+        <span style="width:1px;background:rgba(255,255,255,.1);margin:10px 0;"></span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1 1 0;max-width:200px;">
           <span style="width:32px;height:32px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">2</span>
           <div><h3 style="font-size:0.8rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s2-title">MT5に<br/>インストール</h3><p style="font-size:0.72rem;color:rgba(255,255,255,.5);margin:0;line-height:1.5;" data-i18n="setup-s2-desc">.ex5ファイルをコピーし、XAUUSD M5チャートにD&D。</p></div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1;min-width:140px;max-width:180px;">
+        <span style="width:1px;background:rgba(255,255,255,.1);margin:10px 0;"></span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:1 1 0;max-width:200px;">
           <span style="width:32px;height:32px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">3</span>
           <div><h3 style="font-size:0.8rem;color:var(--gold);margin:0 0 2px;" data-i18n="setup-s3-title">自動売買<br/>を開始</h3><p style="font-size:0.72rem;color:rgba(255,255,255,.5);margin:0;line-height:1.5;" data-i18n="setup-s3-desc">パラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
         </div>
@@ -426,4 +428,3 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     }
   </style>
 </BaseLayout>
-/* cache bust 1784692563 */
