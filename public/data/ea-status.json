@@ -1,23 +1,23 @@
 {
-  "updated": "2026-07-22 10:26 BJT",
+  "updated": "2026-07-22 22:10 BJT",
   "note": "MT5 Account History from 2026-07-13",
   "account": {
-    "balance": 5261.91,
-    "equity": 5261.91,
+    "balance": 5215.52,
+    "equity": 5215.52,
     "dayPnL": 186.63,
-    "dayPnLPercent": 3.68,
+    "dayPnLPercent": 3.71,
     "cumulativePnL": 1170.14,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
-    "status": "BLOCKED",
-    "cooldown": 1052
+    "status": "OK",
+    "cooldown": 3
   },
   "market": {
-    "adx": 59.25,
+    "adx": 53.44,
     "adxHard": 20,
-    "spread": 20.0,
+    "spread": 15.0,
     "maxSpread": 50.0
   },
   "signal": {
@@ -31,7 +31,7 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 210.48,
+    "maxRisk": 208.62,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
