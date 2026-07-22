@@ -255,20 +255,20 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="setup-section-title">セットアップの流れ</h2>
       <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="setup-section-sub">15〜30分で運用開始</p>
 
-      <div style="display:flex;flex-direction:column;gap:4px;max-width:520px;margin:0 auto 18px;">
+      <div style="display:flex;flex-direction:column;gap:4px;margin:0 auto 18px;">
         <div style="display:flex;gap:14px;align-items:flex-start;justify-content:center;padding:10px 0;">
           <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">1</span>
-          <div style="text-align:left;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s1-title">EAファイルを受け取る</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p></div>
+          <div style="text-align:left;max-width:400px;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s1-title">EAファイルを受け取る</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s1-desc">物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。</p></div>
         </div>
         <div style="border-bottom:1px solid rgba(255,255,255,.06);max-width:360px;margin:0 auto;"></div>
         <div style="display:flex;gap:14px;align-items:flex-start;justify-content:center;padding:10px 0;">
           <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">2</span>
-          <div style="text-align:left;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s2-title">MT5にインストール</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p></div>
+          <div style="text-align:left;max-width:400px;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s2-title">MT5にインストール</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s2-desc">データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。</p></div>
         </div>
         <div style="border-bottom:1px solid rgba(255,255,255,.06);max-width:360px;margin:0 auto;"></div>
         <div style="display:flex;gap:14px;align-items:flex-start;justify-content:center;padding:10px 0;">
           <span style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;margin-top:1px;">3</span>
-          <div style="text-align:left;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s3-title">自動売買を開始</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
+          <div style="text-align:left;max-width:400px;"><h3 style="font-size:0.88rem;color:var(--gold);margin:0 0 3px;" data-i18n="setup-s3-title">自動売買を開始</h3><p style="font-size:0.78rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;" data-i18n="setup-s3-desc">EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。</p></div>
         </div>
       </div>
       <div style="text-align:center;margin-bottom:28px;">
@@ -290,7 +290,7 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
 
   <!-- ═══════════════ FAQ（HERO 同款） ═══════════════ -->
   <section class="hero" id="faq" style="padding:60px 0 50px;">
-    <div class="hero-content container" style="max-width:640px;">
+    <div class="hero-content container">
       <h2 style="font-size:1.5rem;margin:0 0 24px;text-align:center;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="faq-section-title">よくある質問</h2>
       <script type="application/ld+json">
       {
@@ -304,15 +304,15 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       }
       </script>
       <div style="display:flex;flex-direction:column;align-items:center;">
-      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:480px;width:100%;">
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:500px;width:100%;">
         <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q1</span><span data-i18n="faq-q1">FusionGold M5 はどのように動きますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
         <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a1">ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。</p></div>
       </details>
-      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:480px;width:100%;">
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:500px;width:100%;">
         <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q2</span><span data-i18n="faq-q2">デモ口座で試せますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
         <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a2">はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。</p></div>
       </details>
-      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:480px;width:100%;">
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);max-width:500px;width:100%;">
         <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q3</span><span data-i18n="faq-q4">リスク管理はどのようになっていますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
         <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a4">日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。</p></div>
       </details>
@@ -325,7 +325,7 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
 
   <!-- ═══════════════ ご利用方法 + 制作者 + ライブ取引（HERO 同款） ═══════════════ -->
   <section class="hero" style="padding:60px 0 50px;">
-    <div class="hero-content container" style="max-width:900px;">
+    <div class="hero-content container">
       <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="price-title">ご利用方法</h2>
       <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
 
