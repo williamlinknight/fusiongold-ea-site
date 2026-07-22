@@ -327,37 +327,23 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
       <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="price-title">ご利用方法</h2>
       <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
 
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:520px;margin:0 auto;">
         <!-- 物々交換 -->
-        <div style="flex:1 1 240px;max-width:280px;text-align:center;background:rgba(255,255,255,.04);border:2px solid var(--gold);border-radius:12px;padding:20px 16px;backdrop-filter:blur(4px);">
-          <div style="font-size:1.1rem;color:var(--gold);font-weight:700;margin-bottom:8px;" data-i18n="p3-name">物々交換</div>
-          <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5;margin:0 0 12px;" data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
-          <div style="padding:0 8px;"><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f1">✓ EAファイル（.ex5）</div><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f2">✓ 設定ガイド</div><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f3">✓ メールサポート</div></div>
-          <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:12px 0;">
-            <span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">🎮 ゲーム機</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">🍶 日本酒</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">📷 カメラレンズ</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">⌚ 国産時計</span>
-          </div>
-          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="p3-cta" style="display:inline-block;padding:10px 22px;font-size:0.82rem;">交換の詳細を問い合わせる</a>
+        <div style="display:flex;gap:14px;align-items:flex-start;text-align:left;background:rgba(255,255,255,.04);border:2px solid var(--gold);border-radius:12px;padding:16px;backdrop-filter:blur(4px);">
+          <div style="flex-shrink:0;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#111;font-weight:800;font-size:1.5rem;display:flex;align-items:center;justify-content:center;">⇄</div>
+          <div style="flex:1;"><div style="font-size:0.95rem;color:var(--gold);font-weight:700;margin-bottom:4px;" data-i18n="p3-name">物々交換</div><p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5;margin:0 0 6px;" data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p><div style="display:flex;flex-wrap:wrap;gap:4px;"><span style="padding:2px 8px;border-radius:10px;font-size:0.68rem;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08);">✓ EAファイル（.ex5）</span><span style="padding:2px 8px;border-radius:10px;font-size:0.68rem;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08);">✓ 設定ガイド</span><span style="padding:2px 8px;border-radius:10px;font-size:0.68rem;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08);">✓ メールサポート</span></div><div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0;"><span style="padding:2px 8px;border-radius:10px;font-size:0.65rem;color:var(--gold);border:1px solid rgba(255,255,255,.08);">🎮 ゲーム機</span><span style="padding:2px 8px;border-radius:10px;font-size:0.65rem;color:var(--gold);border:1px solid rgba(255,255,255,.08);">🍶 日本酒</span><span style="padding:2px 8px;border-radius:10px;font-size:0.65rem;color:var(--gold);border:1px solid rgba(255,255,255,.08);">📷 カメラレンズ</span><span style="padding:2px 8px;border-radius:10px;font-size:0.65rem;color:var(--gold);border:1px solid rgba(255,255,255,.08);">⌚ 国産時計</span></div><a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="p3-cta" style="display:inline-block;padding:7px 16px;font-size:0.75rem;">交換の詳細を問い合わせる</a></div>
         </div>
 
         <!-- 制作者 -->
-        <div style="flex:1 1 200px;max-width:240px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 14px;backdrop-filter:blur(4px);">
-          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#111;font-weight:800;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto;">W</div>
-          <h3 style="color:var(--gold);font-size:0.82rem;margin:8px 0;" data-i18n="author-name">William — EA開発者</h3>
-          <p style="font-size:0.72rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;" data-i18n="author-p4">Jim Simonsの数学的アプローチに影響を受け、MITオンライン講座で統計的学習を学ぶ。廈門を拠点に英語教育と定量取引の両軸で活動。</p>
+        <div style="display:flex;gap:14px;align-items:flex-start;text-align:left;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;backdrop-filter:blur(4px);">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#111;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">W</div>
+          <div><h3 style="color:var(--gold);font-size:0.85rem;margin:0 0 4px;" data-i18n="author-name">William — EA開発者</h3><p style="font-size:0.75rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;" data-i18n="author-p4">Jim Simonsの数学的アプローチに影響を受け、MITオンライン講座で統計的学習を学ぶ。廈門を拠点に英語教育と定量取引の両軸で活動。</p></div>
         </div>
 
         <!-- ライブ取引 -->
-        <div style="flex:1 1 240px;max-width:280px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 16px;backdrop-filter:blur(4px);">
-          <div style="font-size:0.82rem;color:var(--gold);font-weight:600;margin-bottom:8px;" data-i18n="cta-title">ライブ取引を閲覧する</div>
-          <p style="font-size:0.7rem;color:rgba(255,255,255,.5);line-height:1.5;margin:0 0 10px;" data-i18n="cta-sub">MT5で以下の口座を追加してご覧いただけます。</p>
-          <div style="background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;margin-bottom:8px;">
-            <div style="font-size:0.6rem;color:rgba(255,255,255,.4);">server</div>
-            <div style="font-size:0.82rem;font-weight:600;color:var(--gold);">ICMarketsSC-Demo</div>
-            <div style="font-size:0.6rem;color:rgba(255,255,255,.4);margin-top:4px;">account</div>
-            <div style="font-size:1rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;">52933861</div>
-          </div>
-          <p style="font-size:0.62rem;color:rgba(255,255,255,.4);margin-bottom:8px;" data-i18n="cta-psw-note">※ 閲覧用パスワードはお問い合わせください。</p>
-          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="cta-contact" style="display:inline-block;padding:8px 18px;font-size:0.78rem;">パスワードを請求する</a>
+        <div style="display:flex;gap:14px;align-items:flex-start;text-align:left;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;backdrop-filter:blur(4px);">
+          <div style="flex-shrink:0;"><div style="font-size:0.7rem;color:rgba(255,255,255,.35);">server</div><div style="font-size:0.85rem;font-weight:600;color:var(--gold);">ICMarketsSC-Demo</div><div style="font-size:0.7rem;color:rgba(255,255,255,.35);margin-top:4px;">account</div><div style="font-size:1.2rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;">52933861</div></div>
+          <div style="flex:1;"><div style="font-size:0.85rem;color:var(--gold);font-weight:600;margin-bottom:4px;" data-i18n="cta-title">ライブ取引を閲覧する</div><p style="font-size:0.72rem;color:rgba(255,255,255,.5);line-height:1.5;margin:0 0 8px;" data-i18n="cta-sub">MT5で口座を追加してリアルタイム取引をご覧いただけます。</p><p style="font-size:0.62rem;color:rgba(255,255,255,.4);margin-bottom:8px;" data-i18n="cta-psw-note">※ 閲覧用パスワードはお問い合わせください。</p><a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="cta-contact" style="display:inline-block;padding:7px 16px;font-size:0.75rem;">パスワードを請求する</a></div>
         </div>
       </div>
 
@@ -399,16 +385,6 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     .fw-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
     .fw-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
     .fw-val { font-size:1.1rem; font-weight:700; color:var(--text); }
-    .fg-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; text-align:center; }
-    .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; max-width:820px; margin:0 auto; align-items:start; }
-    .fg-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; text-align:center; }
-    .fg-card.barter-em { border:2px solid var(--gold); }
-    .fg-price { font-size:1.1rem; color:var(--gold); font-weight:700; margin-bottom:8px; }
-    .fg-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0 0 10px; }
-    .fg-includes div { padding:4px 0; font-size:0.75rem; border-bottom:1px solid var(--border); color:var(--text-muted); }
-    .author-avatar-sm { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#111; font-weight:800; font-size:1.1rem; display:flex; align-items:center; justify-content:center; margin:0 auto; }
-    .barter-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
-    .barter-tags span { padding:4px 12px; border-radius:16px; font-size:0.72rem; color:var(--gold); border:1px solid var(--border); background:var(--bg); }
     .text-link { color:var(--gold); font-size:0.82rem; text-decoration:underline; }
     .btn { display:inline-block; padding:12px 28px; border-radius:8px; font-weight:600; font-size:0.9rem; cursor:pointer; border:none; text-decoration:none; transition:var(--transition); }
     .btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#0D0D1A; }
