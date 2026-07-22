@@ -2,34 +2,40 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const siteBase = '/fusiongold-ea-site';
 const terms = [
-  { term: 'ADX', reading: 'Average Directional Index', desc: 'トレンドの強さを0〜100で示す指標。25以上でトレンド相場、20以下はレンジ相場と判断。FusionGold M5では取引許可のゲートとして機能。' },
-  { term: 'HMM', reading: 'Hidden Markov Model', desc: '隠れマルコフモデル。市場の状態（上昇トレンド・下降トレンド・レンジ）を確率的に推定する統計モデル。日次分析で相場のレジームを判定。' },
-  { term: 'BB', reading: 'Bollinger Bands', desc: 'ボリンジャーバンド。移動平均線を中心に標準偏差の幅でバンドを描く。バンドの拡大・収縮でボラティリティを判断。' },
-  { term: 'MACD', reading: 'Moving Average Convergence Divergence', desc: '移動平均収束拡散法。短期と長期の移動平均線の差を用いてトレンドの方向と勢いを測る。ゴールデンクロス・デッドクロスが売買サイン。' },
-  { term: 'EMA', reading: 'Exponential Moving Average', desc: '指数平滑移動平均線。直近の価格に重みを置いた移動平均。H4ゾーンフィルターでトレンド方向の判定に使用。' },
-  { term: 'RSI', reading: 'Relative Strength Index', desc: '相対力指数。0〜100の範囲で価格の買われ過ぎ・売られ過ぎを判定。70以上で買われ過ぎ、30以下で売られ過ぎ。' },
-  { term: 'DI+ / DI-', reading: 'Directional Indicators', desc: 'ADXの構成要素。DI+は上昇方向の強さ、DI-は下降方向の強さを示す。DI+がDI-を上回れば上昇トレンド。' },
-  { term: '4バケットスコアリング', reading: '4-Bucket Scoring', desc: 'FusionGold M5の中核エンジン。トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を評価し、各軸0〜100点の合計点で売買を判断。' },
-  { term: 'H4ゾーンフィルター', reading: 'H4 Zone Filter', desc: '4時間足のトレンド方向でM5の取引方向を制限するフィルター。大きな流れに逆らう取引を防止。' },
-  { term: '矛盾信号検出', reading: 'Contradiction Detection', desc: '同一バーで買いと売りのシグナルが同時に発生した場合、両方をブロックするエンジン。方向感のない相場での無駄な取引を防止。' },
-  { term: 'スリッページ', reading: 'Slippage', desc: '注文した価格と実際に約定した価格の差。市場が急変動した際に発生。FX取引の主要なリスクの一つ。' },
-  { term: 'スプレッド', reading: 'Spread', desc: '買値（Ask）と売値（Bid）の差。実質的な取引コスト。ゴールド（XAUUSD）のスプレッドは時間帯によって変動。' },
-  { term: 'ロット', reading: 'Lot', desc: '取引単位。1ロットはXAUUSDの場合100オンス。0.01ロット（1マイクロロット）が最小取引単位。' },
-  { term: 'レバレッジ', reading: 'Leverage', desc: '証拠金に対する取引倍率。IC Marketsでは最大500倍。レバレッジが高いほど少ない資金で大きな取引が可能だが、リスクも比例して増大。' },
-  { term: 'ストップロス', reading: 'Stop Loss / SL', desc: '損失を限定するために設定する逆指値注文。設定した価格に達した場合、自動的にポジションを決済。' },
-  { term: 'テイクプロフィット', reading: 'Take Profit / TP', desc: '利益を確定するために設定する指値注文。設定した価格に達した場合、自動的にポジションを決済。' },
-  { term: 'スワップ', reading: 'Swap / Overnight Fee', desc: 'ポジションを翌日に持ち越した際に発生する金利調整額。通貨ペアの金利差によりプラスにもマイナスにもなる。' },
-  { term: 'VPS', reading: 'Virtual Private Server', desc: '仮想専用サーバー。24時間稼働のサーバー上でMT5とEAを動作させることで、パソコンを切っている間も取引を継続できる。' },
-  { term: 'バックテスト', reading: 'Backtest', desc: '過去の市場データを使ってEAの戦略を検証すること。MT5に内蔵されたバックテスト機能で実行。ただし、過去の結果は将来を保証しない。' },
-  { term: 'フォワードテスト', reading: 'Forward Test', desc: 'デモ口座や実口座でEAを実際に動作させて検証すること。バックテストよりも現実的な結果が得られる。' }
+  { term: 'ADX', reading: 'Average Directional Index', desc: 'トレンドの強さを0〜100で示す指標。25以上でトレンド相場、20以下はレンジ相場と判断。FusionGold M5では取引許可のゲートとして機能。', descEn: 'An indicator showing trend strength from 0 to 100. Values above 25 indicate a trending market, below 20 indicate a range-bound market. In FusionGold M5, it functions as a gate for trade permission.' },
+  { term: 'HMM', reading: 'Hidden Markov Model', desc: '隠れマルコフモデル。市場の状態（上昇トレンド・下降トレンド・レンジ）を確率的に推定する統計モデル。日次分析で相場のレジームを判定。', descEn: 'A statistical model that probabilistically estimates market states (uptrend, downtrend, range). Used in daily analysis to determine market regime.' },
+  { term: 'BB', reading: 'Bollinger Bands', desc: 'ボリンジャーバンド。移動平均線を中心に標準偏差の幅でバンドを描く。バンドの拡大・収縮でボラティリティを判断。', descEn: 'Bands drawn at standard deviation intervals around a moving average. Band expansion/contraction helps assess volatility.' },
+  { term: 'MACD', reading: 'Moving Average Convergence Divergence', desc: '移動平均収束拡散法。短期と長期の移動平均線の差を用いてトレンドの方向と勢いを測る。ゴールデンクロス・デッドクロスが売買サイン。', descEn: 'Uses the difference between short-term and long-term moving averages to measure trend direction and momentum. Golden cross and death cross serve as trading signals.' },
+  { term: 'EMA', reading: 'Exponential Moving Average', desc: '指数平滑移動平均線。直近の価格に重みを置いた移動平均。H4ゾーンフィルターでトレンド方向の判定に使用。', descEn: 'A moving average that places greater weight on recent prices. Used in the H4 Zone Filter to determine trend direction.' },
+  { term: 'RSI', reading: 'Relative Strength Index', desc: '相対力指数。0〜100の範囲で価格の買われ過ぎ・売られ過ぎを判定。70以上で買われ過ぎ、30以下で売られ過ぎ。', descEn: 'An oscillator ranging from 0 to 100 that identifies overbought and oversold conditions. Above 70 is overbought, below 30 is oversold.' },
+  { term: 'DI+ / DI-', reading: 'Directional Indicators', desc: 'ADXの構成要素。DI+は上昇方向の強さ、DI-は下降方向の強さを示す。DI+がDI-を上回れば上昇トレンド。', descEn: 'Components of ADX. DI+ indicates upward strength, DI- indicates downward strength. When DI+ exceeds DI-, it suggests an uptrend.' },
+  { term: '4バケットスコアリング', reading: '4-Bucket Scoring', desc: 'FusionGold M5の中核エンジン。トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を評価し、各軸0〜100点の合計点で売買を判断。', descEn: 'Core engine of FusionGold M5. Evaluates the market across four axes: Trend, Momentum, Structure, and Liquidity. Each axis scored 0-100, with the total determining buy/sell decisions.' },
+  { term: 'H4ゾーンフィルター', reading: 'H4 Zone Filter', desc: '4時間足のトレンド方向でM5の取引方向を制限するフィルター。大きな流れに逆らう取引を防止。', descEn: 'A filter that restricts M5 trade direction based on the H4 trend. Prevents trading against the larger trend.' },
+  { term: '矛盾信号検出', reading: 'Contradiction Detection', desc: '同一バーで買いと売りのシグナルが同時に発生した場合、両方をブロックするエンジン。方向感のない相場での無駄な取引を防止。', descEn: 'An engine that blocks both buy and sell signals when they occur on the same bar. Prevents unnecessary trades in directionless markets.' },
+  { term: 'スリッページ', reading: 'Slippage', desc: '注文した価格と実際に約定した価格の差。市場が急変動した際に発生。FX取引の主要なリスクの一つ。', descEn: 'The difference between the order price and the actual execution price. Occurs during rapid market movements. One of the main risks in FX trading.' },
+  { term: 'スプレッド', reading: 'Spread', desc: '買値（Ask）と売値（Bid）の差。実質的な取引コスト。ゴールド（XAUUSD）のスプレッドは時間帯によって変動。', descEn: 'The difference between the Ask (buy) price and Bid (sell) price. The effective trading cost. Gold (XAUUSD) spreads vary by time of day.' },
+  { term: 'ロット', reading: 'Lot', desc: '取引単位。1ロットはXAUUSDの場合100オンス。0.01ロット（1マイクロロット）が最小取引単位。', descEn: 'Trading unit. 1 lot = 100 ounces for XAUUSD. 0.01 lot (1 micro lot) is the minimum trading unit.' },
+  { term: 'レバレッジ', reading: 'Leverage', desc: '証拠金に対する取引倍率。IC Marketsでは最大500倍。レバレッジが高いほど少ない資金で大きな取引が可能だが、リスクも比例して増大。', descEn: 'The ratio of trading size to margin. Up to 500x at IC Markets. Higher leverage allows larger trades with less capital, but risk increases proportionally.' },
+  { term: 'ストップロス', reading: 'Stop Loss / SL', desc: '損失を限定するために設定する逆指値注文。設定した価格に達した場合、自動的にポジションを決済。', descEn: 'A stop order placed to limit losses. When the set price is reached, the position is automatically closed.' },
+  { term: 'テイクプロフィット', reading: 'Take Profit / TP', desc: '利益を確定するために設定する指値注文。設定した価格に達した場合、自動的にポジションを決済。', descEn: 'A limit order placed to lock in profits. When the set price is reached, the position is automatically closed.' },
+  { term: 'スワップ', reading: 'Swap / Overnight Fee', desc: 'ポジションを翌日に持ち越した際に発生する金利調整額。通貨ペアの金利差によりプラスにもマイナスにもなる。', descEn: 'An interest adjustment fee incurred when holding a position overnight. Can be positive or negative depending on the interest rate differential of the currency pair.' },
+  { term: 'VPS', reading: 'Virtual Private Server', desc: '仮想専用サーバー。24時間稼働のサーバー上でMT5とEAを動作させることで、パソコンを切っている間も取引を継続できる。', descEn: 'A virtual private server. Running MT5 and the EA on a 24/7 server allows trading to continue even when your computer is off.' },
+  { term: 'バックテスト', reading: 'Backtest', desc: '過去の市場データを使ってEAの戦略を検証すること。MT5に内蔵されたバックテスト機能で実行。ただし、過去の結果は将来を保証しない。', descEn: 'Testing an EA strategy using historical market data. Run with MT5\'s built-in backtesting feature. However, past results do not guarantee future performance.' },
+  { term: 'フォワードテスト', reading: 'Forward Test', desc: 'デモ口座や実口座でEAを実際に動作させて検証すること。バックテストよりも現実的な結果が得られる。', descEn: 'Testing the EA in real time on a demo or live account. Provides more realistic results than backtesting.' }
 ];
 ---
 
 <BaseLayout title="用語集 | FusionGold M5" description="FX取引・自動売買EAに関する用語解説。ADX、HMM、MACDなど初心者向けにわかりやすく解説。">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">用語集</h1>
-    <p style="color:var(--text-muted);margin-bottom:32px;">FX取引・自動売買EAに関する専門用語をわかりやすく解説します。</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;">
+      <span class="lang-jp">用語集</span>
+      <span class="lang-en">Glossary</span>
+    </h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">
+      <span class="lang-jp">FX取引・自動売買EAに関する専門用語をわかりやすく解説します。</span>
+      <span class="lang-en">Simple explanations of specialized terms related to FX trading and automated EA trading.</span>
+    </p>
 
     <div class="glossary-nav">
       {terms.map((item, i) => (
@@ -44,14 +50,23 @@ const terms = [
             <h2>{item.term}</h2>
             <span class="glossary-reading">{item.reading}</span>
           </div>
-          <p>{item.desc}</p>
+          <p>
+            <span class="lang-jp">{item.desc}</span>
+            <span class="lang-en">{item.descEn}</span>
+          </p>
         </div>
       ))}
     </div>
 
     <div style="margin-top:32px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:8px;">もっと詳しく知りたい方は</p>
-      <a href={siteBase + '/strategy/'} style="color:var(--gold);">戦略ホワイトペーパーを見る →</a>
+      <p style="color:var(--text-muted);margin-bottom:8px;">
+        <span class="lang-jp">もっと詳しく知りたい方は</span>
+        <span class="lang-en">Want to learn more?</span>
+      </p>
+      <a href={siteBase + '/strategy/'} style="color:var(--gold);">
+        <span class="lang-jp">戦略ホワイトペーパーを見る →</span>
+        <span class="lang-en">View Strategy Whitepaper →</span>
+      </a>
     </div>
   </div>
 

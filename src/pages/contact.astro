@@ -6,22 +6,40 @@ const siteBase = '/fusiongold-ea-site';
 <BaseLayout title="お問い合わせ | FusionGold M5" description="FusionGold M5 のお問い合わせ。デモ口座、物々交換など。">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:640px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;text-align:center;" data-i18n="contact-title">お問い合わせ</h1>
-    <p style="color:var(--text-muted);margin-bottom:12px;text-align:center;" data-i18n="contact-sub">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;text-align:center;" data-i18n="contact-title">
+      <span class="lang-jp">お問い合わせ</span>
+      <span class="lang-en">Contact Us</span>
+    </h1>
+    <p style="color:var(--text-muted);margin-bottom:12px;text-align:center;" data-i18n="contact-sub">
+      <span class="lang-jp">お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。</span>
+      <span class="lang-en">Feel free to reach out with inquiries, demo account requests, or barter trade proposals.</span>
+    </p>
 
     <div class="email-card">
       <div class="email-icon">📧</div>
       <a href="mailto:william.classic@gmail.com" class="email-addr">william.classic@gmail.com</a>
-      <p class="email-note" data-i18n="contact-note">※お返事までに1-2営業日いただく場合がございます。</p>
+      <p class="email-note" data-i18n="contact-note">
+        <span class="lang-jp">※お返事までに1-2営業日いただく場合がございます。</span>
+        <span class="lang-en">* Please allow 1-2 business days for a response.</span>
+      </p>
     </div>
 
     <div class="alt-links">
       <p style="color:var(--text-muted);font-size:0.85rem;">
-        <span data-i18n="contact-alt">こちらからもお問い合わせいただけます</span>：
+        <span data-i18n="contact-alt">
+          <span class="lang-jp">こちらからもお問い合わせいただけます</span>
+          <span class="lang-en">You can also reach us through</span>
+        </span>：
       </p>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
-        <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="cta-demo">デモを申し込む</a>
-        <a href={siteBase + '/faq/'} class="btn btn-outline" data-i18n="cta-faq">FAQを見る</a>
+        <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="cta-demo">
+          <span class="lang-jp">デモを申し込む</span>
+          <span class="lang-en">Apply for Demo</span>
+        </a>
+        <a href={siteBase + '/faq/'} class="btn btn-outline" data-i18n="cta-faq">
+          <span class="lang-jp">FAQを見る</span>
+          <span class="lang-en">View FAQ</span>
+        </a>
       </div>
     </div>
   </div>
