@@ -321,47 +321,47 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     </div>
   </section>
 
-  <!-- ═══════════════ ご利用方法 + 制作者 + 最終CTA（統合フッター） ═══════════════ -->
-  <section class="section alt-bg" style="padding-bottom:60px;">
-    <div class="container" style="text-align:center;">
-      <h2 class="section-title fade-in" data-i18n="price-title">ご利用方法</h2>
-      <p class="section-sub fade-in" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
+  <!-- ═══════════════ ご利用方法 + 制作者 + ライブ取引（HERO 同款） ═══════════════ -->
+  <section class="hero" style="padding:60px 0 50px;">
+    <div class="hero-content container" style="max-width:900px;">
+      <h2 style="font-size:1.5rem;margin:0 0 4px;background:linear-gradient(135deg,var(--gold),#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="price-title">ご利用方法</h2>
+      <p style="color:rgba(255,255,255,.45);font-size:0.85rem;margin:0 0 24px;" data-i18n="price-sub">現金不要。物々交換のみでご提供しています。</p>
 
-      <div class="footer-grid fade-in">
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <!-- 物々交換 -->
-        <div class="fg-card barter-em">
-          <div class="fg-price" data-i18n="p3-name">物々交換</div>
-          <p data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
-          <div class="fg-includes"><div data-i18n="p3-f1">✓ EAファイル（.ex5）</div><div data-i18n="p3-f2">✓ 設定ガイド</div><div data-i18n="p3-f3">✓ メールサポート</div></div>
-          <div class="barter-tags" style="margin:12px 0;">
-            <span>🎮 ゲーム機</span><span>🍶 日本酒</span><span>📷 カメラレンズ</span><span>⌚ 国産時計</span>
+        <div style="flex:1 1 240px;max-width:280px;text-align:center;background:rgba(255,255,255,.04);border:2px solid var(--gold);border-radius:12px;padding:20px 16px;backdrop-filter:blur(4px);">
+          <div style="font-size:1.1rem;color:var(--gold);font-weight:700;margin-bottom:8px;" data-i18n="p3-name">物々交換</div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5;margin:0 0 12px;" data-i18n="p3-desc">日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。</p>
+          <div style="padding:0 8px;"><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f1">✓ EAファイル（.ex5）</div><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f2">✓ 設定ガイド</div><div style="padding:4px 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);" data-i18n="p3-f3">✓ メールサポート</div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:12px 0;">
+            <span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">🎮 ゲーム機</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">🍶 日本酒</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">📷 カメラレンズ</span><span style="padding:3px 10px;border-radius:14px;font-size:0.68rem;color:var(--gold);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);">⌚ 国産時計</span>
           </div>
-          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="p3-cta">交換の詳細を問い合わせる</a>
+          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="p3-cta" style="display:inline-block;padding:10px 22px;font-size:0.82rem;">交換の詳細を問い合わせる</a>
         </div>
 
         <!-- 制作者 -->
-        <div class="fg-card">
-          <div class="author-avatar-sm">W</div>
-          <h3 style="color:var(--gold);font-size:0.9rem;margin:8px 0;" data-i18n="author-name">William — EA開発者</h3>
-          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;" data-i18n="author-p4">Jim Simonsの数学的アプローチに影響を受け、MITオンライン講座で統計的学習を学ぶ。廈門を拠点に英語教育と定量取引の両軸で活動。</p>
+        <div style="flex:1 1 200px;max-width:240px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 14px;backdrop-filter:blur(4px);">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#111;font-weight:800;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto;">W</div>
+          <h3 style="color:var(--gold);font-size:0.82rem;margin:8px 0;" data-i18n="author-name">William — EA開発者</h3>
+          <p style="font-size:0.72rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;" data-i18n="author-p4">Jim Simonsの数学的アプローチに影響を受け、MITオンライン講座で統計的学習を学ぶ。廈門を拠点に英語教育と定量取引の両軸で活動。</p>
         </div>
 
         <!-- ライブ取引 -->
-        <div class="fg-card">
-          <div style="font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:8px;" data-i18n="cta-title">ライブ取引を閲覧する</div>
-          <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.5;margin-bottom:10px;" data-i18n="cta-sub">MT5で以下の口座を追加してご覧いただけます。</p>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:10px;margin-bottom:8px;">
-            <div style="font-size:0.6rem;color:var(--text-muted);">server</div>
-            <div style="font-size:0.85rem;font-weight:600;color:var(--gold);">ICMarketsSC-Demo</div>
-            <div style="font-size:0.6rem;color:var(--text-muted);margin-top:4px;">account</div>
-            <div style="font-size:1.1rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;">52933861</div>
+        <div style="flex:1 1 240px;max-width:280px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 16px;backdrop-filter:blur(4px);">
+          <div style="font-size:0.82rem;color:var(--gold);font-weight:600;margin-bottom:8px;" data-i18n="cta-title">ライブ取引を閲覧する</div>
+          <p style="font-size:0.7rem;color:rgba(255,255,255,.5);line-height:1.5;margin:0 0 10px;" data-i18n="cta-sub">MT5で以下の口座を追加してご覧いただけます。</p>
+          <div style="background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;margin-bottom:8px;">
+            <div style="font-size:0.6rem;color:rgba(255,255,255,.4);">server</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--gold);">ICMarketsSC-Demo</div>
+            <div style="font-size:0.6rem;color:rgba(255,255,255,.4);margin-top:4px;">account</div>
+            <div style="font-size:1rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;">52933861</div>
           </div>
-          <p style="font-size:0.65rem;color:var(--text-muted);margin-bottom:8px;" data-i18n="cta-psw-note">※ 閲覧用パスワードはお問い合わせください。</p>
-          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="cta-contact" style="padding:8px 18px;font-size:0.8rem;">パスワードを請求する</a>
+          <p style="font-size:0.62rem;color:rgba(255,255,255,.4);margin-bottom:8px;" data-i18n="cta-psw-note">※ 閲覧用パスワードはお問い合わせください。</p>
+          <a href={siteBase + '/contact/'} class="btn btn-gold" data-i18n="cta-contact" style="display:inline-block;padding:8px 18px;font-size:0.78rem;">パスワードを請求する</a>
         </div>
       </div>
 
-      <div style="margin-top:20px;font-size:0.72rem;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;" data-i18n="cta-trust">
+      <div style="margin-top:20px;font-size:0.68rem;color:rgba(255,255,255,.35);border-top:1px solid rgba(255,255,255,.06);padding-top:14px;max-width:600px;margin-left:auto;margin-right:auto;" data-i18n="cta-trust">
         📌 多くの日本EAサイトはスクリーンショットのみですが、当サイトでは実際の取引口座をリアルタイムでご確認いただけます。完全な透明性を約束します。
       </div>
     </div>
