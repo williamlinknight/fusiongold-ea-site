@@ -4,33 +4,51 @@ const siteBase = '/fusiongold-ea-site';
 const steps = [
   {
     title: 'Step 1: EAファイルをダウンロード',
+    titleEn: 'Step 1: Download the EA File',
     desc: '物々交換が成立後、EAファイル（.ex5）と設定ガイド（PDF）をお送りします。ファイルはメールにてお届けします。',
-    tip: 'メールが届かない場合は迷惑メールフォルダをご確認ください。'
+    descEn: 'After the barter agreement is finalized, we will send you the EA file (.ex5) and setup guide (PDF) via email.',
+    tip: 'メールが届かない場合は迷惑メールフォルダをご確認ください。',
+    tipEn: 'If you don\'t see the email, please check your spam folder.'
   },
   {
     title: 'Step 2: MT5にEAをインストール',
+    titleEn: 'Step 2: Install the EA on MT5',
     desc: 'MT5プラットフォームを開き、メニューから「ファイル」→「データフォルダを開く」を選択します。表示されたフォルダ内の「MQL5」→「Experts」フォルダに、受け取った.ex5ファイルをコピーします。',
-    tip: 'MT5を再起動すると、ナビゲーターウィンドウの「エキスパートアドバイザー」にFusionGold M5が表示されます。'
+    descEn: 'Open MT5, go to "File" → "Open Data Folder". Navigate to "MQL5" → "Experts" and copy the .ex5 file there.',
+    tip: 'MT5を再起動すると、ナビゲーターウィンドウの「エキスパートアドバイザー」にFusionGold M5が表示されます。',
+    tipEn: 'After restarting MT5, FusionGold M5 will appear under "Expert Advisors" in the Navigator window.'
   },
   {
     title: 'Step 3: EAをチャートに適用',
+    titleEn: 'Step 3: Apply the EA to a Chart',
     desc: 'XAUUSDのM5チャートを開き、ナビゲーターからFusionGold M5をチャートにドラッグ＆ドロップします。表示される設定画面で「OK」をクリック。ただし、その前に以下の設定を確認してください。',
-    tip: '「エキスパートアドバイザーの自動売買を許可」にチェックが入っていることを確認してください。'
+    descEn: 'Open an XAUUSD M5 chart. Drag and drop FusionGold M5 from the Navigator onto the chart. Click "OK" on the settings dialog. But first, check the settings below.',
+    tip: '「エキスパートアドバイザーの自動売買を許可」にチェックが入っていることを確認してください。',
+    tipEn: 'Make sure "Allow Automated Trading" is checked in the Common tab.'
   },
   {
     title: 'Step 4: 入力パラメータを設定',
+    titleEn: 'Step 4: Configure Input Parameters',
     desc: 'EAのプロパティ画面で以下の主要パラメータを設定します：ロットサイズ（推奨: 0.01から開始）、リスク設定（デフォルト値を推奨）、各種フィルター設定。詳細は設定ガイドをご参照ください。',
-    tip: '最初はデフォルト設定のまま運用し、十分に動作を確認してから調整することをお勧めします。'
+    descEn: 'In the EA properties, configure key parameters: Lot size (recommended: start at 0.01), Risk settings (defaults recommended), and various filter settings. Refer to the setup guide for details.',
+    tip: '最初はデフォルト設定のまま運用し、十分に動作を確認してから調整することをお勧めします。',
+    tipEn: 'We recommend starting with default settings and adjusting only after confirming stable operation.'
   },
   {
     title: 'Step 5: 自動売買を有効化',
+    titleEn: 'Step 5: Enable Auto Trading',
     desc: 'チャート上部の「エキスパートアドバイザー」ボタン（スマイルアイコン）をクリックし、自動売買を有効にします。ボタンが緑色になれば、EAが稼働を開始します。',
-    tip: 'EAが正しく動作しているかどうかは、チャート右上のスマイルマークで確認できます。'
+    descEn: 'Click the "Expert Advisor" button (smiley icon) on the chart toolbar and enable auto trading. When the button turns green, the EA is running.',
+    tip: 'EAが正しく動作しているかどうかは、チャート右上のスマイルマークで確認できます。',
+    tipEn: 'Check the smiley face in the top-right corner of the chart to confirm the EA is working correctly.'
   },
   {
     title: 'Step 6: VPSでの運用（推奨）',
+    titleEn: 'Step 6: Run on a VPS (Recommended)',
     desc: '24時間安定稼働させるにはVPSの使用を強く推奨します。主要なVPSプロバイダー（例：Forex VPS、AWS Lightsailなど）でWindows Serverを選択し、そのVPSにMT5とEAをインストールしてください。',
-    tip: 'VPSの選択基準：IC Marketsへのレイテンシが低いリージョンを選びましょう（ロンドンまたはニューヨーク推奨）。'
+    descEn: 'For 24/7 stable operation, we strongly recommend using a VPS. Choose a major VPS provider (e.g., Forex VPS, AWS Lightsail) with Windows Server, and install MT5 and the EA on it.',
+    tip: 'VPSの選択基準：IC Marketsへのレイテンシが低いリージョンを選びましょう（ロンドンまたはニューヨーク推奨）。',
+    tipEn: 'VPS tip: Choose a region with low latency to IC Markets (London or New York recommended).'
   }
 ];
 ---
@@ -38,20 +56,32 @@ const steps = [
 <BaseLayout title="セットアップガイド | FusionGold M5" description="FusionGold M5 のインストールと設定手順を詳しく解説。MT5への導入からVPS運用まで。">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">セットアップガイド</h1>
-    <p style="color:var(--text-muted);margin-bottom:8px;">FusionGold M5 のインストールから運用開始までの手順を解説します。</p>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">所要時間: 約15〜30分</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;">
+      <span class="lang-jp">セットアップガイド</span>
+      <span class="lang-en">Setup Guide</span>
+    </h1>
+    <p style="color:var(--text-muted);margin-bottom:8px;">
+      <span class="lang-jp">FusionGold M5 のインストールから運用開始までの手順を解説します。</span>
+      <span class="lang-en">Step-by-step instructions from installation to launching FusionGold M5.</span>
+    </p>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">
+      <span class="lang-jp">所要時間: 約15〜30分</span>
+      <span class="lang-en">Time required: Approximately 15–30 minutes</span>
+    </p>
 
     <div class="setup-steps">
       {steps.map((step, i) => (
         <div class="step-card">
           <div class="step-number">{String(i + 1).padStart(2, '0')}</div>
           <div class="step-body">
-            <h2>{step.title}</h2>
-            <p>{step.desc}</p>
+            <h2><span class="lang-jp">{step.title}</span><span class="lang-en">{step.titleEn}</span></h2>
+            <p><span class="lang-jp">{step.desc}</span><span class="lang-en">{step.descEn}</span></p>
             <div class="step-tip">
-              <span class="tip-label">💡 ヒント</span>
-              <span>{step.tip}</span>
+              <span class="tip-label">
+                <span class="lang-jp">💡 ヒント</span>
+                <span class="lang-en">💡 Tip</span>
+              </span>
+              <span><span class="lang-jp">{step.tip}</span><span class="lang-en">{step.tipEn}</span></span>
             </div>
           </div>
         </div>
@@ -59,39 +89,51 @@ const steps = [
     </div>
 
     <div class="requirements-section">
-      <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">🔧 必要環境</h2>
+      <h2 style="color:var(--gold);font-size:1.1rem;margin-bottom:16px;">
+        <span class="lang-jp">🔧 必要環境</span>
+        <span class="lang-en">🔧 Requirements</span>
+      </h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
         <div class="req-item">
-          <div class="req-label">ブローカー</div>
-          <div class="req-value">IC Markets（Raw Spread口座）</div>
+          <div class="req-label"><span class="lang-jp">ブローカー</span><span class="lang-en">Broker</span></div>
+          <div class="req-value"><span class="lang-jp">IC Markets（Raw Spread口座）</span><span class="lang-en">IC Markets (Raw Spread)</span></div>
         </div>
         <div class="req-item">
-          <div class="req-label">プラットフォーム</div>
-          <div class="req-value">MetaTrader 5（MT5）</div>
+          <div class="req-label"><span class="lang-jp">プラットフォーム</span><span class="lang-en">Platform</span></div>
+          <div class="req-value"><span class="lang-jp">MetaTrader 5（MT5）</span><span class="lang-en">MetaTrader 5 (MT5)</span></div>
         </div>
         <div class="req-item">
-          <div class="req-label">取引ペア</div>
-          <div class="req-value">XAUUSD（ゴールド）</div>
+          <div class="req-label"><span class="lang-jp">取引ペア</span><span class="lang-en">Trading Pair</span></div>
+          <div class="req-value"><span class="lang-jp">XAUUSD（ゴールド）</span><span class="lang-en">XAUUSD (Gold)</span></div>
         </div>
         <div class="req-item">
-          <div class="req-label">タイムフレーム</div>
+          <div class="req-label"><span class="lang-jp">タイムフレーム</span><span class="lang-en">Timeframe</span></div>
           <div class="req-value">M5</div>
         </div>
         <div class="req-item">
-          <div class="req-label">推奨VPS</div>
-          <div class="req-value">Windows Server, 1GB RAM以上</div>
+          <div class="req-label"><span class="lang-jp">推奨VPS</span><span class="lang-en">Recommended VPS</span></div>
+          <div class="req-value"><span class="lang-jp">Windows Server, 1GB RAM以上</span><span class="lang-en">Windows Server, 1GB+ RAM</span></div>
         </div>
         <div class="req-item">
-          <div class="req-label">最低証拠金</div>
-          <div class="req-value">$500（0.01ロット推奨）</div>
+          <div class="req-label"><span class="lang-jp">最低証拠金</span><span class="lang-en">Min. Deposit</span></div>
+          <div class="req-value"><span class="lang-jp">$500（0.01ロット推奨）</span><span class="lang-en">$500 (0.01 lot recommended)</span></div>
         </div>
       </div>
     </div>
 
     <div style="margin-top:32px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:8px;">セットアップでお困りですか？</p>
-      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">デモ口座でのテストサポートも承ります。</p>
-      <a href={siteBase + '/contact/'} class="btn btn-gold">お問い合わせ</a>
+      <p style="color:var(--text-muted);margin-bottom:8px;">
+        <span class="lang-jp">セットアップでお困りですか？</span>
+        <span class="lang-en">Need help with setup?</span>
+      </p>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">
+        <span class="lang-jp">デモ口座でのテストサポートも承ります。</span>
+        <span class="lang-en">We also offer demo account test support.</span>
+      </p>
+      <a href={siteBase + '/contact/'} class="btn btn-gold">
+        <span class="lang-jp">お問い合わせ</span>
+        <span class="lang-en">Contact Us</span>
+      </a>
     </div>
   </div>
 

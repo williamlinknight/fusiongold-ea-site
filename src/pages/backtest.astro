@@ -6,11 +6,11 @@ const monthlyData = [
   { month: '2026/07', profit: 158.35, trades: 27, winRate: 70.37, avgWin: 16.22, avgLoss: -11.80, pf: 1.41, dd: 8.61 }
 ];
 const weekdayData = [
-  { day: '月曜日', trades: 31, winRate: 77.42 },
-  { day: '火曜日', trades: 28, winRate: 75.00 },
-  { day: '水曜日', trades: 25, winRate: 72.00 },
-  { day: '木曜日', trades: 30, winRate: 73.33 },
-  { day: '金曜日', trades: 31, winRate: 74.19 }
+  { day: '<span class="lang-jp">月曜日</span><span class="lang-en">Monday</span>', trades: 31, winRate: 77.42 },
+  { day: '<span class="lang-jp">火曜日</span><span class="lang-en">Tuesday</span>', trades: 28, winRate: 75.00 },
+  { day: '<span class="lang-jp">水曜日</span><span class="lang-en">Wednesday</span>', trades: 25, winRate: 72.00 },
+  { day: '<span class="lang-jp">木曜日</span><span class="lang-en">Thursday</span>', trades: 30, winRate: 73.33 },
+  { day: '<span class="lang-jp">金曜日</span><span class="lang-en">Friday</span>', trades: 31, winRate: 74.19 }
 ];
 const hourlyData = [
   { hour: '21:00-22:00', trades: 42, winRate: 78.57 },
@@ -19,50 +19,72 @@ const hourlyData = [
   { hour: '00:00-01:00', trades: 10, winRate: 60.00 }
 ];
 const monthlyChart = [
-  { label: '6月第1週', equity: 1000 },
-  { label: '6月第2週', equity: 1120 },
-  { label: '6月第3週', equity: 1255 },
-  { label: '6月第4週', equity: 1460 },
-  { label: '7月第1週', equity: 1690 },
-  { label: '7月第2週', equity: 1912 }
+  { label: '<span class="lang-jp">6月第1週</span><span class="lang-en">Jun Wk1</span>', equity: 1000 },
+  { label: '<span class="lang-jp">6月第2週</span><span class="lang-en">Jun Wk2</span>', equity: 1120 },
+  { label: '<span class="lang-jp">6月第3週</span><span class="lang-en">Jun Wk3</span>', equity: 1255 },
+  { label: '<span class="lang-jp">6月第4週</span><span class="lang-en">Jun Wk4</span>', equity: 1460 },
+  { label: '<span class="lang-jp">7月第1週</span><span class="lang-en">Jul Wk1</span>', equity: 1690 },
+  { label: '<span class="lang-jp">7月第2週</span><span class="lang-en">Jul Wk2</span>', equity: 1912 }
 ];
 ---
 
-<BaseLayout title="バックテスト詳細レポート | FusionGold M5" description="FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。">
+<BaseLayout
+  title='<span class="lang-jp">バックテスト詳細レポート | FusionGold M5</span><span class="lang-en">Backtest Detailed Report | FusionGold M5</span>'
+  description='<span class="lang-jp">FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。</span><span class="lang-en">Detailed analysis of FusionGold M5 backtest results. Monthly P&L, drawdown, performance by weekday and time zone.</span>'
+>
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:800px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">バックテスト詳細レポート</h1>
-    <p style="color:var(--text-muted);margin-bottom:4px;">検証期間: 2026年6月1日 〜 7月2日 · XAUUSD M1 · IC Markets Raw Spread</p>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">※過去の結果は将来の成果を保証するものではありません。</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;">
+      <span class="lang-jp">バックテスト詳細レポート</span>
+      <span class="lang-en">Backtest Detailed Report</span>
+    </h1>
+    <p style="color:var(--text-muted);margin-bottom:4px;">
+      <span class="lang-jp">検証期間: 2026年6月1日 〜 7月2日 · XAUUSD M1 · IC Markets Raw Spread</span>
+      <span class="lang-en">Test Period: Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets Raw Spread</span>
+    </p>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">
+      <span class="lang-jp">※過去の結果は将来の成果を保証するものではありません。</span>
+      <span class="lang-en">※ Past results do not guarantee future performance.</span>
+    </p>
 
-    <!-- ═══ サマリー ═══ -->
+    <!-- ═══ <span class="lang-jp">サマリー</span><span class="lang-en">Summary</span> ═══ -->
     <div class="summary-grid">
-      <div class="summary-card"><span class="s-label">総取引数</span><span class="s-value">145</span></div>
-      <div class="summary-card"><span class="s-label">勝率</span><span class="s-value highlight">74.48%</span></div>
-      <div class="summary-card"><span class="s-label">純利益</span><span class="s-value highlight">+$912.56</span></div>
-      <div class="summary-card"><span class="s-label">プロフィットファクター</span><span class="s-value">1.54</span></div>
-      <div class="summary-card"><span class="s-label">最大ドローダウン</span><span class="s-value">8.61%</span></div>
-      <div class="summary-card"><span class="s-label">平均保有時間</span><span class="s-value">7min 55s</span></div>
-      <div class="summary-card"><span class="s-label">総利益</span><span class="s-value">+$2,847.30</span></div>
-      <div class="summary-card"><span class="s-label">総損失</span><span class="s-value" style="color:var(--accent-red);">-$1,934.74</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">総取引数</span><span class="lang-en">Total Trades</span></span><span class="s-value">145</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></span><span class="s-value highlight">74.48%</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">純利益</span><span class="lang-en">Net Profit</span></span><span class="s-value highlight">+$912.56</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">プロフィットファクター</span><span class="lang-en">Profit Factor</span></span><span class="s-value">1.54</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">最大ドローダウン</span><span class="lang-en">Max Drawdown</span></span><span class="s-value">8.61%</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">平均保有時間</span><span class="lang-en">Avg. Hold Time</span></span><span class="s-value">7min 55s</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">総利益</span><span class="lang-en">Gross Profit</span></span><span class="s-value">+$2,847.30</span></div>
+      <div class="summary-card"><span class="s-label"><span class="lang-jp">総損失</span><span class="lang-en">Gross Loss</span></span><span class="s-value" style="color:var(--accent-red);">-$1,934.74</span></div>
     </div>
 
-    <!-- ═══ エクイティカーブ ═══ -->
+    <!-- ═══ <span class="lang-jp">エクイティカーブ</span><span class="lang-en">Equity Curve</span> ═══ -->
     <div class="section-card">
-      <h2>エクイティカーブ</h2>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">開始残高 $1,000 → 終了残高 $1,912.56（+91.25%）</p>
+      <h2><span class="lang-jp">エクイティカーブ</span><span class="lang-en">Equity Curve</span></h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">
+        <span class="lang-jp">開始残高 $1,000 → 終了残高 $1,912.56（+91.25%）</span>
+        <span class="lang-en">Starting Balance $1,000 → Ending Balance $1,912.56 (+91.25%)</span>
+      </p>
       <div class="chart-container">
         <canvas id="equityChart"></canvas>
       </div>
     </div>
 
-    <!-- ═══ 月次パフォーマンス ═══ -->
+    <!-- ═══ <span class="lang-jp">月次パフォーマンス</span><span class="lang-en">Monthly Performance</span> ═══ -->
     <div class="section-card">
-      <h2>月次パフォーマンス</h2>
+      <h2><span class="lang-jp">月次パフォーマンス</span><span class="lang-en">Monthly Performance</span></h2>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr>
-            <th>月</th><th>損益</th><th>取引数</th><th>勝率</th><th>平均勝ち</th><th>平均負け</th><th>PF</th><th>最大DD</th>
+            <th><span class="lang-jp">月</span><span class="lang-en">Month</span></th>
+            <th><span class="lang-jp">損益</span><span class="lang-en">P&L</span></th>
+            <th><span class="lang-jp">取引数</span><span class="lang-en">Trades</span></th>
+            <th><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></th>
+            <th><span class="lang-jp">平均勝ち</span><span class="lang-en">Avg Win</span></th>
+            <th><span class="lang-jp">平均負け</span><span class="lang-en">Avg Loss</span></th>
+            <th>PF</th>
+            <th><span class="lang-jp">最大DD</span><span class="lang-en">Max DD</span></th>
           </tr></thead>
           <tbody>
             {monthlyData.map(m => (
@@ -78,7 +100,7 @@ const monthlyChart = [
             </tr>
             ))}
             <tr class="total-row">
-              <td><strong>トータル</strong></td>
+              <td><strong><span class="lang-jp">トータル</span><span class="lang-en">Total</span></strong></td>
               <td class="highlight"><strong>+$912.56</strong></td>
               <td><strong>145</strong></td>
               <td><strong>74.48%</strong></td>
@@ -92,36 +114,43 @@ const monthlyChart = [
       </div>
     </div>
 
-    <!-- ═══ 買い/売り 内訳 ═══ -->
+    <!-- ═══ <span class="lang-jp">売買方向別内訳</span><span class="lang-en">Direction Breakdown</span> ═══ -->
     <div class="section-card">
-      <h2>売買方向別内訳</h2>
+      <h2><span class="lang-jp">売買方向別内訳</span><span class="lang-en">Buy/Sell Breakdown</span></h2>
       <div class="direction-grid">
         <div class="direction-card sell">
           <div class="dir-icon">SELL</div>
           <div class="dir-stats">
-            <div><span class="dir-label">取引数</span><span>116</span></div>
-            <div><span class="dir-label">勝率</span><span class="highlight">79.31%</span></div>
-            <div><span class="dir-label">純利益</span><span class="highlight">+$784.20</span></div>
+            <div><span class="dir-label"><span class="lang-jp">取引数</span><span class="lang-en">Trades</span></span><span>116</span></div>
+            <div><span class="dir-label"><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></span><span class="highlight">79.31%</span></div>
+            <div><span class="dir-label"><span class="lang-jp">純利益</span><span class="lang-en">Net Profit</span></span><span class="highlight">+$784.20</span></div>
           </div>
         </div>
         <div class="direction-card buy">
           <div class="dir-icon">BUY</div>
           <div class="dir-stats">
-            <div><span class="dir-label">取引数</span><span>29</span></div>
-            <div><span class="dir-label">勝率</span><span class="highlight">55.17%</span></div>
-            <div><span class="dir-label">純利益</span><span class="highlight">+$128.36</span></div>
+            <div><span class="dir-label"><span class="lang-jp">取引数</span><span class="lang-en">Trades</span></span><span>29</span></div>
+            <div><span class="dir-label"><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></span><span class="highlight">55.17%</span></div>
+            <div><span class="dir-label"><span class="lang-jp">純利益</span><span class="lang-en">Net Profit</span></span><span class="highlight">+$128.36</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ═══ 曜日別 ═══ -->
+    <!-- ═══ <span class="lang-jp">曜日別パフォーマンス</span><span class="lang-en">Weekday Performance</span> ═══ -->
     <div class="section-card">
-      <h2>曜日別パフォーマンス</h2>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">ロンドン/NYオーバーラップ帯の流動性が高い月〜金曜に集中。</p>
+      <h2><span class="lang-jp">曜日別パフォーマンス</span><span class="lang-en">Weekday Performance</span></h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">
+        <span class="lang-jp">ロンドン/NYオーバーラップ帯の流動性が高い月〜金曜に集中。</span>
+        <span class="lang-en">Concentrated Mon–Fri during high-liquidity London/NY overlap.</span>
+      </p>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>曜日</th><th>取引数</th><th>勝率</th></tr></thead>
+          <thead><tr>
+            <th><span class="lang-jp">曜日</span><span class="lang-en">Weekday</span></th>
+            <th><span class="lang-jp">取引数</span><span class="lang-en">Trades</span></th>
+            <th><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></th>
+          </tr></thead>
           <tbody>
             {weekdayData.map(d => (
             <tr>
@@ -135,13 +164,20 @@ const monthlyChart = [
       </div>
     </div>
 
-    <!-- ═══ 時間帯別 ═══ -->
+    <!-- ═══ <span class="lang-jp">時間帯別パフォーマンス</span><span class="lang-en">Hourly Performance</span> ═══ -->
     <div class="section-card">
-      <h2>時間帯別パフォーマンス</h2>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">日本時間21:00〜24:00（ロンドン/ニューヨークオーバーラップ）に集中。</p>
+      <h2><span class="lang-jp">時間帯別パフォーマンス</span><span class="lang-en">Hourly Performance</span></h2>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">
+        <span class="lang-jp">日本時間21:00〜24:00（ロンドン/ニューヨークオーバーラップ）に集中。</span>
+        <span class="lang-en">Concentrated 21:00–24:00 JST (London/New York overlap).</span>
+      </p>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>時間帯（BJT）</th><th>取引数</th><th>勝率</th></tr></thead>
+          <thead><tr>
+            <th><span class="lang-jp">時間帯（BJT）</span><span class="lang-en">Time (BJT)</span></th>
+            <th><span class="lang-jp">取引数</span><span class="lang-en">Trades</span></th>
+            <th><span class="lang-jp">勝率</span><span class="lang-en">Win Rate</span></th>
+          </tr></thead>
           <tbody>
             {hourlyData.map(d => (
             <tr>
@@ -155,36 +191,42 @@ const monthlyChart = [
       </div>
     </div>
 
-    <!-- ═══ ドローダウン分析 ═══ -->
+    <!-- ═══ <span class="lang-jp">ドローダウン分析</span><span class="lang-en">Drawdown Analysis</span> ═══ -->
     <div class="section-card">
-      <h2>ドローダウン分析</h2>
+      <h2><span class="lang-jp">ドローダウン分析</span><span class="lang-en">Drawdown Analysis</span></h2>
       <div class="dd-grid">
         <div class="dd-card">
-          <div class="dd-title">最大ドローダウン</div>
+          <div class="dd-title"><span class="lang-jp">最大ドローダウン</span><span class="lang-en">Max Drawdown</span></div>
           <div class="dd-value">8.61%</div>
-          <div class="dd-desc">絶対額: $164.67</div>
+          <div class="dd-desc"><span class="lang-jp">絶対額: $164.67</span><span class="lang-en">Absolute: $164.67</span></div>
         </div>
         <div class="dd-card">
-          <div class="dd-title">最大ドローダウン期間</div>
-          <div class="dd-value">3日</div>
-          <div class="dd-desc">2026年6月17日〜19日</div>
+          <div class="dd-title"><span class="lang-jp">最大ドローダウン期間</span><span class="lang-en">Max DD Period</span></div>
+          <div class="dd-value"><span class="lang-jp">3日</span><span class="lang-en">3 Days</span></div>
+          <div class="dd-desc">2026/06/17 – 2026/06/19</div>
         </div>
         <div class="dd-card">
-          <div class="dd-title">平均ドローダウン</div>
+          <div class="dd-title"><span class="lang-jp">平均ドローダウン</span><span class="lang-en">Avg Drawdown</span></div>
           <div class="dd-value">2.34%</div>
-          <div class="dd-desc">回復までの平均: 1.2日</div>
+          <div class="dd-desc"><span class="lang-jp">回復までの平均: 1.2日</span><span class="lang-en">Avg Recovery: 1.2 Days</span></div>
         </div>
         <div class="dd-card">
-          <div class="dd-title">最大連敗</div>
-          <div class="dd-value">3連敗</div>
-          <div class="dd-desc">合計損失: -$152.30</div>
+          <div class="dd-title"><span class="lang-jp">最大連敗</span><span class="lang-en">Max Consec. Losses</span></div>
+          <div class="dd-value"><span class="lang-jp">3連敗</span><span class="lang-en">3 Losses</span></div>
+          <div class="dd-desc"><span class="lang-jp">合計損失: -$152.30</span><span class="lang-en">Total Loss: -$152.30</span></div>
         </div>
       </div>
     </div>
 
     <div style="margin-top:32px;text-align:center;padding:24px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:16px;">バックテストの結果にご満足いただけましたか？デモ口座で実際の動作をお試しください。</p>
-      <a href={siteBase + '/demo/'} class="btn btn-gold">デモを試す</a>
+      <p style="color:var(--text-muted);margin-bottom:16px;">
+        <span class="lang-jp">バックテストの結果にご満足いただけましたか？デモ口座で実際の動作をお試しください。</span>
+        <span class="lang-en">Satisfied with the backtest results? Try it live on a demo account.</span>
+      </p>
+      <a href={siteBase + '/demo/'} class="btn btn-gold">
+        <span class="lang-jp">デモを試す</span>
+        <span class="lang-en">Try Demo</span>
+      </a>
     </div>
   </div>
 
@@ -198,9 +240,16 @@ const monthlyChart = [
       new Chart(canvas, {
         type: 'line',
         data: {
-          labels: ['6月第1週','6月第2週','6月第3週','6月第4週','7月第1週','7月第2週'],
+          labels: [
+            '<span class="lang-jp">6月第1週</span><span class="lang-en">Jun Wk1</span>',
+            '<span class="lang-jp">6月第2週</span><span class="lang-en">Jun Wk2</span>',
+            '<span class="lang-jp">6月第3週</span><span class="lang-en">Jun Wk3</span>',
+            '<span class="lang-jp">6月第4週</span><span class="lang-en">Jun Wk4</span>',
+            '<span class="lang-jp">7月第1週</span><span class="lang-en">Jul Wk1</span>',
+            '<span class="lang-jp">7月第2週</span><span class="lang-en">Jul Wk2</span>'
+          ],
           datasets: [{
-            label: '残高推移 ($)',
+            label: '<span class="lang-jp">残高推移 ($)</span><span class="lang-en">Balance ($)</span>',
             data: [1000,1120,1255,1460,1690,1912],
             borderColor: '#D4AF37',
             backgroundColor: 'rgba(212,175,55,0.08)',
@@ -213,10 +262,23 @@ const monthlyChart = [
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#ccc', font: { size: 12 } } } },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#ccc',
+                font: { size: 12 }
+              }
+            }
+          },
           scales: {
-            x: { ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-            y: { ticks: { color: '#888', callback: v => '$' + v }, grid: { color: 'rgba(255,255,255,0.05)' } }
+            x: {
+              ticks: { color: '#888' },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            },
+            y: {
+              ticks: { color: '#888', callback: v => '$' + v },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            }
           }
         }
       });

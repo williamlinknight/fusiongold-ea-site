@@ -3,109 +3,109 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const siteBase = '/fusiongold-ea-site';
 ---
 
-<BaseLayout title="戦略ホワイトペーパー | FusionGold M5" description="FusionGold M5 の戦略詳細。ADX+4バケットスコアリング、H4ゾーンフィルター、矛盾検出エンジンの技術解説。">
+<BaseLayout title="戦略ホワイトペーパー / Strategy Whitepaper | FusionGold M5" description="FusionGold M5 の戦略詳細。ADX+4バケットスコアリング、H4ゾーンフィルター、矛盾検出エンジンの技術解説。 / FusionGold M5 strategy details. Technical explanation of ADX+4-bucket scoring, H4 zone filter, and contradiction detection engine.">
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">戦略ホワイトペーパー</h1>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;">FusionGold M5 の中核戦略を詳細に解説します。</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;"><span class="lang-jp">戦略ホワイトペーパー</span><span class="lang-en">Strategy Whitepaper</span></h1>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;"><span class="lang-jp">FusionGold M5 の中核戦略を詳細に解説します。</span><span class="lang-en">A detailed explanation of the FusionGold M5 core strategy.</span></p>
 
     <!-- ═══ Section 1 ═══ -->
     <div class="wp-section">
       <div class="wp-toc">
-        <h2 style="color:var(--gold);font-size:1rem;margin-bottom:12px;">目次</h2>
+        <h2 style="color:var(--gold);font-size:1rem;margin-bottom:12px;"><span class="lang-jp">目次</span><span class="lang-en">Table of Contents</span></h2>
         <ol style="color:var(--text-muted);font-size:0.85rem;line-height:2;">
-          <li><a href="#overview" style="color:var(--gold);">全体設計思想</a></li>
-          <li><a href="#adx" style="color:var(--gold);">ADXゲート — 相場の質を評価</a></li>
-          <li><a href="#bucket" style="color:var(--gold);">4バケットスコアリングエンジン</a></li>
-          <li><a href="#h4" style="color:var(--gold);">H4ゾーンフィルター</a></li>
-          <li><a href="#contradiction" style="color:var(--gold);">矛盾信号検出エンジン</a></li>
-          <li><a href="#risk" style="color:var(--gold);">リスク管理システム</a></li>
-          <li><a href="#execution" style="color:var(--gold);">執行ロジック</a></li>
+          <li><a href="#overview" style="color:var(--gold);"><span class="lang-jp">全体設計思想</span><span class="lang-en">Overall Design Philosophy</span></a></li>
+          <li><a href="#adx" style="color:var(--gold);"><span class="lang-jp">ADXゲート — 相場の質を評価</span><span class="lang-en">ADX Gate — Assessing Market Quality</span></a></li>
+          <li><a href="#bucket" style="color:var(--gold);"><span class="lang-jp">4バケットスコアリングエンジン</span><span class="lang-en">4-Bucket Scoring Engine</span></a></li>
+          <li><a href="#h4" style="color:var(--gold);"><span class="lang-jp">H4ゾーンフィルター</span><span class="lang-en">H4 Zone Filter</span></a></li>
+          <li><a href="#contradiction" style="color:var(--gold);"><span class="lang-jp">矛盾信号検出エンジン</span><span class="lang-en">Contradiction Signal Detection Engine</span></a></li>
+          <li><a href="#risk" style="color:var(--gold);"><span class="lang-jp">リスク管理システム</span><span class="lang-en">Risk Management System</span></a></li>
+          <li><a href="#execution" style="color:var(--gold);"><span class="lang-jp">執行ロジック</span><span class="lang-en">Execution Logic</span></a></li>
         </ol>
       </div>
     </div>
 
     <!-- ═══ Section 2 ═══ -->
     <div class="wp-section" id="overview">
-      <h2>1. 全体設計思想</h2>
-      <p>FusionGold M5 は、Jim Simons（ルネサンス・テクノロジーズ創業者）の「美しい数学が市場を解き明かす」という哲学に触発されています。私たちは市場のパターンを確率論的に捉え、裁量ではなく統計的優位性（エッジ）に基づいて取引を行います。</p>
-      <p>本戦略の核心は「<strong>複数の独立した視点から市場を評価し、それらが一致したときのみ取引する</strong>」という点にあります。単一の指標に依存するのではなく、トレンド・モメンタム・ストラクチャー・流動性の4軸でシグナルを総合的に判断します。</p>
+      <h2><span class="lang-jp">1. 全体設計思想</span><span class="lang-en">1. Overall Design Philosophy</span></h2>
+      <p><span class="lang-jp">FusionGold M5 は、Jim Simons（ルネサンス・テクノロジーズ創業者）の「美しい数学が市場を解き明かす」という哲学に触発されています。私たちは市場のパターンを確率論的に捉え、裁量ではなく統計的優位性（エッジ）に基づいて取引を行います。</span><span class="lang-en">FusionGold M5 is inspired by the philosophy of Jim Simons (founder of Renaissance Technologies) that "beautiful mathematics unlocks the market." We view market patterns probabilistically and trade based on statistical edge rather than discretion.</span></p>
+      <p><span class="lang-jp">本戦略の核心は「</span><span class="lang-en">The core of this strategy is "</span><strong><span class="lang-jp">複数の独立した視点から市場を評価し、それらが一致したときのみ取引する</span><span class="lang-en">evaluate the market from multiple independent perspectives and trade only when they align</span></strong><span class="lang-jp">」という点にあります。単一の指標に依存するのではなく、トレンド・モメンタム・ストラクチャー・流動性の4軸でシグナルを総合的に判断します。</span><span class="lang-en">" Rather than relying on any single indicator, signals are comprehensively assessed across four axes: Trend, Momentum, Structure, and Liquidity.</span></p>
     </div>
 
     <!-- ═══ Section 3 ═══ -->
     <div class="wp-section" id="adx">
-      <h2>2. ADXゲート — 相場の質を評価</h2>
-      <p>ADX（Average Directional Index）はトレンドの強さを測定する指標で、FusionGold M5 では「取引してよい相場かどうか」を判断するゲートとして機能します。</p>
+      <h2><span class="lang-jp">2. ADXゲート — 相場の質を評価</span><span class="lang-en">2. ADX Gate — Assessing Market Quality</span></h2>
+      <p><span class="lang-jp">ADX（Average Directional Index）はトレンドの強さを測定する指標で、FusionGold M5 では「取引してよい相場かどうか」を判断するゲートとして機能します。</span><span class="lang-en">ADX (Average Directional Index) measures trend strength. In FusionGold M5, it functions as a gate that determines whether the market is suitable for trading.</span></p>
       <div class="wp-card">
-        <div class="wp-card-title">ADX閾値と動作</div>
+        <div class="wp-card-title"><span class="lang-jp">ADX閾値と動作</span><span class="lang-en">ADX Thresholds and Behavior</span></div>
         <table class="wp-table">
-          <thead><tr><th>ADX値</th><th>相場状態</th><th>EAの動作</th></tr></thead>
+          <thead><tr><th><span class="lang-jp">ADX値</span><span class="lang-en">ADX Value</span></th><th><span class="lang-jp">相場状態</span><span class="lang-en">Market State</span></th><th><span class="lang-jp">EAの動作</span><span class="lang-en">EA Behavior</span></th></tr></thead>
           <tbody>
-            <tr><td>25以上</td><td>強いトレンド</td><td class="green">取引許可（高確信度）</td></tr>
-            <tr><td>20〜25</td><td>弱いトレンド</td><td class="yellow">取引許可（低確信度、サイズ縮小）</td></tr>
-            <tr><td>20未満</td><td>レンジ・不安定</td><td class="red">取引禁止</td></tr>
+            <tr><td><span class="lang-jp">25以上</span><span class="lang-en">25 or Above</span></td><td><span class="lang-jp">強いトレンド</span><span class="lang-en">Strong Trend</span></td><td class="green"><span class="lang-jp">取引許可（高確信度）</span><span class="lang-en">Trading Allowed (High Confidence)</span></td></tr>
+            <tr><td><span class="lang-jp">20〜25</span><span class="lang-en">20 to 25</span></td><td><span class="lang-jp">弱いトレンド</span><span class="lang-en">Weak Trend</span></td><td class="yellow"><span class="lang-jp">取引許可（低確信度、サイズ縮小）</span><span class="lang-en">Trading Allowed (Low Confidence, Reduced Size)</span></td></tr>
+            <tr><td><span class="lang-jp">20未満</span><span class="lang-en">Below 20</span></td><td><span class="lang-jp">レンジ・不安定</span><span class="lang-en">Ranging / Unstable</span></td><td class="red"><span class="lang-jp">取引禁止</span><span class="lang-en">Trading Prohibited</span></td></tr>
           </tbody>
         </table>
       </div>
-      <p>ADXゲートの目的は、不確実な相場での取引を自動的に排除することです。レンジ相場や方向感のない市場で無理にエントリーすると、スプレッドコストが利益を上回るためです。</p>
+      <p><span class="lang-jp">ADXゲートの目的は、不確実な相場での取引を自動的に排除することです。レンジ相場や方向感のない市場で無理にエントリーすると、スプレッドコストが利益を上回るためです。</span><span class="lang-en">The purpose of the ADX gate is to automatically eliminate trades in uncertain market conditions. Forcing entries in range-bound or directionless markets would cause spread costs to exceed profits.</span></p>
     </div>
 
     <!-- ═══ Section 4 ═══ -->
     <div class="wp-section" id="bucket">
-      <h2>3. 4バケットスコアリングエンジン</h2>
-      <p>FusionGold M5 の心臓部は、4つの独立した視点から市場を評価するスコアリングエンジンです。各バケットは0〜100のスコアを出力し、その合計で売買シグナルの強度を判断します。</p>
+      <h2><span class="lang-jp">3. 4バケットスコアリングエンジン</span><span class="lang-en">3. 4-Bucket Scoring Engine</span></h2>
+      <p><span class="lang-jp">FusionGold M5 の心臓部は、4つの独立した視点から市場を評価するスコアリングエンジンです。各バケットは0〜100のスコアを出力し、その合計で売買シグナルの強度を判断します。</span><span class="lang-en">The heart of FusionGold M5 is a scoring engine that evaluates the market from four independent perspectives. Each bucket outputs a score of 0 to 100, and the total determines the strength of buy/sell signals.</span></p>
 
       <div class="bucket-grid">
         <div class="bucket-card">
           <div class="bucket-icon">📈</div>
-          <h3>トレンドバケット</h3>
-          <p class="bucket-desc">価格と移動平均線（EMA）の関係、ADXの方向性成分（DI+ / DI-）を評価します。トレンドフォロー戦略の基盤。</p>
+          <h3><span class="lang-jp">トレンドバケット</span><span class="lang-en">Trend Bucket</span></h3>
+          <p class="bucket-desc"><span class="lang-jp">価格と移動平均線（EMA）の関係、ADXの方向性成分（DI+ / DI-）を評価します。トレンドフォロー戦略の基盤。</span><span class="lang-en">Evaluates price-EMA relationships and ADX directional components (DI+/DI-). The foundation of trend-following strategy.</span></p>
           <div class="bucket-metrics">
-            <span>EMA方向</span>
-            <span>DI+/DI-クロス</span>
-            <span>パーフェクトオーダー</span>
+            <span><span class="lang-jp">EMA方向</span><span class="lang-en">EMA Direction</span></span>
+            <span><span class="lang-jp">DI+/DI-クロス</span><span class="lang-en">DI+/DI- Cross</span></span>
+            <span><span class="lang-jp">パーフェクトオーダー</span><span class="lang-en">Perfect Order</span></span>
           </div>
         </div>
         <div class="bucket-card">
           <div class="bucket-icon">⚡</div>
-          <h3>モメンタムバケット</h3>
-          <p class="bucket-desc">MACD、RSI、価格変化率（ROC）を用いて、短期的な勢いを測定。トレンドの加速・減速を検出。</p>
+          <h3><span class="lang-jp">モメンタムバケット</span><span class="lang-en">Momentum Bucket</span></h3>
+          <p class="bucket-desc"><span class="lang-jp">MACD、RSI、価格変化率（ROC）を用いて、短期的な勢いを測定。トレンドの加速・減速を検出。</span><span class="lang-en">Measures short-term momentum using MACD, RSI, and Rate of Change (ROC). Detects trend acceleration and deceleration.</span></p>
           <div class="bucket-metrics">
-            <span>MACDヒストグラム</span>
-            <span>RSI水準</span>
-            <span>モメンタム発散</span>
+            <span><span class="lang-jp">MACDヒストグラム</span><span class="lang-en">MACD Histogram</span></span>
+            <span><span class="lang-jp">RSI水準</span><span class="lang-en">RSI Level</span></span>
+            <span><span class="lang-jp">モメンタム発散</span><span class="lang-en">Momentum Divergence</span></span>
           </div>
         </div>
         <div class="bucket-card">
           <div class="bucket-icon">🏗️</div>
-          <h3>ストラクチャーバケット</h3>
-          <p class="bucket-desc">高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。相場の骨格を理解。</p>
+          <h3><span class="lang-jp">ストラクチャーバケット</span><span class="lang-en">Structure Bucket</span></h3>
+          <p class="bucket-desc"><span class="lang-jp">高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。相場の骨格を理解。</span><span class="lang-en">Analyzes higher highs/lower lows, support and resistance structures. Understands the market's skeletal framework.</span></p>
           <div class="bucket-metrics">
-            <span>スイング構造</span>
-            <span>BBポジション</span>
-            <span>価格帯分析</span>
+            <span><span class="lang-jp">スイング構造</span><span class="lang-en">Swing Structure</span></span>
+            <span><span class="lang-jp">BBポジション</span><span class="lang-en">BB Position</span></span>
+            <span><span class="lang-jp">価格帯分析</span><span class="lang-en">Price Zone Analysis</span></span>
           </div>
         </div>
         <div class="bucket-card">
           <div class="bucket-icon">💧</div>
-          <h3>流動性バケット</h3>
-          <p class="bucket-desc">取引量（ボリューム）、スプレッド幅、セッション時間帯を評価。約定品質とコストを考慮。</p>
+          <h3><span class="lang-jp">流動性バケット</span><span class="lang-en">Liquidity Bucket</span></h3>
+          <p class="bucket-desc"><span class="lang-jp">取引量（ボリューム）、スプレッド幅、セッション時間帯を評価。約定品質とコストを考慮。</span><span class="lang-en">Evaluates trading volume, spread width, and session timing. Considers execution quality and cost.</span></p>
           <div class="bucket-metrics">
-            <span>出来高分析</span>
-            <span>スプレッド状態</span>
-            <span>セッション品質</span>
+            <span><span class="lang-jp">出来高分析</span><span class="lang-en">Volume Analysis</span></span>
+            <span><span class="lang-jp">スプレッド状態</span><span class="lang-en">Spread Status</span></span>
+            <span><span class="lang-jp">セッション品質</span><span class="lang-en">Session Quality</span></span>
           </div>
         </div>
       </div>
 
-      <p style="margin-top:16px;"><strong>シグナル判定ロジック：</strong>4バケットのスコアを合計し、以下の閾値で判断します。</p>
+      <p style="margin-top:16px;"><strong><span class="lang-jp">シグナル判定ロジック：</span><span class="lang-en">Signal Determination Logic: </span></strong><span class="lang-jp">4バケットのスコアを合計し、以下の閾値で判断します。</span><span class="lang-en">The four bucket scores are totaled and evaluated against the following thresholds.</span></p>
       <div class="wp-card">
         <table class="wp-table">
-          <thead><tr><th>合計スコア</th><th>判定</th><th>アクション</th></tr></thead>
+          <thead><tr><th><span class="lang-jp">合計スコア</span><span class="lang-en">Total Score</span></th><th><span class="lang-jp">判定</span><span class="lang-en">Judgment</span></th><th><span class="lang-jp">アクション</span><span class="lang-en">Action</span></th></tr></thead>
           <tbody>
-            <tr><td>280以上</td><td class="green">強いシグナル</td><td>通常ロットでエントリー</td></tr>
-            <tr><td>240〜279</td><td class="yellow">弱いシグナル</td><td>半ロットでエントリー</td></tr>
-            <tr><td>240未満</td><td>シグナルなし</td><td>エントリーなし</td></tr>
+            <tr><td><span class="lang-jp">280以上</span><span class="lang-en">280 or Above</span></td><td class="green"><span class="lang-jp">強いシグナル</span><span class="lang-en">Strong Signal</span></td><td><span class="lang-jp">通常ロットでエントリー</span><span class="lang-en">Enter with Normal Lot</span></td></tr>
+            <tr><td><span class="lang-jp">240〜279</span><span class="lang-en">240 to 279</span></td><td class="yellow"><span class="lang-jp">弱いシグナル</span><span class="lang-en">Weak Signal</span></td><td><span class="lang-jp">半ロットでエントリー</span><span class="lang-en">Enter with Half Lot</span></td></tr>
+            <tr><td><span class="lang-jp">240未満</span><span class="lang-en">Below 240</span></td><td><span class="lang-jp">シグナルなし</span><span class="lang-en">No Signal</span></td><td><span class="lang-jp">エントリーなし</span><span class="lang-en">No Entry</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -113,17 +113,17 @@ const siteBase = '/fusiongold-ea-site';
 
     <!-- ═══ Section 5 ═══ -->
     <div class="wp-section" id="h4">
-      <h2>4. H4ゾーンフィルター</h2>
-      <p>H4（4時間足）のEMA方向と価格ゾーンを用いた高次フィルターです。このフィルターの目的は、<strong>「大きな流れに逆らわない」</strong>という基本原則を徹底することです。</p>
-      <p>H4のEMAが上昇トレンドを示している場合、M5では買いシグナルのみを許可し、売りシグナルはブロックします。逆も同様です。これにより、逆行トレードによる損失を防止します。</p>
+      <h2><span class="lang-jp">4. H4ゾーンフィルター</span><span class="lang-en">4. H4 Zone Filter</span></h2>
+      <p><span class="lang-jp">H4（4時間足）のEMA方向と価格ゾーンを用いた高次フィルターです。このフィルターの目的は、</span><span class="lang-en">This is a higher-timeframe filter using H4 (4-hour) EMA direction and price zones. Its purpose is to enforce the fundamental principle of </span><strong><span class="lang-jp">「大きな流れに逆らわない」</span><span class="lang-en">"Don't go against the major trend"</span></strong><span class="lang-jp">という基本原則を徹底することです。</span><span class="lang-en">.</span></p>
+      <p><span class="lang-jp">H4のEMAが上昇トレンドを示している場合、M5では買いシグナルのみを許可し、売りシグナルはブロックします。逆も同様です。これにより、逆行トレードによる損失を防止します。</span><span class="lang-en">When H4 EMA shows an uptrend, only buy signals are allowed on M5; sell signals are blocked. The reverse also applies. This prevents losses from counter-trend trading.</span></p>
       <div class="wp-card">
-        <div class="wp-card-title">H4ゾーンフィルターの動作</div>
+        <div class="wp-card-title"><span class="lang-jp">H4ゾーンフィルターの動作</span><span class="lang-en">H4 Zone Filter Behavior</span></div>
         <table class="wp-table">
-          <thead><tr><th>H4トレンド</th><th>M5買い</th><th>M5売り</th></tr></thead>
+          <thead><tr><th><span class="lang-jp">H4トレンド</span><span class="lang-en">H4 Trend</span></th><th><span class="lang-jp">M5買い</span><span class="lang-en">M5 Buy</span></th><th><span class="lang-jp">M5売り</span><span class="lang-en">M5 Sell</span></th></tr></thead>
           <tbody>
-            <tr><td>上昇（EMA順行）</td><td class="green">許可</td><td class="red">ブロック</td></tr>
-            <tr><td>下降（EMA逆行）</td><td class="red">ブロック</td><td class="green">許可</td></tr>
-            <tr><td>中立（レンジ）</td><td class="yellow">両方可（制限付き）</td><td class="yellow">両方可（制限付き）</td></tr>
+            <tr><td><span class="lang-jp">上昇（EMA順行）</span><span class="lang-en">Uptrend (EMA Bullish)</span></td><td class="green"><span class="lang-jp">許可</span><span class="lang-en">Allowed</span></td><td class="red"><span class="lang-jp">ブロック</span><span class="lang-en">Blocked</span></td></tr>
+            <tr><td><span class="lang-jp">下降（EMA逆行）</span><span class="lang-en">Downtrend (EMA Bearish)</span></td><td class="red"><span class="lang-jp">ブロック</span><span class="lang-en">Blocked</span></td><td class="green"><span class="lang-jp">許可</span><span class="lang-en">Allowed</span></td></tr>
+            <tr><td><span class="lang-jp">中立（レンジ）</span><span class="lang-en">Neutral (Range)</span></td><td class="yellow"><span class="lang-jp">両方可（制限付き）</span><span class="lang-en">Both (Restricted)</span></td><td class="yellow"><span class="lang-jp">両方可（制限付き）</span><span class="lang-en">Both (Restricted)</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -131,81 +131,81 @@ const siteBase = '/fusiongold-ea-site';
 
     <!-- ═══ Section 6 ═══ -->
     <div class="wp-section" id="contradiction">
-      <h2>5. 矛盾信号検出エンジン</h2>
-      <p>同一バー（M5）において買いシグナルと売りシグナルが両方発生した場合、両方のエントリーをブロックします。これは、市場が方向感を欠いている証拠であり、無理に取引するべきではないという判断です。</p>
-      <p>このエンジンにより、スキャルピングEAにありがちな「買ってすぐ売る」という矛盾した動作を防止します。</p>
+      <h2><span class="lang-jp">5. 矛盾信号検出エンジン</span><span class="lang-en">5. Contradiction Signal Detection Engine</span></h2>
+      <p><span class="lang-jp">同一バー（M5）において買いシグナルと売りシグナルが両方発生した場合、両方のエントリーをブロックします。これは、市場が方向感を欠いている証拠であり、無理に取引するべきではないという判断です。</span><span class="lang-en">If both buy and sell signals occur on the same M5 bar, both entries are blocked. This indicates the market lacks directional conviction and should not be forced into a trade.</span></p>
+      <p><span class="lang-jp">このエンジンにより、スキャルピングEAにありがちな「買ってすぐ売る」という矛盾した動作を防止します。</span><span class="lang-en">This engine prevents the contradictory "buy then immediately sell" behavior common in scalping EAs.</span></p>
     </div>
 
     <!-- ═══ Section 7 ═══ -->
     <div class="wp-section" id="risk">
-      <h2>6. リスク管理システム</h2>
-      <p>FusionGold M5 には、口座を保護するための多層リスク管理システムが組み込まれています。</p>
+      <h2><span class="lang-jp">6. リスク管理システム</span><span class="lang-en">6. Risk Management System</span></h2>
+      <p><span class="lang-jp">FusionGold M5 には、口座を保護するための多層リスク管理システムが組み込まれています。</span><span class="lang-en">FusionGold M5 incorporates a multi-layered risk management system to protect the account.</span></p>
       <div class="risk-grid">
         <div class="risk-card">
           <div class="risk-icon">🛑</div>
-          <h3>日損5%リミット</h3>
-          <p>1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止します。</p>
+          <h3><span class="lang-jp">日損5%リミット</span><span class="lang-en">Daily 5% Loss Limit</span></h3>
+          <p><span class="lang-jp">1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止します。</span><span class="lang-en">When daily losses reach 5% of account balance, all trading for that day is stopped.</span></p>
         </div>
         <div class="risk-card">
           <div class="risk-icon">📉</div>
-          <h3>連敗フィルター</h3>
-          <p>連続して損失が発生した場合、エントリーを一時停止。市場環境の変化を待ちます。</p>
+          <h3><span class="lang-jp">連敗フィルター</span><span class="lang-en">Consecutive Loss Filter</span></h3>
+          <p><span class="lang-jp">連続して損失が発生した場合、エントリーを一時停止。市場環境の変化を待ちます。</span><span class="lang-en">When consecutive losses occur, entries are paused to wait for market conditions to change.</span></p>
         </div>
         <div class="risk-card">
           <div class="risk-icon">⚖️</div>
-          <h3>Aggregate Risk</h3>
-          <p>全ポジションのリスク総量を監視し、設定された上限を超えないように制御します。</p>
+          <h3><span class="lang-jp">Aggregate Risk</span><span class="lang-en">Aggregate Risk</span></h3>
+          <p><span class="lang-jp">全ポジションのリスク総量を監視し、設定された上限を超えないように制御します。</span><span class="lang-en">Monitors total risk across all positions and prevents exceeding configured limits.</span></p>
         </div>
         <div class="risk-card">
           <div class="risk-icon">⏱️</div>
-          <h3>クールダウン</h3>
-          <p>取引後、一定時間は新規エントリーを行いません。連続取引によるオーバートレードを防止。</p>
+          <h3><span class="lang-jp">クールダウン</span><span class="lang-en">Cooldown</span></h3>
+          <p><span class="lang-jp">取引後、一定時間は新規エントリーを行いません。連続取引によるオーバートレードを防止。</span><span class="lang-en">No new entries are allowed for a set period after a trade, preventing overtrading.</span></p>
         </div>
         <div class="risk-card">
           <div class="risk-icon">📏</div>
-          <h3>固定ストップロス</h3>
-          <p>全エントリーに固定のストップロスを設定。予期せぬ逆行に対して口座を保護します。</p>
+          <h3><span class="lang-jp">固定ストップロス</span><span class="lang-en">Fixed Stop Loss</span></h3>
+          <p><span class="lang-jp">全エントリーに固定のストップロスを設定。予期せぬ逆行に対して口座を保護します。</span><span class="lang-en">A fixed stop loss is applied to all entries, protecting the account against unexpected reversals.</span></p>
         </div>
         <div class="risk-card">
           <div class="risk-icon">📊</div>
-          <h3>ポジションサイジング</h3>
-          <p>シグナル強度と口座残高に基づいて、動的にロットサイズを調整します。</p>
+          <h3><span class="lang-jp">ポジションサイジング</span><span class="lang-en">Position Sizing</span></h3>
+          <p><span class="lang-jp">シグナル強度と口座残高に基づいて、動的にロットサイズを調整します。</span><span class="lang-en">Dynamically adjusts lot size based on signal strength and account balance.</span></p>
         </div>
       </div>
     </div>
 
     <!-- ═══ Section 8 ═══ -->
     <div class="wp-section" id="execution">
-      <h2>7. 執行ロジック</h2>
-      <p>FusionGold M5 はロンドン/NYオーバーラップ帯（日本時間21:00〜24:00）を中心に取引を行います。この時間帯は世界で最も流動性が高く、スプレッドが狭く、約定品質が優れています。</p>
-      <p>取引執行は以下のフローで行われます：</p>
+      <h2><span class="lang-jp">7. 執行ロジック</span><span class="lang-en">7. Execution Logic</span></h2>
+      <p><span class="lang-jp">FusionGold M5 はロンドン/NYオーバーラップ帯（日本時間21:00〜24:00）を中心に取引を行います。この時間帯は世界で最も流動性が高く、スプレッドが狭く、約定品質が優れています。</span><span class="lang-en">FusionGold M5 trades primarily during the London/NY overlap (21:00-24:00 JST). This period offers the highest liquidity, tightest spreads, and best execution quality globally.</span></p>
+      <p><span class="lang-jp">取引執行は以下のフローで行われます：</span><span class="lang-en">Trade execution follows this flow:</span></p>
       <div class="flow-chart">
         <div class="flow-step">
           <div class="flow-num">1</div>
-          <div class="flow-text">H4ゾーンフィルター判定<br/><span>トレンド方向の確認</span></div>
+          <div class="flow-text"><span class="lang-jp">H4ゾーンフィルター判定</span><span class="lang-en">H4 Zone Filter Check</span><br/><span><span class="lang-jp">トレンド方向の確認</span><span class="lang-en">Confirm Trend Direction</span></span></div>
           <div class="flow-arrow">→</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">2</div>
-          <div class="flow-text">ADXゲート<br/><span>取引可能な相場か</span></div>
+          <div class="flow-text"><span class="lang-jp">ADXゲート</span><span class="lang-en">ADX Gate</span><br/><span><span class="lang-jp">取引可能な相場か</span><span class="lang-en">Is the market tradeable?</span></span></div>
           <div class="flow-arrow">→</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">3</div>
-          <div class="flow-text">4バケットスコアリング<br/><span>スコア240以上か</span></div>
+          <div class="flow-text"><span class="lang-jp">4バケットスコアリング</span><span class="lang-en">4-Bucket Scoring</span><br/><span><span class="lang-jp">スコア240以上か</span><span class="lang-en">Score 240 or above?</span></span></div>
           <div class="flow-arrow">→</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">4</div>
-          <div class="flow-text">矛盾検出<br/><span>確認。問題なければ執行</span></div>
+          <div class="flow-text"><span class="lang-jp">矛盾検出</span><span class="lang-en">Contradiction Check</span><br/><span><span class="lang-jp">確認。問題なければ執行</span><span class="lang-en">Verified — execute if clear</span></span></div>
           <div class="flow-arrow green">✓</div>
         </div>
       </div>
     </div>
 
     <div style="margin-top:40px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:16px;">実際の動作をデモ口座で確認してみませんか？</p>
-      <a href={siteBase + '/demo/'} class="btn btn-gold">デモを試す</a>
+      <p style="color:var(--text-muted);margin-bottom:16px;"><span class="lang-jp">実際の動作をデモ口座で確認してみませんか？</span><span class="lang-en">Watch live trading instead?</span></p>
+      <a href={siteBase + '/demo/'} class="btn btn-gold"><span class="lang-jp">デモを試す</span><span class="lang-en">Try Demo</span></a>
     </div>
   </div>
 

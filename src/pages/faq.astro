@@ -3,72 +3,72 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const siteBase = '/fusiongold-ea-site';
 const faqs = [
   {
-    q: 'FusionGold M5 とは何ですか？',
-    a: 'XAUUSD（ゴールド）のM5足専用に開発された自動売買EA（エキスパートアドバイザー）です。ADX（トレンド強度）＋4バケットスコアリングエンジン＋H4ゾーンフィルターを搭載し、IC MarketsのMT5環境で動作します。'
+    q: '<span class="lang-jp">FusionGold M5 とは何ですか？</span><span class="lang-en">What is FusionGold M5?</span>',
+    a: '<span class="lang-jp">XAUUSD（ゴールド）のM5足専用に開発された自動売買EA（エキスパートアドバイザー）です。ADX（トレンド強度）＋4バケットスコアリングエンジン＋H4ゾーンフィルターを搭載し、IC MarketsのMT5環境で動作します。</span><span class="lang-en">An automated trading EA (Expert Advisor) developed exclusively for XAUUSD (Gold) on the M5 timeframe. It features ADX (Trend Strength) + 4-Bucket Scoring Engine + H4 Zone Filter, and operates on IC Markets MT5 environment.</span>'
   },
   {
-    q: '対応ブローカーはどこですか？',
-    a: '主にIC Markets（Raw Spread口座）での使用を推奨しています。MT5に対応している他のブローカーでも動作する可能性がありますが、スプレッド条件や約定品質がパフォーマンスに影響するため、IC Markets以外での使用は自己責任となります。'
+    q: '<span class="lang-jp">対応ブローカーはどこですか？</span><span class="lang-en">Which brokers are supported?</span>',
+    a: '<span class="lang-jp">主にIC Markets（Raw Spread口座）での使用を推奨しています。MT5に対応している他のブローカーでも動作する可能性がありますが、スプレッド条件や約定品質がパフォーマンスに影響するため、IC Markets以外での使用は自己責任となります。</span><span class="lang-en">We primarily recommend IC Markets (Raw Spread account). It may work with other MT5 brokers, but spread conditions and execution quality affect performance, so use outside IC Markets is at your own risk.</span>'
   },
   {
-    q: 'システム要件を教えてください。',
-    a: 'Windows/MacのMT5が動作する環境が必要です。24時間稼働させる場合はVPS（仮想専用サーバー）を推奨します。VPSの推奨スペック：CPU 1コア以上、RAM 1GB以上、Windows Server 2016以降。'
+    q: '<span class="lang-jp">システム要件を教えてください。</span><span class="lang-en">What are the system requirements?</span>',
+    a: '<span class="lang-jp">Windows/MacのMT5が動作する環境が必要です。24時間稼働させる場合はVPS（仮想専用サーバー）を推奨します。VPSの推奨スペック：CPU 1コア以上、RAM 1GB以上、Windows Server 2016以降。</span><span class="lang-en">An environment running MT5 on Windows/Mac is required. For 24/7 operation, a VPS is recommended. Recommended VPS specs: CPU 1 core+, RAM 1GB+, Windows Server 2016+.</span>'
   },
   {
-    q: 'デモ口座で試せますか？',
-    a: 'はい、可能です。IC Marketsのデモ口座をお持ちであれば、そちらでテストいただけます。デモ口座の開設方法やセットアップについてはお問い合わせフォームよりご連絡ください。'
+    q: '<span class="lang-jp">デモ口座で試せますか？</span><span class="lang-en">Can I try it with a demo account?</span>',
+    a: '<span class="lang-jp">はい、可能です。IC Marketsのデモ口座をお持ちであれば、そちらでテストいただけます。デモ口座の開設方法やセットアップについてはお問い合わせフォームよりご連絡ください。</span><span class="lang-en">Yes, you can. If you have an IC Markets demo account, you can test it there. Contact us via the inquiry form for assistance with demo account setup.</span>'
   },
   {
-    q: '物々交換（バーター）とは具体的にどのような仕組みですか？',
-    a: '現金での販売は行っておらず、代わりに日本製品との交換で提供しています。ゲーム機本体、日本酒・ウイスキー、カメラレンズ、限定フィギュア、国産時計など、価値のある日本製品とFusionGold M5を交換します。交換条件は個別にご相談ください。'
+    q: '<span class="lang-jp">物々交換（バーター）とは具体的にどのような仕組みですか？</span><span class="lang-en">How does the barter system work exactly?</span>',
+    a: '<span class="lang-jp">現金での販売は行っておらず、代わりに日本製品との交換で提供しています。ゲーム機本体、日本酒・ウイスキー、カメラレンズ、限定フィギュア、国産時計など、価値のある日本製品とFusionGold M5を交換します。交換条件は個別にご相談ください。</span><span class="lang-en">We do not sell for cash; instead, we offer exchange for Japanese products. Game consoles, sake/whiskey, camera lenses, limited-edition figures, Japanese watches — valuable Japanese products can be exchanged for FusionGold M5. Terms are negotiated individually.</span>'
   },
   {
-    q: 'インストールに必要なファイルは何ですか？',
-    a: 'EAファイル（.ex5）と設定ガイド（PDF）をお送りします。セットアップガイドのページに詳しい手順を掲載していますので、そちらをご参照ください。'
+    q: '<span class="lang-jp">インストールに必要なファイルは何ですか？</span><span class="lang-en">What files are needed for installation?</span>',
+    a: '<span class="lang-jp">EAファイル（.ex5）と設定ガイド（PDF）をお送りします。セットアップガイドのページに詳しい手順を掲載していますので、そちらをご参照ください。</span><span class="lang-en">We will send the EA file (.ex5) and setup guide (PDF). Please refer to the setup guide page for detailed instructions.</span>'
   },
   {
-    q: 'どのようなリスク管理機能がありますか？',
-    a: '以下のリスク管理機能を内蔵しています：日損5%リミット（Daily Loss Limit）、連敗フィルター（Consecutive Loss Filter）、Aggregate Risk制御、クールダウン機能。これらが口座を過度な損失から保護します。'
+    q: '<span class="lang-jp">どのようなリスク管理機能がありますか？</span><span class="lang-en">What risk management features are available?</span>',
+    a: '<span class="lang-jp">以下のリスク管理機能を内蔵しています：日損5%リミット（Daily Loss Limit）、連敗フィルター（Consecutive Loss Filter）、Aggregate Risk制御、クールダウン機能。これらが口座を過度な損失から保護します。</span><span class="lang-en">Built-in risk management features include: Daily Loss Limit (5%), Consecutive Loss Filter, Aggregate Risk Control, and Cool-down Function. These protect your account from excessive losses.</span>'
   },
   {
-    q: '稼働時間はどのくらいですか？',
-    a: 'ロンドン/NYオーバーラップ帯を中心に、1日約4時間のみ取引を行います。高流動性の時間帯に集中することで、スプレッドコストを抑え、約定品質を高めています。'
+    q: '<span class="lang-jp">稼働時間はどのくらいですか？</span><span class="lang-en">What are the trading hours?</span>',
+    a: '<span class="lang-jp">ロンドン/NYオーバーラップ帯を中心に、1日約4時間のみ取引を行います。高流動性の時間帯に集中することで、スプレッドコストを抑え、約定品質を高めています。</span><span class="lang-en">Trades approximately 4 hours per day, focused on the London/NY overlap session. Concentrating on high-liquidity hours reduces spread costs and improves execution quality.</span>'
   },
   {
-    q: 'バックテストの勝率74.48%は将来も期待できますか？',
-    a: '過去のバックテスト結果は将来の成果を保証するものではありません。相場環境は常に変化しており、過去に有効だった戦略が将来も有効であるとは限りません。詳細についてはリスク免責事項をご確認ください。'
+    q: '<span class="lang-jp">バックテストの勝率74.48%は将来も期待できますか？</span><span class="lang-en">Can the 74.48% backtest win rate be expected in the future?</span>',
+    a: '<span class="lang-jp">過去のバックテスト結果は将来の成果を保証するものではありません。相場環境は常に変化しており、過去に有効だった戦略が将来も有効であるとは限りません。詳細についてはリスク免責事項をご確認ください。</span><span class="lang-en">Past backtest results do not guarantee future performance. Market conditions are always changing, and strategies that worked in the past may not remain effective. Please refer to the risk disclaimer for details.</span>'
   },
   {
-    q: 'サポートはありますか？',
-    a: 'メールベースのサポートを提供しています。セットアップ時のご質問、動作に関するお問い合わせについては、お問い合わせフォームよりご連絡ください。返信までに1-2営業日いただく場合がございます。'
+    q: '<span class="lang-jp">サポートはありますか？</span><span class="lang-en">Is support available?</span>',
+    a: '<span class="lang-jp">メールベースのサポートを提供しています。セットアップ時のご質問、動作に関するお問い合わせについては、お問い合わせフォームよりご連絡ください。返信までに1-2営業日いただく場合がございます。</span><span class="lang-en">We offer email-based support. For setup questions or operational inquiries, please contact us via the inquiry form. Replies may take 1-2 business days.</span>'
   }
 ];
 ---
 
-<BaseLayout title="よくある質問 | FusionGold M5" description="FusionGold M5 に関するよくある質問。対応ブローカー、セットアップ、物々交換、リスク管理について。">
+<BaseLayout title={`<span class="lang-jp">よくある質問 | FusionGold M5</span><span class="lang-en">FAQ | FusionGold M5</span>`} description={`<span class="lang-jp">FusionGold M5 に関するよくある質問。対応ブローカー、セットアップ、物々交換、リスク管理について。</span><span class="lang-en">Frequently asked questions about FusionGold M5. Brokers, setup, barter trade, and risk management.</span>`}>
 
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:720px;">
-    <h1 style="color:var(--gold);margin-bottom:8px;">よくある質問</h1>
-    <p style="color:var(--text-muted);margin-bottom:32px;">FusionGold M5 に関するよくあるご質問とその回答をまとめました。</p>
+    <h1 style="color:var(--gold);margin-bottom:8px;"><span class="lang-jp">よくある質問</span><span class="lang-en">FAQ</span></h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;"><span class="lang-jp">FusionGold M5 に関するよくあるご質問とその回答をまとめました。</span><span class="lang-en">Answers to frequently asked questions about FusionGold M5.</span></p>
 
     <div class="faq-list">
       {faqs.map((item, i) => (
         <details class="faq-item" style={i < faqs.length - 1 ? 'border-bottom:1px solid var(--border);' : ''}>
           <summary class="faq-question">
             <span class="faq-number">{String(i + 1).padStart(2, '0')}</span>
-            <span>{item.q}</span>
+            <span set:html={item.q} />
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p>{item.a}</p>
+            <p set:html={item.a} />
           </div>
         </details>
       ))}
     </div>
 
     <div style="margin-top:40px;text-align:center;padding:24px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="color:var(--text-muted);margin-bottom:16px;">お探しの質問が見つかりませんか？</p>
-      <a href={siteBase + '/contact/'} class="btn btn-gold">お問い合わせ</a>
+      <p style="color:var(--text-muted);margin-bottom:16px;"><span class="lang-jp">お探しの質問が見つかりませんか？</span><span class="lang-en">Can't find what you're looking for?</span></p>
+      <a href={siteBase + '/contact/'} class="btn btn-gold"><span class="lang-jp">お問い合わせ</span><span class="lang-en">Contact Us</span></a>
     </div>
   </div>
 
