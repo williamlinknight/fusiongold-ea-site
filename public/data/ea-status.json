@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-22 10:16 BJT",
+  "updated": "2026-07-22 10:26 BJT",
   "note": "MT5 Account History from 2026-07-13",
   "account": {
     "balance": 5261.91,
@@ -12,12 +12,12 @@
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 1050
+    "cooldown": 1052
   },
   "market": {
-    "adx": 57.42,
+    "adx": 59.25,
     "adxHard": 20,
-    "spread": 16.0,
+    "spread": 20.0,
     "maxSpread": 50.0
   },
   "signal": {
