@@ -8,34 +8,64 @@ const siteBase = '/fusiongold-ea-site';
   <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:640px;">
 
     <div style="text-align:center;margin-bottom:32px;">
-      <h1 style="color:var(--gold);margin-bottom:8px;">デモ口座のお申し込み</h1>
-      <p style="color:var(--text-muted);margin-bottom:4px;">実際の資金を使わずに、FusionGold M5 をテストいただけます。</p>
-      <p style="color:var(--text-muted);font-size:0.85rem;">期間: 14日間 · デモ口座はIC Marketsのものをご利用いただきます</p>
+      <h1 style="color:var(--gold);margin-bottom:8px;">
+        <span class="lang-jp">デモ口座のお申し込み</span>
+        <span class="lang-en">Demo Account Application</span>
+      </h1>
+      <p style="color:var(--text-muted);margin-bottom:4px;">
+        <span class="lang-jp">実際の資金を使わずに、FusionGold M5 をテストいただけます。</span>
+        <span class="lang-en">Test FusionGold M5 without using real funds.</span>
+      </p>
+      <p style="color:var(--text-muted);font-size:0.85rem;">
+        <span class="lang-jp">期間: 14日間 · デモ口座はIC Marketsのものをご利用いただきます</span>
+        <span class="lang-en">Duration: 14 days · Uses IC Markets demo account</span>
+      </p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:32px;">
       <div class="perk-card">
         <div class="perk-icon">🆓</div>
-        <div class="perk-title">無料</div>
-        <div class="perk-desc">デモ口座は完全無料。リスクなしでテストできます。</div>
+        <div class="perk-title">
+          <span class="lang-jp">無料</span>
+          <span class="lang-en">Free</span>
+        </div>
+        <div class="perk-desc">
+          <span class="lang-jp">デモ口座は完全無料。リスクなしでテストできます。</span>
+          <span class="lang-en">Completely free demo account. Test with zero risk.</span>
+        </div>
       </div>
       <div class="perk-card">
         <div class="perk-icon">⚡</div>
-        <div class="perk-title">リアル環境</div>
-        <div class="perk-desc">実際の取引環境と同じ条件でEAを体験。</div>
+        <div class="perk-title">
+          <span class="lang-jp">リアル環境</span>
+          <span class="lang-en">Real Environment</span>
+        </div>
+        <div class="perk-desc">
+          <span class="lang-jp">実際の取引環境と同じ条件でEAを体験。</span>
+          <span class="lang-en">Experience the EA under real trading conditions.</span>
+        </div>
       </div>
       <div class="perk-card">
         <div class="perk-icon">📋</div>
-        <div class="perk-title">サポート付き</div>
-        <div class="perk-desc">セットアップサポート、運用のアドバイス付き。</div>
+        <div class="perk-title">
+          <span class="lang-jp">サポート付き</span>
+          <span class="lang-en">With Support</span>
+        </div>
+        <div class="perk-desc">
+          <span class="lang-jp">セットアップサポート、運用のアドバイス付き。</span>
+          <span class="lang-en">Setup support and operational advice included.</span>
+        </div>
       </div>
     </div>
 
     <div class="demo-form-card" style="text-align:center;">
-      <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:20px;">メールでお申し込み</h2>
+      <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:20px;">
+        <span class="lang-jp">メールでお申し込み</span>
+        <span class="lang-en">Apply via Email</span>
+      </h2>
       <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
-        下記のメールアドレスに、お名前とデモ口座希望の旨をお送りください。<br>
-        1-2営業日以内にセットアップガイドをお送りします。
+        <span class="lang-jp">下記のメールアドレスに、お名前とデモ口座希望の旨をお送りください。<br>1-2営業日以内にセットアップガイドをお送りします。</span>
+        <span class="lang-en">Send your name and demo account request to the email below.<br>You will receive a setup guide within 1-2 business days.</span>
       </p>
       <a href="mailto:william.classic@gmail.com?subject=デモ口座リクエスト&body=お名前：%0Aメールアドレス：%0Aお使いのブローカー：" class="email-btn">
         📧 william.classic@gmail.com
@@ -43,8 +73,14 @@ const siteBase = '/fusiongold-ea-site';
     </div>
 
     <div style="margin-top:32px;padding:20px;border-radius:var(--radius);background:rgba(212,175,55,0.06);border:1px dashed var(--gold-dark);text-align:center;">
-      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">すでにFusionGold M5についてご質問がありますか？</p>
-      <a href={siteBase + '/faq/'} style="color:var(--gold);">よくある質問を見る →</a>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">
+        <span class="lang-jp">すでにFusionGold M5についてご質問がありますか？</span>
+        <span class="lang-en">Already have questions about FusionGold M5?</span>
+      </p>
+      <a href={siteBase + '/faq/'} style="color:var(--gold);">
+        <span class="lang-jp">よくある質問を見る →</span>
+        <span class="lang-en">View FAQ →</span>
+      </a>
     </div>
   </div>
 
