@@ -11,7 +11,9 @@ try {
   liveData = JSON.parse(fs.readFileSync(dp, 'utf-8'));
 } catch {}
 const ld = liveData?.account || { balance: 4797, dayPnL: 0, dayPnLPercent: 0 };
+const session = liveData?.session || { status: 'WAITING', cooldown: 0 };
 const th = liveData?.tradeHistory || [];
+const lastTrades = liveData?.lastTrades || [];
 const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
 
 // Compute live stats from forward test data
@@ -33,6 +35,44 @@ for (const d of th) {
   const dd = peak > 0 ? (peak - eqCum) / peak * 100 : 0;
   if (dd > maxDd) maxDd = dd;
 }
+
+// ═══ Equity curve chart (server-side SVG) ═══
+const startFrom = (ld.balance || 4797) - totalPnl;
+let cum = startFrom;
+const equityPoints = [];
+for (const d of th) {
+  cum += d.pnl;
+  equityPoints.push({ label: d.date ? d.date.slice(5) : '', value: cum });
+}
+const tradingDays = th.filter(d => d.trades > 0);
+const wrDays = tradingDays.length > 0
+  ? (tradingDays.filter(d => d.pnl > 0).length / tradingDays.length * 100).toFixed(1)
+  : '0';
+
+const SVG_W = 600, SVG_H = 220;
+const PAD = { top: 20, right: 20, bottom: 30, left: 55 };
+const chartW = SVG_W - PAD.left - PAD.right;
+const chartH = SVG_H - PAD.top - PAD.bottom;
+
+const vals = equityPoints.map(p => p.value);
+const minVal = Math.min(...vals);
+const maxVal = Math.max(...vals);
+const range = maxVal - minVal || 1;
+const padRange = range * 0.1;
+
+function x(i) { return PAD.left + (i / (equityPoints.length - 1 || 1)) * chartW; }
+function y(v) { return PAD.top + chartH - ((v - (minVal - padRange)) / (range + 2 * padRange)) * chartH; }
+
+const pathD = equityPoints.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(p.value).toFixed(1)}`).join(' ');
+
+const yTicks = 5;
+const yStep = (range + 2 * padRange) / yTicks;
+const yLabels = [];
+for (let i = 0; i <= yTicks; i++) {
+  const v = (minVal - padRange) + i * yStep;
+  yLabels.push(v);
+}
+const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.length - 1 || i % 2 === 0);
 ---
 
 <BaseLayout title="FusionGold M5 — XAUUSD ゴールド専用EA" description="XAUUSD（ゴールド）M5専用自動売買EA。ADX+4バケットスコアリング+H4ゾーンフィルター搭載。フォワードテスト中。IC Markets Raw Spread対応。物々交換で提供。">
@@ -79,7 +119,7 @@ for (const d of th) {
 
       <div class="hero-actions">
         <a href={siteBase + '/demo/'} class="btn btn-gold" data-i18n="hero-demo-cta">デモを試す</a>
-        <a href={siteBase + '/live/'} class="btn btn-outline">Live Performance</a>
+        <a href="#live-performance" class="btn btn-outline">Live Performance</a>
       </div>
     </div>
   </section>
@@ -130,36 +170,93 @@ for (const d of th) {
     </div>
   </section>
 
-  <!-- ═══════════════ フォワードテスト ═══════════════ -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="fw-title">フォワードテスト（リアル口座）</h2>
-      <p class="section-sub fade-in" data-i18n="fw-sub">IC Markets Raw Spread · リアル口座で稼働中</p>
+  <!-- ═══════════════ ライブパフォーマンス ═══════════════ -->
+  <section class="section" id="live-performance">
+    <div class="container" style="max-width:800px;">
+      <h2 class="section-title fade-in" style="color:var(--gold);" data-i18n="live-title">ライブパフォーマンス</h2>
+      <p class="section-sub fade-in" style="margin-bottom:24px;"><span data-i18n="live-updated">最終更新</span>: {liveData?.updated || '--'} · IC Markets Raw Spread · <span data-i18n="live-liveaccount">リアル口座</span></p>
 
-      <div class="fw-summary fade-in">
-        <div class="fw-card">
-          <div class="fw-label" data-i18n="fw-balance">口座残高</div>
-          <div class="fw-val">${ld.balance.toFixed(2)}</div>
+      <!-- Account Summary -->
+      <div class="summary-grid fade-in">
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-balance">口座残高</div>
+          <div class="sm-value">${ld.balance.toFixed(2)}</div>
         </div>
-        <div class="fw-card">
-          <div class="fw-label" data-i18n="fw-daypnl">本日P&L</div>
-          <div class="fw-val" style="color:{ld.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
-            {ld.dayPnL >= 0 ? '+' : ''}{ld.dayPnL.toFixed(2)}
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-equity">有効証拠金</div>
+          <div class="sm-value">${(liveData?.account?.equity || ld.balance).toFixed(2)}</div>
+        </div>
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-daypnl">本日P&L</div>
+          <div class="sm-value" style="color:{ld.dayPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
+            {ld.dayPnL >= 0 ? '+' : ''}{ld.dayPnL.toFixed(2)} ({ld.dayPnLPercent}%)
           </div>
         </div>
-        <div class="fw-card">
-          <div class="fw-label" data-i18n="fw-period">運用期間</div>
-          <div class="fw-val">{th.length}<span data-i18n="fw-period-unit">日</span></div>
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-positions">ポジション</div>
+          <div class="sm-value">{liveData?.account?.positions ?? 0} / {liveData?.account?.maxPositions ?? 4}</div>
         </div>
-        <div class="fw-card">
-          <div class="fw-label" data-i18n="fw-totalpnl">累計損益</div>
-          <div class="fw-val" style="color:{totalPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
-            {totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-status">ステータス</div>
+          <div class="sm-value">
+            <span class={`status-badge ${session.status === 'RUNNING' ? 'green' : 'amber'}`}>{session.status}</span>
           </div>
+        </div>
+        <div class="sm-card">
+          <div class="sm-label" data-i18n="live-cooldown">クールダウン</div>
+          <div class="sm-value" id="cooldown-value">{session.cooldown > 0 ? session.cooldown + 's' : (session.cooldown === 0 ? 'なし' : '')}</div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:16px;">
-        <a href={siteBase + '/live/'} class="text-link" data-i18n="fw-link">ライブパフォーマンスを見る →</a>
+
+      <!-- Equity Curve (Server-Side SVG) -->
+      <div class="section-card fade-in">
+        <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:8px;" data-i18n="live-equity-title">📈 エクイティカーブ（フォワードテスト）</h2>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;" data-i18n="live-equity-sub">直近の日次損益を累積表示。開始からのパフォーマンス推移。</p>
+        <div class="chart-container">
+          <svg viewBox={`0 0 ${SVG_W} ${SVG_H}`} style="width:100%;height:100%;" preserveAspectRatio="xMidYMid meet">
+            {yLabels.map(v => (
+              <line x1={PAD.left} y1={y(v)} x2={SVG_W - PAD.right} y2={y(v)} stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+            ))}
+            {yLabels.map(v => (
+              <text x={PAD.left - 8} y={y(v) + 4} text-anchor="end" fill="#8A8A9A" font-size="11">${Math.round(v)}</text>
+            ))}
+            {xTicks.map((p, i) => (
+              <text x={x(equityPoints.indexOf(p))} y={SVG_H - 6} text-anchor="middle" fill="#8A8A9A" font-size="10">{p.label}</text>
+            ))}
+            <path d={`${pathD} L${x(equityPoints.length - 1)},${PAD.top + chartH} L${x(0)},${PAD.top + chartH} Z`} fill="rgba(212,175,55,0.08)" />
+            <path d={pathD} fill="none" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            {equityPoints.map((p, i) => (
+              <circle cx={x(i)} cy={y(p.value)} r="3" fill="#D4AF37" />
+            ))}
+          </svg>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <div class="stat-chip"><span class="chip-label" data-i18n="live-period">期間</span><span>{th.length}<span data-i18n="live-period-unit">日</span></span></div>
+          <div class="stat-chip"><span class="chip-label" data-i18n="live-totalpnl">総損益</span><span style="color:var(--accent-green);">{totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}</span></div>
+          <div class="stat-chip"><span class="chip-label" data-i18n="live-wr-days">取引日勝率</span><span>{wrDays}%</span></div>
+        </div>
+      </div>
+
+      <!-- Recent Trades -->
+      <div class="section-card fade-in">
+        <h2 style="color:var(--gold);font-size:1.05rem;margin-bottom:8px;" data-i18n="live-recent-title">⚡ 直近取引</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th data-i18n="live-time">時間</th><th data-i18n="live-dir">方向</th><th data-i18n="live-lot">ロット</th><th>P&amp;L</th></tr></thead>
+            <tbody>
+              {lastTrades.map(t => (
+              <tr>
+                <td>{t.time}</td>
+                <td><span class={`dir-badge ${t.type === 'SELL' ? 'sell' : 'buy'}`}>{t.type}</span></td>
+                <td>{t.lots.toFixed(2)}</td>
+                <td style="font-weight:600;color:{t.pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
+                  {t.pnl >= 0 ? '+' : ''}{t.pnl.toFixed(2)}
+                </td>
+              </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -402,6 +499,25 @@ for (const d of th) {
     .fw-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
     .fw-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
     .fw-val { font-size:1.1rem; font-weight:700; color:var(--text); }
+    .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:20px; }
+    .sm-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; }
+    .sm-label { font-size:0.7rem; color:var(--text-muted); margin-bottom:4px; }
+    .sm-value { font-size:1.05rem; font-weight:700; color:var(--text); }
+    .status-badge { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.75rem; font-weight:600; }
+    .status-badge.green { background:rgba(46,204,113,0.15); color:var(--accent-green); }
+    .status-badge.amber { background:rgba(241,196,15,0.15); color:#f1c40f; }
+    .section-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
+    .chart-container { position:relative; height:220px; width:100%; }
+    .chart-container svg { display:block; }
+    .table-wrap { overflow-x:auto; }
+    .data-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .data-table th { color:var(--gold); font-weight:600; font-size:0.8rem; padding:8px 10px; text-align:center; border-bottom:2px solid var(--border); }
+    .data-table td { padding:8px 10px; text-align:center; color:var(--text-muted); border-bottom:1px solid var(--border); }
+    .dir-badge { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.75rem; font-weight:700; }
+    .dir-badge.sell { background:rgba(231,76,60,0.12); color:var(--accent-red); }
+    .dir-badge.buy { background:rgba(46,204,113,0.12); color:var(--accent-green); }
+    .stat-chip { display:flex; gap:6px; align-items:center; padding:6px 14px; border-radius:20px; background:var(--bg); border:1px solid var(--border); font-size:0.8rem; }
+    .chip-label { color:var(--text-muted); }
     .setup-mini { display:flex; flex-direction:column; gap:12px; max-width:520px; margin:0 auto; }
     .setup-step { display:flex; gap:14px; align-items:flex-start; }
     .ss-num { width:32px; height:32px; border-radius:50%; background:var(--gold); color:#111; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.85rem; }
