@@ -296,10 +296,10 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     </div>
   </section>
 
-  <!-- ═══════════════ FAQ ═══════════════ -->
-  <section class="section" style="padding-bottom:30px;">
-    <div class="container" style="max-width:640px;">
-      <h2 class="section-title fade-in" data-i18n="faq-section-title">よくある質問</h2>
+  <!-- ═══════════════ FAQ（HERO 同款） ═══════════════ -->
+  <section class="hero" id="faq" style="padding:50px 0 54px;">
+    <div class="hero-content container" style="max-width:640px;text-align:left;">
+      <div class="hero-badge" style="margin-bottom:24px;" data-i18n="faq-section-title">よくある質問</div>
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -311,20 +311,20 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
         ]
       }
       </script>
-      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
-        <summary class="faq-q"><span style="font-size:0.8rem;color:var(--gold);font-weight:700;min-width:20px;">Q</span><span data-i18n="faq-q1">FusionGold M5 はどのように動きますか？</span><span class="faq-icon">+</span></summary>
-        <div class="faq-a"><p data-i18n="faq-a1">ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。</p></div>
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
+        <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q1</span><span data-i18n="faq-q1">FusionGold M5 はどのように動きますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
+        <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a1">ADXゲートで相場の質を判断し、4つの独立した視点（トレンド・モメンタム・ストラクチャー・流動性）からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。</p></div>
       </details>
-      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
-        <summary class="faq-q"><span style="font-size:0.8rem;color:var(--gold);font-weight:700;min-width:20px;">Q</span><span data-i18n="faq-q2">デモ口座で試せますか？</span><span class="faq-icon">+</span></summary>
-        <div class="faq-a"><p data-i18n="faq-a2">はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。</p></div>
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
+        <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q2</span><span data-i18n="faq-q2">デモ口座で試せますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
+        <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a2">はい。IC Marketsのデモ口座で14日間無料テスト可能。セットアップサポート付きです。</p></div>
       </details>
-      <details class="faq-item fade-in" style="border-bottom:1px solid var(--border);">
-        <summary class="faq-q"><span style="font-size:0.8rem;color:var(--gold);font-weight:700;min-width:20px;">Q</span><span data-i18n="faq-q4">リスク管理はどのようになっていますか？</span><span class="faq-icon">+</span></summary>
-        <div class="faq-a"><p data-i18n="faq-a4">日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。</p></div>
+      <details style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
+        <summary style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text);list-style:none;"><span style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:22px;">Q3</span><span data-i18n="faq-q4">リスク管理はどのようになっていますか？</span><span style="margin-left:auto;font-size:1rem;color:var(--gold);font-weight:300;transition:transform .3s;">+</span></summary>
+        <div style="padding:8px 0 2px 32px;font-size:0.82rem;color:rgba(255,255,255,.6);line-height:1.7;"><p style="margin:0;" data-i18n="faq-a4">日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。</p></div>
       </details>
-      <div style="text-align:center;margin-top:14px;">
-        <a href={siteBase + '/faq/'} class="text-link" data-i18n="faq-link">すべてのFAQを見る →</a>
+      <div style="text-align:center;margin-top:18px;">
+        <a href={siteBase + '/faq/'} class="text-link" data-i18n="faq-link" style="color:var(--gold);font-size:0.82rem;">すべてのFAQを見る →</a>
       </div>
     </div>
   </section>
@@ -428,13 +428,10 @@ const xTicks = equityPoints.filter((_, i) => i === 0 || i === equityPoints.lengt
     .fg-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0 0 10px; }
     .fg-includes div { padding:4px 0; font-size:0.75rem; border-bottom:1px solid var(--border); color:var(--text-muted); }
     .author-avatar-sm { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#111; font-weight:800; font-size:1.1rem; display:flex; align-items:center; justify-content:center; margin:0 auto; }
-    .faq-item { padding:10px 0; }
-    .faq-q { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.82rem; font-weight:600; color:var(--text); list-style:none; }
-    .faq-q::-webkit-details-marker { display:none; }
-    .faq-icon { margin-left:auto; font-size:1rem; color:var(--gold); font-weight:300; transition:transform .3s; }
-    details[open] .faq-icon { transform:rotate(45deg); }
-    .faq-a { padding:6px 0 2px 28px; font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
-    .faq-a p { margin:0; }
+    .risk-mini { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:4px; }
+    .risk-tag { padding:5px 12px; border-radius:16px; font-size:0.75rem; color:var(--text); background:var(--bg); border:1px solid var(--border); }
+    .risk-tag span { color:var(--text-muted); }
+    .alt-bg { background:var(--bg-card); }
     .barter-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
     .barter-tags span { padding:4px 12px; border-radius:16px; font-size:0.72rem; color:var(--gold); border:1px solid var(--border); background:var(--bg); }
     .text-link { color:var(--gold); font-size:0.82rem; text-decoration:underline; }
