@@ -138,7 +138,7 @@ def ssh_python(python_code: str) -> str:
         f"&'{PYTHON}' {script_path}"
         f"\""
     )
-    full_cmd = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=20 {VPS_USER}@{VPS_HOST} {pwsh_cmd}"
+    full_cmd = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=30 {VPS_USER}@{VPS_HOST} {pwsh_cmd}"
     r = subprocess.run(full_cmd, shell=True, capture_output=True, timeout=120)
     out = r.stdout.decode("utf-8", errors="replace")
     err = r.stderr.decode("utf-8", errors="replace")
@@ -206,7 +206,7 @@ def _merge_heartbeat_data(data):
         f"| Select-String 'HEARTBEAT|posCnt.*ADX' -Tail 2 2>$null"
         f"\""
     )
-    full = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=10 {VPS_USER}@{VPS_HOST} {cmd}"
+    full = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=30 {VPS_USER}@{VPS_HOST} {cmd}"
     r = subprocess.run(full, shell=True, capture_output=True, timeout=15)
     out = r.stdout.decode("utf-8", errors="replace")
     if not out.strip():
@@ -249,7 +249,7 @@ def _fallback_update():
         f"powershell -Command \"Get-Content '{log_path}\\{today_str}.log' "
         f"| Select-String 'HEARTBEAT' -Tail 1 2>$null\""
     )
-    full = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=10 {VPS_USER}@{VPS_HOST} {cmd}"
+    full = f"sshpass -p '{VPS_PASS}' ssh -T -o StrictHostKeyChecking=no -o ConnectTimeout=30 {VPS_USER}@{VPS_HOST} {cmd}"
     r = subprocess.run(full, shell=True, capture_output=True, timeout=15)
     out = r.stdout.decode("utf-8", errors="replace")
     if not out.strip():
