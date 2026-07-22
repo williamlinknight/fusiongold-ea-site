@@ -37,16 +37,16 @@
     "consecutiveLossPause": false
   },
   "lastTrades": [
-    {"time": "07/22 02:12", "type": "BUY", "lot": 0.09, "pnl": 29.61},
-    {"time": "07/22 01:57", "type": "BUY", "lot": 0.09, "pnl": 26.10},
-    {"time": "07/22 01:48", "type": "BUY", "lot": 0.09, "pnl": 34.74},
-    {"time": "07/22 01:40", "type": "BUY", "lot": 0.09, "pnl": -73.98},
-    {"time": "07/22 01:30", "type": "BUY", "lot": 0.09, "pnl": 57.69},
-    {"time": "07/22 01:16", "type": "BUY", "lot": 0.08, "pnl": 59.76},
-    {"time": "07/22 01:12", "type": "BUY", "lot": 0.08, "pnl": -1.44},
-    {"time": "07/22 01:07", "type": "BUY", "lot": 0.09, "pnl": 26.55},
-    {"time": "07/22 01:00", "type": "BUY", "lot": 0.08, "pnl": 27.60},
-    {"time": "07/21 01:50", "type": "BUY", "lot": 0.08, "pnl": 18.48}
+    {"time": "07/22 02:12", "type": "BUY", "lots": 0.09, "pnl": 29.61},
+    {"time": "07/22 01:57", "type": "BUY", "lots": 0.09, "pnl": 26.10},
+    {"time": "07/22 01:48", "type": "BUY", "lots": 0.09, "pnl": 34.74},
+    {"time": "07/22 01:40", "type": "BUY", "lots": 0.09, "pnl": -73.98},
+    {"time": "07/22 01:30", "type": "BUY", "lots": 0.09, "pnl": 57.69},
+    {"time": "07/22 01:16", "type": "BUY", "lots": 0.08, "pnl": 59.76},
+    {"time": "07/22 01:12", "type": "BUY", "lots": 0.08, "pnl": -1.44},
+    {"time": "07/22 01:07", "type": "BUY", "lots": 0.09, "pnl": 26.55},
+    {"time": "07/22 01:00", "type": "BUY", "lots": 0.08, "pnl": 27.60},
+    {"time": "07/21 01:50", "type": "BUY", "lots": 0.08, "pnl": 18.48}
   ],
   "tradeHistory": [
     {"date": "2026-07-13", "pnl": 111.46, "trades": 9, "winRate": 88.9, "cumulative": 111.46},
