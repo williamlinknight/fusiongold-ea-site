@@ -60,7 +60,7 @@ try:
     for t in closed[:10]:
         dt = datetime.fromtimestamp(int(t["ct"]))
         last10.append({
-            "time": dt.strftime("%m/%d %H:%M"),
+            "time": dt.strftime("%m/%d %H:%M BJT"),
             "type": t["tp"], "lots": t["lt"], "pnl": t["pnl"]
         })
 
@@ -85,6 +85,7 @@ try:
 
     out = {
         "updated": datetime.now().strftime("%Y-%m-%d %H:%M BJT"),
+        "timezone": "BJT (UTC+8 / 北京时间)",
         "note": "MT5 Account History from 2026-07-13",
         "account": {
             "balance": round(acc.balance, 2),

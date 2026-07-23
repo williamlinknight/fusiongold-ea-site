@@ -1,5 +1,6 @@
 {
-  "updated": "2026-07-23 06:07 BJT",
+  "updated": "2026-07-23 09:34 BJT",
+  "timezone": "BJT (UTC+8 / ����ʱ��)",
   "note": "MT5 Account History from 2026-07-13",
   "account": {
     "balance": 5285.84,
@@ -11,14 +12,14 @@
     "status": "RUNNING"
   },
   "session": {
-    "status": "BLOCKED",
-    "cooldown": 1000
+    "status": "WAITING",
+    "cooldown": 0
   },
   "market": {
-    "adx": 36.98,
+    "adx": 0,
     "adxHard": 20,
-    "spread": 22.0,
-    "maxSpread": 50.0
+    "spread": 0,
+    "maxSpread": 50
   },
   "signal": {
     "bull": 0,
@@ -37,61 +38,61 @@
   },
   "lastTrades": [
     {
-      "time": "07/23 02:11",
+      "time": "07/23 02:11 BJT",
       "type": "BUY",
       "lots": 0.07,
       "pnl": 29.68
     },
     {
-      "time": "07/23 02:11",
+      "time": "07/23 02:11 BJT",
       "type": "BUY",
       "lots": 0.08,
       "pnl": 40.64
     },
     {
-      "time": "07/23 00:59",
+      "time": "07/23 00:59 BJT",
       "type": "BUY",
       "lots": 0.09,
       "pnl": 56.16
     },
     {
-      "time": "07/22 23:48",
+      "time": "07/22 23:48 BJT",
       "type": "BUY",
       "lots": 0.14,
       "pnl": -90.44
     },
     {
-      "time": "07/22 23:48",
+      "time": "07/22 23:48 BJT",
       "type": "BUY",
       "lots": 0.14,
       "pnl": -86.24
     },
     {
-      "time": "07/22 23:37",
+      "time": "07/22 23:37 BJT",
       "type": "BUY",
       "lots": 0.15,
       "pnl": -13.2
     },
     {
-      "time": "07/22 23:28",
+      "time": "07/22 23:28 BJT",
       "type": "BUY",
       "lots": 0.15,
       "pnl": 26.85
     },
     {
-      "time": "07/22 23:22",
+      "time": "07/22 23:22 BJT",
       "type": "BUY",
       "lots": 0.16,
       "pnl": 60.48
     },
     {
-      "time": "07/22 02:12",
+      "time": "07/22 02:12 BJT",
       "type": "BUY",
       "lots": 0.09,
       "pnl": 29.61
     },
     {
-      "time": "07/22 01:57",
+      "time": "07/22 01:57 BJT",
       "type": "BUY",
       "lots": 0.09,
       "pnl": 26.1
