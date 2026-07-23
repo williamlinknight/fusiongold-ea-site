@@ -18,8 +18,17 @@ SSH_OPTS = "-o StrictHostKeyChecking=no -o ConnectTimeout=30"
 SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 
 # Python script that runs ON the VPS via MT5 API
-MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys
-from datetime import datetime, timezone
+MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
+from datetime import datetime, timezone, timedelta
+# IC Markets server time is UTC+3 (summer) / UTC+2 (winter)
+# BJT = UTC+8. Difference: +5h (summer) / +6h (winter)
+SERVER_UTC_OFFSET = 3  # IC Markets summer UTC+3
+BJT_UTC_OFFSET = 8
+TZ_FIX = timedelta(hours=BJT_UTC_OFFSET - SERVER_UTC_OFFSET)  # +5h
+
+def _to_bjt(ts_int):
+    # Convert MT5 server timestamp (UTC+3 summer) to BJT (UTC+8)
+    return datetime.fromtimestamp(int(ts_int), tz=timezone.utc) + TZ_FIX
 
 try:
     mt5.initialize(path="C:\\Program Files\\MetaTrader 5 IC Markets Global\\terminal64.exe")
@@ -48,7 +57,7 @@ try:
     # Daily aggregation
     dn = {}
     for t in closed:
-        day = datetime.fromtimestamp(int(t["ct"])).strftime("%Y-%m-%d")
+        day = _to_bjt(int(t["ct"])).strftime("%Y-%m-%d")
         dn.setdefault(day, {"pnl": 0.0, "cnt": 0, "win": 0})
         dn[day]["pnl"] += t["pnl"]
         dn[day]["cnt"] += 1
@@ -58,7 +67,7 @@ try:
     # Last 10 trades
     last10 = []
     for t in closed[:10]:
-        dt = datetime.fromtimestamp(int(t["ct"]))
+        dt = _to_bjt(int(t["ct"]))
         last10.append({
             "time": dt.strftime("%m/%d %H:%M BJT"),
             "type": t["tp"], "lots": t["lt"], "pnl": t["pnl"]
@@ -78,13 +87,13 @@ try:
         })
 
     # Current day PnL
-    today_key = datetime.now().strftime("%Y-%m-%d")
+    today_key = (datetime.fromtimestamp(time.time(), tz=timezone.utc) + timedelta(hours=8)).strftime("%Y-%m-%d")
     day_pnl = round(dn.get(today_key, {}).get("pnl", 0), 2)
 
     session_status = "WAITING"
 
     out = {
-        "updated": datetime.now().strftime("%Y-%m-%d %H:%M BJT"),
+        "updated": (datetime.fromtimestamp(time.time(), tz=timezone.utc) + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M BJT"),
         "timezone": "BJT (UTC+8 / 北京时间)",
         "note": "MT5 Account History from 2026-07-13",
         "account": {
