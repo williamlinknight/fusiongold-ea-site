@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="ja" class="jp-mode" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>&lt;span class=&quot;lang-jp&quot;&gt;バックテスト詳細レポート | FusionGold M5&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Backtest Detailed Report | FusionGold M5&lt;/span&gt; | FusionGold M5</title><meta name="description" content="<span class=&quot;lang-jp&quot;>FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。</span><span class=&quot;lang-en&quot;>Detailed analysis of FusionGold M5 backtest results. Monthly P&amp;L, drawdown, performance by weekday and time zone.</span>"><meta name="keywords" content="XAUUSD EA, ゴールド自動売買, MT5 EA, 金EA, FusionGold M5, 物々交換, XAUUSDトレード, エキスパートアドバイザー"><link rel="canonical" href="https://williamlinknight.github.io/fusiongold-ea-site/"><!-- hreflang for JP/EN bilingual --><link rel="alternate" hreflang="ja" href="https://williamlinknight.github.io/fusiongold-ea-site/"><link rel="alternate" hreflang="en" href="https://williamlinknight.github.io/fusiongold-ea-site/"><link rel="alternate" hreflang="x-default" href="https://williamlinknight.github.io/fusiongold-ea-site/"><!-- Open Graph --><meta property="og:title" content="<span class=&quot;lang-jp&quot;>バックテスト詳細レポート | FusionGold M5</span><span class=&quot;lang-en&quot;>Backtest Detailed Report | FusionGold M5</span>"><meta property="og:description" content="<span class=&quot;lang-jp&quot;>FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。</span><span class=&quot;lang-en&quot;>Detailed analysis of FusionGold M5 backtest results. Monthly P&amp;L, drawdown, performance by weekday and time zone.</span>"><meta property="og:url" content="https://williamlinknight.github.io/fusiongold-ea-site/"><meta property="og:type" content="website"><meta property="og:locale" content="ja_JP"><meta property="og:site_name" content="FusionGold M5"><meta property="og:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="<span class=&quot;lang-jp&quot;>バックテスト詳細レポート | FusionGold M5</span><span class=&quot;lang-en&quot;>Backtest Detailed Report | FusionGold M5</span>"><meta name="twitter:description" content="<span class=&quot;lang-jp&quot;>FusionGold M5 のバックテスト結果を詳細に分析。月次損益、ドローダウン、曜日別・時間帯別パフォーマンス。</span><span class=&quot;lang-en&quot;>Detailed analysis of FusionGold M5 backtest results. Monthly P&amp;L, drawdown, performance by weekday and time zone.</span>"><meta name="twitter:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg"><meta name="google-site-verification" content="FGKyrzvPC8r6Bdi7XpcgyVYiXFVDdTatDMa5SmlIBoY"><!-- JSON-LD: Organization --><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FusionGold M5",
+    "url": "https://williamlinknight.github.io/fusiongold-ea-site",
+    "description": "XAUUSD（ゴールド）M5専用自動売買EA",
+    "foundingDate": "2026"
+  }
+  </script><!-- JSON-LD: WebSite --><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "FusionGold M5",
+    "url": "https://williamlinknight.github.io/fusiongold-ea-site",
+    "alternateName": ["XAUUSD ゴールドEA", "FusionGold M5 EA"],
+    "inLanguage": ["ja", "en"],
+    "description": "XAUUSD（ゴールド）専用のMT5自動売買EA。ADX+4バケット+H4ゾーン+矛盾検出エンジン搭載。IC Markets対応。"
+  }
+  </script><!-- JSON-LD: SoftwareApplication (EA product) --><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FusionGold M5",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Windows/Mac (MT5)",
+    "description": "XAUUSD（ゴールド）M5専用のMT5自動売買EA。トレンド・モメンタム・ストラクチャー・流動性の4軸スコアリングでエントリーを判断。リスク管理機能内蔵。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "description": "物々交換（現金不要）。日本製品と交換可能。"
+    },
+    "browserRequirements": "MetaTrader 5"
+  }
+  </script><!-- JSON-LD: BreadcrumbList (default) --><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "FusionGold M5", "item": "https://williamlinknight.github.io/fusiongold-ea-site/"}
+    ]
+  }
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/fusiongold-ea-site/_astro/BaseLayout.BAzrWgSB.css"><style>.summary-grid[data-astro-cid-lqnbi2ze]{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:24px}.summary-card[data-astro-cid-lqnbi2ze]{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}.s-label[data-astro-cid-lqnbi2ze]{display:block;font-size:.7rem;color:var(--text-muted);margin-bottom:4px}.s-value[data-astro-cid-lqnbi2ze]{display:block;font-size:1.15rem;font-weight:700;color:var(--text)}.s-value[data-astro-cid-lqnbi2ze].highlight{color:var(--gold)}.section-card[data-astro-cid-lqnbi2ze]{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px}.section-card[data-astro-cid-lqnbi2ze] h2[data-astro-cid-lqnbi2ze]{color:var(--gold);font-size:1.05rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}.chart-container[data-astro-cid-lqnbi2ze]{position:relative;height:260px}.table-wrap[data-astro-cid-lqnbi2ze]{overflow-x:auto}.data-table[data-astro-cid-lqnbi2ze]{width:100%;border-collapse:collapse;font-size:.85rem}.data-table[data-astro-cid-lqnbi2ze] th[data-astro-cid-lqnbi2ze]{color:var(--gold);font-weight:600;font-size:.8rem;padding:8px 10px;text-align:center;border-bottom:2px solid var(--border)}.data-table[data-astro-cid-lqnbi2ze] td[data-astro-cid-lqnbi2ze]{padding:8px 10px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border)}.data-table[data-astro-cid-lqnbi2ze] .highlight[data-astro-cid-lqnbi2ze]{color:var(--gold);font-weight:600}.data-table[data-astro-cid-lqnbi2ze] .total-row[data-astro-cid-lqnbi2ze] td[data-astro-cid-lqnbi2ze]{border-top:2px solid var(--gold);color:var(--text)}.winbar[data-astro-cid-lqnbi2ze]{background:#ffffff0f;border-radius:4px;height:20px;overflow:hidden;min-width:80px}.winbar-fill[data-astro-cid-lqnbi2ze]{display:block;height:100%;background:linear-gradient(90deg,#d4af374d,#d4af3799);border-radius:4px;font-size:.7rem;line-height:20px;padding:0 6px;color:#fff;text-align:right}.direction-grid[data-astro-cid-lqnbi2ze]{display:grid;grid-template-columns:1fr 1fr;gap:12px}.direction-card[data-astro-cid-lqnbi2ze]{padding:16px;border-radius:var(--radius);border:1px solid var(--border)}.direction-card[data-astro-cid-lqnbi2ze].sell{background:#e74c3c0f}.direction-card[data-astro-cid-lqnbi2ze].buy{background:#2ecc710f}.dir-icon[data-astro-cid-lqnbi2ze]{font-size:1.1rem;font-weight:800;margin-bottom:8px}.direction-card[data-astro-cid-lqnbi2ze].sell .dir-icon[data-astro-cid-lqnbi2ze]{color:var(--accent-red)}.direction-card[data-astro-cid-lqnbi2ze].buy .dir-icon[data-astro-cid-lqnbi2ze]{color:var(--accent-green)}.dir-stats[data-astro-cid-lqnbi2ze]{display:flex;flex-direction:column;gap:4px;font-size:.85rem}.dir-stats[data-astro-cid-lqnbi2ze] div[data-astro-cid-lqnbi2ze]{display:flex;justify-content:space-between}.dir-label[data-astro-cid-lqnbi2ze]{color:var(--text-muted)}.dd-grid[data-astro-cid-lqnbi2ze]{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.dd-card[data-astro-cid-lqnbi2ze]{padding:14px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center}.dd-title[data-astro-cid-lqnbi2ze]{font-size:.75rem;color:var(--text-muted);margin-bottom:4px}.dd-value[data-astro-cid-lqnbi2ze]{font-size:1.1rem;font-weight:700;color:var(--gold)}.dd-desc[data-astro-cid-lqnbi2ze]{font-size:.75rem;color:var(--text-muted);margin-top:2px}@media(max-width:600px){.direction-grid[data-astro-cid-lqnbi2ze]{grid-template-columns:1fr}.summary-grid[data-astro-cid-lqnbi2ze]{grid-template-columns:repeat(2,1fr)}}
+</style></head> <body data-astro-cid-37fxchfa> <div class="top-bar" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/" style="color:var(--text-muted);text-decoration:none;" data-astro-cid-37fxchfa>FusionGold M5</a> </div> <nav class="nav" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/" class="logo" data-astro-cid-37fxchfa>FusionGold M5</a> <button class="hamburger" id="hamburger" aria-label="Menu" data-astro-cid-37fxchfa> <span data-astro-cid-37fxchfa></span><span data-astro-cid-37fxchfa></span><span data-astro-cid-37fxchfa></span> </button> <div class="links" id="navLinks" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/" data-i18n="nav-home" data-astro-cid-37fxchfa>ホーム</a> <div class="dropdown" data-astro-cid-37fxchfa> <span class="dropdown-trigger" data-i18n="nav-product" data-astro-cid-37fxchfa>製品 <span class="arrow" data-astro-cid-37fxchfa>▾</span></span> <div class="dropdown-content" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/#live-performance" data-i18n="nav-live" data-astro-cid-37fxchfa>パフォーマンス</a> <a href="/fusiongold-ea-site/setup/" data-i18n="nav-setup" data-astro-cid-37fxchfa>セットアップ</a> <a href="/fusiongold-ea-site/strategy/" data-i18n="nav-strategy" data-astro-cid-37fxchfa>戦略</a> </div> </div> <div class="dropdown" data-astro-cid-37fxchfa> <span class="dropdown-trigger" data-i18n="nav-learn" data-astro-cid-37fxchfa>学ぶ <span class="arrow" data-astro-cid-37fxchfa>▾</span></span> <div class="dropdown-content" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/glossary/" data-i18n="nav-glossary" data-astro-cid-37fxchfa>用語集</a> <a href="/fusiongold-ea-site/faq/" data-i18n="nav-faq" data-astro-cid-37fxchfa>FAQ</a> </div> </div> <a href="/fusiongold-ea-site/blog/" data-i18n="nav-blog" data-astro-cid-37fxchfa>ブログ</a> <a href="/fusiongold-ea-site/contact/" data-i18n="nav-contact" data-astro-cid-37fxchfa>お問い合わせ</a> <a href="/fusiongold-ea-site/#live-performance" class="demo-nav-btn" data-astro-cid-37fxchfa>Live</a> <div class="lang-toggle" role="radiogroup" aria-label="Language" data-astro-cid-37fxchfa> <button class="lang-btn active" data-lang="JP" role="radio" aria-checked="true" data-astro-cid-37fxchfa>JP</button> <button class="lang-btn" data-lang="EN" role="radio" aria-checked="false" data-astro-cid-37fxchfa>EN</button> </div> </div> </nav>  <div class="container" style="padding-top:40px;padding-bottom:60px;max-width:800px;" data-astro-cid-lqnbi2ze> <h1 style="color:var(--gold);margin-bottom:8px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>バックテスト詳細レポート</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Backtest Detailed Report</span> </h1> <p style="color:var(--text-muted);margin-bottom:4px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>検証期間: 2026年6月1日 〜 7月2日 · XAUUSD M1 · IC Markets Raw Spread</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Test Period: Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets Raw Spread</span> </p> <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>※過去の結果は将来の成果を保証するものではありません。</span> <span class="lang-en" data-astro-cid-lqnbi2ze>※ Past results do not guarantee future performance.</span> </p> <!-- ═══ <span class="lang-jp">サマリー</span><span class="lang-en">Summary</span> ═══ --> <div class="summary-grid" data-astro-cid-lqnbi2ze> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>総取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Total Trades</span></span><span class="s-value" data-astro-cid-lqnbi2ze>145</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></span><span class="s-value highlight" data-astro-cid-lqnbi2ze>74.48%</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>純利益</span><span class="lang-en" data-astro-cid-lqnbi2ze>Net Profit</span></span><span class="s-value highlight" data-astro-cid-lqnbi2ze>+$912.56</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>プロフィットファクター</span><span class="lang-en" data-astro-cid-lqnbi2ze>Profit Factor</span></span><span class="s-value" data-astro-cid-lqnbi2ze>1.54</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>最大ドローダウン</span><span class="lang-en" data-astro-cid-lqnbi2ze>Max Drawdown</span></span><span class="s-value" data-astro-cid-lqnbi2ze>8.61%</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>平均保有時間</span><span class="lang-en" data-astro-cid-lqnbi2ze>Avg. Hold Time</span></span><span class="s-value" data-astro-cid-lqnbi2ze>7min 55s</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>総利益</span><span class="lang-en" data-astro-cid-lqnbi2ze>Gross Profit</span></span><span class="s-value" data-astro-cid-lqnbi2ze>+$2,847.30</span></div> <div class="summary-card" data-astro-cid-lqnbi2ze><span class="s-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>総損失</span><span class="lang-en" data-astro-cid-lqnbi2ze>Gross Loss</span></span><span class="s-value" style="color:var(--accent-red);" data-astro-cid-lqnbi2ze>-$1,934.74</span></div> </div> <!-- ═══ <span class="lang-jp">エクイティカーブ</span><span class="lang-en">Equity Curve</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>エクイティカーブ</span><span class="lang-en" data-astro-cid-lqnbi2ze>Equity Curve</span></h2> <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>開始残高 $1,000 → 終了残高 $1,912.56（+91.25%）</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Starting Balance $1,000 → Ending Balance $1,912.56 (+91.25%)</span> </p> <div class="chart-container" data-astro-cid-lqnbi2ze> <canvas id="equityChart" data-astro-cid-lqnbi2ze></canvas> </div> </div> <!-- ═══ <span class="lang-jp">月次パフォーマンス</span><span class="lang-en">Monthly Performance</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>月次パフォーマンス</span><span class="lang-en" data-astro-cid-lqnbi2ze>Monthly Performance</span></h2> <div class="table-wrap" data-astro-cid-lqnbi2ze> <table class="data-table" data-astro-cid-lqnbi2ze> <thead data-astro-cid-lqnbi2ze><tr data-astro-cid-lqnbi2ze> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>月</span><span class="lang-en" data-astro-cid-lqnbi2ze>Month</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>損益</span><span class="lang-en" data-astro-cid-lqnbi2ze>P&L</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Trades</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>平均勝ち</span><span class="lang-en" data-astro-cid-lqnbi2ze>Avg Win</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>平均負け</span><span class="lang-en" data-astro-cid-lqnbi2ze>Avg Loss</span></th> <th data-astro-cid-lqnbi2ze>PF</th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>最大DD</span><span class="lang-en" data-astro-cid-lqnbi2ze>Max DD</span></th> </tr></thead> <tbody data-astro-cid-lqnbi2ze> <tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>2026/06</td> <td class="highlight" data-astro-cid-lqnbi2ze>+$754.21</td> <td data-astro-cid-lqnbi2ze>118</td> <td data-astro-cid-lqnbi2ze>75.42%</td> <td data-astro-cid-lqnbi2ze>+$17.88</td> <td style="color:var(--accent-red);" data-astro-cid-lqnbi2ze>-$12.45</td> <td data-astro-cid-lqnbi2ze>1.58</td> <td data-astro-cid-lqnbi2ze>6.12%</td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>2026/07</td> <td class="highlight" data-astro-cid-lqnbi2ze>+$158.35</td> <td data-astro-cid-lqnbi2ze>27</td> <td data-astro-cid-lqnbi2ze>70.37%</td> <td data-astro-cid-lqnbi2ze>+$16.22</td> <td style="color:var(--accent-red);" data-astro-cid-lqnbi2ze>-$11.80</td> <td data-astro-cid-lqnbi2ze>1.41</td> <td data-astro-cid-lqnbi2ze>8.61%</td> </tr> <tr class="total-row" data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>トータル</span><span class="lang-en" data-astro-cid-lqnbi2ze>Total</span></strong></td> <td class="highlight" data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>+$912.56</strong></td> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>145</strong></td> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>74.48%</strong></td> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>+$17.60</strong></td> <td style="color:var(--accent-red);" data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>-$12.30</strong></td> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>1.54</strong></td> <td data-astro-cid-lqnbi2ze><strong data-astro-cid-lqnbi2ze>8.61%</strong></td> </tr> </tbody> </table> </div> </div> <!-- ═══ <span class="lang-jp">売買方向別内訳</span><span class="lang-en">Direction Breakdown</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>売買方向別内訳</span><span class="lang-en" data-astro-cid-lqnbi2ze>Buy/Sell Breakdown</span></h2> <div class="direction-grid" data-astro-cid-lqnbi2ze> <div class="direction-card sell" data-astro-cid-lqnbi2ze> <div class="dir-icon" data-astro-cid-lqnbi2ze>SELL</div> <div class="dir-stats" data-astro-cid-lqnbi2ze> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Trades</span></span><span data-astro-cid-lqnbi2ze>116</span></div> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></span><span class="highlight" data-astro-cid-lqnbi2ze>79.31%</span></div> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>純利益</span><span class="lang-en" data-astro-cid-lqnbi2ze>Net Profit</span></span><span class="highlight" data-astro-cid-lqnbi2ze>+$784.20</span></div> </div> </div> <div class="direction-card buy" data-astro-cid-lqnbi2ze> <div class="dir-icon" data-astro-cid-lqnbi2ze>BUY</div> <div class="dir-stats" data-astro-cid-lqnbi2ze> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Trades</span></span><span data-astro-cid-lqnbi2ze>29</span></div> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></span><span class="highlight" data-astro-cid-lqnbi2ze>55.17%</span></div> <div data-astro-cid-lqnbi2ze><span class="dir-label" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>純利益</span><span class="lang-en" data-astro-cid-lqnbi2ze>Net Profit</span></span><span class="highlight" data-astro-cid-lqnbi2ze>+$128.36</span></div> </div> </div> </div> </div> <!-- ═══ <span class="lang-jp">曜日別パフォーマンス</span><span class="lang-en">Weekday Performance</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>曜日別パフォーマンス</span><span class="lang-en" data-astro-cid-lqnbi2ze>Weekday Performance</span></h2> <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>ロンドン/NYオーバーラップ帯の流動性が高い月〜金曜に集中。</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Concentrated Mon–Fri during high-liquidity London/NY overlap.</span> </p> <div class="table-wrap" data-astro-cid-lqnbi2ze> <table class="data-table" data-astro-cid-lqnbi2ze> <thead data-astro-cid-lqnbi2ze><tr data-astro-cid-lqnbi2ze> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>曜日</span><span class="lang-en" data-astro-cid-lqnbi2ze>Weekday</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Trades</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></th> </tr></thead> <tbody data-astro-cid-lqnbi2ze> <tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>&lt;span class=&quot;lang-jp&quot;&gt;月曜日&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Monday&lt;/span&gt;</td> <td data-astro-cid-lqnbi2ze>31</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>77.42%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>&lt;span class=&quot;lang-jp&quot;&gt;火曜日&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Tuesday&lt;/span&gt;</td> <td data-astro-cid-lqnbi2ze>28</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>75%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>&lt;span class=&quot;lang-jp&quot;&gt;水曜日&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Wednesday&lt;/span&gt;</td> <td data-astro-cid-lqnbi2ze>25</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>72%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>&lt;span class=&quot;lang-jp&quot;&gt;木曜日&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Thursday&lt;/span&gt;</td> <td data-astro-cid-lqnbi2ze>30</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>73.33%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>&lt;span class=&quot;lang-jp&quot;&gt;金曜日&lt;/span&gt;&lt;span class=&quot;lang-en&quot;&gt;Friday&lt;/span&gt;</td> <td data-astro-cid-lqnbi2ze>31</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>74.19%</span></div></td> </tr> </tbody> </table> </div> </div> <!-- ═══ <span class="lang-jp">時間帯別パフォーマンス</span><span class="lang-en">Hourly Performance</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>時間帯別パフォーマンス</span><span class="lang-en" data-astro-cid-lqnbi2ze>Hourly Performance</span></h2> <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>日本時間21:00〜24:00（ロンドン/ニューヨークオーバーラップ）に集中。</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Concentrated 21:00–24:00 JST (London/New York overlap).</span> </p> <div class="table-wrap" data-astro-cid-lqnbi2ze> <table class="data-table" data-astro-cid-lqnbi2ze> <thead data-astro-cid-lqnbi2ze><tr data-astro-cid-lqnbi2ze> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>時間帯（BJT）</span><span class="lang-en" data-astro-cid-lqnbi2ze>Time (BJT)</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>取引数</span><span class="lang-en" data-astro-cid-lqnbi2ze>Trades</span></th> <th data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>勝率</span><span class="lang-en" data-astro-cid-lqnbi2ze>Win Rate</span></th> </tr></thead> <tbody data-astro-cid-lqnbi2ze> <tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>21:00-22:00</td> <td data-astro-cid-lqnbi2ze>42</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>78.57%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>22:00-23:00</td> <td data-astro-cid-lqnbi2ze>55</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>76.36%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>23:00-24:00</td> <td data-astro-cid-lqnbi2ze>38</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>71.05%</span></div></td> </tr><tr data-astro-cid-lqnbi2ze> <td data-astro-cid-lqnbi2ze>00:00-01:00</td> <td data-astro-cid-lqnbi2ze>10</td> <td data-astro-cid-lqnbi2ze><div class="winbar" data-astro-cid-lqnbi2ze><span class="winbar-fill" style="width:{d.winRate}%" data-astro-cid-lqnbi2ze>60%</span></div></td> </tr> </tbody> </table> </div> </div> <!-- ═══ <span class="lang-jp">ドローダウン分析</span><span class="lang-en">Drawdown Analysis</span> ═══ --> <div class="section-card" data-astro-cid-lqnbi2ze> <h2 data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>ドローダウン分析</span><span class="lang-en" data-astro-cid-lqnbi2ze>Drawdown Analysis</span></h2> <div class="dd-grid" data-astro-cid-lqnbi2ze> <div class="dd-card" data-astro-cid-lqnbi2ze> <div class="dd-title" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>最大ドローダウン</span><span class="lang-en" data-astro-cid-lqnbi2ze>Max Drawdown</span></div> <div class="dd-value" data-astro-cid-lqnbi2ze>8.61%</div> <div class="dd-desc" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>絶対額: $164.67</span><span class="lang-en" data-astro-cid-lqnbi2ze>Absolute: $164.67</span></div> </div> <div class="dd-card" data-astro-cid-lqnbi2ze> <div class="dd-title" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>最大ドローダウン期間</span><span class="lang-en" data-astro-cid-lqnbi2ze>Max DD Period</span></div> <div class="dd-value" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>3日</span><span class="lang-en" data-astro-cid-lqnbi2ze>3 Days</span></div> <div class="dd-desc" data-astro-cid-lqnbi2ze>2026/06/17 – 2026/06/19</div> </div> <div class="dd-card" data-astro-cid-lqnbi2ze> <div class="dd-title" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>平均ドローダウン</span><span class="lang-en" data-astro-cid-lqnbi2ze>Avg Drawdown</span></div> <div class="dd-value" data-astro-cid-lqnbi2ze>2.34%</div> <div class="dd-desc" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>回復までの平均: 1.2日</span><span class="lang-en" data-astro-cid-lqnbi2ze>Avg Recovery: 1.2 Days</span></div> </div> <div class="dd-card" data-astro-cid-lqnbi2ze> <div class="dd-title" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>最大連敗</span><span class="lang-en" data-astro-cid-lqnbi2ze>Max Consec. Losses</span></div> <div class="dd-value" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>3連敗</span><span class="lang-en" data-astro-cid-lqnbi2ze>3 Losses</span></div> <div class="dd-desc" data-astro-cid-lqnbi2ze><span class="lang-jp" data-astro-cid-lqnbi2ze>合計損失: -$152.30</span><span class="lang-en" data-astro-cid-lqnbi2ze>Total Loss: -$152.30</span></div> </div> </div> </div> <div style="margin-top:32px;text-align:center;padding:24px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);" data-astro-cid-lqnbi2ze> <p style="color:var(--text-muted);margin-bottom:16px;" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>バックテストの結果にご満足いただけましたか？デモ口座で実際の動作をお試しください。</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Satisfied with the backtest results? Try it live on a demo account.</span> </p> <a href="/fusiongold-ea-site/demo/" class="btn btn-gold" data-astro-cid-lqnbi2ze> <span class="lang-jp" data-astro-cid-lqnbi2ze>デモを試す</span> <span class="lang-en" data-astro-cid-lqnbi2ze>Try Demo</span> </a> </div> </div>  <script type="module" src="/fusiongold-ea-site/_astro/backtest.astro_astro_type_script_index_0_lang.BxuTxImy.js"></script>  <footer class="footer" data-astro-cid-37fxchfa> <div class="container" style="display:flex;flex-direction:column;gap:8px;" data-astro-cid-37fxchfa> <p data-i18n="footer-text" data-astro-cid-37fxchfa>© 2026 FusionGold M5 · XAUUSD専用EA</p> <div style="display:flex;gap:16px;justify-content:center;font-size:0.8rem;" data-astro-cid-37fxchfa> <a href="/fusiongold-ea-site/disclaimer/" style="color:var(--text-muted);text-decoration:underline;" data-i18n="footer-disclaimer" data-astro-cid-37fxchfa>免責事項</a> <a href="/fusiongold-ea-site/privacy/" style="color:var(--text-muted);text-decoration:underline;" data-i18n="footer-privacy" data-astro-cid-37fxchfa>プライバシーポリシー</a> </div> </div> </footer> <script>
+  const LANG = {
+    current: 'JP',
+    data: {
+      'nav-home': { JP: 'ホーム', EN: 'Home' },
+      'nav-product': { JP: '製品', EN: 'Product' },
+      'nav-learn': { JP: '学ぶ', EN: 'Learn' },
+      'nav-live': { JP: 'パフォーマンス', EN: 'Live Performance' },
+      'nav-backtest': { JP: 'バックテスト', EN: 'Backtest Report' },
+      'nav-setup': { JP: 'セットアップ', EN: 'Setup Guide' },
+      'nav-strategy': { JP: '戦略', EN: 'Strategy' },
+      'nav-glossary': { JP: '用語集', EN: 'Glossary' },
+      'nav-faq': { JP: 'FAQ', EN: 'FAQ' },
+      'nav-blog': { JP: '金色', EN: 'Blog' },
+      'nav-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
+      'nav-contact': { JP: 'お問い合わせ', EN: 'Contact' },
+      'footer-text': { JP: '© 2026 FusionGold M5 · XAUUSD専用EA', EN: '© 2026 FusionGold M5 · XAUUSD EA' },
+      'footer-disclaimer': { JP: '免責事項', EN: 'Disclaimer' },
+      'footer-privacy': { JP: 'プライバシーポリシー', EN: 'Privacy Policy' },
+      'hero-badge': { JP: 'ゴールド専用EA', EN: 'Gold-Specialized EA' },
+      'hero-h1': { JP: 'FusionGold M5', EN: 'FusionGold M5' },
+      'hero-sub1': { JP: 'XAUUSD M5専用の自動売買EA — ADX+H4ゾーン+矛盾検出エンジン搭載', EN: 'Automated trading EA for XAUUSD (Gold) M5 — ADX + H4 Zone + Contradiction Detection' },
+      'hero-sub2': { JP: 'IC Markets MT5対応 · 1日4時間集中取引 · リスク管理内蔵', EN: 'IC Markets (MT5) · 4hr session · Built-in risk management' },
+      'hero-cta': { JP: '特徴を見る', EN: 'See Features' },
+      'hero-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
+      'hero-demo': { JP: '→ ライブパフォーマンスを見る', EN: '→ View Live Performance' },
+      'hero-demo-cta': { JP: 'ライブ取引を見る', EN: 'Watch Live Trading' },
+      'hero-stat-winrate': { JP: '勝率（フォワード）', EN: 'Win Rate (Forward)' },
+      'hero-stat-profit': { JP: '純利益', EN: 'Net Profit' },
+      'hero-stat-pf': { JP: 'プロフィットファクター', EN: 'Profit Factor' },
+      'hero-stat-dd': { JP: '最大DD', EN: 'Max DD' },
+      // Strategy section
+      'strat-title': { JP: '戦略の中核 — 4バケットスコアリング', EN: 'Core Strategy — 4-Bucket Scoring Engine' },
+      'strat-sub': { JP: 'トレンド・モメンタム・ストラクチャー・流動性の4軸で市場を総合評価', EN: 'Evaluates the market across 4 independent axes' },
+      'strat-s1': { JP: 'H4ゾーン', EN: 'H4 Zone' },
+      'strat-s1-sub': { JP: '大きな流れを読む', EN: 'Identify macro trend' },
+      'strat-s2': { JP: 'ADXゲート', EN: 'ADX Gate' },
+      'strat-s2-sub': { JP: '相場の質を判定', EN: 'Assess market quality' },
+      'strat-s3': { JP: '4バケット', EN: '4-Bucket' },
+      'strat-s3-sub': { JP: 'スコア240以上で通過', EN: 'Score ≥240 passes' },
+      'strat-s4': { JP: '矛盾検出', EN: 'Conflict Check' },
+      'strat-s4-sub': { JP: '最終確認', EN: 'Final validation' },
+      'strat-s5': { JP: 'エントリー', EN: 'Entry' },
+      'strat-s5-sub': { JP: '4時間集中取引', EN: '4hr concentrated trading' },
+      'strat-b1-title': { JP: 'トレンドバケット', EN: 'Trend Bucket' },
+      'strat-b1-desc': { JP: '価格とEMAの関係、ADXの方向性成分（DI+/DI-）を評価。トレンドフォロー戦略の基盤。', EN: 'Evaluates price-EMA relationship and ADX direction. The foundation of trend-following.' },
+      'strat-b2-title': { JP: 'モメンタムバケット', EN: 'Momentum Bucket' },
+      'strat-b2-desc': { JP: 'MACD、RSI、価格変化率を用いて短期的な勢いを測定。トレンドの加速・減速を検出。', EN: 'Measures short-term momentum using MACD, RSI, and ROC.' },
+      'strat-b3-title': { JP: 'ストラクチャーバケット', EN: 'Structure Bucket' },
+      'strat-b3-desc': { JP: '高値・安値の切り上がり/切り下がり、サポート・レジスタンスの構造を分析。', EN: 'Analyzes swing highs/lows, support/resistance structures.' },
+      'strat-b4-title': { JP: '流動性バケット', EN: 'Liquidity Bucket' },
+      'strat-b4-desc': { JP: '取引量、スプレッド幅、セッション時間帯を評価。約定品質と取引コストを考慮。', EN: 'Evaluates volume, spread, and session timing for optimal execution.' },
+      'strat-link': { JP: '戦略の詳細を見る →', EN: 'View strategy details →' },
+      // Backtest section
+      'bt-section-title': { JP: 'バックテスト実績', EN: 'Backtest Results' },
+      'bt-section-sub': { JP: '2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread', EN: 'Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets Raw Spread' },
+      'bt-lbl-winrate-sell': { JP: '売り勝率', EN: 'Sell Win Rate' },
+      'bt-detail-link': { JP: '詳細レポートを見る', EN: 'View Full Report' },
+      // Forward test section
+      'fw-title': { JP: 'フォワードテスト（リアル口座）', EN: 'Forward Test (Live Account)' },
+      'fw-sub': { JP: 'IC Markets Raw Spread · リアル口座で稼働中', EN: 'IC Markets Raw Spread · Running on live account' },
+      'fw-balance': { JP: '口座残高', EN: 'Balance' },
+      'fw-daypnl': { JP: '本日P&L', EN: 'Day P&L' },
+      'fw-period': { JP: '運用期間', EN: 'Running Days' },
+      'fw-period-unit': { JP: '日', EN: ' days' },
+      'fw-totalpnl': { JP: '累計損益', EN: 'Cumulative P&L' },
+      'fw-link': { JP: 'ライブパフォーマンスを見る →', EN: 'View live performance →' },
+      // Setup section
+      'setup-section-title': { JP: 'セットアップの流れ', EN: 'Setup Steps' },
+      'setup-section-sub': { JP: '15〜30分で運用開始', EN: 'Start trading in 15–30 minutes' },
+      'setup-s1-title': { JP: 'EAファイルを受け取る', EN: 'Receive the EA file' },
+      'setup-s1-desc': { JP: '物々交換成立後、EAファイル（.ex5）と設定ガイドをメールでお届け。', EN: 'We email you the .ex5 file and setup guide after barter agreement.' },
+      'setup-s2-title': { JP: 'MT5にインストール', EN: 'Install on MT5' },
+      'setup-s2-desc': { JP: 'データフォルダ内のExpertsフォルダに.ex5ファイルをコピー。XAUUSD M5チャートにドラッグ＆ドロップ。', EN: 'Copy .ex5 to the Experts folder. Drag & drop onto XAUUSD M5 chart.' },
+      'setup-s3-title': { JP: '自動売買を開始', EN: 'Start Auto Trading' },
+      'setup-s3-desc': { JP: 'EAプロパティでパラメータ設定後、自動売買を有効化。VPS推奨。', EN: 'Set parameters in EA properties, enable auto trading. VPS recommended.' },
+      'setup-link': { JP: '詳細なセットアップガイド →', EN: 'Full setup guide →' },
+      // Risk section
+      'risk-title': { JP: '多層リスク管理', EN: 'Multi-Layer Risk Management' },
+      'risk-sub': { JP: '口座を保護する6つの仕組み', EN: '6 mechanisms protecting your account' },
+      'risk-r1-title': { JP: '日損5%リミット', EN: '5% Daily Loss Limit' },
+      'risk-r1-desc': { JP: '1日の損失が口座残高の5%に達した場合、その日の取引をすべて停止', EN: 'Halts trading when daily losses hit 5% of balance.' },
+      'risk-r2-title': { JP: '連敗フィルター', EN: 'Consecutive Loss Filter' },
+      'risk-r2-desc': { JP: '連続損失発生時、市場環境の変化を待ってエントリーを休止', EN: 'Pauses entries after consecutive losses.' },
+      'risk-r3-title': { JP: 'Aggregate Risk', EN: 'Aggregate Risk' },
+      'risk-r3-desc': { JP: '全ポジションのリスク総量を監視・制御', EN: 'Monitors total risk across all positions.' },
+      'risk-r4-title': { JP: 'クールダウン', EN: 'Cooldown' },
+      'risk-r4-desc': { JP: '取引後一定時間は新規エントリーなし。連続取引を防止', EN: 'Prevents overtrading with cooldown between entries.' },
+      'risk-r5-title': { JP: '固定ストップロス', EN: 'Fixed Stop Loss' },
+      'risk-r5-desc': { JP: '全エントリーに固定SL設定。予期せぬ逆行から口座を保護', EN: 'Every entry has a fixed stop loss for protection.' },
+      'risk-r6-title': { JP: 'ポジションサイジング', EN: 'Position Sizing' },
+      'risk-r6-desc': { JP: 'シグナル強度と口座残高に基づき動的にロット調整', EN: 'Dynamic lot sizing based on signal strength and balance.' },
+      // FAQ section
+      'faq-section-title': { JP: 'よくある質問', EN: 'Frequently Asked Questions' },
+      'faq-q1': { JP: 'FusionGold M5 はどのように動きますか？', EN: 'How does FusionGold M5 work?' },
+      'faq-a1': { JP: 'ADXゲートで相場の質を判断し、4つの独立した視点からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。', EN: 'ADX gate assesses market quality, 4 buckets score the signal. H4 zone aligns with macro trend. Only trades ~4 hours daily.' },
+      'faq-q2': { JP: 'ライブ取引を閲覧できますか？', EN: 'Can I watch live trading?' },
+      'faq-a2': { JP: 'はい。7日間無料でリアルタイム取引を閲覧いただけます。MT5に口座を追加し、investor passwordでログイン。', EN: 'Yes. Watch real-time trading for 7 days free. Add the account in MT5 with the investor password.' },
+      'faq-q3': { JP: 'どのように申し込みますか？', EN: 'How do I apply?' },
+      'faq-a3': { JP: 'ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。', EN: 'Trade Japanese products for FusionGold M5. Contact us to start.' },
+      'faq-q4': { JP: 'リスク管理はどのようになっていますか？', EN: 'What risk management features are included?' },
+      'faq-a4': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。', EN: '5% daily loss limit, loss filter, aggregate risk control, cooldown, and more.' },
+      'faq-link': { JP: 'すべてのFAQを見る →', EN: 'View all FAQs →' },
+      // CTA section
+      'cta-title': { JP: 'ライブ取引を閲覧する', EN: 'Watch Live Trading' },
+      'cta-sub': { JP: 'MT5で以下の口座を追加して、リアルタイムの取引をご覧いただけます。', EN: 'Add the account below in MT5 to watch live trading in real time.' },
+      'cta-server': { JP: 'サーバー', EN: 'Server' },
+      'cta-broker': { JP: 'ブローカー', EN: 'Broker' },
+      'cta-account': { JP: '口座番号', EN: 'Account' },
+      'cta-psw-note': { JP: '※ 閲覧用パスワードはお問い合わせください。', EN: '※ Contact us for the investor (read-only) password.' },
+      'cta-contact': { JP: 'パスワードを請求する', EN: 'Request Password' },
+      'cta-trust': { JP: '📌 多くの日本EAサイトはスクリーンショットのみですが、当サイトでは実際の取引口座をリアルタイムでご確認いただけます。完全な透明性を約束します。', EN: '📌 Most Japanese EA sites only show screenshots — we offer real-time live account access. Full transparency.' },
+      'cta-faq': { JP: 'FAQを見る', EN: 'View FAQ' },
+      // Author section - additional
+      'author-p4': { JP: 'Jim Simonsの数学的アプローチに影響を受けたEA開発。MITオンライン講座で統計的学習を学び、XAUUSD専用の統計的優位性（エッジ）に基づくEAを開発。廈門を拠点に、英語教育と定量取引の両軸で活動。', EN: 'Inspired by Jim Simons. Studied statistical learning via MIT courses. Developed EA based on statistical edge in XAUUSD.' },
+      'feat-title': { JP: 'FusionGold M5 の特徴', EN: 'Features' },
+      'feat-sub': { JP: '4バケットスコアリング、ADXゲート、H4ゾーンフィルター — 精度を追求した設計', EN: '4-bucket scoring, ADX gates, H4 zone filter — precision-driven design' },
+      'f1-title': { JP: 'ADX + 4バケットスコアリング', EN: 'ADX + 4-Bucket Scoring' },
+      'f1-desc': { JP: 'トレンド/モメンタム/ストラクチャー/流動性の4軸で売買シグナルを評価。ADXゲートが不確実な相場を自動排除。', EN: '4-axis signal evaluation. ADX gates auto-filter uncertain markets.' },
+      'f2-title': { JP: 'H4ゾーンフィルター', EN: 'H4 Zone Filter' },
+      'f2-desc': { JP: '4時間足のEMA方向とH4ゾーンでフィルタリング。大きな流れに逆らわないトレード。', EN: 'EMA direction + zone filter. Never fights the macro trend.' },
+      'f3-title': { JP: '矛盾信号検出', EN: 'Contradiction Detection' },
+      'f3-desc': { JP: '同一バーで買いと売りが同時発生した場合、両方ブロック。相反する注文を防止。', EN: 'Blocks both directions when buy & sell fire simultaneously.' },
+      'f4-title': { JP: '4時間集中取引', EN: '4-Hour Session' },
+      'f4-desc': { JP: 'ロンドン/NYオーバーラップの高流動性帯に集中。1日4時間のみ取引。', EN: 'Focuses on the liquid London/NY overlap. Only 4 hours per day.' },
+      'f5-title': { JP: 'リスク管理内蔵', EN: 'Risk Management' },
+      'f5-desc': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御。口座を保護。', EN: '5% daily loss limit, consecutive loss filter, aggregate risk control.' },
+      'f6-title': { JP: 'MT5対応（IC Markets）', EN: 'MT5 Compatible (IC Markets)' },
+      'f6-desc': { JP: 'MT5で動作。IC Markets Raw Spread口座推奨。', EN: 'Runs on MT5. IC Markets Raw Spread recommended.' },
+      'perf-title': { JP: 'バックテスト実績', EN: 'Backtest Performance' },
+      'perf-sub': { JP: '2026年6月1日〜7月2日 · XAUUSD M1 · IC Markets Raw Spread', EN: 'Jun 1 – Jul 2, 2026 · XAUUSD M1 · IC Markets Raw Spread' },
+      'perf-trades': { JP: '総取引数', EN: 'Trades' },
+      'perf-winrate': { JP: '勝率', EN: 'Win Rate' },
+      'perf-profit': { JP: '純利益', EN: 'Net Profit' },
+      'perf-pf': { JP: 'PF', EN: 'PF' },
+      'perf-dd': { JP: '最大DD', EN: 'Max DD' },
+      'perf-hold': { JP: '平均保有', EN: 'Avg Hold' },
+      'price-title': { JP: 'ご利用方法', EN: 'How It Works' },
+      'price-sub': { JP: '現金不要。物々交換のみでご提供しています。', EN: 'No cash needed. Barter only.' },
+      'p3-name': { JP: '物々交換', EN: 'Barter Trade' },
+      'p3-price': { JP: '相談', EN: 'Negotiable' },
+      'p3-period': { JP: '現金不要', EN: 'No cash' },
+      'p3-desc': { JP: '日本製品とFusionGold M5を交換。お互いにとって価値ある取引を。', EN: 'Trade Japanese products for FusionGold M5. A deal of mutual value.' },
+      'p3-f1': { JP: 'EAファイル（.ex5）', EN: 'EA file (.ex5)' },
+      'p3-f2': { JP: '設定ガイド', EN: 'Setup guide' },
+      'p3-f3': { JP: 'メールサポート', EN: 'Email support' },
+      'p3-cta': { JP: '交換の詳細を問い合わせる', EN: 'Inquire About Barter' },
+      'barter-text': { JP: '以下のような日本製品と交換可能です。', EN: 'Exchangeable for Japanese products like:' },
+      // Live page
+      'live-title': { JP: 'ライブパフォーマンス', EN: 'Live Performance' },
+      'live-updated': { JP: '最終更新:', EN: 'Updated:' },
+      'live-balance': { JP: '残高', EN: 'Balance' },
+      'live-equity': { JP: '有効証拠金', EN: 'Equity' },
+      'live-daypnl': { JP: '本日P&L', EN: 'Day P&L' },
+      'live-positions': { JP: 'ポジション', EN: 'Positions' },
+      'live-status': { JP: 'ステータス', EN: 'Status' },
+      'live-session': { JP: 'セッション', EN: 'Session' },
+      'live-adx': { JP: 'ADX', EN: 'ADX' },
+      'live-spread': { JP: 'スプレッド', EN: 'Spread' },
+      'live-h4': { JP: 'H4 Buy/Sell', EN: 'H4 Buy/Sell' },
+      'live-bs': { JP: 'Buy/Sell', EN: 'Buy/Sell' },
+      'live-bb': { JP: 'Bull/Bear', EN: 'Bull/Bear' },
+      'live-cooldown': { JP: 'クールダウン', EN: 'Cooldown' },
+      'live-warn-loss': { JP: '連損フィルター作動中', EN: 'Consecutive Loss Filter Active' },
+      'live-warn-dailyloss': { JP: '日損リミット到達', EN: 'Daily Loss Limit Reached' },
+      'live-history': { JP: '日次P&L履歴', EN: 'Daily P&L History' },
+      'live-trades': { JP: '最新取引', EN: 'Recent Trades' },
+      'live-date': { JP: '日付', EN: 'Date' },
+      'live-pnl': { JP: 'P&L', EN: 'P&L' },
+      'live-tradecount': { JP: '取引数', EN: 'Trades' },
+      'live-time': { JP: '時間', EN: 'Time' },
+      'live-type': { JP: 'タイプ', EN: 'Type' },
+      'live-lot': { JP: 'ロット', EN: 'Lot' },
+      'live-result': { JP: '結果', EN: 'Result' },
+      // Live chart + stats
+      'live-equity-title': { JP: 'エクイティカーブ（フォワードテスト）', EN: 'Equity Curve (Forward Test)' },
+      'live-equity-sub': { JP: '直近の日次損益を累積表示。開始からのパフォーマンス推移。', EN: 'Cumulative daily P&L from the start of the forward test.' },
+      'live-period': { JP: '期間', EN: 'Period' },
+      'live-totalpnl': { JP: '総損益', EN: 'Total P&L' },
+      'live-wr-days': { JP: '取引日勝率', EN: 'Trading Day WR' },
+      'live-signal-title': { JP: '現在のシグナル状態', EN: 'Current Signal Status' },
+      'live-h4buy': { JP: 'H4買い許可', EN: 'H4 Buy' },
+      'live-h4sell': { JP: 'H4売り許可', EN: 'H4 Sell' },
+      'live-canbuy': { JP: '買いシグナル', EN: 'Buy Signal' },
+      'live-cansell': { JP: '売りシグナル', EN: 'Sell Signal' },
+      'live-needscore': { JP: '必要スコア', EN: 'Need Score' },
+      'live-risklimit': { JP: 'リスク制限', EN: 'Risk Limit' },
+      'live-risk-normal': { JP: '正常', EN: 'Normal' },
+      'live-risk-active': { JP: '発動中', EN: 'Active' },
+      'live-cooldown-none': { JP: 'なし', EN: 'None' },
+      'live-recent-title': { JP: '直近取引', EN: 'Recent Trades' },
+      'live-dir': { JP: '方向', EN: 'Dir' },
+      'live-lot': { JP: 'ロット', EN: 'Lot' },
+      'live-view-bt': { JP: 'バックテスト詳細はこちら', EN: 'View Backtest Details' },
+      'live-bt-btn': { JP: 'バックテストレポートを見る', EN: 'View Backtest Report' },
+      'live-liveaccount': { JP: 'リアル口座', EN: 'Live Account' },
+      // Brief page
+      'brief-title': { JP: 'XAUUSD デイリー分析', EN: 'XAUUSD Daily Brief' },
+      'brief-sub': { JP: '最新テクニカル分析 + HMMレジーム — 毎営業日更新', EN: 'Latest technical analysis & HMM regime — updated daily' },
+      'brief-price': { JP: '現在値', EN: 'Price' },
+      'brief-hmm': { JP: 'HMM', EN: 'HMM' },
+      'brief-conf': { JP: '確信度 0%', EN: '0% Confidence' },
+      'brief-signal': { JP: 'シグナル', EN: 'Signal' },
+      'brief-bb': { JP: 'BB', EN: 'BB' },
+      'brief-macd': { JP: 'MACD', EN: 'MACD' },
+      'brief-strat': { JP: '推奨戦略', EN: 'Strategy' },
+      'brief-entry': { JP: 'エントリー', EN: 'Entry' },
+      'brief-tp': { JP: '利確', EN: 'TP' },
+      'brief-sl': { JP: '損切', EN: 'SL' },
+      'brief-resist': { JP: 'レジスタンス', EN: 'Resistance' },
+      'brief-support': { JP: 'サポート', EN: 'Support' },
+      'brief-update': { JP: '最終更新: 2026-07-17 19:04 BJT', EN: 'Updated: 2026-07-17 19:04 BJT' },
+      'brief-note': { JP: '※ データは毎営業日19:00 BJTに自動更新されます', EN: '※ Data auto-updated daily at 19:00 BJT' },
+      // Contact page
+      'contact-title': { JP: 'お問い合わせ', EN: 'Contact Us' },
+      'contact-sub': { JP: 'お問い合わせ、デモ口座のリクエスト、物々交換の提案など、お気軽にどうぞ。', EN: 'Inquiries, demo requests, barter proposals — feel free to reach out.' },
+      'contact-name': { JP: 'お名前', EN: 'Name' },
+      'contact-email': { JP: 'メールアドレス', EN: 'Email' },
+      'contact-type': { JP: 'お問い合わせ種別', EN: 'Inquiry Type' },
+      'ct-type2': { JP: '物々交換について', EN: 'About Barter' },
+      'ct-type3': { JP: 'デモ口座について', EN: 'About Demo' },
+      'ct-type4': { JP: 'その他', EN: 'Other' },
+      'contact-msg': { JP: 'メッセージ', EN: 'Message' },
+      'contact-submit': { JP: '送信する', EN: 'Send' },
+      'contact-note': { JP: '※お返事までに1-2営業日いただく場合がございます。', EN: '※ We typically respond within 1-2 business days.' },
+      'contact-alt': { JP: 'こちらからもお問い合わせいただけます', EN: 'You can also reach us via:' },
+      // Blog section
+      'blog-title': { JP: '金色', EN: 'Blog' },
+      'blog-sub': { JP: 'XAUUSD分析、トレード戦略、EA最新情報', EN: 'XAUUSD Analysis, Trading Strategies & EA Updates' },
+      'blog-empty': { JP: 'まだ記事がありません', EN: 'No articles yet' },
+      'blog-empty2': { JP: '近日公開予定', EN: 'Coming soon' },
+      'blog-readmore': { JP: '続きを読む →', EN: 'Read more →' },
+      'blog-back': { JP: '← 金色一覧', EN: '← Back to Blog' },
+      // Author section
+      'author-title': { JP: '制作者について', EN: 'About the Author' },
+      'author-sub': { JP: '数学と金融理論に基づくEA開発', EN: 'EA development grounded in math & finance theory' },
+      'author-name': { JP: 'William — EA開発者・英語教育者', EN: 'William — EA Developer & English Educator' },
+      'author-p1': { JP: 'Jim Simons（ルネサンス・テクノロジーズ創業者）の数学的アプローチに深く影響を受け、パターン認識と統計的モデルに基づく定量取引戦略を研究。Simonsの「美しい数学が市場を解き明かす」という哲学が、FusionGold M5の設計思想の根幹を成しています。', EN: 'Deeply influenced by Jim Simons (founder of Renaissance Technologies), studying quantitative trading strategies based on pattern recognition and statistical models. Simons\' philosophy — "beautiful mathematics can unlock the market" — forms the core design philosophy of FusionGold M5.' },
+      'author-p2': { JP: 'さらに、MIT（マサチューセッツ工科大学）のオンライン講座「Financial Mathematics」および「Mathematics for Machine Learning」を修了。確率過程、時系列分析、機械学習の知識を活かし、ADX+4バケットスコアリングエンジンをゼロから構築しました。', EN: 'Also completed MIT online courses in "Financial Mathematics" and "Mathematics for Machine Learning." Applied knowledge of stochastic processes, time-series analysis, and machine learning to build the ADX + 4-bucket scoring engine from scratch.' },
+      'author-p3': { JP: 'Xiamen（廈門）を拠点に、英語教育と定量取引の両軸で活動。英語ライティング指導の経験から得た「シンプルで再現性のあるルール」へのこだわりが、EAの設計哲学にも反映されています。', EN: 'Based in Xiamen, working at the intersection of English education and quantitative trading. The commitment to "simple, reproducible rules" — honed through years of teaching English writing — is reflected in the EA\'s design philosophy.' },
+    },
+    set(lang) {
+      this.current = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (this.data[key] && this.data[key][lang]) el.textContent = this.data[key][lang];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (this.data[key] && this.data[key][lang]) el.placeholder = this.data[key][lang];
+      });
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      document.documentElement.lang = lang === 'JP' ? 'ja' : 'en';
+      document.documentElement.classList.remove('jp-mode', 'en-mode');
+      document.documentElement.classList.add(lang === 'JP' ? 'jp-mode' : 'en-mode');
+      // Locale-aware dates
+      const locale = lang === 'JP' ? 'ja-JP' : 'en-US';
+      document.querySelectorAll('[data-date]').forEach(el => {
+        const d = new Date(el.dataset.date);
+        if (!isNaN(d)) el.textContent = d.toLocaleDateString(locale);
+      });
+    }
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefer = (navigator.language || '').startsWith('ja');
+    LANG.set(prefer ? 'JP' : 'EN');
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.addEventListener('click', () => LANG.set(b.dataset.lang));
+    });
+    // Scroll animation
+    document.querySelectorAll('.fade-in').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+    // Mobile nav: hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks?.classList.toggle('open');
+      // Lock body scroll when menu is open on mobile
+      if (navLinks?.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+    // Mobile nav: dropdown click toggle
+    document.querySelectorAll('.dropdown-trigger').forEach(t => {
+      t.addEventListener('click', function(e) {
+        if (window.innerWidth > 820) return;
+        e.preventDefault();
+        this.closest('.dropdown').classList.toggle('open');
+      });
+    });
+    // Close mobile nav on link click
+    navLinks?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger?.classList.remove('open');
+        navLinks?.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    // Close mobile nav on click outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth > 820) return;
+      const nav = document.querySelector('.nav');
+      if (nav && !nav.contains(e.target)) {
+        hamburger?.classList.remove('open');
+        navLinks?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+  </script> </body> </html>
