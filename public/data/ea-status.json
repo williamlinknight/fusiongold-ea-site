@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-25 07:50 BJT",
+  "updated": "2026-07-27 23:12 BJT",
   "note": "MT5 Account History from 2026-07-13",
   "account": {
     "balance": 5007.81,
     "equity": 5007.81,
-    "dayPnL": -214.13,
-    "dayPnLPercent": -4.1,
+    "dayPnL": 0,
+    "dayPnLPercent": 0.0,
     "cumulativePnL": 916.04,
     "positions": 0,
     "status": "HALTED"
