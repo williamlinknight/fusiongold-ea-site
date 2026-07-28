@@ -1,9 +1,0 @@
-dist/
-docs/
-.astro/
-.DS_Store
-node_modules/
-.env
-.env.production
-.git-credentials
-.git-remote-url
