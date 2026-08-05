@@ -138,16 +138,21 @@ def _ssh_run(remote_cmd: str) -> subprocess.CompletedProcess:
 
 
 def _ensure_script_on_vps():
-    """Write MT5_SCRIPT to VPS via SCP if not already present or outdated."""
+    """Write MT5_SCRIPT to VPS via SCP if not present OR outdated.
+
+    Version check: the current script emits a "timezone" field in its JSON output.
+    Older cached copies on the VPS (which used +8h conversion and no BJT suffix)
+    do NOT contain this marker — detect via findstr and force a re-SCP.
+    """
     try:
-        # Check if script exists by SSH (single-quote to protect from local bash)
+        # Version marker: current MT5_SCRIPT contains "timezone" in the JSON output block
+        marker = '"timezone"'
         r = subprocess.run(
-            f"""{SSH_BASE} 'if exist "{VPS_SCRIPT}" echo EXISTS'""",
+            f"""{SSH_BASE} 'findstr /C:"timezone" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
         )
-        exists = b"EXISTS" in r.stdout
-        if exists:
-            return True  # Already exists, just use it
+        if b"CURRENT" in r.stdout:
+            return True  # Remote copy matches current version
 
         # Write via SCP using temp file (use forward slashes for SCP target path)
         with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
@@ -164,9 +169,9 @@ def _ensure_script_on_vps():
             print(f"SCP failed: {stderr[:200]}")
             return False
 
-        # Verify the file was written
+        # Verify the file was written and is the current version
         verify = subprocess.run(
-            f"""{SSH_BASE} 'if exist "{VPS_SCRIPT}" echo OK'""",
+            f"""{SSH_BASE} 'findstr /C:"timezone" "{VPS_SCRIPT}" >nul 2>&1 && echo OK'""",
             shell=True, capture_output=True, timeout=30
         )
         return b"OK" in verify.stdout
