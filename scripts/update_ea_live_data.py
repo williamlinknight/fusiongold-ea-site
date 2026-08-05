@@ -20,14 +20,15 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# IC Markets server time is UTC+3 (summer) / UTC+2 (winter)
-# BJT = UTC+8. Difference: +5h (summer) / +6h (winter)
-SERVER_UTC_OFFSET = 3  # IC Markets summer UTC+3
+# VERSION_MARKER = v3-ascii
+# IMPORTANT: history_deals_get() returns deal.time as a TRUE Unix epoch (UTC-based).
+# Verified empirically (2026-08-05): epoch 1785940135 == 14:28:55 UTC == 22:28:55 BJT.
+# So the correct BJT conversion is UTC + 8h, NOT server-time (UTC+3) + 5h.
 BJT_UTC_OFFSET = 8
-TZ_FIX = timedelta(hours=BJT_UTC_OFFSET - SERVER_UTC_OFFSET)  # +5h
+TZ_FIX = timedelta(hours=BJT_UTC_OFFSET)  # +8h: epoch (UTC) -> BJT (UTC+8)
 
 def _to_bjt(ts_int):
-    # Convert MT5 server timestamp (UTC+3 summer) to BJT (UTC+8)
+    # Convert MT5 Unix epoch timestamp (UTC) to BJT (UTC+8)
     return datetime.fromtimestamp(int(ts_int), tz=timezone.utc) + TZ_FIX
 
 try:
@@ -112,7 +113,7 @@ try:
         "lastTrades": last10,
         "tradeHistory": dh
     }
-    print(json.dumps(out, ensure_ascii=False))
+    print(json.dumps(out, ensure_ascii=True))  # ASCII-safe: Windows stdout is GBK, avoid mojibake in transit
     mt5.shutdown()
 except Exception as e:
     print(f"ERR:{e}")
@@ -140,15 +141,16 @@ def _ssh_run(remote_cmd: str) -> subprocess.CompletedProcess:
 def _ensure_script_on_vps():
     """Write MT5_SCRIPT to VPS via SCP if not present OR outdated.
 
-    Version check: the current script emits a "timezone" field in its JSON output.
-    Older cached copies on the VPS (which used +8h conversion and no BJT suffix)
-    do NOT contain this marker — detect via findstr and force a re-SCP.
+    Version check: the current script emits a "timezone" field in its JSON output
+    and carries a `VERSION_MARKER = v2-utc8` comment (the +8h epoch->BJT fix).
+    Older cached copies on the VPS (which used the wrong +5h conversion) lack this
+    marker — detect via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains "timezone" in the JSON output block
-        marker = '"timezone"'
+        # Version marker: current MT5_SCRIPT contains the v3-ascii marker comment
+        marker = "v3-ascii"
         r = subprocess.run(
-            f"""{SSH_BASE} 'findstr /C:"timezone" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
+            f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
         )
         if b"CURRENT" in r.stdout:
@@ -171,7 +173,7 @@ def _ensure_script_on_vps():
 
         # Verify the file was written and is the current version
         verify = subprocess.run(
-            f"""{SSH_BASE} 'findstr /C:"timezone" "{VPS_SCRIPT}" >nul 2>&1 && echo OK'""",
+            f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo OK'""",
             shell=True, capture_output=True, timeout=30
         )
         return b"OK" in verify.stdout
@@ -181,8 +183,15 @@ def _ensure_script_on_vps():
 
 
 def ssh_run_mt5() -> str:
-    """Run the MT5 updater script on VPS via SSH (simple call, no quoting chain)."""
-    remote_cmd = f"\"{PYTHON}\" {VPS_SCRIPT}"
+    """Run the MT5 updater script on VPS via SSH (simple call, no quoting chain).
+
+    Both paths MUST be double-quoted: an unquoted Windows path gets its
+    backslashes eaten by local bash (C:\\Users\\... -> C:Users...), and Windows
+    then resolves that drive-relative string to a stale leftover copy
+    (C:\\Users\\Administrator\\UsersAdministratorDesktop_ea_updater.py) instead
+    of the intended file.
+    """
+    remote_cmd = f"\"{PYTHON}\" \"{VPS_SCRIPT}\""
     r = _ssh_run(remote_cmd)
     out = r.stdout.decode("utf-8", errors="replace").strip()
     if r.returncode != 0:

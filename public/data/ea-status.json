@@ -1,25 +1,25 @@
 {
-  "updated": "2026-08-05 10:12 BJT",
+  "updated": "2026-08-05 23:35 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History from 2026-07-13",
   "account": {
-    "balance": 4988.21,
-    "equity": 4988.21,
-    "dayPnL": 0,
-    "dayPnLPercent": 0.0,
-    "cumulativePnL": 896.44,
+    "balance": 5367.91,
+    "equity": 5367.91,
+    "dayPnL": 117.79,
+    "dayPnLPercent": 2.24,
+    "cumulativePnL": 1094.66,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
-    "status": "WAITING",
-    "cooldown": 0
+    "status": "BLOCKED",
+    "cooldown": 15
   },
   "market": {
-    "adx": 0,
+    "adx": 44.18,
     "adxHard": 20,
-    "spread": 0,
-    "maxSpread": 50
+    "spread": 16.0,
+    "maxSpread": 50.0
   },
   "signal": {
     "bull": 0,
@@ -32,135 +32,170 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 199.53,
+    "maxRisk": 214.72,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
     {
-      "time": "08/04 22:50 BJT",
+      "time": "08/05 22:28 BJT",
+      "type": "BUY",
+      "lots": 0.16,
+      "pnl": 106.4
+    },
+    {
+      "time": "08/05 22:17 BJT",
+      "type": "BUY",
+      "lots": 0.17,
+      "pnl": 9.86
+    },
+    {
+      "time": "08/05 22:12 BJT",
+      "type": "BUY",
+      "lots": 0.14,
+      "pnl": 38.64
+    },
+    {
+      "time": "08/05 22:11 BJT",
+      "type": "BUY",
+      "lots": 0.12,
+      "pnl": 43.32
+    },
+    {
+      "time": "08/05 01:50 BJT",
       "type": "BUY",
       "lots": 0.06,
       "pnl": 19.44
     },
     {
-      "time": "08/04 22:34 BJT",
+      "time": "08/05 01:34 BJT",
       "type": "BUY",
       "lots": 0.06,
       "pnl": -64.98
     },
     {
-      "time": "08/04 22:30 BJT",
+      "time": "08/05 01:30 BJT",
       "type": "BUY",
       "lots": 0.06,
       "pnl": -62.58
     },
     {
-      "time": "08/04 22:02 BJT",
+      "time": "08/05 01:02 BJT",
       "type": "BUY",
       "lots": 0.07,
       "pnl": 24.36
     },
     {
-      "time": "08/04 21:58 BJT",
+      "time": "08/05 00:58 BJT",
       "type": "BUY",
       "lots": 0.07,
       "pnl": -65.73
     },
     {
-      "time": "08/04 21:48 BJT",
+      "time": "08/05 00:48 BJT",
       "type": "BUY",
       "lots": 0.07,
       "pnl": 25.69
-    },
-    {
-      "time": "08/04 21:48 BJT",
-      "type": "BUY",
-      "lots": 0.07,
-      "pnl": 23.1
-    },
-    {
-      "time": "08/04 21:36 BJT",
-      "type": "BUY",
-      "lots": 0.1,
-      "pnl": 46.8
-    },
-    {
-      "time": "08/04 21:35 BJT",
-      "type": "BUY",
-      "lots": 0.06,
-      "pnl": 18.84
-    },
-    {
-      "time": "08/04 21:35 BJT",
-      "type": "BUY",
-      "lots": 0.07,
-      "pnl": 23.03
     }
   ],
   "tradeHistory": [
     {
       "date": "2026-07-13",
-      "pnl": 562.82,
-      "trades": 20,
-      "winRate": 95.0,
+      "pnl": 111.46,
+      "trades": 9,
+      "winRate": 88.9,
+      "cumulative": 111.46
+    },
+    {
+      "date": "2026-07-14",
+      "pnl": 451.36,
+      "trades": 11,
+      "winRate": 100.0,
       "cumulative": 562.82
     },
     {
       "date": "2026-07-16",
-      "pnl": 153.33,
-      "trades": 18,
-      "winRate": 77.8,
-      "cumulative": 716.15
+      "pnl": -71.37,
+      "trades": 7,
+      "winRate": 57.1,
+      "cumulative": 491.45
     },
     {
       "date": "2026-07-17",
-      "pnl": -10.85,
-      "trades": 6,
-      "winRate": 66.7,
+      "pnl": 326.19,
+      "trades": 14,
+      "winRate": 92.9,
+      "cumulative": 817.64
+    },
+    {
+      "date": "2026-07-18",
+      "pnl": -112.34,
+      "trades": 3,
+      "winRate": 33.3,
       "cumulative": 705.3
     },
     {
       "date": "2026-07-20",
-      "pnl": 278.21,
-      "trades": 14,
-      "winRate": 71.4,
-      "cumulative": 983.51
+      "pnl": 182.18,
+      "trades": 4,
+      "winRate": 75.0,
+      "cumulative": 887.48
     },
     {
       "date": "2026-07-21",
-      "pnl": 186.63,
-      "trades": 9,
-      "winRate": 77.8,
-      "cumulative": 1170.14
+      "pnl": 96.03,
+      "trades": 10,
+      "winRate": 70.0,
+      "cumulative": 983.51
     },
     {
       "date": "2026-07-22",
-      "pnl": 23.93,
-      "trades": 8,
-      "winRate": 62.5,
+      "pnl": 84.08,
+      "trades": 14,
+      "winRate": 64.3,
+      "cumulative": 1067.59
+    },
+    {
+      "date": "2026-07-23",
+      "pnl": 126.48,
+      "trades": 3,
+      "winRate": 100.0,
       "cumulative": 1194.07
     },
     {
       "date": "2026-07-24",
-      "pnl": -278.03,
-      "trades": 10,
-      "winRate": 50.0,
+      "pnl": -63.9,
+      "trades": 4,
+      "winRate": 75.0,
+      "cumulative": 1130.17
+    },
+    {
+      "date": "2026-07-25",
+      "pnl": -214.13,
+      "trades": 6,
+      "winRate": 33.3,
       "cumulative": 916.04
     },
     {
       "date": "2026-08-03",
-      "pnl": 60.83,
-      "trades": 23,
-      "winRate": 73.9,
-      "cumulative": 976.87
+      "pnl": 134.53,
+      "trades": 11,
+      "winRate": 81.8,
+      "cumulative": 1050.57
     },
     {
       "date": "2026-08-04",
-      "pnl": -80.43,
-      "trades": 14,
-      "winRate": 64.3,
-      "cumulative": 896.44
+      "pnl": -73.7,
+      "trades": 12,
+      "winRate": 66.7,
+      "cumulative": 976.87
+    },
+    {
+      "date": "2026-08-05",
+      "pnl": 117.79,
+      "trades": 18,
+      "winRate": 72.2,
+      "cumulative": 1094.66
     }
   ]
 }
