@@ -20,15 +20,19 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# VERSION_MARKER = v3-ascii
-# IMPORTANT: history_deals_get() returns deal.time as a TRUE Unix epoch (UTC-based).
-# Verified empirically (2026-08-05): epoch 1785940135 == 14:28:55 UTC == 22:28:55 BJT.
-# So the correct BJT conversion is UTC + 8h, NOT server-time (UTC+3) + 5h.
+# VERSION_MARKER = v4-utc3
+# IMPORTANT (2026-08-06 regression fix): history_deals_get() returns deal.time as
+# IC MARKETS SERVER TIME (summer UTC+3, winter UTC+2), NOT true Unix UTC epoch.
+# The 08-05 23:37 cron session wrongly switched this to +8h after misreading a probe
+# (fromtimestamp(epoch) shows 14:28:55, they assumed real UTC, but the VPS Expert log
+# proves the same trade closed 19:28:55 BJT -> +5h). Reverted here.
+# Correct BJT conversion: server UTC+3 -> BJT UTC+8 = +5h.
+SERVER_UTC_OFFSET = 3  # IC Markets summer
 BJT_UTC_OFFSET = 8
-TZ_FIX = timedelta(hours=BJT_UTC_OFFSET)  # +8h: epoch (UTC) -> BJT (UTC+8)
+TZ_FIX = timedelta(hours=BJT_UTC_OFFSET - SERVER_UTC_OFFSET)  # +5h
 
 def _to_bjt(ts_int):
-    # Convert MT5 Unix epoch timestamp (UTC) to BJT (UTC+8)
+    # Convert MT5 deal.time (IC Markets server time UTC+3) to BJT (UTC+8) = +5h
     return datetime.fromtimestamp(int(ts_int), tz=timezone.utc) + TZ_FIX
 
 try:
@@ -142,13 +146,14 @@ def _ensure_script_on_vps():
     """Write MT5_SCRIPT to VPS via SCP if not present OR outdated.
 
     Version check: the current script emits a "timezone" field in its JSON output
-    and carries a `VERSION_MARKER = v2-utc8` comment (the +8h epoch->BJT fix).
-    Older cached copies on the VPS (which used the wrong +5h conversion) lack this
-    marker — detect via findstr and force a re-SCP.
+    and carries a `VERSION_MARKER = v4-utc3` comment (server UTC+3 -> BJT +5h fix).
+    Older cached copies on the VPS (v3-ascii which wrongly used +8h, or v2 which
+    lacked the marker) are detected via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains the v3-ascii marker comment
-        marker = "v3-ascii"
+        # Version marker: current MT5_SCRIPT contains the v4-utc3 marker comment
+        # (v3-ascii wrongly used +8h; v4-utc3 reverts to server UTC+3 -> BJT +5h).
+        marker = "v4-utc3"
         r = subprocess.run(
             f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
