@@ -2,10 +2,30 @@
 export interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const siteBase = '/fusiongold-ea-site';
-// debug
+
+// Per-page canonical URL: strip the base prefix from the current pathname and
+// join with the site root, so every page canonicals to itself (not the homepage).
+// GitHub Pages serves directory routes with a trailing slash, so normalize to it.
+const pathname = Astro.url.pathname.replace(Astro.base, '/');
+const canonicalPath = pathname.endsWith('/') ? pathname : pathname + '/';
+const canonical = new URL(canonicalPath, Astro.site).href;
+
+// Normalize <title>: strip any HTML tags, collapse a duplicate brand suffix,
+// and append the brand only when the page title doesn't already carry it.
+const rawTitle = String(title).replace(/<[^>]*>/g, '').trim();
+const pageTitle = /\|\s*FusionGold M5\s*$/.test(rawTitle)
+  ? rawTitle
+  : rawTitle.startsWith('FusionGold M5')
+    ? rawTitle
+    : `${rawTitle} | FusionGold M5`;
+
+const robots = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1';
 ---
 
 <!DOCTYPE html>
@@ -13,27 +33,29 @@ const siteBase = '/fusiongold-ea-site';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | FusionGold M5</title>
+  <title>{pageTitle}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content="XAUUSD EA, ゴールド自動売買, MT5 EA, 金EA, FusionGold M5, 物々交換, XAUUSDトレード, エキスパートアドバイザー" />
-  <link rel="canonical" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
-  <!-- hreflang for JP/EN bilingual -->
-  <link rel="alternate" hreflang="ja" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
-  <link rel="alternate" hreflang="en" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
-  <link rel="alternate" hreflang="x-default" href="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <meta name="robots" content={robots} />
+  <link rel="canonical" href={canonical} />
+  <!-- hreflang for JP/EN bilingual (same URL, client-side toggle) -->
+  <link rel="alternate" hreflang="ja" href={canonical} />
+  <link rel="alternate" hreflang="en" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={canonical} />
   <!-- Open Graph -->
-  <meta property="og:title" content={title} />
+  <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content="https://williamlinknight.github.io/fusiongold-ea-site/" />
+  <meta property="og:url" content={canonical} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="FusionGold M5" />
   <meta property="og:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="FusionGold M5 — XAUUSD（ゴールド）専用EA" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
+  <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://williamlinknight.github.io/fusiongold-ea-site/og-image.jpg" />
   <meta name="google-site-verification" content="FGKyrzvPC8r6Bdi7XpcgyVYiXFVDdTatDMa5SmlIBoY" />

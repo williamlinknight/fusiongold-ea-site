@@ -13,6 +13,12 @@ export default defineConfig({
           en: 'en-US',
         },
       },
+      serialize: (item) => {
+        // GitHub Pages serves directory routes with a trailing slash and 301-redirects
+        // the slash-less form; keep sitemap URLs canonical to avoid redirect chains.
+        if (!item.url.endsWith('/')) item.url += '/';
+        return item;
+      },
     }),
   ],
   server: { host: '127.0.0.1', port: 3000 },
