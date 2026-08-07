@@ -399,7 +399,7 @@ const robots = noindex
       <a href={siteBase + '/blog/'} data-i18n="nav-blog">ブログ</a>
 
       <a href={siteBase + '/contact/'} data-i18n="nav-contact">お問い合わせ</a>
-      <a href={siteBase + '/#live-performance'} class="demo-nav-btn">Live</a>
+      <a href={siteBase + '/#live-performance'} class="demo-nav-btn">Demo</a>
       <div class="lang-toggle" role="radiogroup" aria-label="Language">
         <button class="lang-btn active" data-lang="JP" role="radio" aria-checked="true">JP</button>
         <button class="lang-btn" data-lang="EN" role="radio" aria-checked="false">EN</button>
@@ -426,7 +426,7 @@ const robots = noindex
       'nav-home': { JP: 'ホーム', EN: 'Home' },
       'nav-product': { JP: '製品', EN: 'Product' },
       'nav-learn': { JP: '学ぶ', EN: 'Learn' },
-      'nav-live': { JP: 'パフォーマンス', EN: 'Live Performance' },
+      'nav-live': { JP: 'パフォーマンス', EN: 'Demo Performance' },
       'nav-backtest': { JP: 'バックテスト', EN: 'Backtest Report' },
       'nav-setup': { JP: 'セットアップ', EN: 'Setup Guide' },
       'nav-strategy': { JP: '戦略', EN: 'Strategy' },
@@ -444,8 +444,8 @@ const robots = noindex
       'hero-sub2': { JP: 'IC Markets MT5対応 · 1日4時間集中取引 · リスク管理内蔵', EN: 'IC Markets (MT5) · 4hr session · Built-in risk management' },
       'hero-cta': { JP: '特徴を見る', EN: 'See Features' },
       'hero-brief': { JP: 'デイリー分析', EN: 'Daily Brief' },
-      'hero-demo': { JP: '→ ライブパフォーマンスを見る', EN: '→ View Live Performance' },
-      'hero-demo-cta': { JP: 'ライブ取引を見る', EN: 'Watch Live Trading' },
+      'hero-demo': { JP: '→ デモパフォーマンスを見る', EN: '→ View Demo Performance' },
+      'hero-demo-cta': { JP: 'デモ取引を見る', EN: 'Watch Demo Trading' },
       'hero-stat-winrate': { JP: '勝率（フォワード）', EN: 'Win Rate (Forward)' },
       'hero-stat-profit': { JP: '純利益', EN: 'Net Profit' },
       'hero-stat-pf': { JP: 'プロフィットファクター', EN: 'Profit Factor' },
@@ -478,14 +478,14 @@ const robots = noindex
       'bt-lbl-winrate-sell': { JP: '売り勝率', EN: 'Sell Win Rate' },
       'bt-detail-link': { JP: '詳細レポートを見る', EN: 'View Full Report' },
       // Forward test section
-      'fw-title': { JP: 'フォワードテスト（リアル口座）', EN: 'Forward Test (Live Account)' },
-      'fw-sub': { JP: 'IC Markets Raw Spread · リアル口座で稼働中', EN: 'IC Markets Raw Spread · Running on live account' },
+      'fw-title': { JP: 'フォワードテスト（デモ口座）', EN: 'Forward Test (Demo Account)' },
+      'fw-sub': { JP: 'IC Markets Raw Spread · デモ口座で稼働中', EN: 'IC Markets Raw Spread · Running on demo account' },
       'fw-balance': { JP: '口座残高', EN: 'Balance' },
       'fw-daypnl': { JP: '本日P&L', EN: 'Day P&L' },
       'fw-period': { JP: '運用期間', EN: 'Running Days' },
       'fw-period-unit': { JP: '日', EN: ' days' },
       'fw-totalpnl': { JP: '累計損益', EN: 'Cumulative P&L' },
-      'fw-link': { JP: 'ライブパフォーマンスを見る →', EN: 'View live performance →' },
+      'fw-link': { JP: 'デモパフォーマンスを見る →', EN: 'View demo performance →' },
       // Setup section
       'setup-section-title': { JP: 'セットアップの流れ', EN: 'Setup Steps' },
       'setup-section-sub': { JP: '15〜30分で運用開始', EN: 'Start trading in 15–30 minutes' },
@@ -515,22 +515,22 @@ const robots = noindex
       'faq-section-title': { JP: 'よくある質問', EN: 'Frequently Asked Questions' },
       'faq-q1': { JP: 'FusionGold M5 はどのように動きますか？', EN: 'How does FusionGold M5 work?' },
       'faq-a1': { JP: 'ADXゲートで相場の質を判断し、4つの独立した視点からスコアリング。H4ゾーンフィルターで大きな流れに逆らわず、矛盾信号を検出した場合は取引をブロック。1日約4時間だけ取引を行います。', EN: 'ADX gate assesses market quality, 4 buckets score the signal. H4 zone aligns with macro trend. Only trades ~4 hours daily.' },
-      'faq-q2': { JP: 'ライブ取引を閲覧できますか？', EN: 'Can I watch live trading?' },
-      'faq-a2': { JP: 'はい。7日間無料でリアルタイム取引を閲覧いただけます。MT5に口座を追加し、investor passwordでログイン。', EN: 'Yes. Watch real-time trading for 7 days free. Add the account in MT5 with the investor password.' },
+      'faq-q2': { JP: 'デモ取引を閲覧できますか？', EN: 'Can I watch demo trading?' },
+      'faq-a2': { JP: 'はい。デモ口座での取引を7日間無料でリアルタイム閲覧いただけます。MT5に口座を追加し、investor passwordでログイン。', EN: 'Yes. Watch demo-account trading in real time for 7 days free. Add the account in MT5 with the investor password.' },
       'faq-q3': { JP: 'どのように申し込みますか？', EN: 'How do I apply?' },
       'faq-a3': { JP: 'ゲーム機、日本酒、カメラレンズなど価値ある日本製品とFusionGold M5を交換。まずはお問い合わせフォームからご連絡ください。', EN: 'Trade Japanese products for FusionGold M5. Contact us to start.' },
       'faq-q4': { JP: 'リスク管理はどのようになっていますか？', EN: 'What risk management features are included?' },
       'faq-a4': { JP: '日損5%リミット、連敗フィルター、Aggregate Risk制御、クールダウン機能など、多層のリスク管理システムを内蔵しています。', EN: '5% daily loss limit, loss filter, aggregate risk control, cooldown, and more.' },
       'faq-link': { JP: 'すべてのFAQを見る →', EN: 'View all FAQs →' },
       // CTA section
-      'cta-title': { JP: 'ライブ取引を閲覧する', EN: 'Watch Live Trading' },
-      'cta-sub': { JP: 'MT5で以下の口座を追加して、リアルタイムの取引をご覧いただけます。', EN: 'Add the account below in MT5 to watch live trading in real time.' },
+      'cta-title': { JP: 'デモ取引を閲覧する', EN: 'Watch Demo Trading' },
+      'cta-sub': { JP: 'MT5で以下のデモ口座を追加して、リアルタイムの取引をご覧いただけます。', EN: 'Add the demo account below in MT5 to watch trading in real time.' },
       'cta-server': { JP: 'サーバー', EN: 'Server' },
       'cta-broker': { JP: 'ブローカー', EN: 'Broker' },
       'cta-account': { JP: '口座番号', EN: 'Account' },
       'cta-psw-note': { JP: '※ 閲覧用パスワードはお問い合わせください。', EN: '※ Contact us for the investor (read-only) password.' },
       'cta-contact': { JP: 'パスワードを請求する', EN: 'Request Password' },
-      'cta-trust': { JP: '📌 多くの日本EAサイトはスクリーンショットのみですが、当サイトでは実際の取引口座をリアルタイムでご確認いただけます。完全な透明性を約束します。', EN: '📌 Most Japanese EA sites only show screenshots — we offer real-time live account access. Full transparency.' },
+      'cta-trust': { JP: '📌 多くの日本EAサイトはスクリーンショットのみですが、当サイトではデモ口座での取引をリアルタイムでご確認いただけます。完全な透明性を約束します。', EN: '📌 Most Japanese EA sites only show screenshots — we show real-time demo-account trading. Full transparency.' },
       'cta-faq': { JP: 'FAQを見る', EN: 'View FAQ' },
       // Author section - additional
       'author-p4': { JP: 'Jim Simonsの数学的アプローチに影響を受けたEA開発。MITオンライン講座で統計的学習を学び、XAUUSD専用の統計的優位性（エッジ）に基づくEAを開発。廈門を拠点に、英語教育と定量取引の両軸で活動。', EN: 'Inspired by Jim Simons. Studied statistical learning via MIT courses. Developed EA based on statistical edge in XAUUSD.' },
@@ -568,7 +568,7 @@ const robots = noindex
       'p3-cta': { JP: '交換の詳細を問い合わせる', EN: 'Inquire About Barter' },
       'barter-text': { JP: '以下のような日本製品と交換可能です。', EN: 'Exchangeable for Japanese products like:' },
       // Live page
-      'live-title': { JP: 'ライブパフォーマンス', EN: 'Live Performance' },
+      'live-title': { JP: 'デモパフォーマンス（フォワードテスト）', EN: 'Demo Performance (Forward Test)' },
       'live-updated': { JP: '最終更新:', EN: 'Updated:' },
       'live-balance': { JP: '残高', EN: 'Balance' },
       'live-equity': { JP: '有効証拠金', EN: 'Equity' },
@@ -614,7 +614,7 @@ const robots = noindex
       'live-lot': { JP: 'ロット', EN: 'Lot' },
       'live-view-bt': { JP: 'バックテスト詳細はこちら', EN: 'View Backtest Details' },
       'live-bt-btn': { JP: 'バックテストレポートを見る', EN: 'View Backtest Report' },
-      'live-liveaccount': { JP: 'リアル口座', EN: 'Live Account' },
+      'live-liveaccount': { JP: 'デモ口座', EN: 'Demo Account' },
       // Brief page
       'brief-title': { JP: 'XAUUSD デイリー分析', EN: 'XAUUSD Daily Brief' },
       'brief-sub': { JP: '最新テクニカル分析 + HMMレジーム — 毎営業日更新', EN: 'Latest technical analysis & HMM regime — updated daily' },

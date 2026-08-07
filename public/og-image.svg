@@ -30,5 +30,5 @@
   <text x="450" y="340" font-family="monospace" font-size="18" fill="#8A8A9A">Forward Test Running</text>
   <!-- Bottom bar -->
   <rect x="0" y="580" width="1200" height="50" fill="rgba(255,255,255,0.02)"/>
-  <text x="600" y="610" font-family="'Noto Sans JP',sans-serif" font-size="14" fill="#8A8A9A" text-anchor="middle">リアルタイム口座公開中 · 完全透明性</text>
+  <text x="600" y="610" font-family="'Noto Sans JP',sans-serif" font-size="14" fill="#8A8A9A" text-anchor="middle">デモ口座フォワードテスト公開中 · 完全透明性</text>
 </svg>
