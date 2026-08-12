@@ -20,7 +20,7 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# VERSION_MARKER = v4-utc3
+# VERSION_MARKER = v5.1-fullrange-clip
 # IMPORTANT (2026-08-06 regression fix): history_deals_get() returns deal.time as
 # IC MARKETS SERVER TIME (summer UTC+3, winter UTC+2), NOT true Unix UTC epoch.
 # The 08-05 23:37 cron session wrongly switched this to +8h after misreading a probe
@@ -41,8 +41,11 @@ try:
     if not acc:
         sys.exit(1)
 
-    # Get ALL deals from July 13 onward
-    deals = mt5.history_deals_get(datetime(2026, 7, 13), datetime.now())
+    # Get ALL deals (full-year range, 2026-01-01 -> 2027-01-01).
+    # Why: on 2026-08-11/12 the old 07-13->now range returned a STALE local
+    # history cache (stopped at 08/10 23:08, missing 08/11's 18 trades). A
+    # full-year range forces the terminal to re-sync (day_deals.py proved it).
+    deals = mt5.history_deals_get(datetime(2026, 1, 1), datetime(2027, 1, 1))
     pos = {}
     for d in deals:
         pid = d.position_id
@@ -55,8 +58,15 @@ try:
             pos[pid]["pnl"] = round(d.profit, 2)
             pos[pid]["ct"] = str(d.time)
 
-    # Closed trades only
-    closed = [p for p in pos.values() if p["pnl"] != 0]
+    # Closed trades only — filter to the official account period (>= 2026-07-13).
+    # The full-year query above forces the terminal to re-sync its stale local
+    # history cache, but pre-07-13 deals belong to earlier EA/test history and
+    # must NOT enter tradeHistory / cumulativePnL (site start = 07-13).
+    CLIP_START = datetime(2026, 7, 13).date()
+    closed = [
+        p for p in pos.values()
+        if p["pnl"] != 0 and _to_bjt(int(p["ct"])).date() >= CLIP_START
+    ]
     closed.sort(key=lambda x: x["ct"], reverse=True)
 
     # Daily aggregation
@@ -100,7 +110,7 @@ try:
     out = {
         "updated": (datetime.fromtimestamp(time.time(), tz=timezone.utc) + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M BJT"),
         "timezone": "BJT (UTC+8 / 北京时间)",
-        "note": "MT5 Account History from 2026-07-13",
+        "note": "MT5 Account History (2026 full year)",
         "account": {
             "balance": round(acc.balance, 2),
             "equity": round(acc.equity, 2),
@@ -145,15 +155,16 @@ def _ssh_run(remote_cmd: str) -> subprocess.CompletedProcess:
 def _ensure_script_on_vps():
     """Write MT5_SCRIPT to VPS via SCP if not present OR outdated.
 
-    Version check: the current script emits a "timezone" field in its JSON output
-    and carries a `VERSION_MARKER = v4-utc3` comment (server UTC+3 -> BJT +5h fix).
-    Older cached copies on the VPS (v3-ascii which wrongly used +8h, or v2 which
-    lacked the marker) are detected via findstr and force a re-SCP.
+    Version check: the current script carries a `VERSION_MARKER = v5-fullrange`
+    comment (v4-utc3 = +5h timezone fix; v5 = full-year query range that forces
+    the terminal to re-sync its stale local history cache). Older cached copies
+    on the VPS are detected via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains the v4-utc3 marker comment
-        # (v3-ascii wrongly used +8h; v4-utc3 reverts to server UTC+3 -> BJT +5h).
-        marker = "v4-utc3"
+        # Version marker: current MT5_SCRIPT contains the v5.1-fullrange-clip
+        # marker comment (v4-utc3 = +5h timezone fix; v5 = full-year query;
+        # v5.1 = clip pre-07-13 history out of the aggregation).
+        marker = "v5.1-fullrange-clip"
         r = subprocess.run(
             f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
