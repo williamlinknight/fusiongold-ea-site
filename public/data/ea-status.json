@@ -1,10 +1,10 @@
 {
-  "updated": "2026-08-14 23:11 BJT",
+  "updated": "2026-08-17 23:11 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 3021.81,
-    "equity": 3021.81,
+    "balance": 3079.21,
+    "equity": 3079.21,
     "dayPnL": 0,
     "dayPnLPercent": 0.0,
     "cumulativePnL": 1370.17,
@@ -13,12 +13,12 @@
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 1037
+    "cooldown": 11
   },
   "market": {
-    "adx": 22.34,
+    "adx": 39.46,
     "adxHard": 20,
-    "spread": 17.0,
+    "spread": 15.0,
     "maxSpread": 50.0
   },
   "signal": {
@@ -32,7 +32,7 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 120.87,
+    "maxRisk": 123.17,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
