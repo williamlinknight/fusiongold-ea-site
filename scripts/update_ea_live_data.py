@@ -20,7 +20,13 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# VERSION_MARKER = v5.1-fullrange-clip
+# VERSION_MARKER = v6.1-start0814-3000
+# IMPORTANT (2026-08-22): site baseline = 08-14, starting balance $3000.
+# The demo account blew up on 08-14 (3x 1.0-lot SL = -4678.60) and was reset
+# with a +2500 deposit at 20:09 BJT -> closing balance 3021.81. Site口径:
+# start $3000, exclude the 08-14 blowup trades (CLIP_START=08-15), and insert
+# a 08-14 "start day" with pnl = 3021.81 - 3000 = +21.81 (reset basis diff)
+# so the equity curve starts at exactly $3000.
 # IMPORTANT (2026-08-06 regression fix): history_deals_get() returns deal.time as
 # IC MARKETS SERVER TIME (summer UTC+3, winter UTC+2), NOT true Unix UTC epoch.
 # The 08-05 23:37 cron session wrongly switched this to +8h after misreading a probe
@@ -58,11 +64,13 @@ try:
             pos[pid]["pnl"] = round(d.profit, 2)
             pos[pid]["ct"] = str(d.time)
 
-    # Closed trades only — filter to the official account period (>= 2026-07-13).
-    # The full-year query above forces the terminal to re-sync its stale local
-    # history cache, but pre-07-13 deals belong to earlier EA/test history and
-    # must NOT enter tradeHistory / cumulativePnL (site start = 07-13).
-    CLIP_START = datetime(2026, 7, 13).date()
+    # Closed trades only — filter to the official account period (>= 2026-08-15).
+    # 08-14 itself is the demo reset day: 3x 1.0-lot stop-outs (-4678.60) blew
+    # the account, then +2500 deposit restored it to 3021.81. Those blowup
+    # trades are pre-baseline history and must NOT enter tradeHistory. The
+    # 08-14 start day (pnl=+21.81 = 3021.81 - 3000) is inserted below so the
+    # equity curve starts at the user-specified $3000.
+    CLIP_START = datetime(2026, 8, 15).date()
     closed = [
         p for p in pos.values()
         if p["pnl"] != 0 and _to_bjt(int(p["ct"])).date() >= CLIP_START
@@ -89,8 +97,17 @@ try:
         })
 
     # Build tradeHistory with cumulative
-    total = sum(t["pnl"] for t in closed)
-    dh, cum = [], 0
+    # 08-14 start day (v6.1): demo reset basis — actual post-reset balance was
+    # 3021.81, user-specified baseline is $3000, so the first equity point is
+    # 3000 + 21.81 = 3021.81, then real trading days follow. trades=0 so it
+    # doesn't pollute winRate/trade-count stats on the site (index.astro
+    # filters d.trades > 0 for those).
+    dh, cum = [], 21.81
+    dh.append({
+        "date": "2026-08-14", "pnl": 21.81,
+        "trades": 0, "winRate": 0.0,
+        "cumulative": round(cum, 2)
+    })
     for k in sorted(dn.keys()):
         v = dn[k]
         wr = round(v["win"] / v["cnt"] * 100, 1) if v["cnt"] > 0 else 0
@@ -161,10 +178,11 @@ def _ensure_script_on_vps():
     on the VPS are detected via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains the v5.1-fullrange-clip
+        # Version marker: current MT5_SCRIPT contains the v6.1-start0814-3000
         # marker comment (v4-utc3 = +5h timezone fix; v5 = full-year query;
-        # v5.1 = clip pre-07-13 history out of the aggregation).
-        marker = "v5.1-fullrange-clip"
+        # v5.1 = clip pre-07-13 history; v6.0 = clip pre-08-14;
+        # v6.1 = start at $3000 baseline, insert 08/14 reset start day).
+        marker = "v6.1-start0814-3000"
         r = subprocess.run(
             f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30

@@ -17,13 +17,15 @@ const lastTrades = liveData?.lastTrades || [];
 const totalPnl = th.reduce((s, d) => s + d.pnl, 0);
 
 // Compute live stats from forward test data
+// (trades > 0 filter: 08/14 start-day has pnl=+21.81 but 0 trades — it's the
+//  demo-reset basis, not a trading day, and must not count toward win rate)
 const liveTrades = th.reduce((s, d) => s + d.trades, 0);
-const liveWinDays = th.filter(d => d.pnl > 0).length;
-const liveLossDays = th.filter(d => d.pnl < 0).length;
+const liveWinDays = th.filter(d => d.trades > 0 && d.pnl > 0).length;
+const liveLossDays = th.filter(d => d.trades > 0 && d.pnl < 0).length;
 const liveWinDaysTotal = liveWinDays + liveLossDays;
 const liveDayWr = liveWinDaysTotal > 0 ? (liveWinDays / liveWinDaysTotal * 100).toFixed(1) : '0';
-const livePosSum = th.filter(d => d.pnl > 0).reduce((s, d) => s + d.pnl, 0);
-const liveNegSum = Math.abs(th.filter(d => d.pnl < 0).reduce((s, d) => s + d.pnl, 0));
+const livePosSum = th.filter(d => d.trades > 0 && d.pnl > 0).reduce((s, d) => s + d.pnl, 0);
+const liveNegSum = Math.abs(th.filter(d => d.trades > 0 && d.pnl < 0).reduce((s, d) => s + d.pnl, 0));
 const livePf = liveNegSum > 0 ? (livePosSum / liveNegSum).toFixed(2) : '-';
 // Max DD from equity curve
 let eqCum = (ld.balance || 4797) - totalPnl;
