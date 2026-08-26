@@ -1,24 +1,24 @@
 {
-  "updated": "2026-08-25 23:10 BJT",
+  "updated": "2026-08-26 23:10 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 3153.62,
-    "equity": 3153.62,
-    "dayPnL": -33.3,
-    "dayPnLPercent": -1.04,
-    "cumulativePnL": 153.62,
+    "balance": 3056.62,
+    "equity": 3056.62,
+    "dayPnL": -97.0,
+    "dayPnLPercent": -3.08,
+    "cumulativePnL": 56.62,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 41
+    "cooldown": 13
   },
   "market": {
-    "adx": 20.16,
+    "adx": 32.99,
     "adxHard": 20,
-    "spread": 19.0,
+    "spread": 15.0,
     "maxSpread": 50.0
   },
   "signal": {
@@ -32,11 +32,29 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 126.14,
+    "maxRisk": 122.26,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
+    {
+      "time": "08/26 22:52 BJT",
+      "type": "BUY",
+      "lots": 0.03,
+      "pnl": -39.63
+    },
+    {
+      "time": "08/26 20:30 BJT",
+      "type": "BUY",
+      "lots": 0.06,
+      "pnl": -63.6
+    },
+    {
+      "time": "08/26 20:22 BJT",
+      "type": "BUY",
+      "lots": 0.07,
+      "pnl": 6.23
+    },
     {
       "time": "08/25 19:51 BJT",
       "type": "BUY",
@@ -78,24 +96,6 @@
       "type": "BUY",
       "lots": 0.03,
       "pnl": -42.57
-    },
-    {
-      "time": "08/24 21:43 BJT",
-      "type": "BUY",
-      "lots": 0.03,
-      "pnl": 4.35
-    },
-    {
-      "time": "08/24 21:39 BJT",
-      "type": "BUY",
-      "lots": 0.04,
-      "pnl": -41.04
-    },
-    {
-      "time": "08/24 21:37 BJT",
-      "type": "BUY",
-      "lots": 0.04,
-      "pnl": 5.96
     }
   ],
   "tradeHistory": [
@@ -154,6 +154,13 @@
       "trades": 2,
       "winRate": 50.0,
       "cumulative": 153.62
+    },
+    {
+      "date": "2026-08-26",
+      "pnl": -97.0,
+      "trades": 3,
+      "winRate": 33.3,
+      "cumulative": 56.62
     }
   ]
 }
