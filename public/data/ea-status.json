@@ -1,24 +1,24 @@
 {
-  "updated": "2026-08-27 23:10 BJT",
+  "updated": "2026-08-28 23:10 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 2998.13,
-    "equity": 2998.13,
-    "dayPnL": -58.49,
-    "dayPnLPercent": -1.91,
-    "cumulativePnL": -1.87,
+    "balance": 3742.13,
+    "equity": 3742.13,
+    "dayPnL": 744.0,
+    "dayPnLPercent": 24.82,
+    "cumulativePnL": 742.13,
     "positions": 0,
-    "status": "RUNNING"
+    "status": "HALTED"
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 8
+    "cooldown": 1053
   },
   "market": {
-    "adx": 33.34,
+    "adx": 29.02,
     "adxHard": 20,
-    "spread": 15.0,
+    "spread": 22.0,
     "maxSpread": 50.0
   },
   "signal": {
@@ -32,11 +32,35 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 119.93,
+    "maxRisk": 149.69,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
+    {
+      "time": "08/28 18:52 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 290.0
+    },
+    {
+      "time": "08/28 16:28 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 103.0
+    },
+    {
+      "time": "08/28 11:52 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 267.0
+    },
+    {
+      "time": "08/28 10:16 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 84.0
+    },
     {
       "time": "08/27 22:43 BJT",
       "type": "SELL",
@@ -72,30 +96,6 @@
       "type": "SELL",
       "lots": 0.06,
       "pnl": 55.5
-    },
-    {
-      "time": "08/27 21:16 BJT",
-      "type": "SELL",
-      "lots": 0.06,
-      "pnl": 3.9
-    },
-    {
-      "time": "08/27 21:15 BJT",
-      "type": "SELL",
-      "lots": 0.06,
-      "pnl": 6.12
-    },
-    {
-      "time": "08/27 21:00 BJT",
-      "type": "SELL",
-      "lots": 0.08,
-      "pnl": 7.12
-    },
-    {
-      "time": "08/27 21:00 BJT",
-      "type": "SELL",
-      "lots": 0.08,
-      "pnl": 4.72
     }
   ],
   "tradeHistory": [
@@ -168,6 +168,13 @@
       "trades": 12,
       "winRate": 58.3,
       "cumulative": -1.87
+    },
+    {
+      "date": "2026-08-28",
+      "pnl": 744.0,
+      "trades": 4,
+      "winRate": 100.0,
+      "cumulative": 742.13
     }
   ]
 }
