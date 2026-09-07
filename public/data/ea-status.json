@@ -1,25 +1,25 @@
 {
-  "updated": "2026-09-04 23:11 BJT",
+  "updated": "2026-09-07 23:11 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 4369.97,
-    "equity": 4369.97,
-    "dayPnL": 1369.0,
-    "dayPnLPercent": 45.62,
-    "cumulativePnL": -3600.03,
+    "balance": 4326.47,
+    "equity": 4326.47,
+    "dayPnL": -43.5,
+    "dayPnLPercent": -1.0,
+    "cumulativePnL": -3643.53,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
-    "status": "BLOCKED",
-    "cooldown": 1206
+    "status": "WAITING",
+    "cooldown": 0
   },
   "market": {
-    "adx": 24.54,
+    "adx": 0,
     "adxHard": 20,
-    "spread": 18.0,
-    "maxSpread": 50.0
+    "spread": 0,
+    "maxSpread": 50
   },
   "signal": {
     "bull": 0,
@@ -32,11 +32,35 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 174.8,
+    "maxRisk": 173.06,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
+    {
+      "time": "09/07 21:15 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 111.0
+    },
+    {
+      "time": "09/07 21:02 BJT",
+      "type": "SELL",
+      "lots": 0.1,
+      "pnl": -51.3
+    },
+    {
+      "time": "09/07 20:45 BJT",
+      "type": "SELL",
+      "lots": 0.08,
+      "pnl": -55.6
+    },
+    {
+      "time": "09/07 20:41 BJT",
+      "type": "SELL",
+      "lots": 0.07,
+      "pnl": -47.6
+    },
     {
       "time": "09/04 21:39 BJT",
       "type": "SELL",
@@ -72,30 +96,6 @@
       "type": "SELL",
       "lots": 1.0,
       "pnl": 59.0
-    },
-    {
-      "time": "09/04 16:45 BJT",
-      "type": "SELL",
-      "lots": 1.0,
-      "pnl": 92.0
-    },
-    {
-      "time": "09/04 16:21 BJT",
-      "type": "SELL",
-      "lots": 1.0,
-      "pnl": 36.0
-    },
-    {
-      "time": "09/04 16:14 BJT",
-      "type": "SELL",
-      "lots": 1.0,
-      "pnl": 53.0
-    },
-    {
-      "time": "09/04 16:13 BJT",
-      "type": "SELL",
-      "lots": 1.0,
-      "pnl": 17.0
     }
   ],
   "tradeHistory": [
@@ -210,6 +210,13 @@
       "trades": 12,
       "winRate": 100.0,
       "cumulative": -3600.03
+    },
+    {
+      "date": "2026-09-07",
+      "pnl": -43.5,
+      "trades": 4,
+      "winRate": 25.0,
+      "cumulative": -3643.53
     }
   ]
 }
