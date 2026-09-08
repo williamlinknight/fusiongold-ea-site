@@ -1,25 +1,25 @@
 {
-  "updated": "2026-09-07 23:11 BJT",
+  "updated": "2026-09-08 23:10 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 4326.47,
-    "equity": 4326.47,
-    "dayPnL": -43.5,
-    "dayPnLPercent": -1.0,
-    "cumulativePnL": -3643.53,
+    "balance": 4474.47,
+    "equity": 4474.47,
+    "dayPnL": 148.0,
+    "dayPnLPercent": 3.42,
+    "cumulativePnL": -3495.53,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
-    "status": "WAITING",
-    "cooldown": 0
+    "status": "BLOCKED",
+    "cooldown": 1206
   },
   "market": {
-    "adx": 0,
+    "adx": 14.84,
     "adxHard": 20,
-    "spread": 0,
-    "maxSpread": 50
+    "spread": 16.0,
+    "maxSpread": 50.0
   },
   "signal": {
     "bull": 0,
@@ -32,11 +32,23 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 173.06,
+    "maxRisk": 178.98,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
+    {
+      "time": "09/08 18:26 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 87.0
+    },
+    {
+      "time": "09/08 18:25 BJT",
+      "type": "SELL",
+      "lots": 1.0,
+      "pnl": 61.0
+    },
     {
       "time": "09/07 21:15 BJT",
       "type": "SELL",
@@ -84,18 +96,6 @@
       "type": "SELL",
       "lots": 1.0,
       "pnl": 6.0
-    },
-    {
-      "time": "09/04 16:56 BJT",
-      "type": "BUY",
-      "lots": 1.0,
-      "pnl": 164.0
-    },
-    {
-      "time": "09/04 16:54 BJT",
-      "type": "SELL",
-      "lots": 1.0,
-      "pnl": 59.0
     }
   ],
   "tradeHistory": [
@@ -217,6 +217,13 @@
       "trades": 4,
       "winRate": 25.0,
       "cumulative": -3643.53
+    },
+    {
+      "date": "2026-09-08",
+      "pnl": 148.0,
+      "trades": 2,
+      "winRate": 100.0,
+      "cumulative": -3495.53
     }
   ]
 }
