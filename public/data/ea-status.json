@@ -1,24 +1,24 @@
 {
-  "updated": "2026-09-23 18:30 BJT",
+  "updated": "2026-09-25 06:11 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
-    "balance": 12808.35,
-    "equity": 12808.35,
-    "dayPnL": 489.0,
-    "dayPnLPercent": 3.97,
-    "cumulativePnL": 4711.4,
+    "balance": 13165.31,
+    "equity": 13165.31,
+    "dayPnL": 0,
+    "dayPnLPercent": 0.0,
+    "cumulativePnL": 5068.36,
     "positions": 0,
     "status": "RUNNING"
   },
   "session": {
     "status": "BLOCKED",
-    "cooldown": 1150
+    "cooldown": 1002
   },
   "market": {
-    "adx": 14.33,
+    "adx": 35.98,
     "adxHard": 20,
-    "spread": 19.0,
+    "spread": 20.0,
     "maxSpread": 50.0
   },
   "signal": {
@@ -32,11 +32,35 @@
   },
   "risk": {
     "aggRisk": 0,
-    "maxRisk": 512.33,
+    "maxRisk": 526.61,
     "dailyLossLimit": false,
     "consecutiveLossPause": false
   },
   "lastTrades": [
+    {
+      "time": "09/23 19:30 BJT",
+      "type": "SELL",
+      "lots": 0.45,
+      "pnl": 49.95
+    },
+    {
+      "time": "09/23 19:22 BJT",
+      "type": "SELL",
+      "lots": 0.41,
+      "pnl": 168.51
+    },
+    {
+      "time": "09/23 19:18 BJT",
+      "type": "SELL",
+      "lots": 0.52,
+      "pnl": 65.0
+    },
+    {
+      "time": "09/23 19:18 BJT",
+      "type": "SELL",
+      "lots": 0.42,
+      "pnl": 73.5
+    },
     {
       "time": "09/23 13:37 BJT",
       "type": "SELL",
@@ -72,30 +96,6 @@
       "type": "SELL",
       "lots": 0.22,
       "pnl": -162.58
-    },
-    {
-      "time": "09/22 19:16 BJT",
-      "type": "SELL",
-      "lots": 0.23,
-      "pnl": -150.65
-    },
-    {
-      "time": "09/21 20:56 BJT",
-      "type": "BUY",
-      "lots": 0.16,
-      "pnl": -140.8
-    },
-    {
-      "time": "09/21 20:26 BJT",
-      "type": "BUY",
-      "lots": 0.17,
-      "pnl": 15.47
-    },
-    {
-      "time": "09/21 19:56 BJT",
-      "type": "BUY",
-      "lots": 0.29,
-      "pnl": 19.14
     }
   ],
   "tradeHistory": [
@@ -297,10 +297,10 @@
     },
     {
       "date": "2026-09-23",
-      "pnl": 489.0,
-      "trades": 1,
+      "pnl": 845.96,
+      "trades": 5,
       "winRate": 100.0,
-      "cumulative": 4711.4
+      "cumulative": 5068.36
     }
   ]
 }
