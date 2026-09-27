@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25 06:11 BJT",
+  "updated": "2026-09-28 06:11 BJT",
   "timezone": "BJT (UTC+8 / 北京时间)",
   "note": "MT5 Account History (2026 full year)",
   "account": {
@@ -16,9 +16,9 @@
     "cooldown": 1002
   },
   "market": {
-    "adx": 35.98,
+    "adx": 52.72,
     "adxHard": 20,
-    "spread": 20.0,
+    "spread": 18.0,
     "maxSpread": 50.0
   },
   "signal": {
