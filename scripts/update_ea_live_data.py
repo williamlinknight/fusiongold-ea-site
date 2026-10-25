@@ -20,7 +20,7 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# VERSION_MARKER = v6.1-start0814-3000
+# VERSION_MARKER = v6.2-start0814-3000-staleguard
 # IMPORTANT (2026-08-22): site baseline = 08-14, starting balance $3000.
 # The demo account blew up on 08-14 (3x 1.0-lot SL = -4678.60) and was reset
 # with a +2500 deposit at 20:09 BJT -> closing balance 3021.81. Site口径:
@@ -52,6 +52,19 @@ try:
     # history cache (stopped at 08/10 23:08, missing 08/11's 18 trades). A
     # full-year range forces the terminal to re-sync (day_deals.py proved it).
     deals = mt5.history_deals_get(datetime(2026, 1, 1), datetime(2027, 1, 1))
+    # Stale-cache guard (added 2026-10-26): the FIRST wide-range call after a
+    # terminal restart / reconnect can return a cached set that stops weeks
+    # earlier (on 2026-10-26 it ended 09-23 while the terminal actually held
+    # deals through 10-23, silently dropping 7 trading days / +$1,533.20).
+    # Re-issue the query up to 2 more times and keep the largest result set;
+    # each call nudges the terminal to sync, so the largest set is the freshest.
+    for _ in range(2):
+        more = mt5.history_deals_get(datetime(2026, 1, 1), datetime(2027, 1, 1))
+        if more is not None and (deals is None or len(more) > len(deals)):
+            deals = more
+    if deals is None:
+        deals = []
+    print(f"DEALS_COUNT:{len(deals)}", file=sys.stderr)
     pos = {}
     for d in deals:
         pid = d.position_id
@@ -178,11 +191,13 @@ def _ensure_script_on_vps():
     on the VPS are detected via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains the v6.1-start0814-3000
+        # Version marker: current MT5_SCRIPT contains the v6.2-start0814-3000-staleguard
         # marker comment (v4-utc3 = +5h timezone fix; v5 = full-year query;
         # v5.1 = clip pre-07-13 history; v6.0 = clip pre-08-14;
-        # v6.1 = start at $3000 baseline, insert 08/14 reset start day).
-        marker = "v6.1-start0814-3000"
+        # v6.1 = start at $3000 baseline, insert 08/14 reset start day;
+        # v6.2 = re-query the deal range up to 3x and keep the largest set,
+        #        defeating the stale-cache first-call truncation of 2026-10-26).
+        marker = "v6.2-start0814-3000-staleguard"
         r = subprocess.run(
             f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
