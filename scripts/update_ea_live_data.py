@@ -20,7 +20,7 @@ SSH_BASE = f"sshpass -p '{VPS_PASS}' ssh -T {SSH_OPTS} {VPS_USER}@{VPS_HOST}"
 # Python script that runs ON the VPS via MT5 API
 MT5_SCRIPT = r"""import MetaTrader5 as mt5, json, sys, time
 from datetime import datetime, timezone, timedelta
-# VERSION_MARKER = v6.2-start0814-3000-staleguard
+# VERSION_MARKER = v6.3-dst-recent-union-outby
 # IMPORTANT (2026-08-22): site baseline = 08-14, starting balance $3000.
 # The demo account blew up on 08-14 (3x 1.0-lot SL = -4678.60) and was reset
 # with a +2500 deposit at 20:09 BJT -> closing balance 3021.81. Site口径:
@@ -32,14 +32,30 @@ from datetime import datetime, timezone, timedelta
 # The 08-05 23:37 cron session wrongly switched this to +8h after misreading a probe
 # (fromtimestamp(epoch) shows 14:28:55, they assumed real UTC, but the VPS Expert log
 # proves the same trade closed 19:28:55 BJT -> +5h). Reverted here.
-# Correct BJT conversion: server UTC+3 -> BJT UTC+8 = +5h.
-SERVER_UTC_OFFSET = 3  # IC Markets summer
+# IMPORTANT (2026-11-05): the offset is NOT constant. US DST ended 2026-11-01, the
+# server went UTC+3 -> UTC+2, and the hardcoded +5h started writing every trade one
+# hour early (verified against the VPS terminal log: deal #1653528643 logs at
+# 11-03 20:08:27 BJT but decoded as 19:08:27). Near-midnight trades were also being
+# bucketed into the wrong calendar day. Offset is now derived from US DST rules.
 BJT_UTC_OFFSET = 8
-TZ_FIX = timedelta(hours=BJT_UTC_OFFSET - SERVER_UTC_OFFSET)  # +5h
+
+def _server_utc_offset(naive_server_dt):
+    # IC Markets server offset: GMT+3 during US DST, GMT+2 otherwise.
+    y = naive_server_dt.year
+    def _nth_sunday(year, month, n):
+        d = datetime(year, month, 1)
+        d += timedelta(days=(6 - d.weekday()) % 7)  # first Sunday
+        return d + timedelta(weeks=n - 1)
+    dst_start = _nth_sunday(y, 3, 2) + timedelta(hours=7)   # 2nd Sun Mar, 02:00 EST = 07:00 UTC
+    dst_end = _nth_sunday(y, 11, 1) + timedelta(hours=6)    # 1st Sun Nov, 02:00 EDT = 06:00 UTC
+    return 3 if dst_start <= naive_server_dt < dst_end else 2
 
 def _to_bjt(ts_int):
-    # Convert MT5 deal.time (IC Markets server time UTC+3) to BJT (UTC+8) = +5h
-    return datetime.fromtimestamp(int(ts_int), tz=timezone.utc) + TZ_FIX
+    # deal.time is the server wall clock encoded as if it were a UTC epoch:
+    # decode it as naive server time, then shift server -> BJT (UTC+8).
+    naive_server = datetime(1970, 1, 1) + timedelta(seconds=int(ts_int))
+    off = _server_utc_offset(naive_server)
+    return naive_server + timedelta(hours=BJT_UTC_OFFSET - off)
 
 try:
     mt5.initialize(path="C:\\Program Files\\MetaTrader 5 IC Markets Global\\terminal64.exe")
@@ -64,6 +80,22 @@ try:
             deals = more
     if deals is None:
         deals = []
+    # Recent-window union (added 2026-11-05): the wide-range query can come back
+    # as a cache that stops BEFORE the latest session while still being non-empty
+    # (on 11-04 it ended on 11-03, silently dropping 18 trades / +$437.67 — the
+    # balance still moved, so the site showed a PnL-less balance jump). A narrow
+    # range always re-syncs from the server, so union it in by ticket.
+    _recent = mt5.history_deals_get(datetime.now() - timedelta(days=10),
+                                    datetime.now() + timedelta(days=2))
+    if _recent:
+        _by_ticket = {d.ticket: d for d in deals}
+        _added = 0
+        for d in _recent:
+            if d.ticket not in _by_ticket:
+                _by_ticket[d.ticket] = d
+                _added += 1
+        deals = list(_by_ticket.values())
+        print(f"RECENT_MERGE_ADDED:{_added}", file=sys.stderr)
     print(f"DEALS_COUNT:{len(deals)}", file=sys.stderr)
     pos = {}
     for d in deals:
@@ -73,9 +105,17 @@ try:
                 "sym": d.symbol, "tp": "BUY" if d.type == 0 else "SELL",
                 "lt": float(d.volume), "pnl": 0.0, "ct": ""
             }
-        if d.entry == 1:
-            pos[pid]["pnl"] = round(d.profit, 2)
-            pos[pid]["ct"] = str(d.time)
+        if d.entry == 0:
+            pos[pid]["tp"] = "BUY" if d.type == 0 else "SELL"
+            pos[pid]["lt"] = float(d.volume)
+        elif d.entry in (1, 3):
+            # entry 1 = normal close, 3 = closed-by-opposite (OUT_BY). Both are
+            # realized PnL. Ignoring entry 3 (old behaviour) overstated days
+            # with partial out-by closes: 11-04 read +$485.16 vs the real
+            # +$437.67 (balance delta proves the latter), 11-02 +274.65 vs 258.13.
+            pos[pid]["pnl"] = round(pos[pid]["pnl"] + d.profit, 2)
+            if not pos[pid]["ct"] or int(d.time) > int(pos[pid]["ct"]):
+                pos[pid]["ct"] = str(int(d.time))
 
     # Closed trades only — filter to the official account period (>= 2026-08-15).
     # 08-14 itself is the demo reset day: 3x 1.0-lot stop-outs (-4678.60) blew
@@ -147,7 +187,7 @@ try:
             "dayPnL": day_pnl,
             "dayPnLPercent": round(day_pnl / (acc.balance - day_pnl) * 100, 2) if (acc.balance - day_pnl) > 0 else 0,
             "cumulativePnL": round(cum, 2),
-            "positions": 0,
+            "positions": len(mt5.positions_get() or []),
             "status": "RUNNING"
         },
         "session": {"status": session_status, "cooldown": 0},
@@ -191,13 +231,14 @@ def _ensure_script_on_vps():
     on the VPS are detected via findstr and force a re-SCP.
     """
     try:
-        # Version marker: current MT5_SCRIPT contains the v6.2-start0814-3000-staleguard
-        # marker comment (v4-utc3 = +5h timezone fix; v5 = full-year query;
+        # Version marker: current MT5_SCRIPT contains the v6.3 marker comment
+        # (v6.3 = DST-aware server->BJT offset, recent-window deal union,
+        #         OUT_BY (entry 3) profit included, live position count).
         # v5.1 = clip pre-07-13 history; v6.0 = clip pre-08-14;
         # v6.1 = start at $3000 baseline, insert 08/14 reset start day;
         # v6.2 = re-query the deal range up to 3x and keep the largest set,
         #        defeating the stale-cache first-call truncation of 2026-10-26).
-        marker = "v6.2-start0814-3000-staleguard"
+        marker = "v6.3-dst-recent-union-outby"
         r = subprocess.run(
             f"""{SSH_BASE} 'findstr /C:"{marker}" "{VPS_SCRIPT}" >nul 2>&1 && echo CURRENT || echo STALE'""",
             shell=True, capture_output=True, timeout=30
@@ -282,7 +323,15 @@ def main():
             existing = json.load(f)
         for section in ["session", "market", "signal", "risk"]:
             if section in existing and section in new_data:
-                new_data[section] = {**existing[section], **new_data[section]}
+                merged = {**existing[section], **new_data[section]}
+                # The MT5 script only knows account history, so it emits
+                # placeholders (0 / "WAITING") for EA state it cannot see.
+                # Keep the real values the EA-status job wrote instead of
+                # blanking the homepage live section every morning.
+                for k, v in new_data[section].items():
+                    if (v in (0, 0.0, "WAITING", "N")) and existing[section].get(k):
+                        merged[k] = existing[section][k]
+                new_data[section] = merged
 
     # Step 5: Also merge live heartbeat data if possible
     try:
