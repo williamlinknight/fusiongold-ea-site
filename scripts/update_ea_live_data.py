@@ -87,6 +87,22 @@ try:
     # range always re-syncs from the server, so union it in by ticket.
     _recent = mt5.history_deals_get(datetime.now() - timedelta(days=10),
                                     datetime.now() + timedelta(days=2))
+    # Daily-rollover lag (added 2026-11-06): right after the broker's midnight the
+    # history base can still answer with a set that stops at the PREVIOUS day's
+    # first deal (on 11-06 06:11 it ended 11-05 00:03 while the balance had moved
+    # 18,115.69 -> 20,036.45, dropping 11-05's 11 trades / +$1,947.64). A re-query
+    # a few minutes later returns the full day, so retry while the newest deal we
+    # hold is more than 20 hours stale.
+    for _attempt in range(3):
+        _newest = max((int(d.time) for d in (_recent or deals or [])), default=0)
+        if _newest and (datetime.now() - _to_bjt(_newest)).total_seconds() < 20 * 3600:
+            break
+        print(f"STALE_HISTORY_RETRY:{_attempt + 1}", file=sys.stderr)
+        time.sleep(20)
+        _again = mt5.history_deals_get(datetime.now() - timedelta(days=10),
+                                       datetime.now() + timedelta(days=2))
+        if _again and len(_again) > len(_recent or []):
+            _recent = _again
     if _recent:
         _by_ticket = {d.ticket: d for d in deals}
         _added = 0
